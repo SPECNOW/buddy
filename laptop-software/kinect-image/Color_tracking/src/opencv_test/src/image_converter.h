@@ -6,6 +6,7 @@
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <vector>
 
 static const std::string OPENCV_WINDOW = "Image window";
 
@@ -67,8 +68,8 @@ public:
 
       // call inRange to take original image and turn into processed image
       cv::inRange(cv_ptr->image,				// funcion input
-                  cv::Scalar(0,0,120),			// min filtering value (if greater than or equal to this) (in BGR format)
-                  cv::Scalar(70,70,250),		// max filtering value (and if less than this) (in BGR format)
+                  cv::Scalar(0,95,80),			// min filtering value (if greater than or equal to this) (in BGR format)
+                  cv::Scalar(80,210,160),		// max filtering value (and if less than this) (in BGR format)
                   matProcessed);				// function output
 
       // smooth the processed image, this will make it easier for the next function to identify circles
@@ -85,8 +86,8 @@ public:
                        matProcessed.rows / .1,										// min distance in pixels between the centers of the detected circles
                        100,															// high threshold of Canny edge detector (called by cvHoughCircles)
                        50,															// low threshold of Canny edge detector (set at 1/2 previous value)
-                       20,															// min circle radius (any circles with smaller radius will not be returned)
-                       100);														// max circle radius (any circles with larger radius will not be returned)
+                       5,															// min circle radius (any circles with smaller radius will not be returned)
+                       50);														// max circle radius (any circles with larger radius will not be returned)
 
 
       for(itrCircles = vecCircles.begin(); itrCircles != vecCircles.end(); itrCircles++) {
@@ -122,7 +123,18 @@ public:
       }	// end for
 
     // Update GUI Window
+    cv::Mat RED, GREEN, BLUE;
+    std::vector<cv::Mat>channels(3);
+    cv::split(cv_ptr->image, channels);
+    RED = channels[0];
+    GREEN = channels[1];
+    BLUE = channels[2];
+
+    cv::imwrite("/home/ali/grab.bmp", cv_ptr->image);
     cv::imshow(OPENCV_WINDOW, cv_ptr->image);
+    cv::imshow("RED", RED);
+    cv::imshow("GREEN", GREEN);
+    cv::imshow("BLUE", BLUE);
     cv::waitKey(3);
 
     // Output modified video stream

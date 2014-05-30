@@ -66,8 +66,8 @@ public:
 
       // call inRange to take original image and turn into processed image
       cv::inRange(cv_ptr->image,				// funcion input
-                  cv::Scalar(230,230,230),		// min filtering value (if greater than or equal to this) (in BGR format)
-                  cv::Scalar(256,250,250),	// max filtering value (and if less than this) (in BGR format)
+                  cv::Scalar(150,100,0),		// min filtering value (if greater than or equal to this) (in BGR format)
+                  cv::Scalar(220,255,100),	// max filtering value (and if less than this) (in BGR format)
                   matProcessed);				// function output
 
       // smooth the processed image, this will make it easier for the next function to identify circles
@@ -84,7 +84,7 @@ public:
                        matProcessed.rows / .1,		// min distance in pixels between the centers of the detected circles
                        100,						// high threshold of Canny edge detector (called by cvHoughCircles)
                        50,						// low threshold of Canny edge detector (set at 1/2 previous value)
-                       50,						// min circle radius (any circles with smaller radius will not be returned)
+                       10,						// min circle radius (any circles with smaller radius will not be returned)
                        100);						// max circle radius (any circles with larger radius will not be returned)
 
 
