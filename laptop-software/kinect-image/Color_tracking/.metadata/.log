@@ -1,0 +1,9 @@
+!SESSION 2014-06-03 21:50:22.627 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_31
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_CA
+Command-line arguments:  -data /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2014-06-03 21:52:31.966
+!MESSAGE Indexed 'build' (5 sources, 639 headers) in 85.90 sec: 52,619 declarations; 110,951 references; 283 unresolved inclusions; 699 syntax errors; 5,954 unresolved names (3.51%)

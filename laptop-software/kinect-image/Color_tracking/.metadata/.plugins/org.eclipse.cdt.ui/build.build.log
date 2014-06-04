@@ -1,0 +1,117 @@
+/usr/bin/make all 
+/usr/bin/cmake -H/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src -B/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles/progress.marks
+/usr/bin/make -f CMakeFiles/Makefile2 all
+make[1]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+[  0%] Built target std_msgs_generate_messages_py
+/usr/bin/make -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+[  0%] Built target sensor_msgs_generate_messages_py
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  6 7
+[ 40%] Built target opencv_test_generate_messages_py
+/usr/bin/make -f opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+[ 40%] Built target std_msgs_generate_messages_cpp
+/usr/bin/make -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+[ 40%] Built target sensor_msgs_generate_messages_cpp
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  4
+[ 60%] Built target opencv_test_generate_messages_cpp
+/usr/bin/make -f opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+[ 60%] Built target std_msgs_generate_messages_lisp
+/usr/bin/make -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+[ 60%] Built target sensor_msgs_generate_messages_lisp
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  5
+[ 80%] Built target opencv_test_generate_messages_lisp
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+[ 80%] Built target opencv_test_generate_messages
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/depend
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_imageConverter.dir/DependInfo.cmake --color=
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/make -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build
+make[2]: Entering directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+make[2]: Nothing to be done for `opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build'.
+make[2]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  8
+[100%] Built target opencv_test_imageConverter
+make[1]: Leaving directory `/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build'
+/usr/bin/cmake -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
