@@ -264,6 +264,19 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named objectTracker
+
+# Build rule for target.
+objectTracker: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 objectTracker
+.PHONY : objectTracker
+
+# fast build rule for target.
+objectTracker/fast:
+	$(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/build
+.PHONY : objectTracker/fast
+
+#=============================================================================
 # Target rules for targets named opencv_test_gencpp
 
 # Build rule for target.
@@ -353,19 +366,6 @@ opencv_test_genpy: cmake_check_build_system
 opencv_test_genpy/fast:
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_genpy.dir/build.make opencv_test/CMakeFiles/opencv_test_genpy.dir/build
 .PHONY : opencv_test_genpy/fast
-
-#=============================================================================
-# Target rules for targets named opencv_test_imageConverter
-
-# Build rule for target.
-opencv_test_imageConverter: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 opencv_test_imageConverter
-.PHONY : opencv_test_imageConverter
-
-# fast build rule for target.
-opencv_test_imageConverter/fast:
-	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build
-.PHONY : opencv_test_imageConverter/fast
 
 #=============================================================================
 # Target rules for targets named roscpp_generate_messages_cpp
@@ -545,6 +545,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... objectTracker"
 	@echo "... opencv_test_gencpp"
 	@echo "... opencv_test_generate_messages"
 	@echo "... opencv_test_generate_messages_cpp"
@@ -552,7 +553,6 @@ help:
 	@echo "... opencv_test_generate_messages_py"
 	@echo "... opencv_test_genlisp"
 	@echo "... opencv_test_genpy"
-	@echo "... opencv_test_imageConverter"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"

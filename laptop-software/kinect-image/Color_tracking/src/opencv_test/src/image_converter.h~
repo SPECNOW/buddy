@@ -1,3 +1,6 @@
+#ifndef IMAGE_CONVERTER_H
+#define IMAGE_CONVERTER_H
+
 #include <ros/ros.h>
 #include "std_msgs/String.h"
 #include <sstream>
@@ -72,7 +75,7 @@ public:
 
       unsigned int minx, maxx, miny, maxy;
       minx=max(1, objectPosition.X_value - 120);
-      maxx=min(cv_ptr->image.cols-1, objectPosition.X_value + 120);
+      maxx=min(620/*cv_ptr->image.cols-1*/, objectPosition.X_value + 120);
       miny=max(1, objectPosition.Y_value - 60);
       maxy=min(300/*cv_ptr->image.rows-1*/, objectPosition.Y_value + 60);
 	ROS_DEBUG("minx=%i, maxx=%i, miny=%i, maxy=%i",minx, maxx, miny, maxy);
@@ -157,3 +160,6 @@ public:
     image_pub_.publish(cv_ptr->toImageMsg());
   }
 };
+
+
+#endif

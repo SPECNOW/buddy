@@ -5,6 +5,7 @@
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/gtest/CMakeFiles/gtest.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/gtest/CMakeFiles/gtest_main.dir
+/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/objectTracker.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_gencpp.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir
@@ -12,7 +13,6 @@
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_genlisp.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_genpy.dir
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_imageConverter.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/roscpp_generate_messages_py.dir

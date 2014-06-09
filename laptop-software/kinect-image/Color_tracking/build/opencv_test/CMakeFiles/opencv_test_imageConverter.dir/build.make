@@ -69,14 +69,64 @@ opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o.
 
 opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o.provides.build: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o
 
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/flags.make
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o: /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o"
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o -c /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.i"
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp > CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.i
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.s"
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp -o CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.s
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o.requires:
+.PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o.requires
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o.provides: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o.requires
+	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o.provides.build
+.PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o.provides
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o.provides.build: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/flags.make
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o: /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o"
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o -c /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.cpp
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.i"
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.cpp > CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.i
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.s"
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.cpp -o CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.s
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o.requires:
+.PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o.requires
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o.provides: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o.requires
+	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o.provides.build
+.PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o.provides
+
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o.provides.build: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o
+
 # Object files for target opencv_test_imageConverter
 opencv_test_imageConverter_OBJECTS = \
-"CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o"
+"CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o" \
+"CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o" \
+"CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o"
 
 # External object files for target opencv_test_imageConverter
 opencv_test_imageConverter_EXTERNAL_OBJECTS =
 
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib/opencv_test/opencv_test_imageConverter: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o
+/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib/opencv_test/opencv_test_imageConverter: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o
+/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib/opencv_test/opencv_test_imageConverter: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib/opencv_test/opencv_test_imageConverter: /opt/ros/hydro/lib/libcv_bridge.so
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib/opencv_test/opencv_test_imageConverter: /opt/ros/hydro/lib/libopencv_calib3d.so
 /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib/opencv_test/opencv_test_imageConverter: /opt/ros/hydro/lib/libopencv_contrib.so
@@ -129,6 +179,8 @@ opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build: /home/charanpreet/b
 .PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build
 
 opencv_test/CMakeFiles/opencv_test_imageConverter.dir/requires: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o.requires
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/requires: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o.requires
+opencv_test/CMakeFiles/opencv_test_imageConverter.dir/requires: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o.requires
 .PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/requires
 
 opencv_test/CMakeFiles/opencv_test_imageConverter.dir/clean:

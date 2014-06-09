@@ -189,6 +189,20 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+opencv_test/CMakeFiles/objectTracker.dir/rule:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/objectTracker.dir/rule
+.PHONY : opencv_test/CMakeFiles/objectTracker.dir/rule
+
+# Convenience name for target.
+objectTracker: opencv_test/CMakeFiles/objectTracker.dir/rule
+.PHONY : objectTracker
+
+# fast build rule for target.
+objectTracker/fast:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/build
+.PHONY : objectTracker/fast
+
+# Convenience name for target.
 opencv_test/CMakeFiles/opencv_test_gencpp.dir/rule:
 	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_gencpp.dir/rule
 .PHONY : opencv_test/CMakeFiles/opencv_test_gencpp.dir/rule
@@ -285,20 +299,6 @@ opencv_test_genpy: opencv_test/CMakeFiles/opencv_test_genpy.dir/rule
 opencv_test_genpy/fast:
 	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/opencv_test_genpy.dir/build.make opencv_test/CMakeFiles/opencv_test_genpy.dir/build
 .PHONY : opencv_test_genpy/fast
-
-# Convenience name for target.
-opencv_test/CMakeFiles/opencv_test_imageConverter.dir/rule:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_imageConverter.dir/rule
-.PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/rule
-
-# Convenience name for target.
-opencv_test_imageConverter: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/rule
-.PHONY : opencv_test_imageConverter
-
-# fast build rule for target.
-opencv_test_imageConverter/fast:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build
-.PHONY : opencv_test_imageConverter/fast
 
 # Convenience name for target.
 opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
@@ -468,29 +468,77 @@ std_msgs_generate_messages_py/fast:
 	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
-src/image_converter.o: src/image_converter.cpp.o
-.PHONY : src/image_converter.o
+src/DepthConverter.o: src/DepthConverter.cpp.o
+.PHONY : src/DepthConverter.o
 
 # target to build an object file
-src/image_converter.cpp.o:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o
-.PHONY : src/image_converter.cpp.o
+src/DepthConverter.cpp.o:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/DepthConverter.cpp.o
+.PHONY : src/DepthConverter.cpp.o
 
-src/image_converter.i: src/image_converter.cpp.i
-.PHONY : src/image_converter.i
+src/DepthConverter.i: src/DepthConverter.cpp.i
+.PHONY : src/DepthConverter.i
 
 # target to preprocess a source file
-src/image_converter.cpp.i:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.i
-.PHONY : src/image_converter.cpp.i
+src/DepthConverter.cpp.i:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/DepthConverter.cpp.i
+.PHONY : src/DepthConverter.cpp.i
 
-src/image_converter.s: src/image_converter.cpp.s
-.PHONY : src/image_converter.s
+src/DepthConverter.s: src/DepthConverter.cpp.s
+.PHONY : src/DepthConverter.s
 
 # target to generate assembly for a file
-src/image_converter.cpp.s:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.s
-.PHONY : src/image_converter.cpp.s
+src/DepthConverter.cpp.s:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/DepthConverter.cpp.s
+.PHONY : src/DepthConverter.cpp.s
+
+src/ImageConverter.o: src/ImageConverter.cpp.o
+.PHONY : src/ImageConverter.o
+
+# target to build an object file
+src/ImageConverter.cpp.o:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/ImageConverter.cpp.o
+.PHONY : src/ImageConverter.cpp.o
+
+src/ImageConverter.i: src/ImageConverter.cpp.i
+.PHONY : src/ImageConverter.i
+
+# target to preprocess a source file
+src/ImageConverter.cpp.i:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/ImageConverter.cpp.i
+.PHONY : src/ImageConverter.cpp.i
+
+src/ImageConverter.s: src/ImageConverter.cpp.s
+.PHONY : src/ImageConverter.s
+
+# target to generate assembly for a file
+src/ImageConverter.cpp.s:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/ImageConverter.cpp.s
+.PHONY : src/ImageConverter.cpp.s
+
+src/ObjectTracker.o: src/ObjectTracker.cpp.o
+.PHONY : src/ObjectTracker.o
+
+# target to build an object file
+src/ObjectTracker.cpp.o:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/ObjectTracker.cpp.o
+.PHONY : src/ObjectTracker.cpp.o
+
+src/ObjectTracker.i: src/ObjectTracker.cpp.i
+.PHONY : src/ObjectTracker.i
+
+# target to preprocess a source file
+src/ObjectTracker.cpp.i:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/ObjectTracker.cpp.i
+.PHONY : src/ObjectTracker.cpp.i
+
+src/ObjectTracker.s: src/ObjectTracker.cpp.s
+.PHONY : src/ObjectTracker.s
+
+# target to generate assembly for a file
+src/ObjectTracker.cpp.s:
+	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/src/ObjectTracker.cpp.s
+.PHONY : src/ObjectTracker.cpp.s
 
 # Help Target
 help:
@@ -506,6 +554,7 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... objectTracker"
 	@echo "... opencv_test_gencpp"
 	@echo "... opencv_test_generate_messages"
 	@echo "... opencv_test_generate_messages_cpp"
@@ -513,7 +562,6 @@ help:
 	@echo "... opencv_test_generate_messages_py"
 	@echo "... opencv_test_genlisp"
 	@echo "... opencv_test_genpy"
-	@echo "... opencv_test_imageConverter"
 	@echo "... rebuild_cache"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_lisp"
@@ -528,9 +576,15 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... test"
-	@echo "... src/image_converter.o"
-	@echo "... src/image_converter.i"
-	@echo "... src/image_converter.s"
+	@echo "... src/DepthConverter.o"
+	@echo "... src/DepthConverter.i"
+	@echo "... src/DepthConverter.s"
+	@echo "... src/ImageConverter.o"
+	@echo "... src/ImageConverter.i"
+	@echo "... src/ImageConverter.s"
+	@echo "... src/ObjectTracker.o"
+	@echo "... src/ObjectTracker.i"
+	@echo "... src/ObjectTracker.s"
 .PHONY : help
 
 

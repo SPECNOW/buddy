@@ -1,5 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o"
+  "CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o"
+  "CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o"
   "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib/opencv_test/opencv_test_imageConverter.pdb"
   "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib/opencv_test/opencv_test_imageConverter"
 )

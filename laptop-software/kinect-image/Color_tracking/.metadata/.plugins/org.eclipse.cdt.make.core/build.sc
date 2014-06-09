@@ -3,7 +3,9 @@
 
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include"/>
 <includePath path="/opt/ros/hydro/include"/>
+<includePath path="/opt/ros/hydro/include/opencv"/>
 <includePath path="/usr/include/c++/4.6"/>
 <includePath path="/usr/include/c++/4.6/x86_64-linux-gnu/."/>
 <includePath path="/usr/include/c++/4.6/backward"/>
@@ -233,5 +235,8 @@
 <definedSymbol symbol="__ELF__=1"/>
 <definedSymbol symbol="__DECIMAL_BID_FORMAT__=1"/>
 <definedSymbol symbol="_GNU_SOURCE=1"/>
+<definedSymbol symbol="ROS_BUILD_SHARED_LIBS=1"/>
+<definedSymbol symbol="ROS_PACKAGE_NAME=&quot;opencv_test&quot;"/>
+<definedSymbol symbol="ROSCONSOLE_BACKEND_LOG4CXX=1"/>
 </collector>
 </scannerInfo>

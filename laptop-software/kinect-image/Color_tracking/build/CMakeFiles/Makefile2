@@ -255,14 +255,15 @@ clean: gtest/CMakeFiles/gtest_main.dir/clean
 # Directory level rules for directory opencv_test
 
 # Convenience name for "all" pass in the directory.
+opencv_test/all: opencv_test/CMakeFiles/objectTracker.dir/all
 opencv_test/all: opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all
-opencv_test/all: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/all
 .PHONY : opencv_test/all
 
 # Convenience name for "clean" pass in the directory.
 opencv_test/clean: opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+opencv_test/clean: opencv_test/CMakeFiles/objectTracker.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/opencv_test_gencpp.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/opencv_test_generate_messages.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/clean
@@ -270,7 +271,6 @@ opencv_test/clean: opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir
 opencv_test/clean: opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/opencv_test_genlisp.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/opencv_test_genpy.dir/clean
-opencv_test/clean: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 opencv_test/clean: opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/clean
@@ -383,6 +383,41 @@ clean: opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target opencv_test/CMakeFiles/objectTracker.dir
+
+# All Build rule for target.
+opencv_test/CMakeFiles/objectTracker.dir/all:
+	$(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/depend
+	$(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  4 5 6
+	@echo "Built target objectTracker"
+.PHONY : opencv_test/CMakeFiles/objectTracker.dir/all
+
+# Include target in all.
+all: opencv_test/CMakeFiles/objectTracker.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+opencv_test/CMakeFiles/objectTracker.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/objectTracker.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+.PHONY : opencv_test/CMakeFiles/objectTracker.dir/rule
+
+# Convenience name for target.
+objectTracker: opencv_test/CMakeFiles/objectTracker.dir/rule
+.PHONY : objectTracker
+
+# clean rule for target.
+opencv_test/CMakeFiles/objectTracker.dir/clean:
+	$(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/clean
+.PHONY : opencv_test/CMakeFiles/objectTracker.dir/clean
+
+# clean rule for target.
+clean: opencv_test/CMakeFiles/objectTracker.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target opencv_test/CMakeFiles/opencv_test_gencpp.dir
 
 # All Build rule for target.
@@ -417,9 +452,9 @@ clean: opencv_test/CMakeFiles/opencv_test_gencpp.dir/clean
 # Target rules for target opencv_test/CMakeFiles/opencv_test_generate_messages.dir
 
 # All Build rule for target.
+opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all
 opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all
 opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all
-opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
@@ -458,7 +493,7 @@ opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all: opencv_test/CM
 opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all: opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  7
 	@echo "Built target opencv_test_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all
 
@@ -490,7 +525,7 @@ opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all: opencv_test/C
 opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all: opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  8
 	@echo "Built target opencv_test_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all
 
@@ -522,7 +557,7 @@ opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all: opencv_test/CMa
 opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all: opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  6 7
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  9 10
 	@echo "Built target opencv_test_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all
 
@@ -606,41 +641,6 @@ opencv_test/CMakeFiles/opencv_test_genpy.dir/clean:
 
 # clean rule for target.
 clean: opencv_test/CMakeFiles/opencv_test_genpy.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target opencv_test/CMakeFiles/opencv_test_imageConverter.dir
-
-# All Build rule for target.
-opencv_test/CMakeFiles/opencv_test_imageConverter.dir/all:
-	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/depend
-	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  8
-	@echo "Built target opencv_test_imageConverter"
-.PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/all
-
-# Include target in all.
-all: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-opencv_test/CMakeFiles/opencv_test_imageConverter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_imageConverter.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
-.PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/rule
-
-# Convenience name for target.
-opencv_test_imageConverter: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/rule
-.PHONY : opencv_test_imageConverter
-
-# clean rule for target.
-opencv_test/CMakeFiles/opencv_test_imageConverter.dir/clean:
-	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_imageConverter.dir/build.make opencv_test/CMakeFiles/opencv_test_imageConverter.dir/clean
-.PHONY : opencv_test/CMakeFiles/opencv_test_imageConverter.dir/clean
-
-# clean rule for target.
-clean: opencv_test/CMakeFiles/opencv_test_imageConverter.dir/clean
 .PHONY : clean
 
 #=============================================================================

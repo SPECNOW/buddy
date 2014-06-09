@@ -108,7 +108,7 @@ include_directories(
 
 ## Declare a cpp executable
 # add_executable(opencv_test_node src/opencv_test_node.cpp)
-add_executable(opencv_test_imageConverter src/image_converter.cpp)
+add_executable(objectTracker src/ObjectTracker.cpp src/ImageConverter.cpp src/DepthConverter.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -118,7 +118,7 @@ add_executable(opencv_test_imageConverter src/image_converter.cpp)
 # target_link_libraries(opencv_test_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(opencv_test_imageConverter
+target_link_libraries(objectTracker
   ${catkin_LIBRARIES}
 )
 
