@@ -6,6 +6,11 @@
 <includePath path="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include"/>
 <includePath path="/opt/ros/hydro/include"/>
 <includePath path="/opt/ros/hydro/include/opencv"/>
+<includePath path="/usr/include/eigen3"/>
+<includePath path="/usr/include/pcl-1.7"/>
+<includePath path="/usr/include/ni"/>
+<includePath path="/usr/include/vtk-5.8"/>
+<includePath path="/usr/include/qhull"/>
 <includePath path="/usr/include/c++/4.6"/>
 <includePath path="/usr/include/c++/4.6/x86_64-linux-gnu/."/>
 <includePath path="/usr/include/c++/4.6/backward"/>

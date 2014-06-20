@@ -13,6 +13,11 @@ SET(CMAKE_C_INCLUDE_PATH
   "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include"
   "/opt/ros/hydro/include"
   "/opt/ros/hydro/include/opencv"
+  "/usr/include/eigen3"
+  "/usr/include/pcl-1.7"
+  "/usr/include/ni"
+  "/usr/include/vtk-5.8"
+  "/usr/include/qhull"
   )
 SET(CMAKE_CXX_INCLUDE_PATH ${CMAKE_C_INCLUDE_PATH})
 SET(CMAKE_Fortran_INCLUDE_PATH ${CMAKE_C_INCLUDE_PATH})

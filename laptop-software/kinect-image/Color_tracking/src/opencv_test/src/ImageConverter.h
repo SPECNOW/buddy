@@ -9,11 +9,16 @@
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <sensor_msgs/PointCloud2.h>
+// PCL specific includes
+ #include <pcl_conversions/pcl_conversions.h>
+ #include <sensor_msgs/PointCloud2.h>
 #include <vector>
 
-#define max(a,b) ((a) < (b) ? (b) : (a))
-#define min(a,b) (a > b ? b : a)
-
+//#define max(a,b) ((a) < (b) ? (b) : (a))
+//#define min(a,b) (a > b ? b : a)
+#define max std::max
+#define min std::min
 static const std::string OPENCV_WINDOW = "Image window";
 
 class colorTracker

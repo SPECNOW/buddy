@@ -3,15 +3,15 @@
 /*	Initialize DepthConverter Object. Provide pointer to the X and Y Position to
  * 	check depth for.
  */
-DepthConverter::DepthConverter(int *X_value, int *Y_value): it_(nh_)
+DepthConverter::DepthConverter(int *X_value, int *Y_value)//: it_(nh_)
 {
   this->X = (int *)X_value;
   this->Y = (int *)Y_value;
 
   // Subscrive to input video feed and publish output video feed
-  this->image_sub_ = it_.subscribe(  "/camera/depth/image_raw",
+  this->image_sub_ = this->nh_.subscribe(  "/camera/depth/points",
 				      1,
-				      &DepthConverter::imageCb, 
+				      &DepthConverter::imageCb,
 				      this
 				   );
 }
@@ -25,9 +25,22 @@ DepthConverter::~DepthConverter()
 
 /*	Callback Function for when new Depth Image message type is captured
  */
-void DepthConverter::imageCb(const sensor_msgs::ImageConstPtr& msg)
+void DepthConverter::imageCb(const sensor_msgs::PointCloud2ConstPtr& msg)
 {
-  cv_bridge::CvImagePtr cv_ptr;
+
+  float* data = (float*)&msg->data[0];
+  float x = 0, y = 0, z = 0;
+  //ROS_INFO("HEIGHT: %d WIDTH: %d", msg->height, msg->width);
+  //ROS_INFO("%f %f %f", *((float*)&msg->data[0]), *((float*)(&msg->data[4])), *((float*)(&msg->data[8])) );
+  //ROS_INFO("%f %f %f", *(data), *(data+1), *(data+2) );
+  unsigned int offset = 0;
+  offset = (*this->X)*639*3 + *this->Y;
+  x = *( ((float*)(&msg->data[0])) + offset + 0);
+  y = *( ((float*)(&msg->data[0])) + offset + 1);
+  z = *( ((float*)(&msg->data[0])) + offset + 2);
+  ROS_INFO("X = %f, Y = %f, Z = %f", x, y, z);
+
+  /* cv_bridge::CvImagePtr cv_ptr;
   try
   {
     cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::TYPE_16UC1);
@@ -40,5 +53,5 @@ void DepthConverter::imageCb(const sensor_msgs::ImageConstPtr& msg)
   {
     ROS_ERROR("cv_bridge exception: %s", e.what());
     return;
-  }
+  }*/
 }

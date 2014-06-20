@@ -37,16 +37,16 @@ void colorTracker::imageCb(const sensor_msgs::ImageConstPtr& msg)
 
     static unsigned int minx, maxx, miny, maxy;
 
-    minx=max(0, objectPosition.X_value - 120);
-    maxx=min(cv_ptr->image.cols-1, objectPosition.X_value + 120);
-    miny=max(0, objectPosition.Y_value - 60);
-    maxy=min(cv_ptr->image.rows-1, objectPosition.Y_value + 60);
+    minx=0;//max(0, objectPosition.X_value - 120);
+    maxx=639;//min(cv_ptr->image.cols-1, objectPosition.X_value + 120);
+    miny=0;//max(0, objectPosition.Y_value - 60);
+    maxy=480;//min(cv_ptr->image.rows-1, objectPosition.Y_value + 60);
 
     ROS_DEBUG("minx=%i, maxx=%i, miny=%i, maxy=%i",minx, maxx, miny, maxy);
 
     cv::Mat whatever = cv::Mat::zeros(
-    									cv_ptr->image.rows+1,
-    									cv_ptr->image.cols+1,
+    									cv_ptr->image.rows*2+1,
+    									cv_ptr->image.cols*2+1,
     									CV_8UC3
 									  );
     ( ( (cv_ptr->image.colRange(minx, maxx) ).rowRange(miny, maxy) ) ).copyTo( ( ( whatever.colRange(minx, maxx) ).rowRange(miny, maxy) ) );
