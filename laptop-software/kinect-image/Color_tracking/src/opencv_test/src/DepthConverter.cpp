@@ -33,12 +33,13 @@ void DepthConverter::imageCb(const sensor_msgs::PointCloud2ConstPtr& msg)
   //ROS_INFO("HEIGHT: %d WIDTH: %d", msg->height, msg->width);
   //ROS_INFO("%f %f %f", *((float*)&msg->data[0]), *((float*)(&msg->data[4])), *((float*)(&msg->data[8])) );
   //ROS_INFO("%f %f %f", *(data), *(data+1), *(data+2) );
-  unsigned int offset = 0;
-  offset = (*this->X)*639*3 + *this->Y;
+  unsigned int offset = 0;//(320)*649*4 + (240);
+  offset = (*this->Y)*msg->row_step/4 + (*this->X);
+  ROS_INFO("\n\n%i,\tX=%i,\tY=%i", offset, *this->X, *this->Y);
   x = *( ((float*)(&msg->data[0])) + offset + 0);
   y = *( ((float*)(&msg->data[0])) + offset + 1);
   z = *( ((float*)(&msg->data[0])) + offset + 2);
-  ROS_INFO("X = %f, Y = %f, Z = %f", x, y, z);
+  ROS_INFO("X = %f, Y = %f, Z = %f\n\n", x, y, z);
 
   /* cv_bridge::CvImagePtr cv_ptr;
   try
