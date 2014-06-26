@@ -34,7 +34,7 @@ void DepthConverter::imageCb(const sensor_msgs::PointCloud2ConstPtr& msg)
   //ROS_INFO("%f %f %f", *((float*)&msg->data[0]), *((float*)(&msg->data[4])), *((float*)(&msg->data[8])) );
   //ROS_INFO("%f %f %f", *(data), *(data+1), *(data+2) );
   unsigned int offset = 0;//(320)*649*4 + (240);
-  offset = (*this->Y)*msg->row_step/4 + (*this->X);
+  offset = (*this->Y)*msg->row_step/4 + (*this->X)*4;
   ROS_INFO("\n\n%i,\tX=%i,\tY=%i", offset, *this->X, *this->Y);
   x = *( ((float*)(&msg->data[0])) + offset + 0);
   y = *( ((float*)(&msg->data[0])) + offset + 1);
