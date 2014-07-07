@@ -32,27 +32,27 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src
+CMAKE_SOURCE_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build
+CMAKE_BINARY_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build
 
 # Utility rule file for opencv_test_generate_messages_cpp.
 
 # Include the progress variables for this target.
 include opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/progress.make
 
-opencv_test/CMakeFiles/opencv_test_generate_messages_cpp: /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h
+opencv_test/CMakeFiles/opencv_test_generate_messages_cpp: /home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h
 
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h: /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h: /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h: /opt/ros/hydro/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles $(CMAKE_PROGRESS_1)
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h: /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h: /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h: /opt/ros/hydro/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from opencv_test/position.msg"
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg -Iopencv_test:/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg -Isensor_msgs:/opt/ros/hydro/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -p opencv_test -o /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test -e /opt/ros/hydro/share/gencpp/cmake/..
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg -Iopencv_test:/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg -Isensor_msgs:/opt/ros/hydro/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -p opencv_test -o /home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test -e /opt/ros/hydro/share/gencpp/cmake/..
 
 opencv_test_generate_messages_cpp: opencv_test/CMakeFiles/opencv_test_generate_messages_cpp
-opencv_test_generate_messages_cpp: /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h
+opencv_test_generate_messages_cpp: /home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include/opencv_test/position.h
 opencv_test_generate_messages_cpp: opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build.make
 .PHONY : opencv_test_generate_messages_cpp
 
@@ -61,10 +61,10 @@ opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build: opencv_test_
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build
 
 opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/clean:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && $(CMAKE_COMMAND) -P CMakeFiles/opencv_test_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && $(CMAKE_COMMAND) -P CMakeFiles/opencv_test_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/clean
 
 opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/depend:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/depend
 

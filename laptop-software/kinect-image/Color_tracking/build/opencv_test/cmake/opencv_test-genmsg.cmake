@@ -2,7 +2,7 @@
 
 message(STATUS "opencv_test: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Iopencv_test:/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg;-Isensor_msgs:/opt/ros/hydro/share/sensor_msgs/cmake/../msg;-Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Iopencv_test:/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg;-Isensor_msgs:/opt/ros/hydro/share/sensor_msgs/cmake/../msg;-Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -18,7 +18,7 @@ add_custom_target(opencv_test_generate_messages ALL)
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(opencv_test
-  "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg"
+  "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/opencv_test
@@ -47,7 +47,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS opencv_test_generate_messages_cpp)
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(opencv_test
-  "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg"
+  "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/opencv_test
@@ -76,7 +76,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS opencv_test_generate_messages_lisp)
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(opencv_test
-  "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg"
+  "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/opencv_test

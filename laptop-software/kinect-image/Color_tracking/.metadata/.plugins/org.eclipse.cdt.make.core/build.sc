@@ -3,7 +3,7 @@
 
 <scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include"/>
+<includePath path="/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include"/>
 <includePath path="/opt/ros/hydro/include"/>
 <includePath path="/opt/ros/hydro/include/opencv"/>
 <includePath path="/usr/include/eigen3"/>

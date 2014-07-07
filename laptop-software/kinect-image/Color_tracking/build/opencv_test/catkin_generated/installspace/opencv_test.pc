@@ -1,8 +1,8 @@
-prefix=/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/install
+prefix=/home/ali/buddy/laptop-software/kinect-image/Color_tracking/install
 
 Name: opencv_test
 Description: Description of opencv_test
 Version: 0.0.0
-Cflags: -I/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/install/include
-Libs: -L/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/install/lib -lopencv_test
+Cflags: -I/home/ali/buddy/laptop-software/kinect-image/Color_tracking/install/include
+Libs: -L/home/ali/buddy/laptop-software/kinect-image/Color_tracking/install/lib -lopencv_test
 Requires: cv_bridge image_transport roscpp sensor_msgs std_msgs message_runtime

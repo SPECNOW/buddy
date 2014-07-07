@@ -32,26 +32,26 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src
+CMAKE_SOURCE_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build
+CMAKE_BINARY_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build
 
 # Utility rule file for opencv_test_generate_messages_lisp.
 
 # Include the progress variables for this target.
 include opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/progress.make
 
-opencv_test/CMakeFiles/opencv_test_generate_messages_lisp: /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp
+opencv_test/CMakeFiles/opencv_test_generate_messages_lisp: /home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp
 
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp: /opt/ros/hydro/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp: /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles $(CMAKE_PROGRESS_1)
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp: /opt/ros/hydro/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp: /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from opencv_test/position.msg"
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg -Iopencv_test:/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg -Isensor_msgs:/opt/ros/hydro/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -p opencv_test -o /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg/position.msg -Iopencv_test:/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/msg -Isensor_msgs:/opt/ros/hydro/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -p opencv_test -o /home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg
 
 opencv_test_generate_messages_lisp: opencv_test/CMakeFiles/opencv_test_generate_messages_lisp
-opencv_test_generate_messages_lisp: /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp
+opencv_test_generate_messages_lisp: /home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp
 opencv_test_generate_messages_lisp: opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build.make
 .PHONY : opencv_test_generate_messages_lisp
 
@@ -60,10 +60,10 @@ opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build: opencv_test
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build
 
 opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/clean:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && $(CMAKE_COMMAND) -P CMakeFiles/opencv_test_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && $(CMAKE_COMMAND) -P CMakeFiles/opencv_test_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/clean
 
 opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/depend:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/depend
 

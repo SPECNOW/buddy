@@ -4,9 +4,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.cpp" "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o"
-  "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp" "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o"
-  "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/image_converter.cpp" "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o"
+  "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.cpp" "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/DepthConverter.cpp.o"
+  "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp" "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/ImageConverter.cpp.o"
+  "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/image_converter.cpp" "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/opencv_test_imageConverter.dir/src/image_converter.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

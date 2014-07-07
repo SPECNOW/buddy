@@ -25,7 +25,7 @@
 <pathentry kind="mac" name="ROSCONSOLE_BACKEND_LOG4CXX" path="" value=""/>
 <pathentry include="/usr/src/gtest/include" kind="inc" path="" system="true"/>
 <pathentry include="/usr/src/gtest" kind="inc" path="" system="true"/>
-<pathentry include="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include" kind="inc" path="" system="true"/>
+<pathentry include="/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include" kind="inc" path="" system="true"/>
 <pathentry include="/opt/ros/hydro/include" kind="inc" path="" system="true"/>
 <pathentry include="/opt/ros/hydro/include/opencv" kind="inc" path="" system="true"/>
 <pathentry include="/usr/include" kind="inc" path="" system="true"/>
@@ -132,14 +132,14 @@
 </target>
 <target name="Build" path="[Targets]/[lib] gtest" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>/usr/bin/make</buildCommand>
-<buildArguments>-C "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build" </buildArguments>
+<buildArguments>-C "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build" </buildArguments>
 <buildTarget>gtest</buildTarget>
 <stopOnError>true</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
 </target>
 <target name="Clean" path="[Targets]/[lib] gtest" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>/usr/bin/cmake</buildCommand>
-<buildArguments>-E chdir "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/gtest" "/usr/bin/cmake" -P "CMakeFiles/gtest.dir/cmake_clean.cmake"</buildArguments>
+<buildArguments>-E chdir "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/gtest" "/usr/bin/cmake" -P "CMakeFiles/gtest.dir/cmake_clean.cmake"</buildArguments>
 <buildTarget></buildTarget>
 <stopOnError>true</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
@@ -160,14 +160,14 @@
 </target>
 <target name="Build" path="[Targets]/[lib] gtest_main" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>/usr/bin/make</buildCommand>
-<buildArguments>-C "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build" </buildArguments>
+<buildArguments>-C "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build" </buildArguments>
 <buildTarget>gtest_main</buildTarget>
 <stopOnError>true</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
 </target>
 <target name="Clean" path="[Targets]/[lib] gtest_main" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>/usr/bin/cmake</buildCommand>
-<buildArguments>-E chdir "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/gtest" "/usr/bin/cmake" -P "CMakeFiles/gtest_main.dir/cmake_clean.cmake"</buildArguments>
+<buildArguments>-E chdir "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/gtest" "/usr/bin/cmake" -P "CMakeFiles/gtest_main.dir/cmake_clean.cmake"</buildArguments>
 <buildTarget></buildTarget>
 <stopOnError>true</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
@@ -314,14 +314,14 @@
 </target>
 <target name="Build" path="[Targets]/[exe] opencv_test_imageConverter" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>/usr/bin/make</buildCommand>
-<buildArguments>-C "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build" </buildArguments>
+<buildArguments>-C "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build" </buildArguments>
 <buildTarget>opencv_test_imageConverter</buildTarget>
 <stopOnError>true</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
 </target>
 <target name="Clean" path="[Targets]/[exe] opencv_test_imageConverter" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>/usr/bin/cmake</buildCommand>
-<buildArguments>-E chdir "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test" "/usr/bin/cmake" -P "CMakeFiles/opencv_test_imageConverter.dir/cmake_clean.cmake"</buildArguments>
+<buildArguments>-E chdir "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test" "/usr/bin/cmake" -P "CMakeFiles/opencv_test_imageConverter.dir/cmake_clean.cmake"</buildArguments>
 <buildTarget></buildTarget>
 <stopOnError>true</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>

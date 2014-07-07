@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src
+CMAKE_SOURCE_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build
+CMAKE_BINARY_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build
 
 # Utility rule file for doxygen.
 
@@ -43,7 +43,7 @@ CMAKE_BINARY_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-imag
 include CMakeFiles/doxygen.dir/progress.make
 
 CMakeFiles/doxygen:
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "doxygen found"
 
 doxygen: CMakeFiles/doxygen
@@ -59,6 +59,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

@@ -18,9 +18,9 @@ except ImportError:
             break
     from catkin.environment_cache import generate_environment_script
 
-code = generate_environment_script('/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/env.sh')
+code = generate_environment_script('/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/env.sh')
 
-output_filename = '/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/catkin_generated/setup_cached.sh'
+output_filename = '/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/catkin_generated/setup_cached.sh'
 with open(output_filename, 'w') as f:
     #print('Generate script for cached setup "%s"' % output_filename)
     f.write('\n'.join(code))

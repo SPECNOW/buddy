@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src
+CMAKE_SOURCE_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build
+CMAKE_BINARY_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build
 
 # Utility rule file for rosgraph_msgs_generate_messages_cpp.
 
@@ -53,10 +53,10 @@ opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build: rosgraph_m
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 
 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 
 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend:
-	cd /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
 

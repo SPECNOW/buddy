@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/opencv_test_generate_messages_lisp"
-  "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp"
+  "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/share/common-lisp/ros/opencv_test/msg/position.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

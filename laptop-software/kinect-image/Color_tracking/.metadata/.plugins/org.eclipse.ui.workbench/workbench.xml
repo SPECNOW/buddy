@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="22" version="2.0">
+<workbench progressCount="23" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="809" x="114" y="46">
 <fastViewData fastViewLocation="1024"/>
@@ -11,11 +11,13 @@
 <coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="166" y="30"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="48" y="30"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="30"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="104" y="30"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="40" y="30"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.cdt.make.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -27,38 +29,13 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="5"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="DepthConverter.cpp" partName="DepthConverter.cpp" path="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.cpp" title="DepthConverter.cpp" tooltip="build/[Source directory]/opencv_test/src/DepthConverter.cpp" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="DepthConverter.cpp" partName="DepthConverter.cpp" path="/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.cpp" title="DepthConverter.cpp" tooltip="build/[Source directory]/opencv_test/src/DepthConverter.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/build/[Source directory]/opencv_test/src/DepthConverter.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1073" selectionTopPixel="78"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="DepthConverter.h" partName="DepthConverter.h" path="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/DepthConverter.h" title="DepthConverter.h" tooltip="build/[Source directory]/opencv_test/src/DepthConverter.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/build/[Source directory]/opencv_test/src/DepthConverter.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="318" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="ObjectTracker.cpp" partName="ObjectTracker.cpp" path="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ObjectTracker.cpp" title="ObjectTracker.cpp" tooltip="build/[Source directory]/opencv_test/src/ObjectTracker.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/build/[Source directory]/opencv_test/src/ObjectTracker.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="27" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="ImageConverter.h" partName="ImageConverter.h" path="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.h" title="ImageConverter.h" tooltip="build/[Source directory]/opencv_test/src/ImageConverter.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/build/[Source directory]/opencv_test/src/ImageConverter.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="380" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="PointCloud2.h" partName="PointCloud2.h" title="PointCloud2.h" tooltip="/opt/ros/hydro/include/sensor_msgs/PointCloud2.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="/opt/ros/hydro/include/sensor_msgs/PointCloud2.h" project="build"/>
-<editorState selectionHorizontalPixel="0" selectionLength="4" selectionOffset="3415" selectionTopPixel="1404"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="ImageConverter.cpp" partName="ImageConverter.cpp" path="/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp" title="ImageConverter.cpp" tooltip="build/[Source directory]/opencv_test/src/ImageConverter.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/build/[Source directory]/opencv_test/src/ImageConverter.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1999" selectionTopPixel="333"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1068" selectionTopPixel="389"/>
 </editor>
 </editors>
 <views>
@@ -94,6 +71,7 @@
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
 <alwaysOnActionSet id="org.eclipse.rse.core.search.searchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.egit.ui.navigation"/>
 <show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <show_view_action id="org.eclipse.ui.views.BookmarkView"/>
 <show_view_action id="org.eclipse.ui.views.ContentOutline"/>
@@ -164,163 +142,134 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/DepthConverter.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/build/Makefile"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/build/CMakeCache.txt"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/build/Makefile"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/DepthConverter.h"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/opt/ros/hydro/include/sensor_msgs/PointCloud2.h" project="build"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/ObjectTracker.cpp"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/opt/ros/hydro/include/image_transport/image_transport.h" project="build"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/ImageConverter.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/DepthConverter.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/build/Makefile"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/build/CMakeCache.txt"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/DepthConverter.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/DepthConverter.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/ImageConverter.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/ImageConverter.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/ObjectTracker.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/DepthConverter.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/ImageConverter.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/ImageConverter.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/ObjectTracker.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/build/[Source directory]/opencv_test/src/DepthConverter.cpp"/>
 </editors>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="1271" y="0"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="921" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="27" y="0"/>
-</item>
-<item historyLabel="ObjectTracker.cpp" index="3">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="921" y="0"/>
-</item>
-<item historyLabel="ObjectTracker.cpp" index="3">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="27" y="0"/>
-</item>
-<item historyLabel="ObjectTracker.cpp" index="3">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="881" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="1362" y="0"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="704" y="14"/>
-</item>
-<item historyLabel="image_transport.h" index="4">
-<position info="not_deleted" x="2304" y="14"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="196" y="3"/>
-</item>
-<item historyLabel="image_transport.h" index="4">
-<position info="not_deleted" x="4393" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="192" y="0"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="816" y="11"/>
-</item>
-<item historyLabel="ObjectTracker.cpp" index="3">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="337" y="10"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="756" y="10"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="723" y="0"/>
-</item>
-<item historyLabel="ObjectTracker.cpp" index="3">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="350" y="0"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="797" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="350" y="0"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="1022" y="0"/>
-</item>
-<item historyLabel="ObjectTracker.cpp" index="3">
-<position info="not_deleted" x="27" y="0"/>
-</item>
-<item historyLabel="ImageConverter.h" index="5">
-<position info="not_deleted" x="464" y="0"/>
-</item>
-<item historyLabel="DepthConverter.h" index="1">
-<position info="not_deleted" x="318" y="0"/>
-</item>
-<item historyLabel="ImageConverter.h" index="5">
-<position info="not_deleted" x="380" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
+<item historyLabel="Makefile" index="0">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="837" y="0"/>
+<item historyLabel="Makefile" index="0">
+<position info="not_deleted" x="4617" y="0"/>
 </item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="1271" y="0"/>
+<item historyLabel="CMakeCache.txt" index="1">
+<position info="not_deleted" x="23729" y="0"/>
 </item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="1270" y="0"/>
+<item historyLabel="Makefile" index="0">
+<position info="not_deleted" x="37751" y="5"/>
 </item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="837" y="0"/>
+<item historyLabel="CMakeCache.txt" index="1">
+<position info="not_deleted" x="23729" y="0"/>
 </item>
-<item historyLabel="PointCloud2.h" index="2">
-<position info="not_deleted" x="3484" y="0"/>
+<item historyLabel="Makefile" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="837" y="0"/>
+<item historyLabel="Makefile" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="DepthConverter.cpp" index="0">
+<item historyLabel="Makefile" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.h" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="4">
+<position info="not_deleted" x="436" y="7"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="4">
+<position info="not_deleted" x="653" y="7"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="4">
+<position info="not_deleted" x="187" y="0"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Makefile" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="CMakeCache.txt" index="6">
+<position info="not_deleted" x="23729" y="0"/>
+</item>
+<item historyLabel="DepthConverter.h" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.h" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ImageConverter.cpp" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ImageConverter.h" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ObjectTracker.cpp" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.h" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ImageConverter.cpp" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ImageConverter.h" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ImageConverter.cpp" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ObjectTracker.cpp" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.h" index="7">
+<position info="not_deleted" x="167" y="0"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="8">
+<position info="not_deleted" x="1306" y="0"/>
+</item>
+<item historyLabel="DepthConverter.h" index="12">
+<position info="not_deleted" x="167" y="0"/>
+</item>
+<item historyLabel="ImageConverter.cpp" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ImageConverter.h" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ObjectTracker.cpp" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DepthConverter.cpp" index="16">
+<position info="not_deleted" x="1306" y="0"/>
+</item>
+<item active="true" historyLabel="DepthConverter.cpp" index="16">
 <position/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="946" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="882" y="3"/>
-</item>
-<item historyLabel="PointCloud2.h" index="2">
-<position info="not_deleted" x="3415" y="4"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="882" y="3"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="889" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="745" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="732" y="0"/>
-</item>
-<item historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="1121" y="0"/>
-</item>
-<item historyLabel="ImageConverter.h" index="5">
-<position info="not_deleted" x="380" y="0"/>
-</item>
-<item historyLabel="ImageConverter.cpp" index="6">
-<position info="not_deleted" x="1999" y="0"/>
-</item>
-<item active="true" historyLabel="DepthConverter.cpp" index="0">
-<position info="not_deleted" x="1121" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -328,9 +277,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -342,26 +288,32 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ImageConverter.cpp" tooltip="build/[Source directory]/opencv_test/src/ImageConverter.cpp">
-<persistable path="/build/[Source directory]/opencv_test/src/ImageConverter.cpp"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="PointCloud2.h" tooltip="/opt/ros/hydro/include/sensor_msgs/PointCloud2.h">
-<persistable path="/opt/ros/hydro/include/sensor_msgs/PointCloud2.h" project="build"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ImageConverter.h" tooltip="build/[Source directory]/opencv_test/src/ImageConverter.h">
-<persistable path="/build/[Source directory]/opencv_test/src/ImageConverter.h"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="image_transport.h" tooltip="/opt/ros/hydro/include/image_transport/image_transport.h">
-<persistable path="/opt/ros/hydro/include/image_transport/image_transport.h" project="build"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="DepthConverter.cpp" tooltip="build/[Source directory]/opencv_test/src/DepthConverter.cpp">
+<persistable path="/build/[Source directory]/opencv_test/src/DepthConverter.cpp"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ObjectTracker.cpp" tooltip="build/[Source directory]/opencv_test/src/ObjectTracker.cpp">
 <persistable path="/build/[Source directory]/opencv_test/src/ObjectTracker.cpp"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ImageConverter.h" tooltip="build/[Source directory]/opencv_test/src/ImageConverter.h">
+<persistable path="/build/[Source directory]/opencv_test/src/ImageConverter.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ImageConverter.cpp" tooltip="build/[Source directory]/opencv_test/src/ImageConverter.cpp">
+<persistable path="/build/[Source directory]/opencv_test/src/ImageConverter.cpp"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="DepthConverter.h" tooltip="build/[Source directory]/opencv_test/src/DepthConverter.h">
 <persistable path="/build/[Source directory]/opencv_test/src/DepthConverter.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="DepthConverter.cpp" tooltip="build/[Source directory]/opencv_test/src/DepthConverter.cpp">
-<persistable path="/build/[Source directory]/opencv_test/src/DepthConverter.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="CMakeCache.txt" tooltip="build/CMakeCache.txt">
+<persistable path="/build/CMakeCache.txt"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" name="Makefile" tooltip="build/Makefile">
+<persistable path="/build/Makefile"/>
+</file>
+<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="PointCloud2.h" tooltip="/opt/ros/hydro/include/sensor_msgs/PointCloud2.h">
+<persistable path="/opt/ros/hydro/include/sensor_msgs/PointCloud2.h" project="build"/>
+</file>
+<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="image_transport.h" tooltip="/opt/ros/hydro/include/image_transport/image_transport.h">
+<persistable path="/opt/ros/hydro/include/image_transport/image_transport.h" project="build"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="colorTracker.h" tooltip="build/[Source directory]/opencv_test/src/colorTracker.h">
 <persistable path="/build/[Source directory]/opencv_test/src/colorTracker.h"/>

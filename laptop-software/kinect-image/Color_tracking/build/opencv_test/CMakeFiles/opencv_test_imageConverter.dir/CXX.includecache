@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.cpp
 ImageConverter.h
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.h
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.h
 
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.h
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/ImageConverter.h
 ros/ros.h
 -
 std_msgs/String.h
-/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/std_msgs/String.h
+/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/std_msgs/String.h
 sstream
 -
 image_transport/image_transport.h

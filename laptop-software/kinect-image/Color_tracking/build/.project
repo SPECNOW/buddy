@@ -47,7 +47,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build</value>
+					<value>/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
@@ -83,7 +83,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.build.location</key>
-					<value>/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build</value>
+					<value>/home/ali/buddy/laptop-software/kinect-image/Color_tracking/build</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
@@ -111,7 +111,7 @@
 		<link>
 			<name>[Source directory]</name>
 			<type>2</type>
-			<location>/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src</location>
+			<location>/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src</location>
 		</link>
 		<link>
 			<name>[Subprojects]</name>
@@ -121,7 +121,7 @@
 		<link>
 			<name>[Subprojects]/Project</name>
 			<type>2</type>
-			<location>/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src</location>
+			<location>/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src</location>
 		</link>
 		<link>
 			<name>[Subprojects]/gtest</name>
@@ -131,7 +131,7 @@
 		<link>
 			<name>[Subprojects]/opencv_test</name>
 			<type>2</type>
-			<location>/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test</location>
+			<location>/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test</location>
 		</link>
 		<link>
 			<name>[Targets]</name>
@@ -226,7 +226,7 @@
 		<link>
 			<name>[Targets]/[exe] opencv_test_imageConverter/Source Files/image_converter.cpp</name>
 			<type>1</type>
-			<location>/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/image_converter.cpp</location>
+			<location>/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/src/image_converter.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] opencv_test_imageConverter/Header Files</name>

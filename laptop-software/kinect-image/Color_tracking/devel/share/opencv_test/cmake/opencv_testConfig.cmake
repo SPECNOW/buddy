@@ -67,14 +67,14 @@ set(opencv_test_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(opencv_test_SOURCE_PREFIX /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test)
-  set(opencv_test_DEVEL_PREFIX /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel)
+  set(opencv_test_SOURCE_PREFIX /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test)
+  set(opencv_test_DEVEL_PREFIX /home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel)
   set(opencv_test_INSTALL_PREFIX "")
   set(opencv_test_PREFIX ${opencv_test_DEVEL_PREFIX})
 else()
   set(opencv_test_SOURCE_PREFIX "")
   set(opencv_test_DEVEL_PREFIX "")
-  set(opencv_test_INSTALL_PREFIX /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/install)
+  set(opencv_test_INSTALL_PREFIX /home/ali/buddy/laptop-software/kinect-image/Color_tracking/install)
   set(opencv_test_PREFIX ${opencv_test_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(opencv_test_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include;/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/include" STREQUAL "")
+if(NOT "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include;/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/include" STREQUAL "")
   set(opencv_test_INCLUDE_DIRS "")
-  set(_include_dirs "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/include;/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/include")
+  set(_include_dirs "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/include;/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})
@@ -103,7 +103,7 @@ if(NOT "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tra
         message(FATAL_ERROR "Project 'opencv_test' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  Ask the maintainer 'ali <ali@todo.todo>' to fix it.")
       endif()
     else()
-      message(FATAL_ERROR "Project 'opencv_test' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/${idir}'.  Ask the maintainer 'ali <ali@todo.todo>' to fix it.")
+      message(FATAL_ERROR "Project 'opencv_test' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/ali/buddy/laptop-software/kinect-image/Color_tracking/src/opencv_test/${idir}'.  Ask the maintainer 'ali <ali@todo.todo>' to fix it.")
     endif()
     _list_append_unique(opencv_test_INCLUDE_DIRS ${include})
   endforeach()
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/devel/lib;/opt/ros/hydro/lib)
+    foreach(path /home/ali/buddy/laptop-software/kinect-image/Color_tracking/devel/lib;/opt/ros/hydro/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

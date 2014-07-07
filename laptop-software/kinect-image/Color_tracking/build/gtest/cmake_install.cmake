@@ -2,7 +2,7 @@
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/ali/buddy/laptop-software/kinect-image/Color_tracking/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

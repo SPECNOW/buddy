@@ -44,10 +44,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/src
+CMAKE_SOURCE_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build
+CMAKE_BINARY_DIR = /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/clean_test_results.dir
@@ -56,15 +56,15 @@ CMAKE_BINARY_DIR = /home/charanpreet/buddy_git/buddy/laptop-software/kinect-imag
 CMakeFiles/clean_test_results.dir/all:
 	$(MAKE) -f CMakeFiles/clean_test_results.dir/build.make CMakeFiles/clean_test_results.dir/depend
 	$(MAKE) -f CMakeFiles/clean_test_results.dir/build.make CMakeFiles/clean_test_results.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target clean_test_results"
 .PHONY : CMakeFiles/clean_test_results.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/clean_test_results.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/clean_test_results.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : CMakeFiles/clean_test_results.dir/rule
 
 # Convenience name for target.
@@ -87,15 +87,15 @@ clean: CMakeFiles/clean_test_results.dir/clean
 CMakeFiles/doxygen.dir/all:
 	$(MAKE) -f CMakeFiles/doxygen.dir/build.make CMakeFiles/doxygen.dir/depend
 	$(MAKE) -f CMakeFiles/doxygen.dir/build.make CMakeFiles/doxygen.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  1
 	@echo "Built target doxygen"
 .PHONY : CMakeFiles/doxygen.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/doxygen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/doxygen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : CMakeFiles/doxygen.dir/rule
 
 # Convenience name for target.
@@ -118,15 +118,15 @@ clean: CMakeFiles/doxygen.dir/clean
 CMakeFiles/run_tests.dir/all:
 	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/depend
 	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target run_tests"
 .PHONY : CMakeFiles/run_tests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/run_tests.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : CMakeFiles/run_tests.dir/rule
 
 # Convenience name for target.
@@ -149,15 +149,15 @@ clean: CMakeFiles/run_tests.dir/clean
 CMakeFiles/tests.dir/all:
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/depend
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target tests"
 .PHONY : CMakeFiles/tests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tests.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : CMakeFiles/tests.dir/rule
 
 # Convenience name for target.
@@ -196,15 +196,15 @@ gtest/preinstall:
 gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  2
 	@echo "Built target gtest"
 .PHONY : gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
 gtest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 gtest/CMakeFiles/gtest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : gtest/CMakeFiles/gtest.dir/rule
 
 # Convenience name for target.
@@ -227,15 +227,15 @@ clean: gtest/CMakeFiles/gtest.dir/clean
 gtest/CMakeFiles/gtest_main.dir/all: gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  3
 	@echo "Built target gtest_main"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
 gtest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 gtest/CMakeFiles/gtest_main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : gtest/CMakeFiles/gtest_main.dir/rule
 
 # Convenience name for target.
@@ -324,15 +324,15 @@ opencv_test/preinstall:
 opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target actionlib_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -355,15 +355,15 @@ clean: opencv_test/CMakeFiles/actionlib_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target actionlib_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -386,15 +386,15 @@ clean: opencv_test/CMakeFiles/actionlib_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/build.make opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/build.make opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target actionlib_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -417,15 +417,15 @@ clean: opencv_test/CMakeFiles/actionlib_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target actionlib_msgs_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -448,15 +448,15 @@ clean: opencv_test/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target actionlib_msgs_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -479,15 +479,15 @@ clean: opencv_test/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target actionlib_msgs_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -510,15 +510,15 @@ clean: opencv_test/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target bond_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -541,15 +541,15 @@ clean: opencv_test/CMakeFiles/bond_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target bond_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -572,15 +572,15 @@ clean: opencv_test/CMakeFiles/bond_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/bond_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/bond_generate_messages_py.dir/build.make opencv_test/CMakeFiles/bond_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/bond_generate_messages_py.dir/build.make opencv_test/CMakeFiles/bond_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target bond_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/bond_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/bond_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/bond_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/bond_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -603,15 +603,15 @@ clean: opencv_test/CMakeFiles/bond_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target dynamic_reconfigure_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -634,15 +634,15 @@ clean: opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/clea
 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target dynamic_reconfigure_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -665,15 +665,15 @@ clean: opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/cle
 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target dynamic_reconfigure_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -696,15 +696,15 @@ clean: opencv_test/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target geometry_msgs_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -727,15 +727,15 @@ clean: opencv_test/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target geometry_msgs_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -758,15 +758,15 @@ clean: opencv_test/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target geometry_msgs_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -789,15 +789,15 @@ clean: opencv_test/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target nodelet_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -820,15 +820,15 @@ clean: opencv_test/CMakeFiles/nodelet_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target nodelet_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -851,15 +851,15 @@ clean: opencv_test/CMakeFiles/nodelet_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/build.make opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/build.make opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target nodelet_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -882,7 +882,7 @@ clean: opencv_test/CMakeFiles/nodelet_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/objectTracker.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/objectTracker.dir/build.make opencv_test/CMakeFiles/objectTracker.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  4 5 6
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  4 5 6
 	@echo "Built target objectTracker"
 .PHONY : opencv_test/CMakeFiles/objectTracker.dir/all
 
@@ -892,9 +892,9 @@ all: opencv_test/CMakeFiles/objectTracker.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/objectTracker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/objectTracker.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/objectTracker.dir/rule
 
 # Convenience name for target.
@@ -917,15 +917,15 @@ clean: opencv_test/CMakeFiles/objectTracker.dir/clean
 opencv_test/CMakeFiles/opencv_test_gencpp.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_gencpp.dir/build.make opencv_test/CMakeFiles/opencv_test_gencpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_gencpp.dir/build.make opencv_test/CMakeFiles/opencv_test_gencpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target opencv_test_gencpp"
 .PHONY : opencv_test/CMakeFiles/opencv_test_gencpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/opencv_test_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_gencpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/opencv_test_gencpp.dir/rule
 
 # Convenience name for target.
@@ -946,11 +946,11 @@ clean: opencv_test/CMakeFiles/opencv_test_gencpp.dir/clean
 
 # All Build rule for target.
 opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all
-opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all
 opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all
+opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target opencv_test_generate_messages"
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all
 
@@ -960,9 +960,9 @@ all: opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/opencv_test_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_generate_messages.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages.dir/rule
 
 # Convenience name for target.
@@ -986,15 +986,15 @@ opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all: opencv_test/CM
 opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all: opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  7
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  7
 	@echo "Built target opencv_test_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1018,15 +1018,15 @@ opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all: opencv_test/C
 opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all: opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  8
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  8
 	@echo "Built target opencv_test_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1050,15 +1050,15 @@ opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all: opencv_test/CMa
 opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all: opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build.make opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  9 10
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles  9 10
 	@echo "Built target opencv_test_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -1081,15 +1081,15 @@ clean: opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/opencv_test_genlisp.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_lisp.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_genlisp.dir/build.make opencv_test/CMakeFiles/opencv_test_genlisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_genlisp.dir/build.make opencv_test/CMakeFiles/opencv_test_genlisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target opencv_test_genlisp"
 .PHONY : opencv_test/CMakeFiles/opencv_test_genlisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/opencv_test_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_genlisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/opencv_test_genlisp.dir/rule
 
 # Convenience name for target.
@@ -1112,15 +1112,15 @@ clean: opencv_test/CMakeFiles/opencv_test_genlisp.dir/clean
 opencv_test/CMakeFiles/opencv_test_genpy.dir/all: opencv_test/CMakeFiles/opencv_test_generate_messages_py.dir/all
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_genpy.dir/build.make opencv_test/CMakeFiles/opencv_test_genpy.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/opencv_test_genpy.dir/build.make opencv_test/CMakeFiles/opencv_test_genpy.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target opencv_test_genpy"
 .PHONY : opencv_test/CMakeFiles/opencv_test_genpy.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/opencv_test_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/opencv_test_genpy.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/opencv_test_genpy.dir/rule
 
 # Convenience name for target.
@@ -1143,15 +1143,15 @@ clean: opencv_test/CMakeFiles/opencv_test_genpy.dir/clean
 opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target pcl_msgs_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1174,15 +1174,15 @@ clean: opencv_test/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target pcl_msgs_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1205,15 +1205,15 @@ clean: opencv_test/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target pcl_msgs_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -1236,15 +1236,15 @@ clean: opencv_test/CMakeFiles/pcl_msgs_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/pcl_ros_gencfg.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/pcl_ros_gencfg.dir/build.make opencv_test/CMakeFiles/pcl_ros_gencfg.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/pcl_ros_gencfg.dir/build.make opencv_test/CMakeFiles/pcl_ros_gencfg.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target pcl_ros_gencfg"
 .PHONY : opencv_test/CMakeFiles/pcl_ros_gencfg.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/pcl_ros_gencfg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/pcl_ros_gencfg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/pcl_ros_gencfg.dir/rule
 
 # Convenience name for target.
@@ -1267,15 +1267,15 @@ clean: opencv_test/CMakeFiles/pcl_ros_gencfg.dir/clean
 opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target roscpp_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1298,15 +1298,15 @@ clean: opencv_test/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target roscpp_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1329,15 +1329,15 @@ clean: opencv_test/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/build.make opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/build.make opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target roscpp_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -1360,15 +1360,15 @@ clean: opencv_test/CMakeFiles/roscpp_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target rosgraph_msgs_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1391,15 +1391,15 @@ clean: opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target rosgraph_msgs_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1422,15 +1422,15 @@ clean: opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target rosgraph_msgs_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -1453,15 +1453,15 @@ clean: opencv_test/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target sensor_msgs_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1484,15 +1484,15 @@ clean: opencv_test/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target sensor_msgs_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1515,15 +1515,15 @@ clean: opencv_test/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target sensor_msgs_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -1546,15 +1546,15 @@ clean: opencv_test/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target std_msgs_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1577,15 +1577,15 @@ clean: opencv_test/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target std_msgs_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1608,15 +1608,15 @@ clean: opencv_test/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target std_msgs_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -1639,15 +1639,15 @@ clean: opencv_test/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target tf2_msgs_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1670,15 +1670,15 @@ clean: opencv_test/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target tf2_msgs_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1701,15 +1701,15 @@ clean: opencv_test/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target tf2_msgs_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -1732,15 +1732,15 @@ clean: opencv_test/CMakeFiles/tf2_msgs_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target tf_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1763,15 +1763,15 @@ clean: opencv_test/CMakeFiles/tf_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target tf_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1794,15 +1794,15 @@ clean: opencv_test/CMakeFiles/tf_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/tf_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/tf_generate_messages_py.dir/build.make opencv_test/CMakeFiles/tf_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/tf_generate_messages_py.dir/build.make opencv_test/CMakeFiles/tf_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target tf_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/tf_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/tf_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/tf_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/tf_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -1825,15 +1825,15 @@ clean: opencv_test/CMakeFiles/tf_generate_messages_py.dir/clean
 opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target topic_tools_generate_messages_cpp"
 .PHONY : opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -1856,15 +1856,15 @@ clean: opencv_test/CMakeFiles/topic_tools_generate_messages_cpp.dir/clean
 opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target topic_tools_generate_messages_lisp"
 .PHONY : opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -1887,15 +1887,15 @@ clean: opencv_test/CMakeFiles/topic_tools_generate_messages_lisp.dir/clean
 opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/all:
 	$(MAKE) -f opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/build.make opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/depend
 	$(MAKE) -f opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/build.make opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 
 	@echo "Built target topic_tools_generate_messages_py"
 .PHONY : opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charanpreet/buddy_git/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ali/buddy/laptop-software/kinect-image/Color_tracking/build/CMakeFiles 0
 .PHONY : opencv_test/CMakeFiles/topic_tools_generate_messages_py.dir/rule
 
 # Convenience name for target.
