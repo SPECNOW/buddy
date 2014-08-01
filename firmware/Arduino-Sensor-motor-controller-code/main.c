@@ -10,9 +10,26 @@ unsigned velocity();
 unsigned sensor();
 unsigned encoder_setup();
 
+typedef struct dir_struct( // structure for storing the variables used for encoder direction
+	volatile int old;
+	volatile int new; 
+	volatile int out;
+} dir_st;
+
+// instantiating the direction structs
+dir_st dir_left = {0, 0, 0}; 
+dir_st dir_right = {0, 0, 0};
+
+int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadrature Encoder Matrix
+
+// Define input pins
+#define inputB1 5
+#define inputA1 6
+#define inputA2 7
+#define inputB2 8
+
 main()
 {
-
 //setup variables
 
 }
@@ -99,7 +116,7 @@ int ping(int pin_Trig, int pin_Echo, double conversion_const)
 	return high_duration/conversion_const;
 }
 //********************************************************
-//pass encoder interupts to determine high and low values to laptop.
+//Set up the pin inout of encoder
 //********************************************************
 void encoder_setup(bool encoder_dir_on_off)
 {
@@ -107,34 +124,57 @@ void encoder_setup(bool encoder_dir_on_off)
 	//put the input pins as input 
 	if(encoder_dir_on_off = TRUE)
 	{
-		pinMode(encoder_pin_A, INPUT);
-		pinMode(encoder_pin_B, INPUT);
-		//attach the interrupt
-		attachInterrupt(0, acquire_dir, RISING);
-		Serial.begin(9600);
+		pinMode(encoder_pin_A1, INPUT);
+		pinMode(encoder_pin_B1, INPUT);
+		pinMode(encoder_pin_A2, INPUT);
+		pinMode(encoder_pin_B2, INPUT);
 	}
 	else
 	{
-		detachinterrupt(0);
+
 	}
 }
 
+// Function in progress
+// maybe a struct typed function, returns LEFT AND RIGHT rotational direction
 int find_rotational_dir() {
-  //attachInterrupt(encoder_interupt_num, ISR_acquire_dir, RISING);
-  while ( (dir_new != dir_old) && (dir_new && dir_old !=0) ) {
-      //holds here till we find dir
-      
-          //********debug statements
-     // println("Waiting for direction to be found");
-          //********debug statements
-  }
-    //********debug statements
-    //  print("Found! it is going in: ");
-    //  println(dir_new);
-    //********debug statements
-    
-    //detachInterrupt(encoder_interupt_num);
+
   return dir_new;
+}
+
+
+//Function for attaching/ detaching  interupts
+//input 1 or 0 for attaching or detaching 
+//return 0 if action not done
+int encoder_interupt_attach (bool input) {
+	if (input == 1 ) { // attach interupt
+		attachInterrupt(encoder_interupt_right_num, ISR_acquire_dir_right, RISING);
+		attachInterrupt(encoder_interupt_left_num, ISR_acquire_dir_left, RISING);
+		return 1;
+	}
+	if ( input == 0 ) { // detach interput
+		detachInterrupt(encoder_interupt_right_num);
+		detachInterrupt(encoder_interupt_left_num);
+		return 1;
+	}
+	
+	return 0;
+}
+
+//ISR
+// out variable returns -1 for backwards, 1 for forward
+void ISR_acquire_dir_right {
+	dir_right.old = dir_right.new;
+	dir_right.new = digitalRead (encoder_pin_A1) * 2 + digitalRead (encoder_pin_A1);           // Convert binary input to decimal value
+	dir_right.out = QEM [dir_right.old * 4 + dir_right.new]; // out variable returns -1
+}
+
+//ISR
+// out variable returns -1 for backwards, 1 for forward
+void ISR_acquire_dir_left {
+	dir_left.old = dir_left.new;
+	dir_left.new = digitalRead (encoder_pin_A2) * 2 + digitalRead (encoder_pin_A2);           // Convert binary input to decimal value
+	dir_left.out = QEM [dir_left.old * 4 + dir_left.new]; // out variable returns -1
 }
 
 long find_encoder_freq
