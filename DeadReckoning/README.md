@@ -9,6 +9,5 @@ TI Wireless
 Laptop message handling
 
 TODO:
-  Push initial Arduino test code
   Make Dead Reckoning library
-  Test TI wireless modules
+  Make TI wireless modules work after everything else does
