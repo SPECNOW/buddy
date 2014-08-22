@@ -49,11 +49,14 @@ void setup () {
   //serial shit
   Serial.begin(9600);
   Serial1.begin(38400);  
+  //encoder_setup(true);
+  //encoder_interupt_attach (true);
 }
 
 void loop () {
   while(1) {
-    Serial1.write(65);
+   
+    Serial1.write(70);
 
   }
 }
@@ -171,6 +174,11 @@ void ISR_acquire_dir_right (void) {
 	dir_right.prev = dir_right.curr;
 	dir_right.curr = digitalRead (encoder_inputA1) * 2 + digitalRead (encoder_inputA1);           // Convert binary input to decimal value
 	dir_right.out = QEM [dir_right.prev * 4 + dir_right.curr]; // out variable returns -1
+        if(Serial.available())
+        {
+          Serial.println("Right");
+          Serial.println(dir_right.out);
+        }
 }
 
 //ISR
@@ -179,6 +187,11 @@ void ISR_acquire_dir_left (void) {
 	dir_left.prev = dir_left.curr;
 	dir_left.curr = digitalRead (encoder_inputA2) * 2 + digitalRead (encoder_inputA2);           // Convert binary input to decimal value
 	dir_left.out = QEM [dir_left.prev * 4 + dir_left.curr]; // out variable returns -1
+        if(Serial.available())
+        {
+          Serial.println("Left");
+          Serial.println(dir_left.out);
+        }
 }
 
 //Function for attaching/ detaching  interupts
