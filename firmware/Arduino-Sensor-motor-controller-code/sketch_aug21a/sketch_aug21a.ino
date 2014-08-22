@@ -26,22 +26,36 @@ dir_st dir_right = {0, 0, 0};
 #define time_out 500
 
 // interrupt pin number
-#define encoder_interupt_right_num 0
-#define encoder_interupt_left_num 5
+#define encoder_interupt_right_num 2
+#define encoder_interupt_left_num 3
 
 
 int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadrature Encoder Matrix
 
 // Define input pins
-#define encoder_inputB1 5
-#define encoder_inputA1 6
+#define encoder_inputA1 5
+#define encoder_inputB1 6
+
 #define encoder_inputA2 7
 #define encoder_inputB2 8
 
-int main()
-{
-//setup variables
-  return 0;
+//int main()
+//{
+//  //setup variable
+//  //encoder_setup(1);
+//  //encoder_interupt_attach(1);
+//}
+void setup () {
+  //serial shit
+  Serial.begin(9600);
+  Serial1.begin(38400);  
+}
+
+void loop () {
+  while(1) {
+    Serial1.write(65);
+
+  }
 }
 
 int comm()
