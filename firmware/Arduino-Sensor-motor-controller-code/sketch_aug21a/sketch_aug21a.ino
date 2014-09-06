@@ -26,8 +26,9 @@ dir_st dir_right = {0, 0, 0};
 #define time_out 500
 
 // interrupt pin number
-#define encoder_interupt_right_num 2
-#define encoder_interupt_left_num 3
+//interupt 0 is digital 2, interupt 1 is digital 3
+#define encoder_interupt_right_num 0
+#define encoder_interupt_left_num 1
 
 
 int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadrature Encoder Matrix
