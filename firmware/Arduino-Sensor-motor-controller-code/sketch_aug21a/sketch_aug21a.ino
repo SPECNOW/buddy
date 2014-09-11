@@ -32,7 +32,7 @@ dir_st dir_right = {0, 0, 0};
 #define encoder_interupt_right_num 0
 #define encoder_interupt_left_num 1
 
-
+// 1 forward, 0 no move, 2 is dont care, error
 int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadrature Encoder Matrix
 
 // Define input pins
@@ -60,7 +60,9 @@ void setup () {
 }
 
 void loop () {
-
+  Serial.print(dir_right.out);
+  Serial.print("    ");
+  Serial.println(dir_right.out);
 }
 
 int comm()
@@ -173,12 +175,6 @@ void encoder_setup(bool encoder_dir_on_off)
 	}
 }
 
-// Function in progress
-// maybe a struct typed function, returns LEFT AND RIGHT rotational direction
-//int find_rotational_dir() {
-//
-//  return dir_new;
-//}
 
 //ISR
 // out variable returns -1 for backwards, 1 for forward
@@ -186,8 +182,8 @@ void ISR_acquire_dir_right (void) {
 	dir_right.prev = dir_right.curr;
 	dir_right.curr = digitalRead (encoder_inputA1) * 2 + digitalRead (encoder_inputA1);           // Convert binary input to decimal value
 	dir_right.out = QEM [dir_right.prev * 4 + dir_right.curr]; // out variable returns -1
-        Serial.println("Right");
-        Serial.println(dir_right.out);
+        //Serial.println("Right");
+        //Serial.println(dir_right.out);
 }
 
 //ISR
@@ -196,8 +192,8 @@ void ISR_acquire_dir_left (void) {
 	dir_left.prev = dir_left.curr;
 	dir_left.curr = digitalRead (encoder_inputA2) * 2 + digitalRead (encoder_inputA2);           // Convert binary input to decimal value
 	dir_left.out = QEM [dir_left.prev * 4 + dir_left.curr]; // out variable returns -1
-        Serial.println("Left");
-        Serial.println(dir_left.out);
+        //Serial.println("Left");
+        //Serial.println(dir_left.out);
 }
 
 //Function for attaching/ detaching  interupts
