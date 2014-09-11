@@ -24,6 +24,8 @@ dir_st dir_right = {0, 0, 0};
 // handshake??
 #define ping_duration 50
 #define time_out 500
+#define halt 64
+#define typ_spd 70
 
 // interrupt pin number
 //interupt 0 is digital 2, interupt 1 is digital 3
@@ -224,4 +226,27 @@ int encoder_interupt_attach (bool input) {
 //	
 //	detachInterrupt(encoder_interupt_num);
 //}
+/*Create motor commmunication function based on PC commands.
+Motor communication recied from PC will be used to determine whel speeds. */
 
+int motor_control_output(motor_spd_command) //motor_spd_command is used for 
+{
+  //int faster = 2;
+  //int slower = 1;
+  //int halt = 0; 
+  int pre_spd = current_spd;
+  int current_spd = motor_spd_command;
+        if (current_spd = prev_spd);
+        {
+            return 0;
+        }
+        else if (motor_spd_command != pre_spd);
+        {
+          Serial1.write(motor_spd_command);
+        }
+        else
+        {
+          Serial1.write(halt);
+        }
+        
+}
