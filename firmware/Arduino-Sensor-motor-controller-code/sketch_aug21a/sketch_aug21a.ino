@@ -60,7 +60,7 @@ void setup () {
 }
 
 void loop () {
-  Serial.print(dir_right.out);
+  Serial.print(dir_left.out);
   Serial.print("    ");
   Serial.println(dir_right.out);
 }
@@ -180,7 +180,7 @@ void encoder_setup(bool encoder_dir_on_off)
 // out variable returns -1 for backwards, 1 for forward
 void ISR_acquire_dir_right (void) {
 	dir_right.prev = dir_right.curr;
-	dir_right.curr = digitalRead (encoder_inputA1) * 2 + digitalRead (encoder_inputA1);           // Convert binary input to decimal value
+	dir_right.curr = digitalRead (encoder_inputB1) * 2 + digitalRead (encoder_inputA1);           // Convert binary input to decimal value
 	dir_right.out = QEM [dir_right.prev * 4 + dir_right.curr]; // out variable returns -1
         //Serial.println("Right");
         //Serial.println(dir_right.out);
@@ -190,7 +190,7 @@ void ISR_acquire_dir_right (void) {
 // out variable returns -1 for backwards, 1 for forward
 void ISR_acquire_dir_left (void) {
 	dir_left.prev = dir_left.curr;
-	dir_left.curr = digitalRead (encoder_inputA2) * 2 + digitalRead (encoder_inputA2);           // Convert binary input to decimal value
+	dir_left.curr = digitalRead (encoder_inputB2) * 2 + digitalRead (encoder_inputA2);           // Convert binary input to decimal value
 	dir_left.out = QEM [dir_left.prev * 4 + dir_left.curr]; // out variable returns -1
         //Serial.println("Left");
         //Serial.println(dir_left.out);
