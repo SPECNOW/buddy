@@ -71,8 +71,8 @@ int comm()
 //*****************************************************
 int sensor()
 {
-	int sensor1 = 0; //determine which sensor is which. For now arbitrary name. to be moved to header file in future.
-	int sensor2 = 0;
+	float sensor1 = 0; //determine which sensor is which. For now arbitrary name. to be moved to header file in future.
+	float sensor2 = 0;
 	int sensor3 = 0;
 	int sensor4 = 0;
 	int sensor5 = 0;
@@ -113,13 +113,14 @@ int sensor()
 	}
 }
 
+
 //********************************************************
 //pin function for the HC-SR04 and US100 Ultrasonic sensor. Pin_Trig and Pin Echo to be determined on Arduino board.
 //Pin_Trig Arduino output to trigger sensor.
 //Pin_Echo Arudino input to read high duration.
 //return 0 if failed, return in CM
 //********************************************************
-int ping(int pin_Trig, int pin_Echo, double conversion_const)
+float ping(int pin_Trig, int pin_Echo, float conversion_const)
 {
 	unsigned long time1, time2, high_duration;
 	digitalWrite(pin_Trig, LOW);
@@ -130,18 +131,20 @@ int ping(int pin_Trig, int pin_Echo, double conversion_const)
 
 	high_duration = pulseIn(pin_Echo, HIGH, time_out);
 
-	if (!high_duration) {
-	//Serial.print("Error, PulseIn returned 0");
-	return 0;
-	} 
-
-	if ( high_duration >37000){
-	//Serial.print ("Distance = INF ");
-	return 0;
+	if (high_duration == 0) {
+		//Serial.print("Error, PulseIn returned 0");
+		return 0;
 	}
 
-	return high_duration/conversion_const;
+	if (high_duration > 37000) {
+		//Serial.print ("Distance = INF ");
+		return 0;
+	}
+
+	return (float)high_duration / conversion_const;
 }
+
+
 //********************************************************
 //Set up the pin inout of encoder
 //********************************************************
