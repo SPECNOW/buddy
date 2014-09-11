@@ -5,10 +5,9 @@
 #include <Sensor.H>
 #include <Encoder.H>
 
-//unsigned int comm();
-//unsigned int velocity();
-//unsigned int sensor();
-//unsigned int encoder_setup();
+unsigned int comm();
+unsigned int velocity();
+unsigned int sensor();
 
 // structure for storing the variables used for encoder directionv
 typedef struct dir_struct{
@@ -25,12 +24,6 @@ dir_st dir_right = {0, 0, 0};
 #define ping_duration 50
 #define time_out 500
 
-// interrupt pin number
-//interupt 0 is digital 2, interupt 1 is digital 3
-#define encoder_interupt_right_num 0
-#define encoder_interupt_left_num 1
-
-
 int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadrature Encoder Matrix
 
 // Define input pins
@@ -40,24 +33,25 @@ int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadratur
 #define encoder_inputA2 7
 #define encoder_inputB2 8
 
-//int main()
-//{
-//  //setup variable
-//  //encoder_setup(1);
-//  //encoder_interupt_attach(1);
-//}
+// interrupt pin number
+//interupt 0 is digital 2, interupt 1 is digital 3
+#define encoder_interupt_right_num 0
+#define encoder_interupt_left_num 1
+
 void setup () {
   //serial shit
   Serial.begin(9600);
   Serial1.begin(38400);  
-  //encoder_setup(true);
-  //encoder_interupt_attach (true);
+  encoder_setup(true);
+  if (!encoder_interupt_attach (true) ){
+    Serial.println("Error With attachting interrupt");
+  }
+  Serial.println("Done Setup: Starting Code");
 }
 
 void loop () {
   while(1) {
    
-    Serial1.write(70);
 
   }
 }
@@ -178,11 +172,8 @@ void ISR_acquire_dir_right (void) {
 	dir_right.prev = dir_right.curr;
 	dir_right.curr = digitalRead (encoder_inputA1) * 2 + digitalRead (encoder_inputA1);           // Convert binary input to decimal value
 	dir_right.out = QEM [dir_right.prev * 4 + dir_right.curr]; // out variable returns -1
-        if(Serial.available())
-        {
-          Serial.println("Right");
-          Serial.println(dir_right.out);
-        }
+        //Serial.println("Right");
+        //Serial.println(dir_right.out);
 }
 
 //ISR
@@ -191,11 +182,8 @@ void ISR_acquire_dir_left (void) {
 	dir_left.prev = dir_left.curr;
 	dir_left.curr = digitalRead (encoder_inputA2) * 2 + digitalRead (encoder_inputA2);           // Convert binary input to decimal value
 	dir_left.out = QEM [dir_left.prev * 4 + dir_left.curr]; // out variable returns -1
-        if(Serial.available())
-        {
-          Serial.println("Left");
-          Serial.println(dir_left.out);
-        }
+        //Serial.println("Left");
+        //Serial.println(dir_left.out);
 }
 
 //Function for attaching/ detaching  interupts
