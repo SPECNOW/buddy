@@ -5,9 +5,10 @@
 #include <Sensor.H>
 #include <Encoder.H>
 
-unsigned int comm();
-unsigned int velocity();
-unsigned int sensor();
+//unsigned int comm();
+//unsigned int velocity();
+//unsigned int sensor();
+//unsigned int encoder_setup();
 
 // structure for storing the variables used for encoder directionv
 typedef struct dir_struct{
@@ -24,6 +25,12 @@ dir_st dir_right = {0, 0, 0};
 #define ping_duration 50
 #define time_out 500
 
+// interrupt pin number
+//interupt 0 is digital 2, interupt 1 is digital 3
+#define encoder_interupt_right_num 0
+#define encoder_interupt_left_num 1
+
+
 int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadrature Encoder Matrix
 
 // Define input pins
@@ -33,25 +40,24 @@ int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadratur
 #define encoder_inputA2 7
 #define encoder_inputB2 8
 
-// interrupt pin number
-//interupt 0 is digital 2, interupt 1 is digital 3
-#define encoder_interupt_right_num 0
-#define encoder_interupt_left_num 1
-
+//int main()
+//{
+//  //setup variable
+//  //encoder_setup(1);
+//  //encoder_interupt_attach(1);
+//}
 void setup () {
   //serial shit
   Serial.begin(9600);
   Serial1.begin(38400);  
-  encoder_setup(true);
-  if (!encoder_interupt_attach (true) ){
-    Serial.println("Error With attachting interrupt");
-  }
-  Serial.println("Done Setup: Starting Code");
+  //encoder_setup(true);
+  //encoder_interupt_attach (true);
 }
 
 void loop () {
   while(1) {
    
+    Serial1.write(70);
 
   }
 }
@@ -60,51 +66,58 @@ int comm()
 {
   return 0;
 }
+
 //*****************************************************
 //Collect sensor values and determine if distances.
 //*****************************************************
 int sensor()
 {
-	float sensor1 = 0; //determine which sensor is which. For now arbitrary name. to be moved to header file in future.
-	float sensor2 = 0;
-	int sensor3 = 0;
-	int sensor4 = 0;
-	int sensor5 = 0;
-	int sensor6 = 0;
-	int min_dist = 3; // smallest distance allowable before emergency stop
+	float sonic_sensor[2]; //determine which sensor is which. For now arbitrary name. to be moved to header file in future.
+	int sensor[4];
+	int min_dist = 3; //smallest distance allowable before emergency stop
 	int dist_thres = 5; //threshold distance use to change the Kd value such that damping take effect. Thus, slowing down the vehicle.
 	int SLOW = 0;
-	int ECOMM = 0; // emergency stop variable.
+	int ECOMM = 0; //emergency stop variable.
+	int i; //loop counter
 
-	sensor1 = ping(0,1,6035.003); //select correct pins for sonic sensor. U100 requires conversion constant of 6035.003
-	sensor2 = ping(2,3,58); //select correct pins for sonic sensor
-	sensor3 = analogRead(2);//insert correct pin number for IR Sensors.
-	sensor4 = analogRead(3);//insert correct pin number for IR Sensors.
-	sensor5 = analogRead(4);//insert correct pin number for IR Sensors.
-	sensor6 = analogRead(5);//insert correct pin number for IR Sensors.
+	sonic_sensor[0] = ping(0,1,6035.003); //select correct pins for sonic sensor. U100 requires conversion constant of 6035.003
+	sonic_sensor[1] = ping(2,3,58); //select correct pins for sonic sensor
+	sensor[0] = analogRead(2);//insert correct pin number for IR Sensors.
+	sensor[1] = analogRead(3);//insert correct pin number for IR Sensors.
+	sensor[2] = analogRead(4);//insert correct pin number for IR Sensors.
+	sensor[3] = analogRead(5);//insert correct pin number for IR Sensors.
 
 	//Emergency bit variable to be sent to laptop. Future, break each sensor out and for vehicle to travel opposite direction.
-	if(sensor1 | sensor2 | sensor3 | sensor4 | sensor5 | sensor6 < min_dist)
-	{
-		ECOMM = 1;
-		return ECOMM;
+	for (i = 0; i < 2; i++) {
+		if (sonic_sensor[i] < min_dist) {
+			ECOMM = 1;
+			return ECOMM;
+		}
 	}
-	else
-	{
-		ECOMM = 0;
-		return ECOMM;
+	for (i = 0; i < 4; i++) {
+		if (sensor[i] < min_dist) {
+			ECOMM = 1;
+			return ECOMM;
+		}
 	}
+	
 	//Variable to slow down vehicle if getting too close. Future, break each sensor out and for vehicle to travel opposite direction.
-		if(sensor1 | sensor2 | sensor3 | sensor4 | sensor5 | sensor6 < dist_thres)
-	{
-		SLOW = 1;
-		return SLOW;
+	for (i = 0; i < 2; i++) {
+		if (sonic_sensor[i] < dist_thres) {
+			SLOW = 1;
+			return SLOW;
+		}
 	}
-	else
-	{
-		SLOW = 0;
-		return SLOW;
+	for (i = 0; i < 4; i++) {
+		if (sensor[i] < dist_thres) {
+			SLOW = 1;
+			return SLOW;
+		}
 	}
+	
+	// Default
+	SLOW = 0;
+	return SLOW;
 }
 
 
@@ -172,8 +185,11 @@ void ISR_acquire_dir_right (void) {
 	dir_right.prev = dir_right.curr;
 	dir_right.curr = digitalRead (encoder_inputA1) * 2 + digitalRead (encoder_inputA1);           // Convert binary input to decimal value
 	dir_right.out = QEM [dir_right.prev * 4 + dir_right.curr]; // out variable returns -1
-        //Serial.println("Right");
-        //Serial.println(dir_right.out);
+        if(Serial.available())
+        {
+          Serial.println("Right");
+          Serial.println(dir_right.out);
+        }
 }
 
 //ISR
@@ -182,8 +198,11 @@ void ISR_acquire_dir_left (void) {
 	dir_left.prev = dir_left.curr;
 	dir_left.curr = digitalRead (encoder_inputA2) * 2 + digitalRead (encoder_inputA2);           // Convert binary input to decimal value
 	dir_left.out = QEM [dir_left.prev * 4 + dir_left.curr]; // out variable returns -1
-        //Serial.println("Left");
-        //Serial.println(dir_left.out);
+        if(Serial.available())
+        {
+          Serial.println("Left");
+          Serial.println(dir_left.out);
+        }
 }
 
 //Function for attaching/ detaching  interupts
