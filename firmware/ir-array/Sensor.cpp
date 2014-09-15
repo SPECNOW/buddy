@@ -1,12 +1,12 @@
 #include "Sensor.h"
 
+//#define DEBUG
+
 /***
 ****	SENSOR
 ***/
-Sensor::Sensor(unsigned int sensor_pin)
+Sensor::Sensor()
 {
-	this->sensor_id = this->num_sensors;
-	this->num_sensors++;
 }
 
 Sensor::~Sensor()
@@ -15,7 +15,12 @@ Sensor::~Sensor()
 
 void Sensor::fetchData()
 {	
+#ifdef DEBUG
+	Serial.print("DISTANCE: ");
+	Serial.println(this->read_data());
+#else
 	Serial.write(this->read_data());
+#endif
 }
 
 int Sensor::read_data()
@@ -26,7 +31,7 @@ int Sensor::read_data()
 /***
 ****	SONARSENSOR
 ***/
-Sonar::Sonar(unsigned int echo_Pin, unsigned int trig_Pin, double conversion_const)
+Sonar::Sonar(unsigned int echo_Pin, unsigned int trig_Pin, double conversion_const)	:	Sensor()
 {
 	this->echoPin = echo_Pin;
 	this->trigPin = trig_Pin;
@@ -34,9 +39,6 @@ Sonar::Sonar(unsigned int echo_Pin, unsigned int trig_Pin, double conversion_con
 	
 	pinMode(this->trigPin, OUTPUT);
 	pinMode(this->echoPin, INPUT);
-	
-	this->sensor_id = this->num_sensors;
-	this->num_sensors++;
 }
 
 Sonar::~Sonar()
@@ -54,14 +56,14 @@ int Sonar::read_data()
 		if(samp_val != 0 && samp_val != -1)
 		{
 			cum_sum += samp_val;
-			valid_samples = 0;
+			valid_samples++;
 		}
 	}
-	
+
 	if(valid_samples == 0)
 		return 0;
 		
-	return (int)(cum_sum/(long)valid_samples);
+	return (int)(cum_sum/(unsigned long)valid_samples);
 }
 
 int Sonar::get_sample()
@@ -74,34 +76,29 @@ int Sonar::get_sample()
 	delayMicroseconds(ping_duration);
 	digitalWrite(this->trigPin, LOW);
 
-	high_duration = pulseIn(this->echoPin, HIGH, time_out);
+	high_duration = pulseIn(this->echoPin, HIGH);
 
 	if (!high_duration) {
-	//Serial.print("Error, PulseIn returned 0");
-	return 0;
+		return 0;
 	} 
 
 	if ( high_duration >37000){
-	//Serial.print ("Distance = INF ");
-	return -1;
+		return -1;
 	}
-
-	return (unsigned long)((double)high_duration/this->conversionConstant);
+	
+	return (int)((double)high_duration/this->conversionConstant);
 }
 
 /***
 ****	IRSENSOR
 ***/
-IR::IR(unsigned int analog_Pin)
+IR::IR(unsigned int analog_Pin)	:	Sensor()
 {
 	this->analogPin = analog_Pin;
-	this->IRSensor.setARefVoltage(5);
-	this->IRSensor.setAveraging(NUMBER_SAMPLES);
-	this->IRSensor.begin(this->analogPin);
-	
 	pinMode(this->analogPin, INPUT);
-	this->sensor_id = this->num_sesnsors;
-	this->num_sensors++;
+	this->IRSensor.setARefVoltage(5);
+	this->IRSensor.setAveraging(NUM_SAMPLES);
+	this->IRSensor.begin(this->analogPin);
 }
 
 IR::~IR()
@@ -110,5 +107,5 @@ IR::~IR()
 
 int IR::read_data()
 {
-	return this->IRSensor.getDistanceCentimeter();
+	return (int)((double)this->IRSensor.getDistanceCentimeter()*2.54);	//Looks like it's in inches
 }

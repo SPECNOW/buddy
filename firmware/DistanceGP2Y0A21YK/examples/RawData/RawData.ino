@@ -11,8 +11,8 @@ void setup()
 
 void loop()
 {
-  distance = Dist.getDistanceVolt();
-  Serial.print("\nADC input mV: ");
+  distance = Dist.getDistanceRaw();
+  Serial.print("\nADC Raw: ");
   Serial.print(distance);  
   delay(500); //make it readable
 }
