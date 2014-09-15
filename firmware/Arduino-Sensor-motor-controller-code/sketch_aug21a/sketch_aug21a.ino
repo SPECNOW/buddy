@@ -17,6 +17,14 @@ typedef struct dir_struct{
 	volatile int out;
 } dir_st;
 
+//GLOBAL VARIABLES
+int current_spd = 64;
+int prev_spd = 64;
+int test1, test2;
+int store1[50], store2[50];
+int countstore;
+int PRINT_OUTPUT = 0;
+
 // instantiating the direction structs
 dir_st dir_left = {0, 0, 0}; 
 dir_st dir_right = {0, 0, 0};
@@ -32,7 +40,7 @@ dir_st dir_right = {0, 0, 0};
 #define encoder_interupt_right_num 0
 #define encoder_interupt_left_num 1
 
-// 1 forward, 0 no move, 2 is dont care, error
+// 1 forward, 0 no move, 2 is nt care, error
 int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadrature Encoder Matrix
 
 // Define input pins
@@ -41,7 +49,7 @@ int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadratur
 
 #define encoder_inputA2 7
 #define encoder_inputB2 8
-
+boolean doStuff = true;
 //int main()
 //{
 //  //setup variable
@@ -51,18 +59,62 @@ int QEM [16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadratur
 void setup () {
   //serial shit
   Serial.begin(9600);
-  Serial1.begin(38400);  
+  Serial1.begin(38400);
   encoder_setup(true);
   if (!encoder_interupt_attach (true) ){
     Serial.println("Error With attachting interrupt");
   }
+  
+  //temporiry pin fo rtesting
+  pinMode(10, OUTPUT);
+  digitalWrite(10,HIGH);
   Serial.println("Done Setup: Starting Code");
 }
 
 void loop () {
-  Serial.print(dir_left.out);
-  Serial.print("    ");
-  Serial.println(dir_right.out);
+  
+//  if (PRINT_OUTPUT) {
+//    doStuff = false;
+//      int _test1, _test2, _curr, _out;
+//      _test1 = test1;
+//      _test2 = test2;
+//      _curr = dir_right.curr;
+//      _out = dir_right.out;
+//    Serial.print("TEST1: ");
+//    Serial.print (_test1);
+//    Serial.print("    ");
+//    Serial.print("TEST2: ");
+//    Serial.print(_test2);
+//    Serial.print("    Values: ");
+//    Serial.print(_curr); 
+//    Serial.print("    DIR: ");
+//    Serial.println(_out);
+//    PRINT_OUTPUT=0;
+//    doStuff = true;
+//  }
+
+ if( PRINT_OUTPUT ) {
+   encoder_interupt_attach(false);
+   for( int i= 0; i <49 ; i++) {
+     Serial.print(store1[i]); 
+   }
+   Serial.println("");
+   for( int i= 0; i <49 ; i++) {
+     Serial.print(store2[i]);
+   }
+   Serial.println("");
+   Serial.println("");
+   PRINT_OUTPUT = 0;
+   encoder_interupt_attach(true);
+ }
+  
+  
+  
+//  Serial.print("LEFT DIR: ");
+//  Serial.print (dir_left.out);
+//  Serial.print("    ");
+//  Serial.print("DRIGHT DIR: ");
+//  Serial.println(dir_right.out);
 }
 
 int comm()
@@ -162,7 +214,7 @@ void encoder_setup(bool encoder_dir_on_off)
 {
 	//Put this setup in main
 	//put the input pins as input 
-	if(encoder_dir_on_off = true)
+	if(encoder_dir_on_off)
 	{
 		pinMode(encoder_inputA1, INPUT);
 		pinMode(encoder_inputB1, INPUT);
@@ -179,17 +231,37 @@ void encoder_setup(bool encoder_dir_on_off)
 //ISR
 // out variable returns -1 for backwards, 1 for forward
 void ISR_acquire_dir_right (void) {
-	dir_right.prev = dir_right.curr;
-	dir_right.curr = digitalRead (encoder_inputB1) * 2 + digitalRead (encoder_inputA1);           // Convert binary input to decimal value
-	dir_right.out = QEM [dir_right.prev * 4 + dir_right.curr]; // out variable returns -1
-        //Serial.println("Right");
-        //Serial.println(dir_right.out);
+  digitalWrite(10,HIGH);
+  digitalWrite(10,LOW);
+  if(doStuff)
+  {
+        int timeout = 5;
+        do
+        {
+          dir_right.prev = dir_right.curr;
+          test1 = (boolean)digitalRead (encoder_inputB1);
+          test2 = (boolean)digitalRead (encoder_inputA1);
+          //Serial.println("RIGHT Reads:encoder_inputB1: encoder_inputA1");
+    	  dir_right.curr = ((int)test1 << 1)+ (int)test2;           // Convert binary input to decimal value
+          timeout--;
+        }while(dir_right.curr == dir_right.prev && timeout >0);
+        dir_right.out = QEM [dir_right.prev * 4 + dir_right.curr]; // out variable returns -1
+        store1[countstore] =  (dir_right.curr);
+        store2[countstore] = (dir_right.prev);
+        countstore++;
+        if (countstore == 49) {
+          PRINT_OUTPUT = 1;
+          countstore = 0;
+        }
+  }
+  digitalWrite(10,LOW);
 }
 
 //ISR
 // out variable returns -1 for backwards, 1 for forward
 void ISR_acquire_dir_left (void) {
 	dir_left.prev = dir_left.curr;
+        //Serial.println("LEFT Reads:encoder_inputB2: encoder_inputA2");
 	dir_left.curr = digitalRead (encoder_inputB2) * 2 + digitalRead (encoder_inputA2);           // Convert binary input to decimal value
 	dir_left.out = QEM [dir_left.prev * 4 + dir_left.curr]; // out variable returns -1
         //Serial.println("Left");
@@ -201,8 +273,8 @@ void ISR_acquire_dir_left (void) {
 //return 0 if action not done
 int encoder_interupt_attach (bool input) {
 	if (input == 1 ) { // attach interupt
-		attachInterrupt(encoder_interupt_right_num, ISR_acquire_dir_right, RISING);
-		attachInterrupt(encoder_interupt_left_num, ISR_acquire_dir_left, RISING);
+		attachInterrupt(encoder_interupt_right_num, ISR_acquire_dir_right, CHANGE);
+		attachInterrupt(encoder_interupt_left_num, ISR_acquire_dir_left, CHANGE);
 		return 1;
 	}
 	if ( input == 0 ) { // detach interput
@@ -225,18 +297,22 @@ int encoder_interupt_attach (bool input) {
 /*Create motor commmunication function based on PC commands.
 Motor communication recied from PC will be used to determine whel speeds. */
 
-int motor_control_output(motor_spd_command) //motor_spd_command is used for 
+
+/*
+
+*/
+int motor_control_output(int motor_spd_command) //motor_spd_command is used for 
 {
   //int faster = 2;
   //int slower = 1;
   //int halt = 0; 
   int pre_spd = current_spd;
   int current_spd = motor_spd_command;
-        if (current_spd = prev_spd);
+        if (current_spd = prev_spd)
         {
             return 0;
         }
-        else if (motor_spd_command != pre_spd);
+        else if (motor_spd_command != pre_spd)
         {
           Serial1.write(motor_spd_command);
         }
