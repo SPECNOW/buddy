@@ -66,8 +66,8 @@ void setup () {
   }
   
   //temporiry pin fo rtesting
-  pinMode(10, OUTPUT);
-  digitalWrite(10,HIGH);
+  pinMode(9, OUTPUT);
+//  digitalWrite(10,HIGH);
   Serial.println("Done Setup: Starting Code");
 }
 
@@ -231,30 +231,33 @@ void encoder_setup(bool encoder_dir_on_off)
 //ISR
 // out variable returns -1 for backwards, 1 for forward
 void ISR_acquire_dir_right (void) {
-  digitalWrite(10,HIGH);
-  digitalWrite(10,LOW);
-  if(doStuff)
-  {
-        int timeout = 5;
-        do
-        {
+  PORTH |= 1<<6;
+  //digitalWrite(10,HIGH);
+  //digitalWrite(10,LOW);
+  //if(doStuff)
+  //{
+        //int timeout = 5;
+        //do
+        //{
           dir_right.prev = dir_right.curr;
-          test1 = (boolean)digitalRead (encoder_inputB1);
-          test2 = (boolean)digitalRead (encoder_inputA1);
+          test1 = (PINH >> 3) & 1;//(boolean)digitalRead (encoder_inputB1);
+          test2 = (PINE >> 3) & 1;//(boolean)digitalRead (encoder_inputA1);
           //Serial.println("RIGHT Reads:encoder_inputB1: encoder_inputA1");
     	  dir_right.curr = ((int)test1 << 1)+ (int)test2;           // Convert binary input to decimal value
-          timeout--;
-        }while(dir_right.curr == dir_right.prev && timeout >0);
+        //  timeout--;
+        //}while(dir_right.curr == dir_right.prev && timeout >0);
         dir_right.out = QEM [dir_right.prev * 4 + dir_right.curr]; // out variable returns -1
         store1[countstore] =  (dir_right.curr);
         store2[countstore] = (dir_right.prev);
         countstore++;
         if (countstore == 49) {
+          detachInterrupt(0);
           PRINT_OUTPUT = 1;
           countstore = 0;
         }
-  }
-  digitalWrite(10,LOW);
+        PORTH &= !(1<<6);
+  //}
+  //digitalWrite(10,LOW);
 }
 
 //ISR
