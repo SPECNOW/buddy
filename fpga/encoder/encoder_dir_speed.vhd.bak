@@ -1,0 +1,122 @@
+library IEEE;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std;
+
+
+entity rgbGrid is
+--%clk 
+
+generic  (
+	ROW_COUNT : integer := 8;
+	COL_COUNT : integer := 8
+
+);
+
+port (clk, data, latch, enable : out std_logic;
+		sys_clk : in std_logic
+);
+
+end rgbGrid;
+
+architecture rgbGrid_behav of rgbGrid is
+
+--%signal
+
+type stateType is (idle, shift_data, shift_data_high, shift_data_low, done);
+
+signal data1 : std_logic_vector(31 downto 0) := x"11111101";
+signal currentState, nextState: stateType;
+signal count : integer := 32;
+
+
+begin
+
+nextStateProc: process (sys_clk, currentState, count)
+begin
+case currentState is
+
+	when idle =>
+		nextState <= shift_data;
+		
+	when shift_data =>
+		nextState <= shift_data_high;
+		
+	when shift_data_high =>
+	if (count = 0) then
+		nextState <= done;
+	end if;
+	nextState <= shift_data_low;
+		
+	when shift_data_low =>
+	if (count = 0) then
+		nextState <= done;
+	end if;
+		nextState <= shift_data_high;
+		
+	when done =>
+		nextState <= done;
+		
+	when others =>
+		nextState <= idle;
+		
+end case;
+
+end process nextStateProc;
+
+outputProc: process(currentState, count)
+begin
+case currentState is
+
+	when idle =>
+		clk <= '0';
+		data <= '0';
+		latch <= '0';
+		enable <= '0';
+		count <= 32;
+		
+	when shift_data =>
+		clk <= '0';
+		data <= '0';
+		latch <= '0';
+		enable <= '0';
+		count <= count;
+		
+	when shift_data_high =>
+		clk <= '1';
+		data <= data1(0);
+		latch <= '1';
+		enable <= '1';
+		count <= count - 1;
+		
+	when shift_data_low =>
+		clk <= '0';
+		data <= data1(0);
+		latch <= '1';
+		enable <= '1';
+		count <= count;
+		
+	when done =>
+		
+	when others =>
+		null;
+		
+end case;
+
+
+end process outputProc;
+
+registeringStateProc: process (sys_clk)
+begin
+if ( rising_edge(sys_clk))  then
+	currentState <= nextState;
+	if (currentState = shift_data_low) then
+		data1 <= data1(0) & data1(31 downto 1); 
+	end if;
+end if;
+
+end process registeringStateProc;
+
+
+end rgbGrid_behav;
+
+

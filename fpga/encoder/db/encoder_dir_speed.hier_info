@@ -1,0 +1,15 @@
+|encoder_dir_speed
+out1_fwrd <= <GND>
+out1_bwrd <= <GND>
+A1 => Equal0.IN0
+A1 => Equal1.IN0
+A1 => Equal2.IN1
+A1 => Equal3.IN0
+B1 => Equal0.IN1
+B1 => Equal1.IN1
+B1 => Equal2.IN0
+B1 => Equal3.IN1
+Xor1 => currentState~1.DATAIN
+Xor1 => prevState~1.DATAIN
+
+

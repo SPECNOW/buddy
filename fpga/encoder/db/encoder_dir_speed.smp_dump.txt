@@ -1,0 +1,16 @@
+
+State Machine - |encoder_dir_speed|currentState
+Name currentState.other currentState.three currentState.two currentState.one currentState.zero 
+currentState.zero 0 0 0 0 0 
+currentState.one 0 0 0 1 1 
+currentState.two 0 0 1 0 1 
+currentState.three 0 1 0 0 1 
+currentState.other 1 0 0 0 1 
+
+State Machine - |encoder_dir_speed|prevState
+Name prevState.other prevState.three prevState.two prevState.one prevState.zero 
+prevState.zero 0 0 0 0 0 
+prevState.one 0 0 0 1 1 
+prevState.two 0 0 1 0 1 
+prevState.three 0 1 0 0 1 
+prevState.other 1 0 0 0 1 
