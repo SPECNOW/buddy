@@ -1,5 +1,5 @@
 Flow report for encoder_dir_speed
-Thu Oct 02 02:14:13 2014
+Wed Oct 08 22:36:18 2014
 Quartus II 32-bit Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Flow Summary                                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Flow Status                        ; Successful - Thu Oct 02 02:14:10 2014         ;
+; Flow Status                        ; Successful - Wed Oct 08 22:36:13 2014         ;
 ; Quartus II 32-bit Version          ; 12.1 Build 243 01/31/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; encoder_dir_speed                             ;
 ; Top-level Entity Name              ; encoder_dir_speed                             ;
@@ -49,7 +49,7 @@ applicable agreement for further details.
 ;     Total combinational functions  ; 0 / 4,608 ( 0 % )                             ;
 ;     Dedicated logic registers      ; 0 / 4,608 ( 0 % )                             ;
 ; Total registers                    ; 0                                             ;
-; Total pins                         ; 5 / 89 ( 6 % )                                ;
+; Total pins                         ; 6 / 89 ( 7 % )                                ;
 ; Total virtual pins                 ; 0                                             ;
 ; Total memory bits                  ; 0 / 119,808 ( 0 % )                           ;
 ; Embedded Multiplier 9-bit elements ; 0 / 26 ( 0 % )                                ;
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/02/2014 02:13:58 ;
+; Start date & time ; 10/08/2014 22:35:48 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; encoder_dir_speed   ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +-------------------------------------+------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                        ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 143524149989.141224123808436 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 143524149989.141283294708220 ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                           ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                            ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; 16764057                     ; --            ; --          ; Top        ;
@@ -88,11 +88,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 357 MB              ; 00:00:03                           ;
-; Fitter                    ; 00:00:04     ; 1.0                     ; 382 MB              ; 00:00:03                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 332 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 296 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:10     ; --                      ; --                  ; 00:00:09                           ;
+; Analysis & Synthesis      ; 00:00:09     ; 1.0                     ; 369 MB              ; 00:00:07                           ;
+; Fitter                    ; 00:00:10     ; 1.0                     ; 382 MB              ; 00:00:08                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 332 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 296 MB              ; 00:00:03                           ;
+; Total                     ; 00:00:26     ; --                      ; --                  ; 00:00:22                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

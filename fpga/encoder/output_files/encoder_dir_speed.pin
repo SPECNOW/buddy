@@ -182,7 +182,7 @@ out1_bwrd                    : 115       : output : 3.3-V LVTTL       :         
 VCCIO2                       : 116       : power  :                   : 3.3V    : 2         :                
 GND                          : 117       : gnd    :                   :         :           :                
 Xor1                         : 118       : input  : 3.3-V LVTTL       :         : 2         : Y              
-GND*                         : 119       :        :                   :         : 2         :                
+clk_50                       : 119       : input  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 120       :        :                   :         : 2         :                
 GND*                         : 121       :        :                   :         : 2         :                
 GND*                         : 122       :        :                   :         : 2         :                

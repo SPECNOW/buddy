@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for encoder_dir_speed
-Thu Oct 02 02:14:13 2014
+Wed Oct 08 22:36:18 2014
 Quartus II 32-bit Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
 
 
@@ -207,7 +207,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 32-bit TimeQuest Timing Analyzer
     Info: Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Thu Oct 02 02:14:12 2014
+    Info: Processing started: Wed Oct 08 22:36:15 2014
 Info: Command: quartus_sta encoder_dir_speed -c encoder_dir_speed
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -241,8 +241,8 @@ Info (332101): Design is fully constrained for setup requirements
 Info (332101): Design is fully constrained for hold requirements
 Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 297 megabytes
-    Info: Processing ended: Thu Oct 02 02:14:13 2014
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Processing ended: Wed Oct 08 22:36:18 2014
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 
