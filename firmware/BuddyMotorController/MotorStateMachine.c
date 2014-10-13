@@ -7,77 +7,103 @@
 
 #include "MotorStateMachine.h"
 
-void initMotor(motor_state_machine_struct* self)
+void initMotor(void* Self, unsigned char ChannelA, unsigned char ChannelB, unsigned char Interrupt)
 {
+	motor_state_machine_struct* self = (motor_state_machine_struct*)Self;
+	self->ChannelA = ChannelA;
+	self->ChannelB = ChannelB;
+	self->Interupt = Interrupt;
 	P1DIR  &= ~(self->ChannelA + self->ChannelB + self->Interupt);
 	P1IE |= self->Interupt;
 	P1IES |= self->Interupt;
 }
 
-void nextState(motor_state_machine_struct* self)
+void nextState(void* Self)
 {
+	motor_state_machine_struct* self = (motor_state_machine_struct*)Self;
 	self->prev_state = self->curr_state;
 	unsigned char _chan_A_val = (unsigned char)((P1IN & self->ChannelA) != 0);
 	unsigned char _chan_B_val = (unsigned char)((P1IN & self->ChannelB) != 0);
 	self->curr_state = (_chan_A_val << 1) + _chan_B_val;
 }
 
-char getDirection(motor_state_machine_struct* self)
+char getDirection(void* Self)
 {
-	return motor_QEM[self->prev_state*4 + self->curr_state];
+	motor_state_machine_struct* self = (motor_state_machine_struct*)Self;
+	unsigned int offset = self->prev_state*4 + self->curr_state;
+	return motor_QEM[offset];
 }
 
-unsigned long getTicks(motor_state_machine_struct* self)
+unsigned long getTicks(void* Self)
 {
+	motor_state_machine_struct* self = (motor_state_machine_struct*)Self;
 	return self->encoder_ticks;
 }
 
-motor_state_machine_struct const LeftMotor = 	{
-													initMotor,
-													nextState,
-													getDirection,
-													getTicks,
-													0,
-													0,
-													0,
-												};
-
-motor_state_machine_struct const RightMotor = 	{
-													initMotor,
-													nextState,
-													getDirection,
-													getTicks,
-													0,
-													0,
-													0,
-												};
-
+void sendTicks(void* Self, serial_struct* Serial)
+{
+	motor_state_machine_struct* self = (motor_state_machine_struct*)Self;
+	Serial->write((char*)&self->encoder_ticks, sizeof(long));
+	self->encoder_ticks = 0;
+}
 
 #pragma vector=PORT1_VECTOR
 __interrupt void PORT1_ISR(void)
 {
-	motor_state_machine_struct * current_motor = NULL;
+	motor_state_machine_struct * current_motor = 0;
 	if( P1IFG & LeftMotor.Interupt != 0 )
 	{
 		current_motor = &LeftMotor;
 	}
-	else if( P1IFG & Right.Interupt != 0 )
+	else if( P1IFG & RightMotor.Interupt != 0 )
 	{
 		current_motor = &RightMotor;
 	}
-	if(current_motor != NULL)
-	{
-		P1IES ^= current_motor->Interupt;			//Toggle between rising and falling edge
-		P1IFG &= ~current_motor->Interupt;
 
-		current_motor->nextState(&current_motor);
-		if(current_motor->getDirection() == MOTOR_FORWARD)
+	if(current_motor != 0)
+	{
+		P1IES ^= current_motor->Interupt;			// Toggle between rising and falling edge
+		P1IFG &= ~current_motor->Interupt;			// Clear the Interrupt Flag
+
+		current_motor->nextState(&current_motor);	//	Calculate Next State
+
+		//	Increment tick counter accordingly
+		if(current_motor->getDirection(current_motor) == MOTOR_FORWARD)
 		{
 			current_motor->encoder_ticks++;
 		}
-		else if(current_motor->getDirection() == MOTOR_BACKWARD)
+		else if(current_motor->getDirection(current_motor) == MOTOR_BACKWARD)
 		{
 			current_motor->encoder_ticks--;
 		}
 	}
 }
+
+
+motor_state_machine_struct LeftMotor = 	{
+													initMotor,
+													nextState,
+													getDirection,
+													getTicks,
+													sendTicks,
+													0,		//	Current State
+													0,		//	Previous State
+													0,		//	Channel A Pin
+													0,		//	Channel B Pin
+													0,		// 	Interrupt Pin
+													0,		//	Encoder Ticks
+												};
+
+motor_state_machine_struct RightMotor = 	{
+													initMotor,
+													nextState,
+													getDirection,
+													getTicks,
+													sendTicks,
+													0,	//	Current State
+													0,	//	Previous State
+													0,	//	Channel A Pin
+													0,	//	Channel B Pin
+													0,	// 	Interrupt Pin
+													0,	//	Encoder Ticks
+												};

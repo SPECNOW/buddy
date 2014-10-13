@@ -11,26 +11,46 @@
 #include "COM.h"
 
 #define MOTOR_FORWARD 1
-#define MOTOR_BACKWARD -1
-const char motor_QEM[16] = {0,-1,1,2,1,0,2,-1,-1,2,0,1,2,1,-1,0};               // Quadrature Encoder Matrix
+#define MOTOR_BACKWARD 3
+#define MOTOR_HALT 0
+#define MOTOR_ERROR 2
+
+static const char motor_QEM[16] = {
+								MOTOR_HALT,
+								MOTOR_BACKWARD,
+								MOTOR_FORWARD,
+								MOTOR_ERROR,
+								MOTOR_FORWARD,
+								MOTOR_HALT,
+								MOTOR_ERROR,
+								MOTOR_BACKWARD,
+								MOTOR_BACKWARD,
+								MOTOR_ERROR,
+								MOTOR_HALT,
+								MOTOR_FORWARD,
+								MOTOR_ERROR,
+								MOTOR_FORWARD,
+								MOTOR_BACKWARD,
+								MOTOR_HALT
+							};	// Quadrature Encoder Matrix
 
 typedef struct
 {
-	void (* const initMotor)(motor_state_machine_struct*);
-	void (* const nextState)(motor_state_machine_struct*);
-	char  (* const getDirection)(motor_state_machine_struct*);
-	unsigned long (* const getTicks)(motor_state_machine_struct*);
-	serial_struct * serial;
+	void (* const initMotor)(void*, unsigned char, unsigned char, unsigned char);
+	void (* const nextState)(void*);
+	char  (* const getDirection)(void*);
+	unsigned long (* const getTicks)(void*);
+	void (* const sendTicks)(void*, serial_struct*);
 	unsigned char curr_state;
 	unsigned char prev_state;
 	unsigned char ChannelA;
 	unsigned char ChannelB;
 	unsigned char Interupt;
-	unsigned long encoder_ticks;
+	long encoder_ticks;
 } motor_state_machine_struct;
 
-extern motor_state_machine_struct const LeftMotor;
-extern motor_state_machine_struct const RightMotor;
+extern motor_state_machine_struct RightMotor;
+extern motor_state_machine_struct LeftMotor;
 
 __interrupt void PORT1_ISR(void);
 

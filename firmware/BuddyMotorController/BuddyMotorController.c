@@ -20,46 +20,57 @@
 
 #include <msp430.h>
 #include "COM.h"
+#include "MotorStateMachine.h"
 
-__interrupt void PORT1_ISR(void);
+#define MLCHA BIT0
+#define MLCHB BIT3
+#define MLCHI BIT4
+
+#define MRCHA BIT5
+#define MRCHB BIT6
+#define MRCHI BIT7
 
 int main(void)
 {
 	WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
-	P1DIR |= 0x01;					// Set P1.0 to output direction
 
-
-	P1DIR  &= ~(BIT5 + BIT6 + BIT7);
-	P1IE |= BIT5;
-	P1IES |= BIT5;
-
+	LeftMotor.initMotor(&LeftMotor, MLCHA, MLCHB, MLCHI);
+	RightMotor.initMotor(&RightMotor, MRCHA, MRCHB, MRCHI);
 	Serial.initCOM();
+
+	__bis_SR_register(GIE); // Interrupts enabled
 
 	while(1)
 	{
-		if(Serial.serialAvailable())
+		switch(RightMotor.getDirection(&RightMotor))
 		{
-			char rcvd = Serial.read();
-			Serial.write(&rcvd, 1);
-			P1OUT ^= 0x01;
+			case MOTOR_FORWARD:
+			{
+				Serial.write("f", 1);
+				break;
+			}
+			case MOTOR_BACKWARD:
+			{
+				Serial.write("b", 1);
+				break;
+			}
+			case MOTOR_HALT:
+			{
+				Serial.write("h", 1);
+				break;
+			}
+			case MOTOR_ERROR:
+			{
+				Serial.write("e", 1);
+				break;
+			}
+			default:
+			{
+				Serial.write("d", 1);
+				break;
+			}
 		}
 	}
 
 	return 0;
-}
-
-#pragma vector=PORT1_VECTOR
-__interrupt void PORT1_ISR(void)
-{
-	if((P1IFG & BIT5) != 0)
-	{
-		P1IES ^= 1;			//Toggle between rising and falling edge
-		P1IFG &= ~BIT5;
-
-		//STATE MACHINE HERE
-
-
-
-	}
-
 }

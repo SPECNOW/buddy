@@ -26,8 +26,6 @@ void serial_initCOM()
 	UCA0MCTL = UCBRS0; // Modulation UCBRSx = 1
 	UCA0CTL1 &= ~UCSWRST; // Initialize USCI state machine
 	IE2 |= UCA0RXIE; // Enable USCI_A0 RX interrupt
-	
-	__bis_SR_register(/*LPM0_bits +*/ GIE); // Enter LPM0, interrupts enabled
 }
 void serial_write(char* tx, int length)
 {
@@ -39,9 +37,9 @@ void serial_write(char* tx, int length)
 	}
 }
 
-bool serial_serialAvailable(serial_struct* self)
+bool serial_serialAvailable(void* self)
 {
-	return *(self->_rx_flag);
+	return *(((serial_struct*)self)->_rx_flag);
 }
 
 char serial_read(serial_struct* self)

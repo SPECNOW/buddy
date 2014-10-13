@@ -18,8 +18,8 @@ typedef struct
 {
 	void (* const initCOM)();
 	bool (* const serialAvailable)();
-	void (* const write)(serial_struct*, char*, int);
-	char (* const read)(serial_struct*);
+	void (* const write)(char*, int);
+	char (* const read)(void*);
 	char *_rx_buff;
 	bool *_rx_flag;
 	int *_rx_index;
