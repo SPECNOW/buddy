@@ -22,9 +22,11 @@ void nextState(void* Self)
 {
 	motor_state_machine_struct* self = (motor_state_machine_struct*)Self;
 	self->prev_state = self->curr_state;
-	unsigned char _chan_A_val = (unsigned char)((P1IN & self->ChannelA) != 0);
-	unsigned char _chan_B_val = (unsigned char)((P1IN & self->ChannelB) != 0);
-	self->curr_state = (_chan_A_val << 1) + _chan_B_val;
+	unsigned char _chan_A_val = 0;
+	unsigned char _chan_B_val = 0;
+	_chan_B_val = (unsigned char)( (P1IN & self->ChannelB) != 0);
+	_chan_A_val = (unsigned char)( (P1IN & self->ChannelA) != 0);
+	self->curr_state = (_chan_B_val << 1) + _chan_A_val;
 }
 
 char getDirection(void* Self)
@@ -50,12 +52,13 @@ void sendTicks(void* Self, serial_struct* Serial)
 #pragma vector=PORT1_VECTOR
 __interrupt void PORT1_ISR(void)
 {
+	P1OUT ^= 1;
 	motor_state_machine_struct * current_motor = 0;
-	if( P1IFG & LeftMotor.Interupt != 0 )
+	if(  (P1IFG & LeftMotor.Interupt) != 0)
 	{
 		current_motor = &LeftMotor;
 	}
-	else if( P1IFG & RightMotor.Interupt != 0 )
+	else if( (P1IFG & RightMotor.Interupt) != 0)
 	{
 		current_motor = &RightMotor;
 	}
@@ -65,7 +68,7 @@ __interrupt void PORT1_ISR(void)
 		P1IES ^= current_motor->Interupt;			// Toggle between rising and falling edge
 		P1IFG &= ~current_motor->Interupt;			// Clear the Interrupt Flag
 
-		current_motor->nextState(&current_motor);	//	Calculate Next State
+		current_motor->nextState(current_motor);	//	Calculate Next State
 
 		//	Increment tick counter accordingly
 		if(current_motor->getDirection(current_motor) == MOTOR_FORWARD)
@@ -76,6 +79,10 @@ __interrupt void PORT1_ISR(void)
 		{
 			current_motor->encoder_ticks--;
 		}
+	}
+	else
+	{
+		P1IFG &= ~(LeftMotor.Interupt + RightMotor.Interupt);			// Clear the Interrupt Flag// Should never enter here
 	}
 }
 

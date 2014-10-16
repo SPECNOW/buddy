@@ -9,11 +9,12 @@
 #define MOTORSTATEMACHINE_H_
 
 #include "COM.h"
+#include <msp430g2553.h>
 
-#define MOTOR_FORWARD 1
-#define MOTOR_BACKWARD 3
-#define MOTOR_HALT 0
-#define MOTOR_ERROR 2
+#define MOTOR_FORWARD 0
+#define MOTOR_BACKWARD MOTOR_FORWARD+1
+#define MOTOR_HALT MOTOR_BACKWARD+1
+#define MOTOR_ERROR MOTOR_HALT+1
 
 static const char motor_QEM[16] = {
 								MOTOR_HALT,

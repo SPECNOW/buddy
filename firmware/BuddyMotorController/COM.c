@@ -37,28 +37,28 @@ void serial_write(char* tx, int length)
 	}
 }
 
-bool serial_serialAvailable(void* self)
+bool serial_serialAvailable()
 {
-	return *(((serial_struct*)self)->_rx_flag);
+	return rx_flag;
 }
 
-char serial_read(serial_struct* self)
+char serial_read()
 {
 	char last_rx = 0;
-	while(!self->serialAvailable());
+	while(!serial_serialAvailable());
 	if(rx_index >= 0)
 	{
-		last_rx = *(self->_rx_buff + *self->_rx_index - 1);
-		*(self->_rx_index)--;
+		last_rx = *(rx_buff + rx_index - 1);
+		rx_index--;
 	}
 	else
 	{
-		self->write("ERROR: RX_BUFF_INDEX NEG\n", 25);
-		*(self->_rx_index) = 0;
+		serial_write("ERROR: RX_BUFF_INDEX NEG\n", 25);
+		rx_index = 0;
 	}
-	if(*(self->_rx_index) == 0)
+	if( rx_index == 0)
 	{
-		*(self->_rx_flag) = false;
+		rx_flag = false;
 	}
 	return last_rx;	
 }

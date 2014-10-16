@@ -34,7 +34,8 @@ int main(void)
 {
 	WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
 
-	LeftMotor.initMotor(&LeftMotor, MLCHA, MLCHB, MLCHI);
+	//LeftMotor.initMotor(&LeftMotor, MLCHA, MLCHB, MLCHI);
+	P1DIR |= BIT0;
 	RightMotor.initMotor(&RightMotor, MRCHA, MRCHB, MRCHI);
 	Serial.initCOM();
 
@@ -42,33 +43,43 @@ int main(void)
 
 	while(1)
 	{
-		switch(RightMotor.getDirection(&RightMotor))
+		if(Serial.serialAvailable())
 		{
-			case MOTOR_FORWARD:
+			Serial.read();
+			switch(RightMotor.getDirection(&RightMotor))
 			{
-				Serial.write("f", 1);
-				break;
+				case MOTOR_FORWARD:
+				{
+					Serial.write("f", 1);
+					break;
+				}
+				case MOTOR_BACKWARD:
+				{
+					Serial.write("b", 1);
+					break;
+				}
+				case MOTOR_HALT:
+				{
+					Serial.write("h", 1);
+					break;
+				}
+				case MOTOR_ERROR:
+				{
+					Serial.write("e", 1);
+					break;
+				}
+				default:
+				{
+					Serial.write("d", 1);
+					break;
+				}
 			}
-			case MOTOR_BACKWARD:
-			{
-				Serial.write("b", 1);
-				break;
-			}
-			case MOTOR_HALT:
-			{
-				Serial.write("h", 1);
-				break;
-			}
-			case MOTOR_ERROR:
-			{
-				Serial.write("e", 1);
-				break;
-			}
-			default:
-			{
-				Serial.write("d", 1);
-				break;
-			}
+			Serial.write("\n\r", 2);
+		}
+		else
+		{
+			static int index;
+			index++;
 		}
 	}
 

@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v4.2.1                      
 ******************************************************************************
->> Linked Mon Oct 13 13:17:09 2014
+>> Linked Wed Oct 15 22:19:58 2014
 
 OUTPUT FILE NAME:   <BuddyMotorController.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 0000c326
+ENTRY POINT SYMBOL: "_c_int00"  address: 0000c304
 
 
 MEMORY CONFIGURATION
@@ -14,12 +14,12 @@ MEMORY CONFIGURATION
   SFR                   00000000   00000010  00000000  00000010  RWIX
   PERIPHERALS_8BIT      00000010   000000f0  00000000  000000f0  RWIX
   PERIPHERALS_16BIT     00000100   00000100  00000000  00000100  RWIX
-  RAM                   00000200   00000200  000000bc  00000144  RWIX
+  RAM                   00000200   00000200  000000be  00000142  RWIX
   INFOD                 00001000   00000040  00000000  00000040  RWIX
   INFOC                 00001040   00000040  00000000  00000040  RWIX
   INFOB                 00001080   00000040  00000000  00000040  RWIX
   INFOA                 000010c0   00000040  00000000  00000040  RWIX
-  FLASH                 0000c000   00003fe0  0000041e  00003bc2  RWIX
+  FLASH                 0000c000   00003fe0  0000041c  00003bc4  RWIX
   INT00                 0000ffe0   00000002  00000000  00000002  RWIX
   INT01                 0000ffe2   00000002  00000000  00000002  RWIX
   INT02                 0000ffe4   00000002  00000002  00000000  RWIX
@@ -54,45 +54,53 @@ section   page    origin      length       input sections
 .TI.persistent 
 *          0    00000200    00000000     UNINITIALIZED
 
+.bss       0    0000026c    00000002     UNINITIALIZED
+                  0000026c    00000002     (.common:index$1)
+
+.TI.noinit 
+*          0    0000026c    00000000     UNINITIALIZED
+
 .stack     0    000003b0    00000050     UNINITIALIZED
                   000003b0    00000002     rts430_eabi.lib : boot.obj (.stack)
                   000003b2    0000004e     --HOLE--
 
-.text      0    0000c000    000003b0     
-                  0000c000    000000a2     MotorStateMachine.obj (.text:PORT1_ISR)
-                  0000c0a2    00000088     BuddyMotorController.obj (.text:main)
-                  0000c12a    0000005e     rts430_eabi.lib : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
-                  0000c188    0000005e                     : autoinit.obj (.text:_auto_init)
-                  0000c1e6    00000056     COM.obj (.text:serial_read)
-                  0000c23c    00000036     COM.obj (.text:serial_initCOM)
-                  0000c272    00000030     MotorStateMachine.obj (.text:nextState)
-                  0000c2a2    0000002a     MotorStateMachine.obj (.text:initMotor)
-                  0000c2cc    00000020     COM.obj (.text:USCI0RX_ISR)
-                  0000c2ec    0000001e     MotorStateMachine.obj (.text:sendTicks)
-                  0000c30a    0000001c     COM.obj (.text:serial_write)
-                  0000c326    0000001a     rts430_eabi.lib : boot.obj (.text:_c_int00_noexit)
-                  0000c340    00000014     MotorStateMachine.obj (.text:getDirection)
-                  0000c354    00000012     rts430_eabi.lib : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
-                  0000c366    00000012                     : memcpy.obj (.text:memcpy)
-                  0000c378    00000010                     : epilog.obj (.text)
-                  0000c388    0000000c     MotorStateMachine.obj (.text:getTicks)
-                  0000c394    00000008     COM.obj (.text:serial_serialAvailable)
-                  0000c39c    00000006     rts430_eabi.lib : isr_trap.obj (.text:__TI_ISR_TRAP)
-                  0000c3a2    00000006                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
-                  0000c3a8    00000004                     : pre_init.obj (.text:_system_pre_init)
-                  0000c3ac    00000004                     : exit.obj (.text:abort)
+.text      0    0000c000    000003a0     
+                  0000c000    00000096     BuddyMotorController.obj (.text:main)
+                  0000c096    0000008c     MotorStateMachine.obj (.text:PORT1_ISR)
+                  0000c122    0000005e     rts430_eabi.lib : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
+                  0000c180    0000005e                     : autoinit.obj (.text:_auto_init)
+                  0000c1de    0000003c     COM.obj (.text:serial_read)
+                  0000c21a    00000036     COM.obj (.text:serial_initCOM)
+                  0000c250    00000030     MotorStateMachine.obj (.text:nextState)
+                  0000c280    0000002a     MotorStateMachine.obj (.text:initMotor)
+                  0000c2aa    00000020     COM.obj (.text:USCI0RX_ISR)
+                  0000c2ca    0000001e     MotorStateMachine.obj (.text:sendTicks)
+                  0000c2e8    0000001c     COM.obj (.text:serial_write)
+                  0000c304    0000001a     rts430_eabi.lib : boot.obj (.text:_c_int00_noexit)
+                  0000c31e    00000014                     : copy_zero_init.obj (.text:decompress:ZI:__TI_zero_init)
+                  0000c332    00000014     MotorStateMachine.obj (.text:getDirection)
+                  0000c346    00000012     rts430_eabi.lib : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  0000c358    00000012                     : memcpy.obj (.text:memcpy)
+                  0000c36a    00000010                     : epilog.obj (.text)
+                  0000c37a    0000000c     MotorStateMachine.obj (.text:getTicks)
+                  0000c386    00000006     rts430_eabi.lib : isr_trap.obj (.text:__TI_ISR_TRAP)
+                  0000c38c    00000006                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
+                  0000c392    00000006     COM.obj (.text:serial_serialAvailable)
+                  0000c398    00000004     rts430_eabi.lib : pre_init.obj (.text:_system_pre_init)
+                  0000c39c    00000004                     : exit.obj (.text:abort)
 
-.const     0    0000c3b0    00000042     
-                  0000c3b0    0000001a     COM.obj (.const:.string)
-                  0000c3ca    00000010     MotorStateMachine.obj (.const:.string:motor_QEM)
-                  0000c3da    0000000e     COM.obj (.const)
-                  0000c3e8    0000000a     BuddyMotorController.obj (.const:.string)
+.const     0    0000c3a0    00000046     
+                  0000c3a0    0000001a     COM.obj (.const:.string)
+                  0000c3ba    00000010     MotorStateMachine.obj (.const:.string:motor_QEM)
+                  0000c3ca    0000000e     BuddyMotorController.obj (.const:.string)
+                  0000c3d8    0000000e     COM.obj (.const)
 
-.cinit     0    0000c3f2    0000002c     
-                  0000c3f2    00000023     (.cinit..data.load) [load image, compression = rle]
-                  0000c415    00000001     --HOLE-- [fill = 0]
-                  0000c416    00000004     (__TI_handler_table)
-                  0000c41a    00000004     (__TI_cinit_table)
+.cinit     0    0000c3e6    00000036     
+                  0000c3e6    00000023     (.cinit..data.load) [load image, compression = rle]
+                  0000c409    00000001     --HOLE-- [fill = 0]
+                  0000c40a    00000006     (__TI_handler_table)
+                  0000c410    00000004     (.cinit..bss.load) [load image, compression = zero_init]
+                  0000c414    00000008     (__TI_cinit_table)
 
 PORT1      0    0000ffe4    00000002     
                   0000ffe4    00000002     MotorStateMachine.obj (.int02)
@@ -143,15 +151,17 @@ NMI        0    0000fffc    00000002
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 0000c41a records: 1, size/record: 4, table size: 4
-	.data: load addr=0000c3f2, load size=00000023 bytes, run addr=00000200, run size=0000006c bytes, compression=rle
+__TI_cinit_table @ 0000c414 records: 2, size/record: 4, table size: 8
+	.data: load addr=0000c3e6, load size=00000023 bytes, run addr=00000200, run size=0000006c bytes, compression=rle
+	.bss: load addr=0000c410, load size=00000004 bytes, run addr=0000026c, run size=00000002 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 0000c416 records: 2, size/record: 2, table size: 4
-	index: 0, handler: __TI_decompress_rle24
-	index: 1, handler: __TI_decompress_none
+__TI_handler_table @ 0000c40a records: 3, size/record: 2, table size: 6
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_rle24
+	index: 2, handler: __TI_decompress_none
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
@@ -168,7 +178,7 @@ address    name
 00000057   BCSCTL1
 00000058   BCSCTL2
 00000053   BCSCTL3
-0000c3ac   C$$EXIT
+0000c39c   C$$EXIT
 00000059   CACTL1
 0000005a   CACTL2
 000010fb   CALBC1_12MHZ
@@ -213,9 +223,9 @@ address    name
 00000010   P3REN
 0000001b   P3SEL
 00000043   P3SEL2
-0000c000   PORT1_ISR
+0000c096   PORT1_ISR
 00000254   RightMotor
-0000c3da   Serial
+0000c3d8   Serial
 00000172   TA0CCR0
 00000174   TA0CCR1
 00000176   TA0CCR2
@@ -255,20 +265,20 @@ address    name
 0000006e   UCB0RXBUF
 0000006d   UCB0STAT
 0000006f   UCB0TXBUF
-0000c2cc   USCI0RX_ISR
+0000c2aa   USCI0RX_ISR
 00000120   WDTCTL
 00000400   __STACK_END
 00000050   __STACK_SIZE
-0000c41a   __TI_CINIT_Base
-0000c41e   __TI_CINIT_Limit
-0000c416   __TI_Handler_Table_Base
-0000c41a   __TI_Handler_Table_Limit
+0000c414   __TI_CINIT_Base
+0000c41c   __TI_CINIT_Limit
+0000c40a   __TI_Handler_Table_Base
+0000c410   __TI_Handler_Table_Limit
 UNDEFED    __TI_INITARRAY_Base
 UNDEFED    __TI_INITARRAY_Limit
-0000c39c   __TI_ISR_TRAP
+0000c386   __TI_ISR_TRAP
 00000001   __TI_args_main
-0000c354   __TI_decompress_none
-0000c3a2   __TI_decompress_rle24
+0000c346   __TI_decompress_none
+0000c38c   __TI_decompress_rle24
 00000001   __TI_exit
 0000ffe4   __TI_int02
 0000ffe6   __TI_int03
@@ -282,37 +292,38 @@ UNDEFED    __TI_INITARRAY_Limit
 0000fff8   __TI_int12
 0000fffa   __TI_int13
 0000fffc   __TI_int14
+0000c31e   __TI_zero_init
 ffffffff   __binit__
 ffffffff   __c_args__
-0000c384   __mspabi_func_epilog_1
-0000c382   __mspabi_func_epilog_2
-0000c380   __mspabi_func_epilog_3
-0000c37e   __mspabi_func_epilog_4
-0000c37c   __mspabi_func_epilog_5
-0000c37a   __mspabi_func_epilog_6
-0000c378   __mspabi_func_epilog_7
-0000c188   _auto_init
-0000c326   _c_int00
-0000c326   _c_int00_noexit
+0000c376   __mspabi_func_epilog_1
+0000c374   __mspabi_func_epilog_2
+0000c372   __mspabi_func_epilog_3
+0000c370   __mspabi_func_epilog_4
+0000c36e   __mspabi_func_epilog_5
+0000c36c   __mspabi_func_epilog_6
+0000c36a   __mspabi_func_epilog_7
+0000c180   _auto_init
+0000c304   _c_int00
+0000c304   _c_int00_noexit
 0000fffe   _reset_vector
 000003b0   _stack
-0000c3a8   _system_pre_init
-0000c3ac   abort
+0000c398   _system_pre_init
+0000c39c   abort
 ffffffff   binit
-0000c340   getDirection
-0000c388   getTicks
-0000c2a2   initMotor
-0000c0a2   main
-0000c366   memcpy
-0000c272   nextState
+0000c332   getDirection
+0000c37a   getTicks
+0000c280   initMotor
+0000c000   main
+0000c358   memcpy
+0000c250   nextState
 00000200   rx_buff
 00000268   rx_flag
 0000026a   rx_index
-0000c2ec   sendTicks
-0000c23c   serial_initCOM
-0000c1e6   serial_read
-0000c394   serial_serialAvailable
-0000c30a   serial_write
+0000c2ca   sendTicks
+0000c21a   serial_initCOM
+0000c1de   serial_read
+0000c392   serial_serialAvailable
+0000c2e8   serial_write
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -422,40 +433,41 @@ address    name
 000010fd   CALBC1_8MHZ
 000010fe   CALDCO_1MHZ
 000010ff   CALBC1_1MHZ
-0000c000   PORT1_ISR
-0000c0a2   main
-0000c188   _auto_init
-0000c1e6   serial_read
-0000c23c   serial_initCOM
-0000c272   nextState
-0000c2a2   initMotor
-0000c2cc   USCI0RX_ISR
-0000c2ec   sendTicks
-0000c30a   serial_write
-0000c326   _c_int00
-0000c326   _c_int00_noexit
-0000c340   getDirection
-0000c354   __TI_decompress_none
-0000c366   memcpy
-0000c378   __mspabi_func_epilog_7
-0000c37a   __mspabi_func_epilog_6
-0000c37c   __mspabi_func_epilog_5
-0000c37e   __mspabi_func_epilog_4
-0000c380   __mspabi_func_epilog_3
-0000c382   __mspabi_func_epilog_2
-0000c384   __mspabi_func_epilog_1
-0000c388   getTicks
-0000c394   serial_serialAvailable
-0000c39c   __TI_ISR_TRAP
-0000c3a2   __TI_decompress_rle24
-0000c3a8   _system_pre_init
-0000c3ac   C$$EXIT
-0000c3ac   abort
-0000c3da   Serial
-0000c416   __TI_Handler_Table_Base
-0000c41a   __TI_CINIT_Base
-0000c41a   __TI_Handler_Table_Limit
-0000c41e   __TI_CINIT_Limit
+0000c000   main
+0000c096   PORT1_ISR
+0000c180   _auto_init
+0000c1de   serial_read
+0000c21a   serial_initCOM
+0000c250   nextState
+0000c280   initMotor
+0000c2aa   USCI0RX_ISR
+0000c2ca   sendTicks
+0000c2e8   serial_write
+0000c304   _c_int00
+0000c304   _c_int00_noexit
+0000c31e   __TI_zero_init
+0000c332   getDirection
+0000c346   __TI_decompress_none
+0000c358   memcpy
+0000c36a   __mspabi_func_epilog_7
+0000c36c   __mspabi_func_epilog_6
+0000c36e   __mspabi_func_epilog_5
+0000c370   __mspabi_func_epilog_4
+0000c372   __mspabi_func_epilog_3
+0000c374   __mspabi_func_epilog_2
+0000c376   __mspabi_func_epilog_1
+0000c37a   getTicks
+0000c386   __TI_ISR_TRAP
+0000c38c   __TI_decompress_rle24
+0000c392   serial_serialAvailable
+0000c398   _system_pre_init
+0000c39c   C$$EXIT
+0000c39c   abort
+0000c3d8   Serial
+0000c40a   __TI_Handler_Table_Base
+0000c410   __TI_Handler_Table_Limit
+0000c414   __TI_CINIT_Base
+0000c41c   __TI_CINIT_Limit
 0000ffe4   __TI_int02
 0000ffe6   __TI_int03
 0000ffea   __TI_int05
@@ -475,4 +487,4 @@ ffffffff   binit
 UNDEFED    __TI_INITARRAY_Base
 UNDEFED    __TI_INITARRAY_Limit
 
-[155 symbols]
+[156 symbols]

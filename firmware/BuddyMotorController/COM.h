@@ -19,7 +19,7 @@ typedef struct
 	void (* const initCOM)();
 	bool (* const serialAvailable)();
 	void (* const write)(char*, int);
-	char (* const read)(void*);
+	char (* const read)();
 	char *_rx_buff;
 	bool *_rx_flag;
 	int *_rx_index;
