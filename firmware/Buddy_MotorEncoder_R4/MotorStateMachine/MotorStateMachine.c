@@ -13,9 +13,10 @@ void initMotor(void* Self, unsigned char ChannelA, unsigned char ChannelB, unsig
 	self->ChannelA = ChannelA;
 	self->ChannelB = ChannelB;
 	self->Interupt = Interrupt;
-	P1DIR  &= ~(self->ChannelA + self->ChannelB + self->Interupt);
+	gioREG->INTDET |= 1 << self->Interupt;
+	/*P1DIR  &= ~(self->ChannelA + self->ChannelB + self->Interupt);
 	P1IE |= self->Interupt;
-	P1IES |= self->Interupt;
+	P1IES |= self->Interupt;*/
 }
 
 void nextState(void* Self)
@@ -24,8 +25,8 @@ void nextState(void* Self)
 	self->prev_state = self->curr_state;
 	unsigned char _chan_A_val = 0;
 	unsigned char _chan_B_val = 0;
-	_chan_B_val = (unsigned char)( (P1IN & self->ChannelB) != 0);
-	_chan_A_val = (unsigned char)( (P1IN & self->ChannelA) != 0);
+	_chan_B_val = (unsigned char)( gioGetBit(gioPORTA, self->ChannelB) != 0);
+	_chan_A_val = (unsigned char)( gioGetBit(gioPORTA, self->ChannelA) != 0);
 	self->curr_state = (_chan_B_val << 1) + _chan_A_val;
 }
 
@@ -42,17 +43,17 @@ unsigned long getTicks(void* Self)
 	return self->encoder_ticks;
 }
 
-void sendTicks(void* Self, serial_struct* Serial)
+void sendTicks(void* Self, sciBASE_t *sci)
 {
 	motor_state_machine_struct* self = (motor_state_machine_struct*)Self;
-	Serial->write((char*)&self->encoder_ticks, sizeof(long));
+	//Serial->write((char*)&self->encoder_ticks, sizeof(long));
+	sciSend(sci, sizeof(long), (uint8*)&self->encoder_ticks);
 	self->encoder_ticks = 0;
 }
 
-#pragma vector=PORT1_VECTOR
+/*#pragma vector=PORT1_VECTOR
 __interrupt void PORT1_ISR(void)
 {
-	P1OUT |= 1;
 	motor_state_machine_struct * current_motor = 0;
 	if(  (P1IFG & LeftMotor.Interupt) != 0)
 	{
@@ -84,8 +85,7 @@ __interrupt void PORT1_ISR(void)
 	{
 		P1IFG &= ~(LeftMotor.Interupt + RightMotor.Interupt);			// Clear the Interrupt Flag// Should never enter here
 	}
-	P1OUT &= ~1;
-}
+}*/
 
 
 motor_state_machine_struct LeftMotor = 	{

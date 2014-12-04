@@ -14,8 +14,8 @@ int rx_index = 0;
 
 void serial_initCOM()
 {
-	BCSCTL1 = CALBC1_1MHZ; // Set DCO to 1MHz
-	DCOCTL = CALDCO_1MHZ; // Set DCO to 1MHz
+	BCSCTL1 = CALBC1_16MHZ; // Set DCO to 1MHz
+	DCOCTL = CALDCO_16MHZ; // Set DCO to 1MHz
 
 	/* Configure hardware UART */
 	P1SEL = BIT1 + BIT2 ; // P1.1 = RXD, P1.2=TXD

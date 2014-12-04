@@ -119,6 +119,8 @@
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.ABI.699136902" name="Application binary interface [See 'General' page to edit] (--abi)" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.ABI" value="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.ABI.eabi" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.OPT_LEVEL.release.1979904169" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.OPT_LEVEL.release" value="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.OPT_LEVEL.4" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.OPT_FOR_SPEED.971803378" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.OPT_FOR_SPEED" value="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compilerID.OPT_FOR_SPEED.5" valueType="enumerated"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compiler.inputType__C_SRCS.1764396580" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compiler.inputType__C_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compiler.inputType__CPP_SRCS.1555743242" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compiler.inputType__CPP_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compiler.inputType__ASM_SRCS.114722546" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.2.compiler.inputType__ASM_SRCS"/>

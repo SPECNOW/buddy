@@ -8,13 +8,13 @@
 #ifndef MOTORSTATEMACHINE_H_
 #define MOTORSTATEMACHINE_H_
 
-#include "COM.h"
-#include <msp430g2553.h>
+#include "gio.h"
+#include "sci.h"
 
-#define MOTOR_FORWARD 0
-#define MOTOR_BACKWARD (MOTOR_FORWARD+1)
-#define MOTOR_HALT (MOTOR_BACKWARD+1)
-#define MOTOR_ERROR (MOTOR_HALT+1)
+#define MOTOR_FORWARD 	0
+#define MOTOR_BACKWARD 	(MOTOR_FORWARD+1)
+#define MOTOR_HALT 		(MOTOR_BACKWARD+1)
+#define MOTOR_ERROR 	(MOTOR_HALT+1)
 
 static const char motor_QEM[16] = {
 								MOTOR_HALT,
@@ -41,7 +41,7 @@ typedef struct
 	void (* const nextState)(void*);
 	char  (* const getDirection)(void*);
 	unsigned long (* const getTicks)(void*);
-	void (* const sendTicks)(void*, serial_struct*);
+	void (* const sendTicks)(void*, sciBASE_t *sci);
 	unsigned char curr_state;
 	unsigned char prev_state;
 	unsigned char ChannelA;
@@ -52,7 +52,5 @@ typedef struct
 
 extern motor_state_machine_struct RightMotor;
 extern motor_state_machine_struct LeftMotor;
-
-__interrupt void PORT1_ISR(void);
 
 #endif /* MOTORSTATEMACHINE_H_ */
