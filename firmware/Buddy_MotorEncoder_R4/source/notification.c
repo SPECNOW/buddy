@@ -17,9 +17,12 @@
 #include "sys_selftest.h"
 #include "gio.h"
 #include "sci.h"
+#include "eqep.h"
 
 /* USER CODE BEGIN (0) */
 #include "MotorStateMachine.h"
+#include "defines.h"
+#include <stdio.h>
 /* USER CODE END */
 #pragma WEAK(esmGroup1Notification)
 void esmGroup1Notification(uint32 channel)
@@ -127,27 +130,75 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (29) */
-	sciSendByte(sci, 'c');
-	if(LeftMotor.getDirection(&LeftMotor) == MOTOR_BACKWARD)
+	if( flags == SCI_RX_INT)
 	{
-		sciSendByte(sci, 'B');
+		if(command[0] == 's')
+		{
+			char str[16];
+			sciSendByte(sci, 'c');
+			/*sprintf(str, "%d", eqepREG1->QEPSTS);
+			sciSend(sci, 16, (uint8*)&str[0]);
+			sciSendByte(sci, '\n');
+			sciSendByte(sci, '\r');*/
+			sprintf(str, "%d", eqepREG1->QPOSCNT);
+			sciSend(sci, 16, (uint8*)&str[0]);
+			sciSendByte(sci, '\n');
+			sciSendByte(sci, '\r');
+			sciSendByte(sci, 's');
+			int i = 0;
+			for(i = 0; i < 16; i++)
+			{
+				if(eqepREG1->QEPSTS & (1 << i) )
+				{
+					sciSendByte(sci, '1');
+				}
+				else
+				{
+					sciSendByte(sci, '0');
+				}
+			}
+			sciSendByte(sci, '\n');
+			sciSendByte(sci, '\r');
+
+			/*
+			sciSendByte(sci, 'c');
+			if(LeftMotor.getDirection(&LeftMotor) == MOTOR_BACKWARD)
+			{
+				sciSendByte(sci, 'B');
+			}
+			else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_FORWARD)
+			{
+				sciSendByte(sci, 'F');
+			}
+			else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_HALT)
+			{
+				sciSendByte(sci, 'H');
+			}
+			else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_ERROR)
+			{
+				sciSendByte(sci, 'E');
+			}
+			*/
+
+			sciSendByte(sci, '\n');
+			sciSendByte(sci, '\r');
+
+
+			/*RightMotor.sendTicks(&RightMotor, sci);
+			LeftMotor.sendTicks(&LeftMotor, sci);*/
+		}
+		else if(command[0] == 't')
+		{
+			//gioToggleBit(gioPORTA, SW_ENABLE);
+			gioToggleBit(gioPORTA, SW_SELECT);
+			//gioToggleBit(gioPORTA, SW_ENABLE);
+		}
+		sciReceive((sciBASE_t *)0xFFF7E400U, 1, (unsigned char *)&command);
 	}
-	else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_FORWARD)
+	else
 	{
-		sciSendByte(sci, 'F');
+		while(1);
 	}
-	else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_HALT)
-	{
-		sciSendByte(sci, 'H');
-	}
-	else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_ERROR)
-	{
-		sciSendByte(sci, 'E');
-	}
-	sciSendByte(sci, '\n');
-	sciSendByte(sci, '\r');
-	/*RightMotor.sendTicks(&RightMotor, sci);
-	LeftMotor.sendTicks(&LeftMotor, sci);*/
 /* USER CODE END */
 }
 
@@ -163,6 +214,21 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 /* USER CODE BEGIN (47) */
 /* USER CODE END */
 
+#pragma WEAK(eqepNotification)
+void eqepNotification(eqepBASE_t *eqep,uint16 flags)
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (48) */
+	static char a;
+	a++;
+	if( a==1000)
+	{
+		a=0;
+	}
+/* USER CODE END */
+}
+/* USER CODE BEGIN (49) */
+/* USER CODE END */
 
 /* USER CODE BEGIN (50) */
 /* USER CODE END */

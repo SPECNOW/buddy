@@ -418,18 +418,18 @@ typedef struct eqep_config_reg
 
 
 #define EQEP1_QPOSINIT_CONFIGVALUE ((uint32)0x00000000U)
-#define EQEP1_QPOSMAX_CONFIGVALUE ((uint32)0x00000000U)
+#define EQEP1_QPOSMAX_CONFIGVALUE ((uint32)0xFFFFFFFFU)
 #define EQEP1_QPOSCMP_CONFIGVALUE ((uint32)0x00000000U)
 #define EQEP1_QUPRD_CONFIGVALUE ((uint32)0x00000000U)
 #define EQEP1_QWDPRD_CONFIGVALUE ((uint16) 0x0000U)
-#define EQEP1_QDECCTL_CONFIGVALUE ((uint16)((uint16)((uint16)eQEP_DIRECTION_COUNT << 14U)\
+#define EQEP1_QDECCTL_CONFIGVALUE ((uint16)((uint16)((uint16)eQEP_QUADRATURE_COUNT << 14U)\
 								   | (uint16)((uint16)0U << 13U)\
 								   | (uint16)((uint16)eQEP_INDEX_PIN << 12U)\
 								   | (uint16)((uint16)eQEP_RESOLUTION_1x << 11U)\
 								   | (uint16)((uint16)0U << 10U)\
 								   | (uint16)((uint16)0U << 9U)\
-								   | (uint16)((uint16)0U << 8U)\
-								   | (uint16)((uint16)0U << 7U)\
+								   | (uint16)((uint16)1U << 8U)\
+								   | (uint16)((uint16)1U << 7U)\
 								   | (uint16)((uint16)0U << 6U)\
 								   | (uint16)((uint16)0U << 5U)\
 								   | (uint16)0x0000U))
@@ -437,7 +437,7 @@ typedef struct eqep_config_reg
 #define EQEP1_QEPCTL_CONFIGVALUE ((uint16)((uint16)((uint16)eQEP_MAX_POSITION << 12U)\
 								   | (uint16)((uint16)0U << 11U)\
 								   | (uint16)((uint16)eQEP_DIRECTON_DEPENDENT << 10U)\
-								   | (uint16)((uint16)0U << 9U)\
+								   | (uint16)((uint16)1U << 9U)\
 								   | (uint16)((uint16)eQEP_RISING_EDGE << 8U)\
 								   | (uint16)((uint16)0U << 7U)\
 								   | (uint16)((uint16)eQEP_RISING_EDGE << 6U)\
@@ -460,12 +460,12 @@ typedef struct eqep_config_reg
 								   | (uint16)((uint16)0U << 9U)\
 								   | (uint16)((uint16)0U << 8U)\
 								   | (uint16)((uint16)0U << 7U)\
-								   | (uint16)((uint16)0U << 6U)\
-								   | (uint16)((uint16)0U << 5U)\
-								   | (uint16)((uint16)0U << 4U)\
-								   | (uint16)((uint16)0U << 3U)\
-								   | (uint16)((uint16)0U << 2U)\
-								   | (uint16)((uint16)0U << 1U)))   
+								   | (uint16)((uint16)1U << 6U)\
+								   | (uint16)((uint16)1U << 5U)\
+								   | (uint16)((uint16)1U << 4U)\
+								   | (uint16)((uint16)1U << 3U)\
+								   | (uint16)((uint16)1U << 2U)\
+								   | (uint16)((uint16)1U << 1U)))   
 								   
 /**
  *  @defgroup eQEP eQEP

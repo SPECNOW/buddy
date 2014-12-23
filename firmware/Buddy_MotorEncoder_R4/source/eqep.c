@@ -43,7 +43,7 @@ void QEPInit(void)
   eqepREG1->QPOSINIT =  0x00000000U;
   
   /** - Set Maximum position counter value   */ 
-  eqepREG1->QPOSMAX  =  0x00000000U;
+  eqepREG1->QPOSMAX  =  0xFFFFFFFFU;
   
   /** - Set the initial Position compare value   */ 
   eqepREG1->QPOSCMP  =  0x00000000U;
@@ -75,14 +75,14 @@ void QEPInit(void)
   *     - Enable / Disable Negate QEPI input
   *     - Enable / Disable Negate QEPS input  
   */
-  eqepREG1->QDECCTL  = (uint16)((uint16)((uint16)eQEP_DIRECTION_COUNT << 14U)
+  eqepREG1->QDECCTL  = (uint16)((uint16)((uint16)eQEP_QUADRATURE_COUNT << 14U)
                        | (uint16)((uint16)0U << 13U) 
 					   | (uint16)((uint16)eQEP_INDEX_PIN << 12U) 
 					   | (uint16)((uint16)eQEP_RESOLUTION_1x << 11U)
 					   | (uint16)((uint16)0U << 10U)
 					   | (uint16)((uint16)0U << 9U)
-					   | (uint16)((uint16)0U << 8U)
-					   | (uint16)((uint16)0U << 7U)					   
+					   | (uint16)((uint16)1U << 8U)
+					   | (uint16)((uint16)1U << 7U)					   
 					   | (uint16)((uint16)0U << 6U)				   
 					   | (uint16)((uint16)0U << 5U)
 					   | (uint16)0x0000U);
@@ -99,7 +99,7 @@ void QEPInit(void)
   eqepREG1->QEPCTL   = (uint16)((uint16)((uint16)eQEP_MAX_POSITION << 12U)
                        | (uint16)((uint16)0U << 11U )
 					   | (uint16)((uint16)eQEP_DIRECTON_DEPENDENT << 10U)
-                       | (uint16)((uint16)0U << 9U)
+                       | (uint16)((uint16)1U << 9U)
 					   | (uint16)((uint16)eQEP_RISING_EDGE << 8U)
 					   | (uint16)((uint16)0U << 7U)
 					   | (uint16)((uint16)eQEP_RISING_EDGE << 6U)
@@ -151,12 +151,12 @@ void QEPInit(void)
 					   | (uint16)((uint16)0U << 9U)
 					   | (uint16)((uint16)0U << 8U)
 					   | (uint16)((uint16)0U << 7U)
-					   | (uint16)((uint16)0U << 6U)
-					   | (uint16)((uint16)0U << 5U)
-					   | (uint16)((uint16)0U << 4U)
-					   | (uint16)((uint16)0U << 3U)       
-					   | (uint16)((uint16)0U << 2U)
-					   | (uint16)((uint16)0U << 1U));
+					   | (uint16)((uint16)1U << 6U)
+					   | (uint16)((uint16)1U << 5U)
+					   | (uint16)((uint16)1U << 4U)
+					   | (uint16)((uint16)1U << 3U)       
+					   | (uint16)((uint16)1U << 2U)
+					   | (uint16)((uint16)1U << 1U));
 
   /** - Clear Capture Timer register  */
   eqepREG1->QCTMR    = (uint16)0x0000U;	
@@ -1108,5 +1108,36 @@ void eqep1GetConfigValue(eqep_config_reg_t *config_reg, config_value_type_t type
     }
 }
 
+/** @fn void eqepInterrupt(void)
+*   @brief eQEP1 Interrupt Handler
+*
+*   Interrupt handler for eQEP1 interrupt 
+*
+*/
+#pragma CODE_STATE(eqepInterrupt, 32)
+#pragma INTERRUPT(eqepInterrupt, IRQ)
+void eqepInterrupt(void)
+{
+    uint16 Int_Flag = (uint16)(eqepREG1->QFLG & 0x00000FFEU);
+	
+/* USER CODE BEGIN (5) */
+/* USER CODE END */
+
+    /* Clear Events, */
+	/* Note : Current Implementation clears multiple all events set
+       before this point, User notification function is called with Flags and user must take care of handling */	
+	eqepREG1->QCLR = (uint16)Int_Flag;
+	
+	/* Clears the interrupt flag and enables further interrupts to be generated
+	   if an event flags is set to 1. */
+	eqepREG1->QCLR = (uint16)1U;
+    
+	/* Passing the Interrput Flag to the user Notification Function */
+	eqepNotification(eqepREG1,Int_Flag);
+
+/* USER CODE BEGIN (6) */
+/* USER CODE END */
+
+}
 
 /*end of file*/

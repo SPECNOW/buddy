@@ -298,7 +298,8 @@
         <NAME>eqep.h</NAME>
       </HDREQEP>
       <SRCEQEP>
-        </SRCEQEP>
+        <NAME>eqep.c</NAME>
+      </SRCEQEP>
       <HDR1FEE>
         <NAME>Device_RM42.h</NAME>
       </HDR1FEE>
@@ -506,7 +507,7 @@
         <PATH>include\eqep.h</PATH>
       </HDREQEP>
       <SRCEQEP>
-        <PATH></PATH>
+        <PATH>source\eqep.c</PATH>
       </SRCEQEP>
     </FILENAMES>
   </EQEP>
