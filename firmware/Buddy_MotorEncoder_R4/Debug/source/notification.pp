@@ -39,10 +39,17 @@ source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Bu
 source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/reg_sci.h
 source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/eqep.h
 source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/reg_eqep.h
-source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/MotorStateMachine/MotorStateMachine.h
 source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/defines.h
+source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/print_debug.h
 source/notification.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdio.h
 source/notification.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdarg.h
+source/notification.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/string.h
+source/notification.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdarg.h
+source/notification.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdlib.h
+source/notification.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdio.h
+source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/dac_buddy.h
+source/notification.obj: C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/sonar.h
+source/notification.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdlib.h
 
 ../source/notification.c: 
 C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/esm.h: 
@@ -83,7 +90,14 @@ C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/inclu
 C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/reg_sci.h: 
 C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/eqep.h: 
 C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/reg_eqep.h: 
-C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/MotorStateMachine/MotorStateMachine.h: 
 C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/defines.h: 
+C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/print_debug.h: 
 c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdio.h: 
 c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdarg.h: 
+c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/string.h: 
+c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdarg.h: 
+c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdlib.h: 
+c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdio.h: 
+C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/dac_buddy.h: 
+C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_MotorEncoder_R4/include/sonar.h: 
+c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdlib.h: 

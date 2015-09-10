@@ -29,7 +29,7 @@
         <PATH>include\het.h</PATH>
       </HDRHET>
       <SRCHET>
-        <PATH></PATH>
+        <PATH>source\het.c</PATH>
       </SRCHET>
       <HDRHTU_R>
         <PATH>include\reg_htu.h</PATH>
@@ -242,7 +242,8 @@
         <NAME>adc.h</NAME>
       </HDRADC>
       <SRCADC>
-        </SRCADC>
+        <NAME>adc.c</NAME>
+      </SRCADC>
       <HET1ASMHDR>
         <NAME/>
       </HET1ASMHDR>
@@ -259,7 +260,8 @@
         <NAME>het.h</NAME>
       </HDRHET>
       <SRCHET>
-        </SRCHET>
+        <NAME>het.c</NAME>
+      </SRCHET>
       <HDRHTU_R>
         <NAME>reg_htu.h</NAME>
       </HDRHTU_R>
@@ -455,7 +457,7 @@
         <PATH>include\adc.h</PATH>
       </HDRADC>
       <SRCADC>
-        <PATH></PATH>
+        <PATH>source\adc.c</PATH>
       </SRCADC>
     </FILENAMES>
   </ADC>

@@ -52,7 +52,7 @@ void QEPInit(void)
   eqepREG1->QUTMR    =  0x00000000U;
   
   /** - Configure unit period register   */ 
-  eqepREG1->QUPRD    =  (uint32) 0x00000000U;
+  eqepREG1->QUPRD    =  (uint32) 0x000000FFU;
   
   /** - Clear Watchdog Timer register  */ 
   eqepREG1->QWDTMR   = 	(uint16) 0x00000000U;

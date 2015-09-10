@@ -15,14 +15,21 @@
 
 #include "esm.h"
 #include "sys_selftest.h"
+#include "adc.h"
 #include "gio.h"
 #include "sci.h"
+#include "het.h"
 #include "eqep.h"
 
 /* USER CODE BEGIN (0) */
-#include "MotorStateMachine.h"
 #include "defines.h"
 #include <stdio.h>
+#include "dac_buddy.h"
+#include "sonar.h"
+
+//#define MAX_TIMER 60
+bool is_pwm0_running = true;
+
 /* USER CODE END */
 #pragma WEAK(esmGroup1Notification)
 void esmGroup1Notification(uint32 channel)
@@ -64,61 +71,25 @@ void memoryPort1TestFailNotification(uint32 groupSelect, uint32 dataSelect, uint
 
 /* USER CODE BEGIN (8) */
 /* USER CODE END */
+#pragma WEAK(adcNotification)
+void adcNotification(adcBASE_t *adc, uint32 group)
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (11) */
+	//adcGetData(adc, group, adc_data);
+	adc_data_is_ready = true;
+	//adcResetFiFo(adc, group);
+	//adcStartConversion(adc,group);
+	/* USER CODE END */
+}
+
+/* USER CODE BEGIN (12) */
+/* USER CODE END */
 #pragma WEAK(gioNotification)
 void gioNotification(gioPORT_t *port, uint32 bit)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (19) */
-	motor_state_machine_struct * current_motor = 0;
-	if(  LeftMotor.Interupt == bit)
-	{
-		current_motor = &LeftMotor;
-	}
-	else if( RightMotor.Interupt != bit)
-	{
-		current_motor = &RightMotor;
-	}
-
-	if(current_motor != 0)
-	{
-		//gioREG->POL ^= current_motor->Interupt;			// Toggle between rising and falling edge
-
-		current_motor->nextState(current_motor);	//	Calculate Next State
-
-		//	Increment tick counter accordingly
-		if(current_motor->getDirection(current_motor) == MOTOR_FORWARD)
-		{
-			current_motor->encoder_ticks++;
-		}
-		else if(current_motor->getDirection(current_motor) == MOTOR_BACKWARD)
-		{
-			current_motor->encoder_ticks--;
-		}
-	}
-
-	//DEBUG CRAP
-	/*sciSendByte(scilinREG, '0' + LeftMotor.curr_state);
-	sciSendByte(scilinREG, '0' + LeftMotor.prev_state);
-
-	if(LeftMotor.getDirection(&LeftMotor) == MOTOR_BACKWARD)
-	{
-		sciSendByte(scilinREG, 'B');
-	}
-	else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_FORWARD)
-	{
-		sciSendByte(scilinREG, 'F');
-	}
-	else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_HALT)
-	{
-		sciSendByte(scilinREG, 'H');
-	}
-	else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_ERROR)
-	{
-		sciSendByte(scilinREG, 'E');
-	}
-	sciSendByte(scilinREG, '\n');
-	sciSendByte(scilinREG, '\r');*/
-	//sciSendByte(scilinREG, 'b');
 /* USER CODE END */
 }
 
@@ -132,68 +103,34 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 /* USER CODE BEGIN (29) */
 	if( flags == SCI_RX_INT)
 	{
-		if(command[0] == 's')
+		if( strcmp("sr", (const char*)command) == 0 )	//	Status Registers
 		{
-			char str[16];
-			sciSendByte(sci, 'c');
-			/*sprintf(str, "%d", eqepREG1->QEPSTS);
-			sciSend(sci, 16, (uint8*)&str[0]);
-			sciSendByte(sci, '\n');
-			sciSendByte(sci, '\r');*/
-			sprintf(str, "%d", eqepREG1->QPOSCNT);
-			sciSend(sci, 16, (uint8*)&str[0]);
-			sciSendByte(sci, '\n');
-			sciSendByte(sci, '\r');
-			sciSendByte(sci, 's');
-			int i = 0;
-			for(i = 0; i < 16; i++)
-			{
-				if(eqepREG1->QEPSTS & (1 << i) )
-				{
-					sciSendByte(sci, '1');
-				}
-				else
-				{
-					sciSendByte(sci, '0');
-				}
-			}
-			sciSendByte(sci, '\n');
-			sciSendByte(sci, '\r');
-
-			/*
-			sciSendByte(sci, 'c');
-			if(LeftMotor.getDirection(&LeftMotor) == MOTOR_BACKWARD)
-			{
-				sciSendByte(sci, 'B');
-			}
-			else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_FORWARD)
-			{
-				sciSendByte(sci, 'F');
-			}
-			else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_HALT)
-			{
-				sciSendByte(sci, 'H');
-			}
-			else if(LeftMotor.getDirection(&LeftMotor) == MOTOR_ERROR)
-			{
-				sciSendByte(sci, 'E');
-			}
-			*/
-
-			sciSendByte(sci, '\n');
-			sciSendByte(sci, '\r');
-
-
-			/*RightMotor.sendTicks(&RightMotor, sci);
-			LeftMotor.sendTicks(&LeftMotor, sci);*/
+			print_status_flag = true;
 		}
-		else if(command[0] == 't')
+		else if( strcmp( "av", (const char*) command ) == 0 )	// ADC Valuse
 		{
-			//gioToggleBit(gioPORTA, SW_ENABLE);
-			gioToggleBit(gioPORTA, SW_SELECT);
-			//gioToggleBit(gioPORTA, SW_ENABLE);
+			print_debug_ADC = true;
 		}
-		sciReceive((sciBASE_t *)0xFFF7E400U, 1, (unsigned char *)&command);
+		else if(command[0] == 't')			//	Toggle Switch
+		{
+			set_encoder_switch_flag = true;
+			switch_position = command[1];
+		}
+		else if(command[0] == 'L')				// Left Motor Speed
+		{
+			set_left_motor_speed_flag = true;
+			left_motor_speed = command[1];
+		}
+		else if(command[0] == 'R')				// Right Motor Speed
+		{
+			set_right_motor_speed_flag = true;
+			right_motor_speed = command[1];
+		}
+		else
+		{
+			print_command_error_flag = true;
+		}
+		sciReceive(scilinREG, 2, (unsigned char *)&command);
 	}
 	else
 	{
@@ -205,6 +142,64 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 /* USER CODE BEGIN (30) */
 /* USER CODE END */
 
+#pragma WEAK(pwmNotification)
+void pwmNotification(hetBASE_t * hetREG,uint32 pwm, uint32 notification)
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (35) */
+	sonarPwmNotification(hetREG, pwm, notification);
+//	static uint32_t timeout_timer = 0;
+//	if(pwm == pwm0 /*&& notification == pwmEND_OF_DUTY*/)
+//	{
+//		if(is_pwm0_running)
+//		{
+//			timeout_timer = 0;
+//			pwmStop(hetRAM1, pwm);
+//			is_pwm0_running = false;
+//		}
+//		else
+//		{
+//			timeout_timer++;
+//		}
+//	}
+//
+//	if(timeout_timer >= MAX_TIMER)
+//	{
+//		pwmStart(hetRAM1, pwm0);
+//		is_pwm0_running = true;
+//	}
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (36) */
+/* USER CODE END */
+#pragma WEAK(edgeNotification)
+void edgeNotification(hetBASE_t * hetREG,uint32 edge)
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (37) */
+	sonarEdgeNotification(hetREG, edge);
+	/*if(edge == edge0)
+	{
+		pwmStart(hetRAM1, pwm0);
+		is_pwm0_running = true;
+	}*/
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (38) */
+/* USER CODE END */
+#pragma WEAK(hetNotification)
+void hetNotification(hetBASE_t *het, uint32 offset)
+{
+/*  enter user code between the USER CODE BEGIN and USER CODE END. */
+/* USER CODE BEGIN (39) */
+	while(1);
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (40) */
+/* USER CODE END */
 
 
 /* USER CODE BEGIN (43) */
@@ -219,12 +214,6 @@ void eqepNotification(eqepBASE_t *eqep,uint16 flags)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (48) */
-	static char a;
-	a++;
-	if( a==1000)
-	{
-		a=0;
-	}
 /* USER CODE END */
 }
 /* USER CODE BEGIN (49) */
