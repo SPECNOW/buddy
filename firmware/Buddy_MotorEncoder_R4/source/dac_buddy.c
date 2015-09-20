@@ -14,7 +14,7 @@ void initDAC(MotorDAC * motor_dac, uint8_t serial_clock, uint8_t serial_data, ui
 	motor_dac->LDPIN = load_pin;
 	motor_dac->DACNUM = dac_num;
 
-	gioSetDirection(gioPORTA, 0x0000 | 1 << motor_dac->SCLK | 1 << motor_dac->SDATA | 1 << motor_dac->LDPIN);
+	gioSetDirection(gioPORTA, gioPORTA->DIR | 1 << motor_dac->SCLK | 1 << motor_dac->SDATA | 1 << motor_dac->LDPIN);
 	gioSetBit(gioPORTA, motor_dac->SCLK, LOW);
 	gioSetBit(gioPORTA, motor_dac->SDATA, LOW);
 	gioSetBit(gioPORTA, motor_dac->LDPIN, HIGH);

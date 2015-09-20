@@ -85,7 +85,9 @@ void main(void)
 	eqepEnableCounter(eqepREG1);	/* Enable Position Counter */
 	eqepEnableCapture(eqepREG1);	/* Enable capture timer and capture period latch. */
 
-	gioToggleBit( gioPORTA, SW_ENABLE); // ENABLES // not needed?
+	//gioToggleBit( gioPORTA, SW_ENABLE); // ENABLES // not needed?
+	gioSetBit( gioPORTA, SW_ENABLE, 0);
+
 	gioSetDirection(hetPORT1, 0x100);	// COpied from ADC example, sets Het8
 	adcStartConversion(adcREG1,adcGROUP1);
 	adcEnableNotification(adcREG1, adcGROUP1);
@@ -118,10 +120,6 @@ void main(void)
 			/* Clear the Status flag. */
 			eqepREG1->QEPSTS |= 0x80U;
 		}
-
-
-
-
 
 		// ADC Stuff
 		//gioSetBit(hetPORT1, 8, 1);
@@ -170,7 +168,7 @@ void main(void)
 		}
 		if(set_encoder_switch_flag)
 		{
-			gioSetBit(gioPORTA, SW_SELECT, command[1]);
+			//gioSetBit(gioPORTA, SW_SELECT, switch_position);
 			gioToggleBit(gioPORTA, SW_SELECT);
 			set_encoder_switch_flag = false;
 		}
