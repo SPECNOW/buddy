@@ -137,32 +137,32 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-Buddy_MotorEncoder_R4.out \
+Buddy_Firmware_Hercules.out \
 
 EXE_OUTPUTS__QUOTED += \
-"Buddy_MotorEncoder_R4.out" \
+"Buddy_Firmware_Hercules.out" \
 
 BIN_OUTPUTS += \
-Buddy_MotorEncoder_R4.hex \
+Buddy_Firmware_Hercules.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"Buddy_MotorEncoder_R4.hex" \
+"Buddy_Firmware_Hercules.hex" \
 
 
 # All Target
-all: Buddy_MotorEncoder_R4.out
+all: Buddy_Firmware_Hercules.out
 
 # Tool invocations
-Buddy_MotorEncoder_R4.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+Buddy_Firmware_Hercules.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"c:/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armcl" -mv7R4 --code_state=32 --abi=eabi -me -g --display_error_number --diag_warning=225 --diag_wrap=off --enum_type=packed -z -m"Buddy_MotorEncoder_R4.map" --heap_size=0x800 --stack_size=0x800 -i"c:/ti/ccsv6/tools/compiler/arm_5.1.6/lib" -i"c:/ti/ccsv6/tools/compiler/arm_5.1.6/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="Buddy_MotorEncoder_R4_linkInfo.xml" --rom_model -o "Buddy_MotorEncoder_R4.out" $(ORDERED_OBJS)
+	"c:/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armcl" -mv7R4 --code_state=32 --abi=eabi -me -g --display_error_number --diag_warning=225 --diag_wrap=off --enum_type=packed -z -m"Buddy_Firmware_Hercules.map" --heap_size=0x800 --stack_size=0x800 -i"c:/ti/ccsv6/tools/compiler/arm_5.1.6/lib" -i"c:/ti/ccsv6/tools/compiler/arm_5.1.6/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="Buddy_Firmware_Hercules_linkInfo.xml" --rom_model -o "Buddy_Firmware_Hercules.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Buddy_MotorEncoder_R4.hex: $(EXE_OUTPUTS)
+Buddy_Firmware_Hercules.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: ARM Hex Utility'
-	"c:/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armhex"  -o "Buddy_MotorEncoder_R4.hex" $(EXE_OUTPUTS__QUOTED)
+	"c:/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armhex"  -o "Buddy_Firmware_Hercules.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 

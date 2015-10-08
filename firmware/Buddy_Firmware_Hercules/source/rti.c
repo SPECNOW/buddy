@@ -1,7 +1,7 @@
 /** @file rti.c 
 *   @brief RTI Driver Source File
-*   @date 9.Sep.2014
-*   @version 04.01.00
+*   @date 16.Feb.2015
+*   @version 04.03.00
 *
 *   This file contains:
 *   - API Functions
@@ -10,7 +10,40 @@
 *   which are relevant for the RTI driver.
 */
 
-/* (c) Texas Instruments 2009-2014, All rights reserved. */
+/* 
+* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* 
+* 
+*  Redistribution and use in source and binary forms, with or without 
+*  modification, are permitted provided that the following conditions 
+*  are met:
+*
+*    Redistributions of source code must retain the above copyright 
+*    notice, this list of conditions and the following disclaimer.
+*
+*    Redistributions in binary form must reproduce the above copyright
+*    notice, this list of conditions and the following disclaimer in the 
+*    documentation and/or other materials provided with the   
+*    distribution.
+*
+*    Neither the name of Texas Instruments Incorporated nor the names of
+*    its contributors may be used to endorse or promote products derived
+*    from this software without specific prior written permission.
+*
+*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+*  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+*  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+*  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+*  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+*  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+*  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+*  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
+*/
+
 
 
 /* USER CODE BEGIN (0) */
@@ -808,6 +841,59 @@ void rtiGetConfigValue(rti_config_reg_t *config_reg, config_value_type_t type)
 	}
 }
 
+/* USER CODE BEGIN (73) */
+/* USER CODE END */
+
+/** @fn void rtiCompare0Interrupt(void)
+*   @brief RTI1 Compare 0 Interrupt Handler
+*
+*   RTI1 Compare 0 interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiCompare0Interrupt, 32)
+#pragma INTERRUPT(rtiCompare0Interrupt, IRQ)
+
+/* SourceId : RTI_SourceId_022 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiCompare0Interrupt(void)
+{
+/* USER CODE BEGIN (74) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 1U;
+    rtiNotification(rtiNOTIFICATION_COMPARE0);
+
+/* USER CODE BEGIN (75) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (76) */
+/* USER CODE END */
+
+/** @fn void rtiCompare1Interrupt(void)
+*   @brief RTI1 Compare 1 Interrupt Handler
+*
+*   RTI1 Compare 1 interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiCompare1Interrupt, 32)
+#pragma INTERRUPT(rtiCompare1Interrupt, IRQ)
+
+/* SourceId : RTI_SourceId_023 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiCompare1Interrupt(void)
+{
+/* USER CODE BEGIN (77) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 2U;
+    rtiNotification(rtiNOTIFICATION_COMPARE1);
+
+/* USER CODE BEGIN (78) */
+/* USER CODE END */
+}
 
 
 
