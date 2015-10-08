@@ -1,11 +1,44 @@
 /** @file sci.c 
 *   @brief SCI Driver Implementation File
-*   @date 9.Sep.2014
-*   @version 04.01.00
+*   @date 16.Feb.2015
+*   @version 04.03.00
 *
 */
 
-/* (c) Texas Instruments 2009-2014, All rights reserved. */
+/* 
+* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* 
+* 
+*  Redistribution and use in source and binary forms, with or without 
+*  modification, are permitted provided that the following conditions 
+*  are met:
+*
+*    Redistributions of source code must retain the above copyright 
+*    notice, this list of conditions and the following disclaimer.
+*
+*    Redistributions in binary form must reproduce the above copyright
+*    notice, this list of conditions and the following disclaimer in the 
+*    documentation and/or other materials provided with the   
+*    distribution.
+*
+*    Neither the name of Texas Instruments Incorporated nor the names of
+*    its contributors may be used to endorse or promote products derived
+*    from this software without specific prior written permission.
+*
+*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+*  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+*  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+*  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+*  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+*  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+*  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+*  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
+*/
+
 
 /* USER CODE BEGIN (0) */
 /* USER CODE END */
@@ -19,7 +52,7 @@
 *   @brief Interrupt mode globals
 *
 */
-static struct g_sciTransfer
+static volatile struct g_sciTransfer
 {
     uint32   mode;         /* Used to check for TX interrupt Enable */  
     uint32   tx_length;    /* Transmit data length in number of Bytes */
@@ -171,8 +204,8 @@ void sciSetBaudrate(sciBASE_t *sci, uint32 baud)
 /* USER CODE END */
 
     /*SAFETYMCUSW 96 S MR:6.1 <APPROVED> "Calculations including int and float cannot be avoided" */
-	temp = (f*(baud + 1U));
-	temp2 = ((vclk)/((float64)temp));
+	temp = (f*(baud));
+	temp2 = ((vclk)/((float64)temp))-1U;
 	sci->BRS = (uint32)((uint32)temp2 & 0x00FFFFFFU);
 	
 /* USER CODE BEGIN (7) */
@@ -535,6 +568,9 @@ void sciEnableNotification(sciBASE_t *sci, uint32 flags)
 *                      SCI_WAKE_INT  - wakeup,
 *                      SCI_BREAK_INT - break detect
 */
+/* SourceId : SCI_SourceId_015 */
+/* DesignId : SCI_DesignId_013 */
+/* Requirements : HL_SR242 */
 void sciDisableNotification(sciBASE_t *sci, uint32 flags)
 {
 

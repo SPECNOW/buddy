@@ -1,9 +1,41 @@
 /** @file std_nhet.h
 *   @brief NHET Instruction Definition File
-*   @date 9.Sep.2014
-*   @version 04.01.00
-*   
-*   (c) Texas Instruments 2009-2014, All rights reserved.
+*   @date 16.Feb.2015
+*   @version 04.03.00
+*/
+
+/* 
+* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com 
+* 
+* 
+*  Redistribution and use in source and binary forms, with or without 
+*  modification, are permitted provided that the following conditions 
+*  are met:
+*
+*    Redistributions of source code must retain the above copyright 
+*    notice, this list of conditions and the following disclaimer.
+*
+*    Redistributions in binary form must reproduce the above copyright
+*    notice, this list of conditions and the following disclaimer in the 
+*    documentation and/or other materials provided with the   
+*    distribution.
+*
+*    Neither the name of Texas Instruments Incorporated nor the names of
+*    its contributors may be used to endorse or promote products derived
+*    from this software without specific prior written permission.
+*
+*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+*  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+*  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+*  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+*  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+*  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+*  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+*  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
 */
 
 #ifndef __STD_NHET_H__
@@ -14,14 +46,18 @@
 
 #include "sys_common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* USER CODE BEGIN (1) */
 /* USER CODE END */
-
-#if defined(_TMS470_BIG) || defined(__big_endian__)
 
 #ifndef HET_v2
 #   define HET_v2 0
 #endif
+
+#if defined(_TMS470_BIG) || defined(__big_endian__)
 
 #ifndef HETBYTE
 #   define HETBYTE uint8
@@ -34,7 +70,6 @@ typedef struct memory_format
   uint32 data_word     ;
   uint32 reserved_word ;
 } HET_MEMORY  ;
- 
 
 /*---------------------------------------------*/
 /* ACMP INSTRUCTION                            */
@@ -624,7 +659,11 @@ typedef struct AND_format
 
 typedef union 
 {
+#ifdef __cplusplus
+  AND_FIELDS  and_cpp ;
+#else
   AND_FIELDS  and ;
+#endif
   HET_MEMORY  memory ;
 } AND_INSTRUCTION;
 
@@ -666,7 +705,11 @@ typedef struct OR_format
 
 typedef union 
 {
+#ifdef __cplusplus
+  OR_FIELDS  or_cpp ;
+#else
   OR_FIELDS  or ;
+#endif
   HET_MEMORY  memory ;
 } OR_INSTRUCTION;
 
@@ -707,7 +750,11 @@ typedef struct XOR_format
 
 typedef union 
 {
+#ifdef __cplusplus
+  XOR_FIELDS  xor_cpp ;
+#else
   XOR_FIELDS  xor ;
+#endif
   HET_MEMORY  memory ;
 } XOR_INSTRUCTION;
 
@@ -1837,7 +1884,11 @@ typedef struct AND_format
 
 typedef union 
 {
+#ifdef __cplusplus
+  AND_FIELDS  and_cpp ;
+#else
   AND_FIELDS  and ;
+#endif
   HET_MEMORY  memory ;
 } AND_INSTRUCTION;
 
@@ -1879,7 +1930,11 @@ typedef struct OR_format
 
 typedef union 
 {
+#ifdef __cplusplus
+  OR_FIELDS  or_cpp ;
+#else
   OR_FIELDS  or ;
+#endif
   HET_MEMORY  memory ;
 } OR_INSTRUCTION;
 
@@ -1921,7 +1976,11 @@ typedef struct XOR_format
 
 typedef union 
 {
+#ifdef __cplusplus
+  XOR_FIELDS  xor_cpp ;
+#else
   XOR_FIELDS  xor ;
+#endif
   HET_MEMORY  memory ;
 } XOR_INSTRUCTION;
 
@@ -2431,6 +2490,10 @@ typedef union
 
 /* USER CODE BEGIN (2) */
 /* USER CODE END */
+
+#ifdef __cplusplus
+}
+#endif /*extern "C" */
 
 #endif
 /*--------------------------- End Of File ----------------------------------*/
