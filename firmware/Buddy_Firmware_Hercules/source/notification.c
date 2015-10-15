@@ -112,10 +112,7 @@ void rtiNotification(uint32 notification)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (9) */
-	if(notification == rtiNOTIFICATION_COMPARE0)
-		gioToggleBit(gioPORTA, 3);
-	if(notification == rtiNOTIFICATION_COMPARE1)
-		gioToggleBit(gioPORTA, 5);
+	rtiSonarNotification(notification);
 /* USER CODE END */
 }
 

@@ -127,29 +127,32 @@ void main(void)
 	adcStartConversion(adcREG1,adcGROUP1);
 	adcEnableNotification(adcREG1, adcGROUP1);
 
-	sciReceive( scilinREG, 2, (unsigned char *)&command[0]);	// Start Serial RX in interrupt mode, wait for 2 bytes for message
 	//hetSIGNAL_t het_sig;
 
 	sonar_sensor sonar1 = {
-			/*&HCSR04*/&US100,
-			0,
-			0,
-			0,
-			0,
-			0,
-			0
+			&US100,						//	Sonar Module for this sensor
+			rtiNOTIFICATION_COMPARE0,	//	RTI Compare Notification
+			3,							//	GIO Port A Pin used for PWM Trigger
+			0,							//	nHET CAP Pin used for PWM Edge
+			Sonar_Disabled,				//	Initialize PWM
+			0,							//	Initialize Timeout Timer
+			0,							//	Initialize Distance
+			false						//	Intialize Timeout Flag
 	};
-	//addSonarSensor(&sonar1);	// Does this work?
-	gioSetDirection(hetPORT1, 0xFFFFFFFF);
-	//RTI 0
-	rtiSetPeriod(rtiCOMPARE0,100000);
-	rtiEnableNotification(rtiNOTIFICATION_COMPARE0);
-	rtiStartCounter(rtiCOUNTER_BLOCK0);
-	//RTI 1
-	rtiSetPeriod(rtiCOMPARE1,150000);
-	rtiEnableNotification(rtiNOTIFICATION_COMPARE1);
-	rtiStartCounter(rtiCOUNTER_BLOCK0);
+	sonar_sensor sonar2 = {
+			&HCSR04,					//	Sonar Module for this sensor
+			rtiNOTIFICATION_COMPARE0,	//	RTI Compare Notification
+			5,							//	GIO Port A Pin used for PWM Trigger
+			1,							//	nHET CAP Pin used for PWM Edge
+			Sonar_Disabled,				//	Initialize PWM
+			0,							//	Initialize Timeout Timer
+			0,							//	Initialize Distance
+			false						//	Intialize Timeout Flag
+	};
+	addSonarSensor(&sonar1);	// Does this work?
+	//addSonarSensor(&sonar2);	// Does this work?
 
+	sciReceive( scilinREG, 2, (unsigned char *)&command[0]);	// Start Serial RX in interrupt mode, wait for 2 bytes for message
 	while(1)
 	{
 		/* Status flag is set to indicate that a new value is latched in the QCPRD register. */
