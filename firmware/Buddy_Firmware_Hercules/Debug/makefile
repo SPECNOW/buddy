@@ -17,6 +17,7 @@ $(GEN_CMDS__FLAG) \
 "./source/esm.obj" \
 "./source/gio.obj" \
 "./source/het.obj" \
+"./source/ir_adc.obj" \
 "./source/lin.obj" \
 "./source/notification.obj" \
 "./source/pinmux.obj" \
@@ -169,8 +170,8 @@ Buddy_Firmware_Hercules.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "source\adc.pp" "source\crc.pp" "source\dac_buddy.pp" "source\defines.pp" "source\eqep.pp" "source\esm.pp" "source\gio.pp" "source\het.pp" "source\lin.pp" "source\notification.pp" "source\pinmux.pp" "source\print_debug.pp" "source\rti.pp" "source\sci.pp" "source\sonar.pp" "source\sys_main.pp" "source\sys_pcr.pp" "source\sys_phantom.pp" "source\sys_selftest.pp" "source\sys_startup.pp" "source\sys_vim.pp" "source\system.pp" "MotorStateMachine\MotorStateMachine.pp" 
-	-$(RM) "source\adc.obj" "source\crc.obj" "source\dabort.obj" "source\dac_buddy.obj" "source\defines.obj" "source\eqep.obj" "source\esm.obj" "source\gio.obj" "source\het.obj" "source\lin.obj" "source\notification.obj" "source\pinmux.obj" "source\print_debug.obj" "source\rti.obj" "source\sci.obj" "source\sonar.obj" "source\sys_core.obj" "source\sys_intvecs.obj" "source\sys_main.obj" "source\sys_mpu.obj" "source\sys_pcr.obj" "source\sys_phantom.obj" "source\sys_pmu.obj" "source\sys_selftest.obj" "source\sys_startup.obj" "source\sys_vim.obj" "source\system.obj" "MotorStateMachine\MotorStateMachine.obj" 
+	-$(RM) "source\adc.pp" "source\crc.pp" "source\dac_buddy.pp" "source\defines.pp" "source\eqep.pp" "source\esm.pp" "source\gio.pp" "source\het.pp" "source\ir_adc.pp" "source\lin.pp" "source\notification.pp" "source\pinmux.pp" "source\print_debug.pp" "source\rti.pp" "source\sci.pp" "source\sonar.pp" "source\sys_main.pp" "source\sys_pcr.pp" "source\sys_phantom.pp" "source\sys_selftest.pp" "source\sys_startup.pp" "source\sys_vim.pp" "source\system.pp" "MotorStateMachine\MotorStateMachine.pp" 
+	-$(RM) "source\adc.obj" "source\crc.obj" "source\dabort.obj" "source\dac_buddy.obj" "source\defines.obj" "source\eqep.obj" "source\esm.obj" "source\gio.obj" "source\het.obj" "source\ir_adc.obj" "source\lin.obj" "source\notification.obj" "source\pinmux.obj" "source\print_debug.obj" "source\rti.obj" "source\sci.obj" "source\sonar.obj" "source\sys_core.obj" "source\sys_intvecs.obj" "source\sys_main.obj" "source\sys_mpu.obj" "source\sys_pcr.obj" "source\sys_phantom.obj" "source\sys_pmu.obj" "source\sys_selftest.obj" "source\sys_startup.obj" "source\sys_vim.obj" "source\system.obj" "MotorStateMachine\MotorStateMachine.obj" 
 	-$(RM) "source\dabort.pp" "source\sys_core.pp" "source\sys_intvecs.pp" "source\sys_mpu.pp" "source\sys_pmu.pp" 
 	-@echo 'Finished clean'
 	-@echo ' '

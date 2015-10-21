@@ -22,6 +22,7 @@ C_SRCS += \
 ../source/esm.c \
 ../source/gio.c \
 ../source/het.c \
+../source/ir_adc.c \
 ../source/lin.c \
 ../source/notification.c \
 ../source/pinmux.c \
@@ -47,6 +48,7 @@ OBJS += \
 ./source/esm.obj \
 ./source/gio.obj \
 ./source/het.obj \
+./source/ir_adc.obj \
 ./source/lin.obj \
 ./source/notification.obj \
 ./source/pinmux.obj \
@@ -82,6 +84,7 @@ C_DEPS += \
 ./source/esm.pp \
 ./source/gio.pp \
 ./source/het.pp \
+./source/ir_adc.pp \
 ./source/lin.pp \
 ./source/notification.pp \
 ./source/pinmux.pp \
@@ -106,6 +109,7 @@ C_DEPS__QUOTED += \
 "source\esm.pp" \
 "source\gio.pp" \
 "source\het.pp" \
+"source\ir_adc.pp" \
 "source\lin.pp" \
 "source\notification.pp" \
 "source\pinmux.pp" \
@@ -131,6 +135,7 @@ OBJS__QUOTED += \
 "source\esm.obj" \
 "source\gio.obj" \
 "source\het.obj" \
+"source\ir_adc.obj" \
 "source\lin.obj" \
 "source\notification.obj" \
 "source\pinmux.obj" \
@@ -166,6 +171,7 @@ C_SRCS__QUOTED += \
 "../source/esm.c" \
 "../source/gio.c" \
 "../source/het.c" \
+"../source/ir_adc.c" \
 "../source/lin.c" \
 "../source/notification.c" \
 "../source/pinmux.c" \

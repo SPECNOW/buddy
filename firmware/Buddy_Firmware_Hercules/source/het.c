@@ -373,7 +373,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Program */
         0x00025440U,
         /* Control */
-        (0x00024007U | (uint32)((uint32)0U << 8U) | (uint32)((uint32)1U << 4U)),
+        (0x00024007U | (uint32)((uint32)0U << 8U) | (uint32)((uint32)2U << 4U)),
         /* Data */
         0x00000000U,
         /* Reserved */
@@ -390,7 +390,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Program */
         0x00027440U,
         /* Control */
-        (0x00026007U | (uint32)((uint32)2U << 8U) | (uint32)((uint32)1U << 4U)),
+        (0x00026007U | (uint32)((uint32)2U << 8U) | (uint32)((uint32)2U << 4U)),
         /* Data */
         0x00000000U,
         /* Reserved */
@@ -1262,7 +1262,7 @@ void hetInit(void)
                   | (uint32) 0x00000008U
                   | (uint32) 0x00000004U
                   | (uint32) 0x00000000U
-                  | (uint32) 0x00000000U;
+                  | (uint32) 0x00000001U;
 
     /** - Set HET pins AND share */
     hetREG1->AND = (uint32) 0x00000000U

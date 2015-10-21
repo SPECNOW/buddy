@@ -43,7 +43,7 @@ void rtiSonarNotification(uint32 notification)
 	unsigned int sonar_index = 0;
 	for(sonar_index = 0; sonar_index < Sonar_Array.number_sensors; sonar_index++)
 	{
-		sonar = Sonar_Array.array + sonar_index;
+		sonar = &Sonar_Array.array[sonar_index];
 		if(notification == sonar->rti_compare)		//	Notification is for selected timer
 		{
 			if(	(sonar->pwm_state == Sonar_Triggered && 0 == gioGetBit(gioPORTA, sonar->trig_pwmpin)) || sonar->_did_i_timeout )	//	The Trigger pin needs to be triggered and The Pin is Low, or there has been a timeout
@@ -53,19 +53,20 @@ void rtiSonarNotification(uint32 notification)
 				sonar->_did_i_timeout = false;
 				sonar->_timeout_timer = 0;
 			}
-			else if(sonar->pwm_state == Sonar_Low && 1 == gioGetBit(gioPORTA, sonar->trig_pwmpin)		//	The Trigger pin needs to be un-triggered and The Pin is High)
+			else if( (sonar->pwm_state == Sonar_Low) && (1 == gioGetBit(gioPORTA, sonar->trig_pwmpin) )		//	The Trigger pin needs to be un-triggered and The Pin is High)
 			)
 			{
 				gioSetBit(gioPORTA, sonar->trig_pwmpin,0);
 			}
-			else
-			{
+			/*else
+			{*/
 				sonar->_timeout_timer++;
 				if(sonar->_timeout_timer > MAX_TIMER)
 				{
+					sonar->_last_distance = -1.0;
 					sonar->_did_i_timeout = true;
 				}
-			}
+			/*}*/
 		}
 	}
 }
@@ -126,6 +127,7 @@ void sonarEdgeNotification(hetBASE_t * hetREG,uint32 edge)
 			//	Calculate distance
 			sensor->_last_distance = (float)het_sig.duty/100.0 * het_sig.period*sensor->module->cm_conversion_factor;
 			sensor->_did_i_timeout = false;      //    Obtains distance
+			sensor->_timeout_timer = 0;
 			/*****/
 
 			/*//pwmStart(hetRAM1, sensor->trig_pwmpin);	//	Restart PWM for Triggering
