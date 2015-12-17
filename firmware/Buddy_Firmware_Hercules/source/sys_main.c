@@ -78,26 +78,12 @@
 /* USER CODE BEGIN (2) */
 //adcData_t adc_data[2];
 
-void delay(int del)
-{
-	int i = del;
-	unsigned int j = 0xFFFF;
-	while(i != 0)
-	{
-		for(j = 0xFFFF; j !=0; j--)
-		{
-
-		}
-		i--;
-	}
-}
 
 /* USER CODE END */
 
 void main(void)
 {
 /* USER CODE BEGIN (3) */
-	_enable_IRQ();
 	adc_data = calloc(6, sizeof(adcData_t));
 
 	//	Initialize Modules
@@ -106,8 +92,10 @@ void main(void)
 	sciInit();
 	QEPInit();
 	adcInit();
-	hetInit();
 	rtiInit();
+	hetInit();
+
+	_enable_IRQ();
 
 	initDAC(&leftDAC, 4, 6, 7, 0);	// CLK, DATA, LOAD, DACNUM
 	initDAC(&rightDAC, 4, 6, 7, 1);	// CLK, DATA, LOAD, DACNUM
@@ -129,8 +117,8 @@ void main(void)
 
 	//hetSIGNAL_t het_sig;
 
-	sonar_sensor sonar1 = {
-			&US100,						//	Sonar Module for this sensor
+	sonar_sensor sonar0 = {
+			&HCSR04,						//	Sonar Module for this sensor
 			rtiNOTIFICATION_COMPARE0,	//	RTI Compare Notification
 			3,							//	GIO Port A Pin used for PWM Trigger
 			0,							//	nHET CAP Pin used for PWM Edge
@@ -139,9 +127,9 @@ void main(void)
 			0,							//	Initialize Distance
 			false						//	Intialize Timeout Flag
 	};
-	sonar_sensor sonar2 = {
+	sonar_sensor sonar1 = {
 			&HCSR04,					//	Sonar Module for this sensor
-			rtiNOTIFICATION_COMPARE0,	//	RTI Compare Notification
+			rtiNOTIFICATION_COMPARE1,	//	RTI Compare Notification
 			5,							//	GIO Port A Pin used for PWM Trigger
 			1,							//	nHET CAP Pin used for PWM Edge
 			Sonar_Disabled,				//	Initialize PWM
@@ -149,8 +137,11 @@ void main(void)
 			0,							//	Initialize Distance
 			false						//	Intialize Timeout Flag
 	};
+	//edgeDisableNotification(hetREG1, 0);
+	//edgeDisableNotification(hetREG1, 1);
+	addSonarSensor(&sonar0);	// Does this work?
 	addSonarSensor(&sonar1);	// Does this work?
-	//addSonarSensor(&sonar2);	// Does this work?
+	//startFirstTrigger(1);
 
 	sciReceive( scilinREG, 2, (unsigned char *)&command[0]);	// Start Serial RX in interrupt mode, wait for 2 bytes for message
 	while(1)
@@ -230,6 +221,11 @@ void main(void)
 			sendDAC(&rightDAC, command[1]);
 			print_debug("RightMotorDAC", "Right Motor command received %d", command[1]);
 			set_right_motor_speed_flag = false;
+		}
+		if(is_conversion_complete)
+		{
+
+			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
 		}
 	}
 /* USER CODE END */

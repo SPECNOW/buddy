@@ -24,6 +24,8 @@ extern bool set_right_motor_speed_flag;
 extern bool set_encoder_switch_flag;
 extern bool print_command_error_flag;
 extern bool print_debug_ADC;
+extern bool get_sonar_sensor;
+extern bool is_conversion_complete;
 
 extern bool adc_data_is_ready;
 
@@ -35,5 +37,7 @@ extern uint16 deltaT;
 extern float current_speed;
 
 adcData_t *adc_data;
+
+void delay(int del);
 
 #endif

@@ -173,6 +173,30 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 			set_right_motor_speed_flag = true;
 			right_motor_speed = command[1];
 		}
+		else if(command[0] == 'S')
+		{
+			if(command[1] == '0')
+			{
+				if(get_sonar_sensor == false)
+				{
+					get_sonar_sensor = true;
+					doSonar(0);
+				}
+			}
+			else if(command[1] == '1')
+			{
+				if(get_sonar_sensor == false)
+				{
+					get_sonar_sensor = true;
+					doSonar(1);
+
+				}
+			}
+			else
+			{
+				print_command_error_flag = true;
+			}
+		}
 		else
 		{
 			print_command_error_flag = true;

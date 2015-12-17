@@ -3,7 +3,7 @@
  * created on Oct 14th, 2015
  * Author: Clark
  */
-
+/*
 #include <stdlib.h>
 include <adc.h>
 
@@ -29,3 +29,6 @@ float getDistance_IR(ir_sensor * sensor);	//Calculate fromt he adc value and ret
 void addIRSensor(ir_sensor * sensor);		//Adds a sensor to the IR array
 int addIRConversion(ir_sensor * sensor);	//Add the sensor to the list to be ADC converted
 int removeIRConversion(ir_sensor *sensor);	//Remove the IR sensor from the ADC conversion list
+
+
+*/

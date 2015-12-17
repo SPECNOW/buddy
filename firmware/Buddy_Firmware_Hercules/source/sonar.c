@@ -30,43 +30,63 @@ void initSonar(sonar_sensor * sonar)
 {
 	if(sonar != NULL)
 	{
-		rtiSetPeriod(rtiCOMPARE0,10 * sonar->module->pulse_width - 1);
-		rtiEnableNotification(sonar->rti_compare);
+		//rtiSetPeriod(rtiCOMPARE0,10 * sonar->module->pulse_width - 1);
+		//rtiEnableNotification(sonar->rti_compare);
+		gioSetBit(gioPORTA, sonar->trig_pwmpin, 0);
 		rtiStartCounter(rtiCOUNTER_BLOCK0);
 		sonar->pwm_state = Sonar_Triggered;
 	}
 }
 
-void rtiSonarNotification(uint32 notification)
+void startFirstTrigger(int highdur)
 {
 	static sonar_sensor *sonar;
 	unsigned int sonar_index = 0;
 	for(sonar_index = 0; sonar_index < Sonar_Array.number_sensors; sonar_index++)
 	{
 		sonar = &Sonar_Array.array[sonar_index];
-		if(notification == sonar->rti_compare)		//	Notification is for selected timer
+		gioSetBit(gioPORTA, sonar->trig_pwmpin, 0);
+	}
+	delay(10000);
+	gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin, 1);
+	hetInit();
+	rtiEnableNotification(getSonarSensor(0)->rti_compare);
+
+
+	//static sonar_sensor *sonar;
+	//unsigned int sonar_index = 0;
+	//for(sonar_index = 0; sonar_index < 1/*Sonar_Array.number_sensors*/; sonar_index++)
+	//{
+	//
+	//	sonar = &Sonar_Array.array[sonar_index];
+	//	rtiEnableNotification(sonar->rti_compare);
+	//	gioSetBit(gioPORTA, sonar->trig_pwmpin,1);
+	//	//edgeEnableNotification(hetREG1, 0);
+	//	//edgeEnableNotification(hetREG1, 1);
+	//	//gioSetBit(gioPORTA, sonar->trig_pwmpin,0);
+	//}
+
+	return;
+}
+
+void rtiSonarNotification(uint32 notification)
+{
+	static sonar_sensor *sonar;
+	unsigned int sonar_index = 0;
+	static int _skip_first_call[32] = {0};
+	_skip_first_call[notification]++;
+	for(sonar_index = 0; sonar_index < Sonar_Array.number_sensors; sonar_index++)
+	{
+		sonar = &Sonar_Array.array[sonar_index];
+		if(notification == sonar->rti_compare && _skip_first_call[notification]%2)		//	Notification is for selected timer
 		{
-			if(	(sonar->pwm_state == Sonar_Triggered && 0 == gioGetBit(gioPORTA, sonar->trig_pwmpin)) || sonar->_did_i_timeout )	//	The Trigger pin needs to be triggered and The Pin is Low, or there has been a timeout
-			{
-				gioSetBit(gioPORTA, sonar->trig_pwmpin,1);
-				sonar->pwm_state = Sonar_Low;
-				sonar->_did_i_timeout = false;
-				sonar->_timeout_timer = 0;
-			}
-			else if( (sonar->pwm_state == Sonar_Low) && (1 == gioGetBit(gioPORTA, sonar->trig_pwmpin) )		//	The Trigger pin needs to be un-triggered and The Pin is High)
-			)
-			{
-				gioSetBit(gioPORTA, sonar->trig_pwmpin,0);
-			}
-			/*else
-			{*/
-				sonar->_timeout_timer++;
-				if(sonar->_timeout_timer > MAX_TIMER)
-				{
-					sonar->_last_distance = -1.0;
-					sonar->_did_i_timeout = true;
-				}
-			/*}*/
+			//clark start
+			rtiDisableNotification( notification );
+			gioSetBit(gioPORTA, sonar->trig_pwmpin,0);
+			sonar->pwm_state = Sonar_Low;
+
+			return;
+			//clark stop
 		}
 	}
 }
@@ -84,7 +104,7 @@ void addSonarSensor(sonar_sensor * sensor)
 
 		if(Sonar_Array.number_sensors != 0 || Sonar_Array.array != NULL)	//	Check if Sensor_Array is empty
 		{
-			memcpy( _new_array, Sonar_Array.array, Sonar_Array.number_sensors*sizeof(sonar_sensor) );	//	Copy Old Sesnors
+			memcpy( _new_array, Sonar_Array.array, Sonar_Array.number_sensors*sizeof(sonar_sensor) );	//	Copy Old sensors
 			memcpy( _new_array + Sonar_Array.number_sensors, sensor, sizeof(sonar_sensor));	//	Add new Sensor to new array
 			free(Sonar_Array.array);	//	Free Old Sensor Data
 		}
@@ -111,29 +131,48 @@ sonar_sensor * getSonarSensor(unsigned int index)
 	return ret;
 }
 
+sonar_sensor * getNextSonar(unsigned int current_index)
+{
+	sonar_sensor * ret = NULL;
+	unsigned int _index = (current_index+1) % Sonar_Array.number_sensors;
+	if(_index < Sonar_Array.number_sensors)
+	{
+		 ret = Sonar_Array.array + _index;
+	}
+	return ret;
+}
+
+void doSonar(uint16_t sonar)
+{
+	getSonarSensor(sonar)->pwm_state = Sonar_Triggered;	//	Set PWM	Flag, signify trig to start
+	gioSetBit(gioPORTA, getSonarSensor(sonar)->trig_pwmpin, 1);
+	rtiEnableNotification(getSonarSensor(sonar)->rti_compare);
+}
+
 void sonarEdgeNotification(hetBASE_t * hetREG,uint32 edge)
 {
 	//	Loop through all sensors in Sonar Array and find which one is interrupted
 	uint16_t sensor_index = 0;
 	for(sensor_index = 0; sensor_index < Sonar_Array.number_sensors; sensor_index++)
 	{
-		sonar_sensor * sensor = Sonar_Array.array + sensor_index;	//	Current Sensor
-		if(edge == sensor->echo_edgepin)	//	Check if this sesnor has been Interrupted
+
+		//CLARK START
+		sonar_sensor * sensor = &Sonar_Array.array[sensor_index];	//	Current Sensor
+		if(edge == sensor->echo_edgepin)	//	Check if this sensor has been Interrupted
 		{
-			/*** NOT YET TESTED HERE ***/
-			//	Get the Latest Capture information
 			hetSIGNAL_t het_sig;
 			capGetSignal(hetRAM1, sensor->echo_edgepin, &het_sig);
 			//	Calculate distance
 			sensor->_last_distance = (float)het_sig.duty/100.0 * het_sig.period*sensor->module->cm_conversion_factor;
-			sensor->_did_i_timeout = false;      //    Obtains distance
-			sensor->_timeout_timer = 0;
-			/*****/
-
-			/*//pwmStart(hetRAM1, sensor->trig_pwmpin);	//	Restart PWM for Triggering
-			startPWM_reg(sensor);*/
-			sensor->pwm_state = Sonar_Triggered;	//	Set PWM	Flag
+			is_conversion_complete = true;
+			get_sonar_sensor = false;
+			//Trigger Next Interrupt
+			//getNextSonar(sensor_index)->pwm_state = Sonar_Triggered;	//	Set PWM	Flag, signify trig to start
+			//gioSetBit(gioPORTA, getNextSonar(sensor_index)->trig_pwmpin, 1);
+			//  set Counter to trip exactly 10 usecs from now somehow!!!! (currently can happen anytime between 10-20 usecs (Okay, not great)
+			//rtiEnableNotification(getNextSonar(sensor_index)->rti_compare);
 		}
+		//CLARK END
 	}
 }
 
@@ -149,43 +188,9 @@ void startPWM_reg(sonar_sensor* sonar)
 void stopPWM_reg(sonar_sensor*sonar)
 {
 	pwmSetDuty(hetRAM1, sonar->trig_pwmpin, 0);
-	//hetPORT1->DCLR |= 1U << 24;
 }
 
 void sonarPwmNotification(hetBASE_t * hetREG,uint32 pwm, uint32 notification)
 {
-	/*
-	//	Loop through all sensors in Sonar Array and find which one is interrupted
-	uint16_t sensor_index = 0;
-	for(sensor_index = 0; sensor_index < Sonar_Array.number_sensors; sensor_index++)
-	{
-		sonar_sensor * sensor = Sonar_Array.array + sensor_index;	//	Current Sesnor
-		if(pwm == sensor->trig_pwmpin) //	Check if this sesnor has been Interrupted
-		{
-			if(sensor->_is_pwm_active)	//	Check if PWM is running (ie, outputting)
-			{
-				sensor->_timeout_timer = 0;		//	Reset Timeout
-				//pwmStop(hetRAM1, pwm);			//	Stop PWM
-				stopPWM_reg(sensor);
-				sensor->_is_pwm_active = false;	//	Clear PWM Flag
-				//_delay(1);
-			}
-			else
-			{
-				sensor->_timeout_timer++;		//	If not running (ie, outputting), increment timeout counter
-			}
 
-			if(sensor->_timeout_timer >= MAX_TIMER)	//	Check if Sensor has timed out
-			{
-				sensor->_last_distance = 0.0; //SENSOR_CLEAR;	//	Set that there is nothing blocking sensro
-				//pwmStart(hetRAM1, pwm);					//	Restart the PWM for Triggering
-				startPWM_reg(sensor);
-				sensor->_is_pwm_active = true;			//	Set the PWM Flag
-				sensor->_did_i_timeout = true;			//  Set the timeout status flag
-			}
-
-			break;	//	Once the interrupted trigger is found, no need to check others, break out of loop
-		}
-	}
-	*/
 }

@@ -15,6 +15,8 @@ bool set_right_motor_speed_flag  = false;
 bool set_encoder_switch_flag = false;
 bool print_command_error_flag = false;
 bool print_debug_ADC = false;
+bool get_sonar_sensor = false;
+bool is_conversion_complete = false;
 
 bool adc_data_is_ready = false;
 
@@ -26,3 +28,19 @@ uint16 deltaT = 0;
 float current_speed = 0;
 
 //adc_data = NULL;
+
+
+
+void delay(int del)
+{
+	int i = del;
+	unsigned int j = 0x0FFF;
+	while(i != 0)
+	{
+		for(j = 0x0FFF; j !=0; j--)
+		{
+
+		}
+		i--;
+	}
+}
