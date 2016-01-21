@@ -149,6 +149,58 @@ void doSonar(uint16_t sonar)
 	rtiEnableNotification(getSonarSensor(sonar)->rti_compare);
 }
 
+void sonarEchoNotification(hetBASE_t * hetREG,uint32 edge)
+{
+	uint32_t isRisingEdge = gioGetBit(hetPORT1, edge);
+	uint32_t _current_time = rtiREG1->CNT[0].FRCx;//rtiGetCurrentTick(rtiCOMPARE0);
+	sonar_sensor * sonar = NULL;
+
+	//Save Start Time
+	uint16_t sonar_index = 0;
+	for(sonar_index= 0; sonar_index < Sonar_Array.number_sensors; sonar_index++)
+	{
+		sonar = getSonarSensor(sonar_index);
+		if(sonar->echo_edgepin == edge)
+		{
+			if(isRisingEdge)
+			{
+				// 	Save Start Time
+				//	Set Print Flag to False
+				sonar->_is_echo_time_valid = false;
+				sonar->echo_start_time = _current_time;
+				//	rtiREG1->CNT[0].UCx = 0;
+			}
+			else	// Falling Edge
+			{
+				//	Save End Time
+				//  Set Print Flag to True
+				sonar->echo_end_time = _current_time;
+				sonar->_is_echo_time_valid = true;
+				sonar->_last_distance = calculateSonarDistance(sonar);
+				is_conversion_complete = true;
+			}
+		}
+	}
+
+}
+
+float calculateSonarDistance(sonar_sensor * sonar)
+{
+	float _delta_time_in_ms = ((float)(sonar->echo_end_time - sonar->echo_start_time))/(100000000.00/(1000000*rtiREG1->CNT[0U].CPUCx));
+	float val = _delta_time_in_ms*sonar->module->cm_conversion_factor;
+
+	if(val < 0)
+	{
+		is_conversion_complete = false;
+	}
+	else
+	{
+		is_conversion_complete = true;
+	}
+
+	return val;
+}
+
 void sonarEdgeNotification(hetBASE_t * hetREG,uint32 edge)
 {
 	//	Loop through all sensors in Sonar Array and find which one is interrupted

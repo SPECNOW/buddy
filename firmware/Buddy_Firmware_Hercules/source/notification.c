@@ -218,27 +218,6 @@ void pwmNotification(hetBASE_t * hetREG,uint32 pwm, uint32 notification)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (35) */
-	sonarPwmNotification(hetREG, pwm, notification);
-//	static uint32_t timeout_timer = 0;
-//	if(pwm == pwm0 /*&& notification == pwmEND_OF_DUTY*/)
-//	{
-//		if(is_pwm0_running)
-//		{
-//			timeout_timer = 0;
-//			pwmStop(hetRAM1, pwm);
-//			is_pwm0_running = false;
-//		}
-//		else
-//		{
-//			timeout_timer++;
-//		}
-//	}
-//
-//	if(timeout_timer >= MAX_TIMER)
-//	{
-//		pwmStart(hetRAM1, pwm0);
-//		is_pwm0_running = true;
-//	}
 /* USER CODE END */
 }
 
@@ -249,12 +228,7 @@ void edgeNotification(hetBASE_t * hetREG,uint32 edge)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (37) */
-	sonarEdgeNotification(hetREG, edge);
-	/*if(edge == edge0)
-	{
-		pwmStart(hetRAM1, pwm0);
-		is_pwm0_running = true;
-	}*/
+	sonarEchoNotification(hetREG, edge);
 /* USER CODE END */
 }
 
@@ -265,7 +239,6 @@ void hetNotification(hetBASE_t *het, uint32 offset)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (39) */
-	while(1);
 /* USER CODE END */
 }
 

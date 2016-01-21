@@ -108,8 +108,8 @@ void main(void)
 	eqepEnableCounter(eqepREG1);	/* Enable Position Counter */
 	eqepEnableCapture(eqepREG1);	/* Enable capture timer and capture period latch. */
 
-	//gioToggleBit( gioPORTA, SW_ENABLE); // ENABLES // not needed?
-	gioSetBit( gioPORTA, SW_ENABLE, 0);
+	//gioToggleBit( gioPORTA, SW_ENABLE); // ENABLES // not needed? <- you ARE RIGHT
+	//gioSetBit( gioPORTA, SW_ENABLE, 0);
 
 	gioSetDirection(hetPORT1, 0x100);	// COpied from ADC example, sets Het8
 	adcStartConversion(adcREG1,adcGROUP1);
@@ -226,6 +226,11 @@ void main(void)
 		{
 
 			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
+			is_conversion_complete = false;
+			rtiEnableNotification(getSonarSensor(0)->rti_compare);
+			rtiEnableNotification(getSonarSensor(1)->rti_compare);
+			//gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
+			gioSetBit(gioPORTA, getSonarSensor(1)->trig_pwmpin,1);
 		}
 	}
 /* USER CODE END */

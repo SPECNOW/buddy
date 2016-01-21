@@ -13,8 +13,13 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#define SW_ENABLE 0
+
+// GIOA ports
+//#define SW_ENABLE 0
 #define SW_SELECT 1
+
+#define SONAR_ECHO_0 0
+#define SONAR_ECHO_1 2
 
 extern unsigned char command[100];
 

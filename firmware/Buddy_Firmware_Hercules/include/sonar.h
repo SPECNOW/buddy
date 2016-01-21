@@ -46,6 +46,9 @@ typedef struct
 	uint32_t _timeout_timer;	//	Timer used to check if Sesnro has timed out
 	float32 _last_distance;		//	Distance returned from latest trigger
 	boolean _did_i_timeout;		//  Returns last state
+	uint32_t echo_start_time;
+	uint32_t echo_end_time;
+	boolean _is_echo_time_valid;
 }sonar_sensor;
 
 //	Struct used to keep track of all sensors in an Array
@@ -74,5 +77,6 @@ void addSonarSensor(sonar_sensor * sonar);		//	Adds a Sensor to the Sonar Array
 sonar_sensor * getSonarSensor(unsigned int index);
 sonar_sensor * getNextSonar(unsigned int index);
 void doSonar(uint16_t sonar);
+float calculateSonarDistance(sonar_sensor * sonar);
 
 #endif /* SONAR_H_ */
