@@ -32,8 +32,7 @@ void initSonar(sonar_sensor * sonar)
 	{
 		//rtiSetPeriod(rtiCOMPARE0,10 * sonar->module->pulse_width - 1);
 		//rtiEnableNotification(sonar->rti_compare);
-		gioSetBit(gioPORTA, sonar->trig_pwmpin, 0);
-		rtiStartCounter(rtiCOUNTER_BLOCK0);
+		//gioSetBit(gioPORTA, sonar->trig_pwmpin, 0);
 		sonar->pwm_state = Sonar_Triggered;
 	}
 }
@@ -80,13 +79,11 @@ void rtiSonarNotification(uint32 notification)
 		sonar = &Sonar_Array.array[sonar_index];
 		if(notification == sonar->rti_compare && _skip_first_call[notification]%2)		//	Notification is for selected timer
 		{
-			//clark start
 			rtiDisableNotification( notification );
 			gioSetBit(gioPORTA, sonar->trig_pwmpin,0);
 			sonar->pwm_state = Sonar_Low;
 
 			return;
-			//clark stop
 		}
 	}
 }
@@ -151,8 +148,9 @@ void doSonar(uint16_t sonar)
 
 void sonarEchoNotification(hetBASE_t * hetREG,uint32 edge)
 {
-	uint32_t isRisingEdge = gioGetBit(hetPORT1, edge);
 	uint32_t _current_time = rtiREG1->CNT[0].FRCx;//rtiGetCurrentTick(rtiCOMPARE0);
+	uint32_t isRisingEdge;
+	//uint32_t isRisingEdge = gioGetBit(hetPORT1, edge);
 	sonar_sensor * sonar = NULL;
 
 	//Save Start Time
@@ -162,6 +160,7 @@ void sonarEchoNotification(hetBASE_t * hetREG,uint32 edge)
 		sonar = getSonarSensor(sonar_index);
 		if(sonar->echo_edgepin == edge)
 		{
+			isRisingEdge = gioGetBit(hetPORT1, sonar->echo_edgepin*2);	//*2 takes care of the problem where edge1 needs to be mapped to nHET pin2 and edge0 needs to be mapped to nHET pin0. Find a better way to fix this later.
 			if(isRisingEdge)
 			{
 				// 	Save Start Time

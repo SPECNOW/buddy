@@ -139,8 +139,11 @@ void main(void)
 	};
 	//edgeDisableNotification(hetREG1, 0);
 	//edgeDisableNotification(hetREG1, 1);
+	rtiStartCounter(rtiCOUNTER_BLOCK0);
 	addSonarSensor(&sonar0);	// Does this work?
+	rtiEnableNotification(getSonarSensor(0)->rti_compare);
 	addSonarSensor(&sonar1);	// Does this work?
+	rtiEnableNotification(getSonarSensor(1)->rti_compare);
 	//startFirstTrigger(1);
 
 	sciReceive( scilinREG, 2, (unsigned char *)&command[0]);	// Start Serial RX in interrupt mode, wait for 2 bytes for message
@@ -227,9 +230,11 @@ void main(void)
 
 			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
 			is_conversion_complete = false;
+
 			rtiEnableNotification(getSonarSensor(0)->rti_compare);
+			gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
+
 			rtiEnableNotification(getSonarSensor(1)->rti_compare);
-			//gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
 			gioSetBit(gioPORTA, getSonarSensor(1)->trig_pwmpin,1);
 		}
 	}

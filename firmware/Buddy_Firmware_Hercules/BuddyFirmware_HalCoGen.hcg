@@ -29,7 +29,7 @@
         <PATH>include\het.h</PATH>
       </HDRHET>
       <SRCHET>
-        <PATH></PATH>
+        <PATH>source\het.c</PATH>
       </SRCHET>
       <HDRHTU_R>
         <PATH>include\reg_htu.h</PATH>
@@ -261,7 +261,8 @@
         <NAME>het.h</NAME>
       </HDRHET>
       <SRCHET>
-        </SRCHET>
+        <NAME>het.c</NAME>
+      </SRCHET>
       <HDRHTU_R>
         <NAME>reg_htu.h</NAME>
       </HDRHTU_R>
