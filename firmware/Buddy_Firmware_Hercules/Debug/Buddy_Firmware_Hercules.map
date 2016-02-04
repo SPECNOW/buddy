@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v5.1.6                      
 ******************************************************************************
->> Linked Wed Jan 27 22:33:15 2016
+>> Linked Wed Feb 03 21:06:07 2016
 
 OUTPUT FILE NAME:   <Buddy_Firmware_Hercules.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 0000afcc

@@ -140,9 +140,9 @@ void main(void)
 	//edgeDisableNotification(hetREG1, 0);
 	//edgeDisableNotification(hetREG1, 1);
 	rtiStartCounter(rtiCOUNTER_BLOCK0);
-	addSonarSensor(&sonar0);	// Does this work?
+	addSonarSensor(&sonar0);
 	rtiEnableNotification(getSonarSensor(0)->rti_compare);
-	addSonarSensor(&sonar1);	// Does this work?
+	addSonarSensor(&sonar1);
 	rtiEnableNotification(getSonarSensor(1)->rti_compare);
 	//startFirstTrigger(1);
 
