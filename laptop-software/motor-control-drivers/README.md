@@ -1,4 +1,0 @@
-buddy
-=====
-
-SPEC Robot
