@@ -51,7 +51,7 @@ local.properties
 .recommenders/
 
 ## Temp Files?
-*.*~
+*~
 
 ## Python Stuff
 # Byte-compiled / optimized / DLL files
