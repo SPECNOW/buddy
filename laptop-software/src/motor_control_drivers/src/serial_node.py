@@ -3,6 +3,10 @@ import random
 import rospy
 import serial
 import sys
+import struct
+import string
+
+from motor_control_drivers.msg import  BuddySerial
 
 class serial_node:
     def __init__(self, node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None):
@@ -13,23 +17,11 @@ class serial_node:
         
         This node once started, will read from serial. Will publish data as it arrives and it's valid flag is set
         """
-        self.serial_buffer=''
-        self.serial_packet=''
+        self.serial_buffer='' #buffer that holds incoming data
+        self.serial_packet='' #packet of 18 bytes to be processed
         self.flg_rdy_to_pub=False #flag if data is valid to pubish
         self.DEBUG_EN=DEBUG_EN
-        
-        self.Packetheader = ord(serial_packet[0])
-        self.ValiData = ord(serial_packet[1])
-        self.EncL = stringtofloat(serial_packet[2:5])
-        self.EncR = stringtofloat(serial_packet[6:9])
-        self.UltraF = ord(serial_packet[10])
-        self.UltraB = ord(serial_packet[11])
-        self.infra = [ord(serial_packet[12]), 
-           ord(serial_packet[13]), 
-           ord(serial_packet[14]), 
-           ord(serial_packet[15]), 
-           ord(serial_packet[16]), 
-           ord(serial_packet[17])]
+        self.rosRate=None #obj for the rospy.Rate()
 
         if publish_rate is None: publish_rate = 100
         if queue_size is None: queue_size = 10
@@ -44,26 +36,45 @@ class serial_node:
         else:
             print("Not subscribing to anything")
             
+        #create publisher  and the serial initialization  
         if node_name is None or serial_port_str is None: #creation of the node
             print("Creating fake node and publish fake data")
+            rospy.init_node("Fake_serial_node")
+            rospy.is_shutdown()
+            self.pub=rospy.Pulisher("Fake_serial_data_topic", BuddySerial, queue_size=queue_size)
         else:
-            ser=initSerial()  #initialize serial port
-            if ser is None:
-                sys.exit("ERROR with serial port")
+            self.ser=initSerial()  #initialize serial port
+            rospy.init_node(node_name)
+            rospy.is_shutdown()
+            self.pub=rospy.Pulisher("BuddySerialParsed_topic", BuddySerial, queue_size=queue_size)
+
+        
+        self.rosRate=rospy.Rate(publish_rate)        
+        if self.ser is None:
+            print("ERROR with serial port, cannot open, will generate fake data")
     
     def startNode(self):
         """
         starts the node running to receive and send out data by publishing and subscribing
         """
-        while True and self.DEBUG_EN:
-            self.readSerial2Buffer(self.ser)
-            print(self.serial_buffer)
+        while True:
+            if self.ser is None: #generate fake data
+                self.serial_buffer = "ff"+"".join(random.sample(string.ascii_lowercase, 16)) # create 18 'bytes' of data of random char
+            else:
+                self.readSerial2Buffer(self.ser)
+            if self.DEBUG_EN:
+                print("SerialBuffer: "+self.serial_buffer)
+                print_data()
             self.clearSerialBuffer()
             
-            ##get data
-            ##compile pkt
-            #publish
-            #sleep
+            self.pkt_process()
+            
+            if self.flg_rdy_to_pub:
+                self.pub.publish(self.parsed_serial_data)
+            else:
+                print("Not ready to publish")
+            self.rosRate.sleep()
+
     
     def initSerial(self, serial_dev_str=None, baud_rate=None):
         """
@@ -98,30 +109,72 @@ class serial_node:
         self.serial_buffer=""
     
  
-    def pkt_process_and_publish(self):
+    def pkt_process(self):
         """
-        check if buffer has more than 18 bytes, then sort bytes into strings, then then publish
+        check if buffer has more than 18 bytes, then sort bytes into strings
         """
-        if len(self.serial_buffer) >= 18:
-            self.serial_packet = self.serial_buffer.pop(18)
+        self.flg_rdy_to_pub = False
+        
+        while self.serial_buffer[0:1] != 'ff' and len(self.serial_buffer)>2:
+            print("ERROR: serial buffer header not ff, shifting it: %s"%self.serial_buffer.pop[0:17])
+            #shift the buffer by 1
+            self.serial_buffer.pop(1) 
+
+        if len(self.serial_buffer)<18:
+            return 1
+
+        self.serial_packet = self.serial_buffer.pop(18)
+        
         self.Packetheader = ord(serialbuffer[0])
-        self.ValiData = ord(serialbuffer[1])
-        self.EncL = stringtofloat(serialbuffer[2:5])
-        self.EncR = stringtofloat(serialbuffer[6:9])
-        self.UltraF = ord(serialbuffer[10])
-        self.UltraB = ord(serialbuffer[11])
-        self.infra = [ord(serialbuffer[12]), 
+        self.ValidData = ord(serialbuffer[1])
+        self.UltraF = ord(serialbuffer[2])
+        self.UltraB = ord(serialbuffer[3])
+        self.EncL = stringtofloat(serialbuffer[4:8])
+        self.EncR = stringtofloat(serialbuffer[8:12])
+        self.Infra = [ord(serialbuffer[12]), 
            ord(serialbuffer[13]), 
            ord(serialbuffer[14]), 
            ord(serialbuffer[15]), 
            ord(serialbuffer[16]), 
            ord(serialbuffer[17])]
+           
+        #fill up the info to be published
+        self.parsed_serial_data= BuddySerial(Packetheader=self.Packetheader, ValidData=self.ValidData
+                                        UltraF=self.UltraF, UltraB=self.UltraF,
+                                        EncL=self.EncL, EncR=self.EncR,
+                                        Infra0=self.Infra0, Infra1=self.Infra1, Infra2=self.Infra2,
+                                        Infra3=self.Infra3, Infra4=self.Infra4, Infra5=self.Infra5)
+        rospy.loginfo(self.parsed_serial_data)
+        self.flg_rdy_to_pub = True
+        return 0
  
-def stringtofloat(string):
-  return float(ord(string[0])<< 3 + ord(string[1]) << 2 + ord(string[2]) << 1 + ord(string[3]))
+    def print_data(self):
+        """
+        used for debug, print out the data
+        """
+        print("DEBUG Packet Print - Buffer size: %s" %len(self.serial_buffer))
+        print("Packet Header: %s, Valid Data: %s" %(self.Packetheader, self.ValidData))
+        print("EncoderL: %s, EncoderR: %s"%(self.EncL, self.EncR))
+        print("UltraF: %s, UltraB: %s"%(self.UltraF, self.UltraB))
+        print("Infra: "),
+        print(self.infra)
+        
+def stringtofloat4(string):
+    """
+    4 character input
+    little endian input
+    """
+    if len(string) != 4:
+        print("ERROR: string %s is not 4 char long"%string)
+        raise
+        return -1
+    else:
+        return struct.unpack('>f', string[::-1])[0]
+        
+    return 0
   
 if __name__=='__main__':
-    print("Trying to read from serial and publish (fake) data")
+    print("Trying to read from serial and publish (fake)? data")
     
     try:
     #self, node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None):
