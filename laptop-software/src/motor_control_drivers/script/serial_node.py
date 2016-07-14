@@ -6,7 +6,7 @@ import sys
 import struct
 import string
 
-from motor_control_drivers.msg import  BuddySerial
+from msgTutorial.msg import BuddySerial
 
 class serial_node:
     def __init__(self, node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None):
@@ -41,12 +41,12 @@ class serial_node:
             print("Creating fake node and publish fake data")
             rospy.init_node("Fake_serial_node")
             rospy.is_shutdown()
-            self.pub=rospy.Pulisher("Fake_serial_data_topic", BuddySerial, queue_size=queue_size)
+            self.pub=rospy.Publisher("Fake_serial_data_topic", BuddySerial, queue_size=queue_size)
         else:
-            self.ser=initSerial()  #initialize serial port
+            self.ser=self.initSerial()  #initialize serial port
             rospy.init_node(node_name)
             rospy.is_shutdown()
-            self.pub=rospy.Pulisher("BuddySerialParsed_topic", BuddySerial, queue_size=queue_size)
+            self.pub=rospy.Publisher("BuddySerialParsed_topic", BuddySerial, queue_size=queue_size)
 
         
         self.rosRate=rospy.Rate(publish_rate)        
@@ -64,7 +64,7 @@ class serial_node:
                 self.readSerial2Buffer(self.ser)
             if self.DEBUG_EN:
                 print("SerialBuffer: "+self.serial_buffer)
-                print_data()
+                self.print_data()
             self.clearSerialBuffer()
             
             self.pkt_process()
@@ -90,8 +90,7 @@ class serial_node:
           ser.open()
           return ser
         except serial.serialutil.SerialException:
-            print("Cannot Open serial port %s with baud rate %s" %(serial_dev_str, baud_rate)
-      
+            print("Cannot Open serial port %s with baud rate %s" %(serial_dev_str, baud_rate))
         return None
 
     def readSerial2Buffer(self, serial_inst):
@@ -139,11 +138,13 @@ class serial_node:
            ord(serialbuffer[17])]
            
         #fill up the info to be published
-        self.parsed_serial_data= BuddySerial(Packetheader=self.Packetheader, ValidData=self.ValidData
-                                        UltraF=self.UltraF, UltraB=self.UltraF,
-                                        EncL=self.EncL, EncR=self.EncR,
-                                        Infra0=self.Infra0, Infra1=self.Infra1, Infra2=self.Infra2,
-                                        Infra3=self.Infra3, Infra4=self.Infra4, Infra5=self.Infra5)
+        self.parsed_serial_data= BuddySerial(
+            Packetheader=self.Packetheader, 
+            ValidData=self.ValidData,
+            UltraF=self.UltraF, UltraB=self.UltraF,
+            EncL=self.EncL, EncR=self.EncR,
+            Infra0=self.Infra0, Infra1=self.Infra1, Infra2=self.Infra2, Infra3=self.Infra3, Infra4=self.Infra4, Infra5=self.Infra5
+        )
         rospy.loginfo(self.parsed_serial_data)
         self.flg_rdy_to_pub = True
         return 0
