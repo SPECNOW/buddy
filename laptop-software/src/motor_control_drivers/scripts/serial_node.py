@@ -57,7 +57,7 @@ class serial_node:
         """
         starts the node running to receive and send out data by publishing and subscribing
         """
-        while True:
+        while not rospy.is_shutdown():
             if self.ser is None: #generate fake data
                 self.serial_buffer = "ff"+"".join(random.sample(string.ascii_lowercase, 16)) # create 18 'bytes' of data of random char
             else:
