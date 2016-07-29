@@ -17,15 +17,25 @@ class serial_node:
         
         This node once started, will read from serial. Will publish data as it arrives and it's valid flag is set
         """
-        self.serial_buffer='' #buffer that holds incoming data
-        self.serial_packet='' #packet of 18 bytes to be processed
-        self.flg_rdy_to_pub=False #flag if data is valid to pubish
+        self.serial_buffer = ''     #buffer that holds incoming data
+        self.serial_packet = ''     #packet of 18 bytes to be processed
+        self.flg_rdy_to_pub = False #flag if data is valid to pubish
         self.DEBUG_EN=DEBUG_EN
-        self.rosRate=None #obj for the rospy.Rate()
-
-        if publish_rate is None: publish_rate = 100
-        if queue_size is None: queue_size = 10
+        self.rosRate = None         #obj for the rospy.Rate()
+        self.ser = None
         
+        self.Packetheader = \
+        self.ValidData = \
+        self.UltraF = \
+        self.UltraB = \
+        self.EncL = \
+        self.EncR = ""
+        self.Infra = [""]*6
+
+        if publish_rate is None: 
+            publish_rate = 100
+        if queue_size is None: 
+            queue_size = 10
 
         if subscription_names is not None and isinstance(subscription_names, list): # if it is passed and a list
             print("Subscribed to: ")
@@ -62,10 +72,11 @@ class serial_node:
                 self.serial_buffer = "ff"+"".join(random.sample(string.ascii_lowercase, 16)) # create 18 'bytes' of data of random char
             else:
                 self.readSerial2Buffer(self.ser)
+           
             if self.DEBUG_EN:
-                print("SerialBuffer: "+self.serial_buffer)
+                print("SerialBuffer: "+ self.serial_buffer)
                 self.print_data()
-            self.clearSerialBuffer()
+            # self.clearSerialBuffer()
             
             self.pkt_process()
             
@@ -114,15 +125,16 @@ class serial_node:
         """
         self.flg_rdy_to_pub = False
         
-        while self.serial_buffer[0:1] != 'ff' and len(self.serial_buffer)>2:
-            print("ERROR: serial buffer header not ff, shifting it: %s"%self.serial_buffer.pop[0:17])
+        while self.serial_buffer[0:1].lower() != 'ff' and not len(self.serial_buffer) > 2:
+            print("ERROR: serial buffer header not ff, shifting it: %s" % sedlf.serial_buffer[0:17])
             #shift the buffer by 1
             self.serial_buffer.pop(1) 
 
-        if len(self.serial_buffer)<18:
+        if len(self.serial_buffer) < 18:
+            print("ERROR: serial package is too short. Is only " + str(len(self.serial_buffer)))
             return 1
 
-        self.serial_packet = self.serial_buffer.pop(18)
+        self.serial_packet = self.serial_buffer[0:17]
         
         self.Packetheader = ord(serialbuffer[0])
         self.ValidData = ord(serialbuffer[1])
@@ -158,7 +170,7 @@ class serial_node:
         print("EncoderL: %s, EncoderR: %s"%(self.EncL, self.EncR))
         print("UltraF: %s, UltraB: %s"%(self.UltraF, self.UltraB))
         print("Infra: "),
-        print(self.infra)
+        print(self.Infra)
         
 def stringtofloat4(string):
     """
@@ -178,8 +190,8 @@ if __name__=='__main__':
     print("Trying to read from serial and publish (fake)? data")
     
     try:
-    #self, node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None):
-        FakeSerial=serial_node(node_name='FakeSerial', serial_port_str='ttyUSB0', DEBUG_EN=True)
+        #node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None
+        FakeSerial = serial_node(node_name='FakeSerial', serial_port_str=None, publish_rate = 10, DEBUG_EN=True)
         FakeSerial.startNode()
     except rospy.ROSInterruptException:
         pass
