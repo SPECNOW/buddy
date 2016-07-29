@@ -136,18 +136,18 @@ class serial_node:
 
         self.serial_packet = self.serial_buffer[0:17]
         
-        self.Packetheader = ord(serialbuffer[0])
-        self.ValidData = ord(serialbuffer[1])
-        self.UltraF = ord(serialbuffer[2])
-        self.UltraB = ord(serialbuffer[3])
-        self.EncL = stringtofloat(serialbuffer[4:8])
-        self.EncR = stringtofloat(serialbuffer[8:12])
-        self.Infra = [ord(serialbuffer[12]), 
-           ord(serialbuffer[13]), 
-           ord(serialbuffer[14]), 
-           ord(serialbuffer[15]), 
-           ord(serialbuffer[16]), 
-           ord(serialbuffer[17])]
+        self.Packetheader = ord(self.serial_buffer[0])
+        self.ValidData = ord(self.serial_buffer[1])
+        self.UltraF = ord(self.serial_buffer[2])
+        self.UltraB = ord(self.serial_buffer[3])
+        self.EncL = stringtofloat4(self.serial_buffer[4:8])
+        self.EncR = stringtofloat4(self.serial_buffer[8:12])
+        self.Infra = [ord(self.serial_buffer[12]), 
+           ord(self.serial_buffer[13]), 
+           ord(self.serial_buffer[14]), 
+           ord(self.serial_buffer[15]), 
+           ord(self.serial_buffer[16]), 
+           ord(self.serial_buffer[17])]
            
         #fill up the info to be published
         self.parsed_serial_data= BuddySerial(
@@ -155,7 +155,7 @@ class serial_node:
             ValidData=self.ValidData,
             UltraF=self.UltraF, UltraB=self.UltraF,
             EncL=self.EncL, EncR=self.EncR,
-            Infra0=self.Infra0, Infra1=self.Infra1, Infra2=self.Infra2, Infra3=self.Infra3, Infra4=self.Infra4, Infra5=self.Infra5
+            Infra0=self.Infra[0], Infra1=self.Infra[1], Infra2=self.Infra[2], Infra3=self.Infra[3], Infra4=self.Infra[4], Infra5=self.Infra[5]
         )
         rospy.loginfo(self.parsed_serial_data)
         self.flg_rdy_to_pub = True
