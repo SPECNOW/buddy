@@ -6,7 +6,7 @@ import sys
 import struct
 import string
 
-from msgTutorial.msg import BuddySerial
+from motor_control_drivers.msg import BuddySerial
 
 class serial_node:
     def __init__(self, node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None):

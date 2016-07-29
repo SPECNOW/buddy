@@ -1,6 +1,8 @@
 #/usr/bin/sh
-SCRIPTPATH=`pwd -P`
-CURRENTPATH=`dirname $SCRIPTPATH`
+#SCRIPTPATH=`pwd -P`
+#SCRIPTPATH=`$FILE`
+CURRENTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+#CURRENTPATH=`dirname $SCRIPTPATH`
 ROS_PACKAGE_PATH=$CURRENTPATH/motor_control_drivers:$ROS_PACKAGE_PATH
 ROS_PYTHON_PATH=$CURRENTPATH/../devel/lib/python2.7/dist-packages/:$PYTHONPATH
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH
