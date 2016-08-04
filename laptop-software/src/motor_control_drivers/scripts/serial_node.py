@@ -69,7 +69,7 @@ class serial_node:
         """
         while not rospy.is_shutdown():
             if self.ser is None: #generate fake data
-                self.serial_buffer = "\xff"+"".join(random.sample(string.ascii_lowercase, 17)) # create 18 'bytes' of data of random char
+                self.serial_buffer = "00\xff"+"".join(random.sample(string.ascii_lowercase, 17)) # create 18 'bytes' of data of random char
             else:
                 self.readSerial2Buffer(self.ser)
            
@@ -125,29 +125,31 @@ class serial_node:
         """
         self.flg_rdy_to_pub = False
         
-        while self.serial_buffer[0:1].lower() != 'ff' and not len(self.serial_buffer) > 2:
-            print("ERROR: serial buffer header not ff, shifting it: %s" % sedlf.serial_buffer[0:17])
+        while self.serial_buffer[0:1].lower() != '\xff' and len(self.serial_buffer) > 18:
+            print("ERROR: serial buffer header not 0xFF, shifting it: %s" % self.serial_buffer[0:17])
             #shift the buffer by 1
-            self.serial_buffer.pop(1) 
+            self.serial_buffer = self.serial_buffer[1:]
 
         if len(self.serial_buffer) < 18:
             print("ERROR: serial package is too short. Is only " + str(len(self.serial_buffer)))
             return 1
 
-        self.serial_packet = self.serial_buffer[0:17]
+        self.serial_packet = self.serial_buffer[0:18]
+        self.serial_buffer = self.serial_buffer[17:]
         
-        self.Packetheader = ord(self.serial_buffer[0])
-        self.ValidData = ord(self.serial_buffer[1])
-        self.UltraF = ord(self.serial_buffer[2])
-        self.UltraB = ord(self.serial_buffer[3])
-        self.EncL = stringtofloat4(self.serial_buffer[4:8])
-        self.EncR = stringtofloat4(self.serial_buffer[8:12])
-        self.Infra = [ord(self.serial_buffer[12]), 
-           ord(self.serial_buffer[13]), 
-           ord(self.serial_buffer[14]), 
-           ord(self.serial_buffer[15]), 
-           ord(self.serial_buffer[16]), 
-           ord(self.serial_buffer[17])]
+        self.Packetheader = ord(self.serial_packet[0])
+        self.ValidData = ord(self.serial_packet[1])
+        self.UltraF = ord(self.serial_packet[2])
+        self.UltraB = ord(self.serial_packet[3])
+        self.EncL = stringtofloat4(self.serial_packet[4:8])
+        self.EncR = stringtofloat4(self.serial_packet[8:12])
+        self.Infra = \
+           [ord(self.serial_packet[12]), 
+           ord(self.serial_packet[13]), 
+           ord(self.serial_packet[14]), 
+           ord(self.serial_packet[15]), 
+           ord(self.serial_packet[16]), 
+           ord(self.serial_packet[17])]
            
         #fill up the info to be published
         self.parsed_serial_data= BuddySerial(
@@ -165,7 +167,7 @@ class serial_node:
         """
         used for debug, print out the data
         """
-        print("DEBUG Packet Print - Buffer size: %s" %len(self.serial_buffer))
+        print("DEBUG Packet Print - Buffer size: %s" %len(self.serial_packet))
         print("Packet Header: %s, Valid Data: %s" %(self.Packetheader, self.ValidData))
         print("EncoderL: %s, EncoderR: %s"%(self.EncL, self.EncR))
         print("UltraF: %s, UltraB: %s"%(self.UltraF, self.UltraB))
