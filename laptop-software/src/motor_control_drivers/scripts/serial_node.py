@@ -69,7 +69,7 @@ class serial_node:
         """
         while not rospy.is_shutdown():
             if self.ser is None: #generate fake data
-                self.serial_buffer = "ff"+"".join(random.sample(string.ascii_lowercase, 16)) # create 18 'bytes' of data of random char
+                self.serial_buffer = "\xff"+"".join(random.sample(string.ascii_lowercase, 17)) # create 18 'bytes' of data of random char
             else:
                 self.readSerial2Buffer(self.ser)
            
