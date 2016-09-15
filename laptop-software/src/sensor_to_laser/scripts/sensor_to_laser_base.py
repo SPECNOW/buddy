@@ -11,12 +11,6 @@ want it to look like.
 from sensor_msgs.msg import LaserScan
 from motor_control_drivers.msg import BuddySerial
 
-class sensor_manager:
-    def __init__(self, number_of_sensors, node_name, node_topic, publish_rate, queue_size):
-        """
-        Function for initializing 
-            * Subscribe to the BuddyMsg Topic
-            * Create an array for Sensors to manage/instantiate them            	
         """
         rospy.init_node(node_name)
         rospy.is_shutdown()
@@ -25,20 +19,15 @@ class sensor_manager:
             self.sensor_array.append(
                 sensor_to_laser_base()
             )
-        return
 
-    def callback(self, data):
-        """
-            * Update releveant Managed sensors
-        """
-	for sensor in self.sensor_array:
-            sensor.setData(data.Infra[self.sensor_array.index(sensor)])
-        return
+       """
 
 class sensor_to_laser_base:
     def __init__(self, node_topic, queue_size, publish_rate, number_of_datapoints=10):
         """
         * initialize stuff 
+	* create a publisher instance
+        * each instance should be 
         """
         self.data = None
         self.number_of_datapoints = number_of_datapoints
@@ -49,19 +38,23 @@ class sensor_to_laser_base:
     def startPublishing(self):
         """
         start publishing the data
+        function call is blocking will not return till shutdown
         """
         while not rospy.is_shutdown():
-            (ranges, intensities) = self.getData()
+            (ranges, intensities) = self.getData_laserScan()
             FakeLaserScan= LaserScan(ranges=ranges, intensities=intensities)
             self.pub.publish(FakeLaserScan)
             self.rate.sleep()
         return
 
     def setData(self, data):
+        """
+        for the controller to set the data
+        """
         self.data = data
         return
 
-    def getData(self,num_samples=10):
+    def getData_laserScan(self,num_samples=10):
     	"""
     	This getData function needs to be overloaded, else default it will work
     	"""
