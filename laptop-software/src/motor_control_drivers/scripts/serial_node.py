@@ -155,9 +155,10 @@ class serial_node:
         self.parsed_serial_data= BuddySerial(
             Packetheader=self.Packetheader, 
             ValidData=self.ValidData,
-            UltraF=self.UltraF, UltraB=self.UltraF,
-            EncL=self.EncL, EncR=self.EncR,
-            Infra0=self.Infra[0], Infra1=self.Infra[1], Infra2=self.Infra[2], Infra3=self.Infra[3], Infra4=self.Infra[4], Infra5=self.Infra[5]
+            Ultra= [self.UltraF, self.UltraF],
+            EncL=self.EncL, 
+            EncR=self.EncR,
+            Infra= [self.Infra[0], self.Infra[1], self.Infra[2], self.Infra[3], self.Infra[4], self.Infra[5]]
         )
         rospy.loginfo(self.parsed_serial_data)
         self.flg_rdy_to_pub = True

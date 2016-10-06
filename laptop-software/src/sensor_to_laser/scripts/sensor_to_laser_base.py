@@ -15,27 +15,38 @@ from sensor_msgs.msg import LaserScan
 from motor_control_drivers.msg import BuddySerial
 
 class sensor_to_laser_base:
-    def __init__(self, node_topic, queue_size, publish_rate, number_of_datapoints=10):
+    def __init__(self, node_name, node_topic, queue_size, publish_rate, number_of_datapoints=10):
         """
         * initialize stuff 
-	* create a publisher instance
+        * create a publisher instance
         * each instance should be 
         """
-	self.data_source_topic # = rospy.get_param(someParam)
-	self.sensor_number # = rospy.get_param(someParam)
-	self.publish_topic # = rospy.get_param(someParam) + sensor_number
-	self.sensor_width_angle # = rospy.get_param(someParam)
-	self.sensor_min_value # = rospy.get_param(someParam)
-	self.sensor_max_value # = rospy.get_param(someParam)
-	self.sensor_scale_factor # = rospy.get_param(someParam)
-	self.valid_data_mask # = rospy.get_param(someParam)
-
         rospy.init_node(node_name)
-	self.sub = rospy.Subscriber(data_source_topic, BuddySerial, proccessData)
+        self.number_of_datapoints = number_of_datapoints
         self.rate = rospy.Rate(publish_rate)
-        self.pub = rospy.Publisher(publish_topic, LaserScan, queue_size=queue_size)
+        
+        self.data_source_topic = rospy.get_param("topicIn", "/Fake_serial_data_topic")
+        self.sensor_number = int(rospy.get_param("sensorNum", "0"))
+        self.data_dest_topic = rospy.get_param("topicOut", "Fake_sensor_data") + str(self.sensor_number)
+        self.sensor_scale_factor = float(rospy.get_param("sensorScale", '1'))
+        self.valid_data_mask = int(rospy.get_param("validMask", "16")) # bit 4, UntraA
+        self.sensor_type = rospy.get_param("sensorType","Ultra")
+
+        sensor_width_angle = float(rospy.get_param("sensorAngleRad", "0.31415692"))
+        sensor_min_value = float(rospy.get_param("sensorMinDistM", "1")) #in meters
+        sensor_max_value = float(rospy.get_param("sensorMaxDistM","5")) # in meters
+
+        self.sub = rospy.Subscriber(self.data_source_topic, BuddySerial, self.processData)
+        self.pub = rospy.Publisher(self.data_dest_topic, LaserScan, queue_size=queue_size)
+        
+        self.sensor_LaserScan = LaserScan(ranges = [0], intensities = [0] )
+        self.sensor_LaserScan.angle_min = -sensor_width_angle/2 #rad
+        self.sensor_LaserScan.angle_max = sensor_width_angle/2  #rad
+        self.sensor_LaserScan.angle_increment = sensor_width_angle/self.number_of_datapoints    # rad
+        self.sensor_LaserScan.range_min = sensor_min_value  # m
+        self.sensor_LaserScan.range_max = sensor_max_value  # m
         # rospy.is_shutdown() # Does this do anything?
-	return
+        return
 
     def startPublishing(self):
         """
@@ -43,25 +54,24 @@ class sensor_to_laser_base:
         function call is blocking will not return till shutdown
         """
         while not rospy.is_shutdown():
-            (ranges, intensities) = self.getData_laserScan()
-            FakeLaserScan= LaserScan(ranges=ranges, intensities=intensities)
-            self.pub.publish(FakeLaserScan)
+            self.pub.publish(self.sensor_LaserScan)
             self.rate.sleep()
         return
-
-    def getData_laserScan(self,num_samples=10):
-    	"""
-    	This getData function needs to be overloaded, else default it will work
-    	"""
-        ranges = [random.random()*10 for i in range(self.number_of_datapoints)]
-        intensities = [1 for i in range(self.number_of_datapoints)]
-        return ranges, intensities
     
     def processData(self, data):
-        # CHeck if interested data has changed
-	if data.ValidData && self.valid_data_mask:
-	    # Extarct Data, convert Data, and Publish Data
-	return
+        # Check if interested data has changed
+        distance = 0
+        if data.ValidData & self.valid_data_mask:            
+            # Extarct Data, convert Data, and Publish Data
+            if self.sensor_type.lower() == "ultra".lower():
+                distance =  float(ord(data.Ultra[self.sensor_number]))*self.sensor_scale_factor
+            else:
+                distance =  data.Infra[self.sensor_number]*self.sensor_scale_factor
+            self.sensor_LaserScan.ranges = [distance]*self.number_of_datapoints
+            self.sensor_LaserScan.intensities = [1]*self.number_of_datapoints
+        else:
+            pass
+        return
 
 if __name__=='__main__':
     try:
@@ -69,4 +79,3 @@ if __name__=='__main__':
         FakeLaser.startPublishing()
     except rospy.ROSInterruptException:
         pass
-
