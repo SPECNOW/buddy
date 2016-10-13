@@ -1,0 +1,144 @@
+<!-- first launch file to launch buddy -->
+<launch>
+    <group ns="serialParser">
+        <node pkg="motor_control_drivers" name="serial" type="serial_node.py">
+            <!--<param name="comPort" value="/dev/USBTTY0"/>-->
+            <param name="topicOut" value="buddySerial"/>
+            <param name="publishRate" value=""/>
+            <param name="debugEnable" value="True"/>
+        </node>
+    </group>
+
+    <group ns="ultra0">
+        <node pkg="sensor_to_laser" name="laserScan" type="sensor_to_laser_base.py">
+            <param name="topicIn" value="buddySerial"/>
+            <param name="sensorNum" value="0"/>
+            <param name="topicOut" value="ultra"/>
+            <param name="sensorScale" value="1"/>
+            <param name="validMask" value="16"/>
+            <param name="sensorType" value="Ultra"/>
+            <param name="sensorAngleRad" value="0.31415692"/>
+            <param name="sensorMinDistM" value="5"/>
+            <param name="sensorMaxDistM" value="400"/>
+            <param name="numberDataPoints" value="10"/>
+        </node>
+    </group>
+
+    <group ns="ultra1">
+        <node pkg="sensor_to_laser" name="laserScan" type="sensor_to_laser_base.py">
+            <param name="topicIn" value="buddySerial"/>
+            <param name="sensorNum" value="1"/>
+            <param name="topicOut" value="ultra"/>
+            <param name="sensorScale" value="1"/>
+            <param name="validMask" value="32"/>
+            <param name="sensorType" value=""/>
+            <param name="sensorAngleRad" value="0.31415692"/>
+            <param name="sensorMinDistM" value="5"/>
+            <param name="sensorMaxDistM" value="400"/>
+            <param name="numberDataPoints" value="10"/>
+        </node>
+    </group>
+
+    <group ns="infra0">
+        <node pkg="sensor_to_laser" name="laserScan" type="sensor_to_laser_base.py">
+            <param name="topicIn" value="buddySerial"/>
+            <param name="sensorNum" value="0"/>
+            <param name="topicOut" value="infra"/>
+            <param name="sensorScale" value="1"/>
+            <param name="validMask" value="8"/>
+            <param name="sensorType" value="infra"/>
+            <param name="sensorAngleRad" value=""/>
+            <param name="sensorMinDistM" value="2"/>
+            <param name="sensorMaxDistM" value="18"/>
+            <param name="numberDataPoints" value="10"/>
+        </node>
+    </group>
+
+    <group ns="infra0">
+        <node pkg="sensor_to_laser" name="laserScan" type="sensor_to_laser_base.py">
+            <param name="topicIn" value="buddySerial"/>
+            <param name="sensorNum" value="1"/>
+            <param name="topicOut" value="infra"/>
+            <param name="sensorScale" value="1"/>
+            <param name="validMask" value="8"/>
+            <param name="sensorType" value="infra"/>
+            <param name="sensorAngleRad" value=""/>
+            <param name="sensorMinDistM" value="2"/>
+            <param name="sensorMaxDistM" value="18"/>
+            <param name="numberDataPoints" value="10"/>
+        </node>
+    </group>
+
+    <group ns="infra0">
+        <node pkg="sensor_to_laser" name="laserScan" type="sensor_to_laser_base.py">
+            <param name="topicIn" value="buddySerial"/>
+            <param name="sensorNum" value="2"/>
+            <param name="topicOut" value="infra"/>
+            <param name="sensorScale" value="1"/>
+            <param name="validMask" value="8"/>
+            <param name="sensorType" value="infra"/>
+            <param name="sensorAngleRad" value=""/>
+            <param name="sensorMinDistM" value="2"/>
+            <param name="sensorMaxDistM" value="18"/>
+            <param name="numberDataPoints" value="10"/>
+        </node>
+    </group>
+
+    <group ns="infra0">
+        <node pkg="sensor_to_laser" name="laserScan" type="sensor_to_laser_base.py">
+            <param name="topicIn" value="buddySerial"/>
+            <param name="sensorNum" value="3"/>
+            <param name="topicOut" value="infra"/>
+            <param name="sensorScale" value="1"/>
+            <param name="validMask" value="8"/>
+            <param name="sensorType" value="infra"/>
+            <param name="sensorAngleRad" value=""/>
+            <param name="sensorMinDistM" value="2"/>
+            <param name="sensorMaxDistM" value="18"/>
+            <param name="numberDataPoints" value="10"/>
+        </node>
+    </group>
+
+    <group ns="infra0">
+        <node pkg="sensor_to_laser" name="laserScan" type="sensor_to_laser_base.py">
+            <param name="topicIn" value="buddySerial"/>
+            <param name="sensorNum" value="4"/>
+            <param name="topicOut" value="infra"/>
+            <param name="sensorScale" value="1"/>
+            <param name="validMask" value="8"/>
+            <param name="sensorType" value="infra"/>
+            <param name="sensorAngleRad" value=""/>
+            <param name="sensorMinDistM" value="2"/>
+            <param name="sensorMaxDistM" value="18"/>
+            <param name="numberDataPoints" value="10"/>
+        </node>
+    </group>
+
+    <group ns="infra0">
+        <node pkg="sensor_to_laser" name="laserScan" type="sensor_to_laser_base.py">
+            <param name="topicIn" value="buddySerial"/>
+            <param name="sensorNum" value="5"/>
+            <param name="topicOut" value="infra"/>
+            <param name="sensorScale" value="1"/>
+            <param name="validMask" value="8"/>
+            <param name="sensorType" value="infra"/>
+            <param name="sensorAngleRad" value=""/>
+            <param name="sensorMinDistM" value="2"/>
+            <param name="sensorMaxDistM" value="18"/>
+            <param name="numberDataPoints" value="10"/>
+        </node>
+    </group>
+    
+    <node pkg="tf" type="static_transform_publisher" name="infra0" args="1 0 0 0 0 0 1 link1_parent link1 100" />
+    <node pkg="tf" type="static_transform_publisher" name="infra1" args="1 0 0 0 0 0 1 link1_parent link1 100" />
+    <node pkg="tf" type="static_transform_publisher" name="infra2" args="1 0 0 0 0 0 1 link1_parent link1 100" />
+    <node pkg="tf" type="static_transform_publisher" name="infra3" args="1 0 0 0 0 0 1 link1_parent link1 100" />
+    <node pkg="tf" type="static_transform_publisher" name="infra4" args="1 0 0 0 0 0 1 link1_parent link1 100" />
+    <node pkg="tf" type="static_transform_publisher" name="infra5" args="1 0 0 0 0 0 1 link1_parent link1 100" />
+    
+    <node pkg="tf" type="static_transform_publisher" name="ultra0" args="1 0 0 0 0 0 1 link1_parent link1 100" />
+    <node pkg="tf" type="static_transform_publisher" name="ultra1" args="1 0 0 0 0 0 1 link1_parent link1 100" />
+    
+    
+
+</launch>

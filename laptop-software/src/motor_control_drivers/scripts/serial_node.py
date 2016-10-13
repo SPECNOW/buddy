@@ -17,10 +17,14 @@ class serial_node:
         
         This node once started, will read from serial. Will publish data as it arrives and it's valid flag is set
         """
+        serial_port_str = rospy.get_param("comPort", "") if rospy.get_param("comPort", None) else None 
+        publish_rate = float(rospy.get_param("publishRate", "10.0"))
+        publish_topic = rospy.get_param("topicOut", "Fake_serial_data_topic")
+        self.DEBUG_EN = rospy.get_param("debugEnable", "True").toUpper() == "TRUE"
+        
         self.serial_buffer = ''     #buffer that holds incoming data
         self.serial_packet = ''     #packet of 18 bytes to be processed
         self.flg_rdy_to_pub = False #flag if data is valid to pubish
-        self.DEBUG_EN=DEBUG_EN
         self.rosRate = None         #obj for the rospy.Rate()
         self.ser = None
         
@@ -51,12 +55,12 @@ class serial_node:
             print("Creating fake node and publish fake data")
             rospy.init_node("Fake_serial_node")
             rospy.is_shutdown()
-            self.pub=rospy.Publisher("Fake_serial_data_topic", BuddySerial, queue_size=queue_size)
+            self.pub=rospy.Publisher(publish_topic, BuddySerial, queue_size=queue_size)
         else:
             self.ser=self.initSerial()  #initialize serial port
             rospy.init_node(node_name)
             rospy.is_shutdown()
-            self.pub=rospy.Publisher("BuddySerialParsed_topic", BuddySerial, queue_size=queue_size)
+            self.pub=rospy.Publisher(publish_topic, BuddySerial, queue_size=queue_size)
 
         
         self.rosRate=rospy.Rate(publish_rate)        

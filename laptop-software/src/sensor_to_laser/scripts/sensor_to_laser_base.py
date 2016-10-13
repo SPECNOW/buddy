@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import random
 import rospy
+import tf
 
 """
 CP Aug 31, 2016
@@ -15,31 +16,32 @@ from sensor_msgs.msg import LaserScan
 from motor_control_drivers.msg import BuddySerial
 
 class sensor_to_laser_base:
-    def __init__(self, node_name, node_topic, queue_size, publish_rate, number_of_datapoints=10):
+    def __init__(self, node_name, node_topic, queue_size, publish_rate):
         """
         * initialize stuff 
         * create a publisher instance
         * each instance should be 
         """
         rospy.init_node(node_name)
-        self.number_of_datapoints = number_of_datapoints
         self.rate = rospy.Rate(publish_rate)
         
         self.data_source_topic = rospy.get_param("topicIn", "/Fake_serial_data_topic")
         self.sensor_number = int(rospy.get_param("sensorNum", "0"))
         self.data_dest_topic = rospy.get_param("topicOut", "Fake_sensor_data") + str(self.sensor_number)
-        self.sensor_scale_factor = float(rospy.get_param("sensorScale", '1'))
+        self.sensor_scale_factor = float(rospy.get_param("sensorScale", '0.02'))
         self.valid_data_mask = int(rospy.get_param("validMask", "16")) # bit 4, UntraA
         self.sensor_type = rospy.get_param("sensorType","Ultra")
+        self.number_of_datapoints = int(rospy.get_param("numberDataPoints","10"))
 
         sensor_width_angle = float(rospy.get_param("sensorAngleRad", "0.31415692"))
-        sensor_min_value = float(rospy.get_param("sensorMinDistM", "1")) #in meters
+        sensor_min_value = float(rospy.get_param("sensorMinDistM", "0")) #in meters
         sensor_max_value = float(rospy.get_param("sensorMaxDistM","5")) # in meters
 
         self.sub = rospy.Subscriber(self.data_source_topic, BuddySerial, self.processData)
         self.pub = rospy.Publisher(self.data_dest_topic, LaserScan, queue_size=queue_size)
         
         self.sensor_LaserScan = LaserScan(ranges = [0], intensities = [0] )
+        self.sensor_LaserScan.header.frame_id = 'frame_' + self.data_dest_topic
         self.sensor_LaserScan.angle_min = -sensor_width_angle/2 #rad
         self.sensor_LaserScan.angle_max = sensor_width_angle/2  #rad
         self.sensor_LaserScan.angle_increment = sensor_width_angle/self.number_of_datapoints    # rad
@@ -69,6 +71,7 @@ class sensor_to_laser_base:
                 distance =  data.Infra[self.sensor_number]*self.sensor_scale_factor
             self.sensor_LaserScan.ranges = [distance]*self.number_of_datapoints
             self.sensor_LaserScan.intensities = [1]*self.number_of_datapoints
+            self.sensor_LaserScan.header.stamp = rospy.Time.now()
         else:
             pass
         return
