@@ -20,7 +20,7 @@ class serial_node:
         serial_port_str = rospy.get_param("comPort", "") if rospy.get_param("comPort", None) else None 
         publish_rate = float(rospy.get_param("publishRate", "10.0"))
         publish_topic = rospy.get_param("topicOut", "Fake_serial_data_topic")
-        self.DEBUG_EN = rospy.get_param("debugEnable", "True").toUpper() == "TRUE"
+        self.DEBUG_EN = rospy.get_param("debugEnable", "True").upper() == "TRUE"
         
         self.serial_buffer = ''     #buffer that holds incoming data
         self.serial_packet = ''     #packet of 18 bytes to be processed
