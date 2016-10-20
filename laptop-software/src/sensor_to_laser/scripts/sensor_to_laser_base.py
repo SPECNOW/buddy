@@ -16,7 +16,7 @@ from sensor_msgs.msg import LaserScan
 from motor_control_drivers.msg import BuddySerial
 
 class sensor_to_laser_base:
-    def __init__(self, node_name, node_topic, queue_size, publish_rate):
+    def __init__(self, node_name, queue_size, publish_rate):
         """
         * initialize stuff 
         * create a publisher instance
@@ -26,7 +26,7 @@ class sensor_to_laser_base:
         self.rate = rospy.Rate(publish_rate)
         
         self.data_source_topic = rospy.get_param("topicIn", "/Fake_serial_data_topic")
-        self.sensor_number = int(rospy.get_param("sensorNum", "0"))
+        self.sensor_number = int(rospy.get_param("sensorNum", "99"))
         self.data_dest_topic = rospy.get_param("topicOut", "Fake_sensor_data") + str(self.sensor_number)
         self.sensor_scale_factor = float(rospy.get_param("sensorScale", '0.02'))
         self.valid_data_mask = int(rospy.get_param("validMask", "16")) # bit 4, UntraA
@@ -68,7 +68,7 @@ class sensor_to_laser_base:
             if self.sensor_type.lower() == "ultra".lower():
                 distance =  float(ord(data.Ultra[self.sensor_number]))*self.sensor_scale_factor
             else:
-                distance =  data.Infra[self.sensor_number]*self.sensor_scale_factor
+                distance =  float(ord(data.Infra[self.sensor_number]))*self.sensor_scale_factor
             self.sensor_LaserScan.ranges = [distance]*self.number_of_datapoints
             self.sensor_LaserScan.intensities = [1]*self.number_of_datapoints
             self.sensor_LaserScan.header.stamp = rospy.Time.now()
@@ -78,7 +78,7 @@ class sensor_to_laser_base:
 
 if __name__=='__main__':
     try:
-        FakeLaser=sensor_to_laser_base('FakeLaserDataNode', 'FakeLaserTopic', 10, 10)
+        FakeLaser=sensor_to_laser_base('laserScanDataNode', 10, 10)
         FakeLaser.startPublishing()
     except rospy.ROSInterruptException:
         pass
