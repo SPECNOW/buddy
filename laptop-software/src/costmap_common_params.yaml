@@ -1,0 +1,16 @@
+obstacle_range: 100
+raytrace_range: 100
+footprint: [[-.5,-.5],[-.5,.5], [.5,.5],[.5,-.5]]
+#robot_radius: ir_of_robot
+inflation_radius: 0.55
+observation_sources: ultra0 ultra1 infra0 infra1 infra2 infra3 infra4 infra5 laser_scan_sensor 
+laser_scan_sensor: {sensor_frame: base_laser_link, data_type: LaserScan, topic: base_scan, marking: true, clearing: true}
+infra0: {sensor_frame: frame_infra0, data_type: LaserScan, topic: /infra/infra0, marking: true, clearing: true}
+infra1: {sensor_frame: frame_infra1, data_type: LaserScan, topic: /infra/infra1, marking: true, clearing: true}
+infra2: {sensor_frame: frame_infra2, data_type: LaserScan, topic: /infra/infra2, marking: true, clearing: true}
+infra3: {sensor_frame: frame_infra3, data_type: LaserScan, topic: /infra/infra3, marking: true, clearing: true}
+infra4: {sensor_frame: frame_infra4, data_type: LaserScan, topic: /infra/infra4, marking: true, clearing: true}
+infra5: {sensor_frame: frame_infra5, data_type: LaserScan, topic: /infra/infra5, marking: true, clearing: true}
+
+ultra1: {sensor_frame: frame_ultra0, data_type: LaserScan, topic: /ultra/ultra0, marking: true, clearing: true}
+ultra1: {sensor_frame: frame_ultra1, data_type: LaserScan, topic: /ultra/ultra1, marking: true, clearing: true}
