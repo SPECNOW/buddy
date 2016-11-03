@@ -101,5 +101,5 @@
         <node pkg="tf" type="static_transform_publisher" name="ultraTF0" args="0.5  0    0 0       0 0 base_link frame_ultra0 100" />
         <node pkg="tf" type="static_transform_publisher" name="ultraTF1" args="-0.5 0    0 3.1415  0 0 base_link frame_ultra1 100" />
     </group>
-    <node pkg="rviz" type="rviz" name="myRviz"/>
+    <node pkg="rviz" type="rviz" name="myRviz" args="-d $(find motor_control_drivers)../rviz-config.rviz"/>
 </launch>
