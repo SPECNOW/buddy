@@ -1,2 +1,9 @@
 #/usr/bin/sh
-export ROS_PACKAGE_PATH=./sensor-to-laser:$ROS_PACKAGE_PATH
+#SCRIPTPATH=`pwd -P`
+#SCRIPTPATH=`$FILE`
+CURRENTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+#CURRENTPATH=`dirname $SCRIPTPATH`
+ROS_PACKAGE_PATH=$CURRENTPATH/motor_control_drivers:$CURRENTPATH/sensor_to_laser:$ROS_PACKAGE_PATH
+ROS_PYTHON_PATH=$CURRENTPATH/../devel/lib/python2.7/dist-packages/:$PYTHONPATH
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH
+export PYTHONPATH=$ROS_PYTHON_PATH
