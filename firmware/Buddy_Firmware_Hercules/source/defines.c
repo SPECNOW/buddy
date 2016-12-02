@@ -17,6 +17,7 @@ bool print_command_error_flag = false;
 bool print_debug_ADC = false;
 bool get_sonar_sensor = false;
 bool is_conversion_complete = false;
+bool send_serial_packet = false;
 
 bool adc_data_is_ready = false;
 
@@ -27,9 +28,8 @@ uint8_t switch_position = 0;
 uint16 deltaT = 0;
 float current_speed = 0;
 
-//adc_data = NULL;
-
-
+SerialPacket 	serialPacketWrite 	= {0xFF, 0, 0, 0, 0, 0, {0}},
+				serialPacketRead 	= {0xFF, 0, 0, 0, 0, 0, {0}};
 
 void delay(int del)
 {
@@ -43,4 +43,33 @@ void delay(int del)
 		}
 		i--;
 	}
+}
+
+void copySerialData(void* data, serial_data_type type)
+{
+	switch(type)
+	{
+	case encoderLeft:
+		serialPacketWrite.validData |=  0x80 >> encoderLeft;
+		memcpy((float*)&(serialPacketWrite.encoderLeft), (float*)data, sizeof(float));
+		return;
+	case encoderRight:
+		serialPacketWrite.validData |=  0x80 >> encoderRight;
+		memcpy((float*)&(serialPacketWrite.encoderRight), (float*)data, sizeof(float));
+		return;
+	case ultrasonicFront:
+		serialPacketWrite.validData |=  0x80 >> ultrasonicFront;
+		memcpy((uint8*)&(serialPacketWrite.ultrasonicFront), (uint8*)data, sizeof(uint8));
+		return;
+	case ultrasonicBack:
+		serialPacketWrite.validData |=  0x80 >> ultrasonicBack;
+		memcpy((uint8*)&(serialPacketWrite.ultrasonicBack), (uint8*)data, sizeof(uint8));
+		return;
+	case infraredArray:
+		serialPacketWrite.validData |= 0x80 >> infraredArray;
+		memcpy((uint8*)&(serialPacketWrite.ultrasonicBack), (uint8*)data, sizeof(uint8)*NUM_ADC_SENSORS);
+		return;
+	default:
+		break;
+	};
 }
