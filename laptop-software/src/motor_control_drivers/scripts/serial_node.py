@@ -17,7 +17,7 @@ class serial_node:
         
         This node once started, will read from serial. Will publish data as it arrives and it's valid flag is set
         """
-        serial_port_str = rospy.get_param("comPort", "") if rospy.get_param("comPort", None) else None 
+        serial_port_str = rospy.get_param("comPort", "") 
         publish_rate = float(rospy.get_param("publishRate", "10.0"))
         publish_topic = rospy.get_param("topicOut", "Fake_serial_data_topic")
         self.DEBUG_EN = rospy.get_param("debugEnable", "True").upper() == "TRUE"
@@ -42,30 +42,30 @@ class serial_node:
             queue_size = 10
 
         if subscription_names is not None and isinstance(subscription_names, list): # if it is passed and a list
-            print("Subscribed to: ")
+            rospy.logdebug("Subscribed to: ")
             for i in subscription_names:
-                print(i)
+                rospy.logdebug(i)
         elif subscription_names is not None and isinstance(subscription_names, basestring): # if it is passed and just a string
-            print("Subscribed to: %s"%subscription_names)
+            rospy.logdebug("Subscribed to: %s"%subscription_names)
         else:
-            print("Not subscribing to anything")
+            rospy.logdebug("Not subscribing to anything")
             
         #create publisher  and the serial initialization  
         if node_name is None or serial_port_str is None: #creation of the node
-            print("Creating fake node and publish fake data")
-            rospy.init_node("Fake_serial_node")
+            rospy.loginfo("Creating fake node and publish fake data")
+            rospy.init_node("Fake_serial_node", log_level=rospy.DEBUG if self.DEBUG_EN else rospy.INFO)
             rospy.is_shutdown()
             self.pub=rospy.Publisher(publish_topic, BuddySerial, queue_size=queue_size)
         else:
-            self.ser=self.initSerial()  #initialize serial port
-            rospy.init_node(node_name)
+            self.ser=self.initSerial(serial_port_str,)  #initialize serial port
+            rospy.init_node(node_name, log_level=rospy.DEBUG if self.DEBUG_EN else rospy.INFO)
             rospy.is_shutdown()
             self.pub=rospy.Publisher(publish_topic, BuddySerial, queue_size=queue_size)
 
         
         self.rosRate=rospy.Rate(publish_rate)        
         if self.ser is None:
-            print("ERROR with serial port, cannot open, will generate fake data")
+            rospy.logerr("ERROR with serial port, cannot open, will generate fake data")
     
     def startNode(self):
         """
@@ -78,7 +78,7 @@ class serial_node:
                 self.readSerial2Buffer(self.ser)
            
             if self.DEBUG_EN:
-                print("SerialBuffer: "+ self.serial_buffer)
+                rospy.logdebug("SerialBuffer: "+ self.serial_buffer)
                 self.print_data()
             # self.clearSerialBuffer()
             
@@ -87,7 +87,7 @@ class serial_node:
             if self.flg_rdy_to_pub:
                 self.pub.publish(self.parsed_serial_data)
             else:
-                print("Not ready to publish")
+                rospy.logdebug("Not ready to publish")
             self.rosRate.sleep()
 
     
@@ -95,8 +95,10 @@ class serial_node:
         """
         Initialize the physical serial port to the Hercules
         """
-        if baud_rate is None: baud_rate = 9600
-        if serial_dev_str is None: serial_dev_str = 'ttyUSB0'
+        if baud_rate is None: 
+            baud_rate = 9600
+        if serial_dev_str is None: 
+            serial_dev_str = 'ttyUSB0'
         try:
           ser = serial.Serial()
           ser.baurdrate = baud_rate
@@ -105,7 +107,7 @@ class serial_node:
           ser.open()
           return ser
         except serial.serialutil.SerialException:
-            print("Cannot Open serial port %s with baud rate %s" %(serial_dev_str, baud_rate))
+            rospy.logerr("Cannot Open serial port %s with baud rate %s" %(serial_dev_str, baud_rate))
         return None
 
     def readSerial2Buffer(self, serial_inst):
@@ -116,7 +118,7 @@ class serial_node:
         if isinstance(serial_inst, serial.Serial): #check if it is a serial port, and read from it
             self.serial_buffer+=serial_inst.read(198) #read 19 bytes
         else:
-            print("No serial instance passed")
+            rospy.logerr("No serial instance passed")
             return 1
     
     def clearSerialBuffer(self):
@@ -130,12 +132,12 @@ class serial_node:
         self.flg_rdy_to_pub = False
         
         while self.serial_buffer[0:1].lower() != '\xff' and len(self.serial_buffer) > 18:
-            print("ERROR: serial buffer header not 0xFF, shifting it: %s" % self.serial_buffer[0:17])
+            rospy.logerr("ERROR: serial buffer header not 0xFF, shifting it: %s" % self.serial_buffer[0:17])
             #shift the buffer by 1
             self.serial_buffer = self.serial_buffer[1:]
 
         if len(self.serial_buffer) < 18:
-            print("ERROR: serial package is too short. Is only " + str(len(self.serial_buffer)))
+            rospy.logerr("ERROR: serial package is too short. Is only " + str(len(self.serial_buffer)))
             return 1
 
         self.serial_packet = self.serial_buffer[0:18]
@@ -172,12 +174,12 @@ class serial_node:
         """
         used for debug, print out the data
         """
-        print("DEBUG Packet Print - Buffer size: %s" %len(self.serial_packet))
-        print("Packet Header: %s, Valid Data: %s" %(self.Packetheader, self.ValidData))
-        print("EncoderL: %s, EncoderR: %s"%(self.EncL, self.EncR))
-        print("UltraF: %s, UltraB: %s"%(self.UltraF, self.UltraB))
-        print("Infra: "),
-        print(self.Infra)
+        rospy.logdebug("DEBUG Packet Print - Buffer size: %s" %len(self.serial_packet))
+        rospy.logdebug("Packet Header: %s, Valid Data: %s" %(self.Packetheader, self.ValidData))
+        rospy.logdebug("EncoderL: %s, EncoderR: %s"%(self.EncL, self.EncR))
+        rospy.logdebug("UltraF: %s, UltraB: %s"%(self.UltraF, self.UltraB))
+        rospy.logdebug("Infra: "),
+        rospy.logdebug(self.Infra)
         
 def stringtofloat4(string):
     """
@@ -185,7 +187,7 @@ def stringtofloat4(string):
     little endian input
     """
     if len(string) != 4:
-        print("ERROR: string %s is not 4 char long"%string)
+        rospy.logerr("ERROR: string %s is not 4 char long"%string)
         raise
         return -1
     else:
@@ -194,11 +196,11 @@ def stringtofloat4(string):
     return 0
   
 if __name__=='__main__':
-    print("Trying to read from serial and publish (fake)? data")
+    rospy.logdebug("Trying to read from serial and publish (fake)? data")
     
     try:
         #node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None
-        FakeSerial = serial_node(node_name='FakeSerial', serial_port_str=None, publish_rate = 10, DEBUG_EN=True)
+        FakeSerial = serial_node(node_name='BuddySerial', serial_port_str='ttyUSB0', publish_rate = 10, DEBUG_EN=True)
         FakeSerial.startNode()
     except rospy.ROSInterruptException:
         pass

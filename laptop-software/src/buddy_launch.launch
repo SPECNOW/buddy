@@ -18,7 +18,7 @@
         <param name="topicOut" value="buddySerial"/>
         <param name="publishRate" value="10.0" type="double"/>
         <param name="debugEnable" value="True" type="string"/>
-<!--    <param name="comPort" value="/dev/USBTTY0"/> -->
+        <param name="comPort" value="ttyUSB0"/>
         <node pkg="motor_control_drivers" name="serial" type="serial_node.py"/>
     </group>
 
