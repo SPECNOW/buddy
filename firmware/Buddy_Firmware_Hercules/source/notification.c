@@ -228,7 +228,7 @@ void edgeNotification(hetBASE_t * hetREG,uint32 edge)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (37) */
-	sonarEchoNotification(hetREG, edge);
+	//sonarEchoNotification(hetREG, edge)
 /* USER CODE END */
 }
 

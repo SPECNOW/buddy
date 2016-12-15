@@ -84,7 +84,7 @@
 void main(void)
 {
 /* USER CODE BEGIN (3) */
-	adc_data = calloc(6, sizeof(adcData_t));
+	adc_data = calloc(NUM_ADC_SENSORS, sizeof(adcData_t));
 
 	//	Initialize Modules
 	muxInit();
@@ -144,7 +144,7 @@ void main(void)
 	rtiEnableNotification(getSonarSensor(0)->rti_compare);
 	addSonarSensor(&sonar1);
 	rtiEnableNotification(getSonarSensor(1)->rti_compare);
-	//startFirstTrigger(1);
+	startFirstTrigger(1);
 
 	sciReceive( scilinREG, 2, (unsigned char *)&command[0]);	// Start Serial RX in interrupt mode, wait for 2 bytes for message
 	while(1)
@@ -178,10 +178,9 @@ void main(void)
 		if(adc_data_is_ready)
 		{
 			adcGetData(adcREG1, adcGROUP1, adc_data);
+			copySerialData(adc_data, infraredArray);
 			adc_data_is_ready = false;
 		}
-
-		// Handle Requests made by user
 		if(print_debug_ADC)
 		{
 			print_debug("ADC 0 Value", "ID: %d Value: %d", (adc_data+0)->id, (adc_data+0)->value);
@@ -227,7 +226,6 @@ void main(void)
 		}
 		if(is_conversion_complete)
 		{
-
 			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
 			is_conversion_complete = false;
 
@@ -236,6 +234,31 @@ void main(void)
 
 			rtiEnableNotification(getSonarSensor(1)->rti_compare);
 			gioSetBit(gioPORTA, getSonarSensor(1)->trig_pwmpin,1);
+		}
+		if(send_serial_packet)
+		{
+			_disable_interrupt_();
+			send_serial_packet = false;
+			memcpy(&serialPacketRead, &serialPacketWrite, sizeof(SerialPacket));
+			_enable_interrupt_();
+			sciSend(scilinREG, sizeof(SerialPacket)/sizeof(uint8), (uint8*)&serialPacketRead);
+		}
+
+		if(true)
+		{
+			static SerialPacket testPacket = {0xFF};
+			testPacket.encoderLeft = 123.0;
+			testPacket.encoderRight = 4131231.0;
+			testPacket.ultrasonicBack = 128;
+			testPacket.ultrasonicFront = sizeof(SerialPacket);
+			testPacket.validData = 0xee;
+			testPacket.infraredArray[0] = 10;
+			testPacket.infraredArray[1] = 20;
+			testPacket.infraredArray[2] = 30;
+			testPacket.infraredArray[3] = 40;
+			testPacket.infraredArray[4] = 50;
+			testPacket.infraredArray[5] = 60;
+			sciSend(scilinREG, sizeof(SerialPacket)/sizeof(uint8)-2, (uint8*)&testPacket);
 		}
 	}
 /* USER CODE END */
