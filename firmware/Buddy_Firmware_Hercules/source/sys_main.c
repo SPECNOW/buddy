@@ -111,9 +111,8 @@ void main(void)
 	//gioToggleBit( gioPORTA, SW_ENABLE); // ENABLES // not needed? <- you ARE RIGHT
 	//gioSetBit( gioPORTA, SW_ENABLE, 0);
 
-	gioSetDirection(hetPORT1, 0x100);	// COpied from ADC example, sets Het8
 	adcStartConversion(adcREG1,adcGROUP1);
-	adcEnableNotification(adcREG1, adcGROUP1);
+	//adcEnableNotification(adcREG1, adcGROUP1);
 
 	//hetSIGNAL_t het_sig;
 
@@ -164,9 +163,12 @@ void main(void)
 
 		// ADC Stuff
 		//gioSetBit(hetPORT1, 8, 1);
-		//while((adcIsConversionComplete(adcREG1,adcGROUP1))==0);
-		//adcGetData(adcREG1, adcGROUP1,&adc_data[0]);
-		//gioSetBit(hetPORT1, 8, 0);
+		if( adcIsConversionComplete(adcREG1,adcGROUP1)!=0 )
+		{
+			gioSetBit(hetPORT1, 8, 0);
+			adc_data_is_ready=true;
+		}
+		//
 		//print_debug("ADC Value", "%d", adc_data[1].value);
 		//capGetSignal(hetRAM1, cap0, &het_sig);
 		//print_info("HET", "Distance: %f cm", (float)het_sig.duty * het_sig.period/58);
@@ -183,13 +185,14 @@ void main(void)
 		}
 		if(print_debug_ADC)
 		{
-			print_debug("ADC 0 Value", "ID: %d Value: %d", (adc_data+0)->id, (adc_data+0)->value);
-			print_debug("ADC 1 Value", "ID: %d Value: %d", (adc_data+1)->id, (adc_data+1)->value);
-			print_debug("ADC 2 Value", "ID: %d Value: %d", (adc_data+2)->id, (adc_data+2)->value);
-			print_debug("ADC 3 Value", "ID: %d Value: %d", (adc_data+3)->id, (adc_data+3)->value);
-			print_debug("ADC 4 Value", "ID: %d Value: %d", (adc_data+4)->id, (adc_data+4)->value);
-			print_debug("ADC 5 Value", "ID: %d Value: %d", (adc_data+5)->id, (adc_data+5)->value);
+			print_debug("ADC 0 Value", "ID: %d Value: %X", (adc_data+0)->id, (adc_data+0)->value);
+			print_debug("ADC 1 Value", "ID: %d Value: %X", (adc_data+1)->id, (adc_data+1)->value);
+			print_debug("ADC 2 Value", "ID: %d Value: %X", (adc_data+2)->id, (adc_data+2)->value);
+			print_debug("ADC 3 Value", "ID: %d Value: %X", (adc_data+3)->id, (adc_data+3)->value);
+			print_debug("ADC 4 Value", "ID: %d Value: %X", (adc_data+4)->id, (adc_data+4)->value);
+			print_debug("ADC 5 Value", "ID: %d Value: %X", (adc_data+5)->id, (adc_data+5)->value);
 			print_debug_ADC = false;
+			gioSetBit(hetPORT1, 8, 1);
 		}
 		if(print_status_flag)
 		{
@@ -244,7 +247,7 @@ void main(void)
 			sciSend(scilinREG, sizeof(SerialPacket)/sizeof(uint8), (uint8*)&serialPacketRead);
 		}
 
-		if(true)
+		if(false)
 		{
 			static SerialPacket testPacket = {0xFF};
 			testPacket.encoderLeft = 123.0;

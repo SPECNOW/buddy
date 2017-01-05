@@ -8,16 +8,23 @@ CG_TOOL_ROOT := c:/ti/ccsv6/tools/compiler/arm_5.1.6
 
 ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
+"./source/adc.obj" \
 "./source/crc.obj" \
 "./source/dabort.obj" \
+"./source/dac_buddy.obj" \
+"./source/defines.obj" \
 "./source/eqep.obj" \
 "./source/esm.obj" \
 "./source/gio.obj" \
+"./source/het.obj" \
+"./source/ir_adc.obj" \
 "./source/lin.obj" \
 "./source/notification.obj" \
 "./source/pinmux.obj" \
+"./source/print_debug.obj" \
 "./source/rti.obj" \
 "./source/sci.obj" \
+"./source/sonar.obj" \
 "./source/sys_core.obj" \
 "./source/sys_intvecs.obj" \
 "./source/sys_main.obj" \
@@ -131,40 +138,40 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-Buddy_MotorEncoder_R4.out \
+Buddy_Firmware_Hercules.out \
 
 EXE_OUTPUTS__QUOTED += \
-"Buddy_MotorEncoder_R4.out" \
+"Buddy_Firmware_Hercules.out" \
 
 BIN_OUTPUTS += \
-Buddy_MotorEncoder_R4.hex \
+Buddy_Firmware_Hercules.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"Buddy_MotorEncoder_R4.hex" \
+"Buddy_Firmware_Hercules.hex" \
 
 
 # All Target
-all: Buddy_MotorEncoder_R4.out
+all: Buddy_Firmware_Hercules.out
 
 # Tool invocations
-Buddy_MotorEncoder_R4.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+Buddy_Firmware_Hercules.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"c:/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armcl" -mv7R4 --code_state=32 --abi=eabi -me -O2 --display_error_number --diag_warning=225 --diag_wrap=off --enum_type=packed -z -m"Buddy_MotorEncoder_R4.map" --heap_size=0x800 --stack_size=0x800 -i"c:/ti/ccsv6/tools/compiler/arm_5.1.6/lib" -i"c:/ti/ccsv6/tools/compiler/arm_5.1.6/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="Buddy_MotorEncoder_R4_linkInfo.xml" --rom_model -o "Buddy_MotorEncoder_R4.out" $(ORDERED_OBJS)
+	"c:/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armcl" -mv7R4 --code_state=32 --abi=eabi -me -O2 --display_error_number --diag_warning=225 --diag_wrap=off --enum_type=packed -z -m"Buddy_Firmware_Hercules.map" --heap_size=0x800 --stack_size=0x800 -i"c:/ti/ccsv6/tools/compiler/arm_5.1.6/lib" -i"c:/ti/ccsv6/tools/compiler/arm_5.1.6/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="Buddy_Firmware_Hercules_linkInfo.xml" --rom_model -o "Buddy_Firmware_Hercules.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Buddy_MotorEncoder_R4.hex: $(EXE_OUTPUTS)
+Buddy_Firmware_Hercules.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: ARM Hex Utility'
-	"c:/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armhex"  -o "Buddy_MotorEncoder_R4.hex" $(EXE_OUTPUTS__QUOTED)
+	"c:/ti/ccsv6/tools/compiler/arm_5.1.6/bin/armhex"  -o "Buddy_Firmware_Hercules.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "source\crc.pp" "source\eqep.pp" "source\esm.pp" "source\gio.pp" "source\lin.pp" "source\notification.pp" "source\pinmux.pp" "source\rti.pp" "source\sci.pp" "source\sys_main.pp" "source\sys_pcr.pp" "source\sys_phantom.pp" "source\sys_selftest.pp" "source\sys_startup.pp" "source\sys_vim.pp" "source\system.pp" "MotorStateMachine\MotorStateMachine.pp" 
-	-$(RM) "source\crc.obj" "source\dabort.obj" "source\eqep.obj" "source\esm.obj" "source\gio.obj" "source\lin.obj" "source\notification.obj" "source\pinmux.obj" "source\rti.obj" "source\sci.obj" "source\sys_core.obj" "source\sys_intvecs.obj" "source\sys_main.obj" "source\sys_mpu.obj" "source\sys_pcr.obj" "source\sys_phantom.obj" "source\sys_pmu.obj" "source\sys_selftest.obj" "source\sys_startup.obj" "source\sys_vim.obj" "source\system.obj" "MotorStateMachine\MotorStateMachine.obj" 
+	-$(RM) "source\adc.pp" "source\crc.pp" "source\dac_buddy.pp" "source\defines.pp" "source\eqep.pp" "source\esm.pp" "source\gio.pp" "source\het.pp" "source\ir_adc.pp" "source\lin.pp" "source\notification.pp" "source\pinmux.pp" "source\print_debug.pp" "source\rti.pp" "source\sci.pp" "source\sonar.pp" "source\sys_main.pp" "source\sys_pcr.pp" "source\sys_phantom.pp" "source\sys_selftest.pp" "source\sys_startup.pp" "source\sys_vim.pp" "source\system.pp" "MotorStateMachine\MotorStateMachine.pp" 
+	-$(RM) "source\adc.obj" "source\crc.obj" "source\dabort.obj" "source\dac_buddy.obj" "source\defines.obj" "source\eqep.obj" "source\esm.obj" "source\gio.obj" "source\het.obj" "source\ir_adc.obj" "source\lin.obj" "source\notification.obj" "source\pinmux.obj" "source\print_debug.obj" "source\rti.obj" "source\sci.obj" "source\sonar.obj" "source\sys_core.obj" "source\sys_intvecs.obj" "source\sys_main.obj" "source\sys_mpu.obj" "source\sys_pcr.obj" "source\sys_phantom.obj" "source\sys_pmu.obj" "source\sys_selftest.obj" "source\sys_startup.obj" "source\sys_vim.obj" "source\system.obj" "MotorStateMachine\MotorStateMachine.obj" 
 	-$(RM) "source\dabort.pp" "source\sys_core.pp" "source\sys_intvecs.pp" "source\sys_mpu.pp" "source\sys_pmu.pp" 
 	-@echo 'Finished clean'
 	-@echo ' '

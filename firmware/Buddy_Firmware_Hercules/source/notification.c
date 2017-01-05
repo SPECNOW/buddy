@@ -123,10 +123,10 @@ void adcNotification(adcBASE_t *adc, uint32 group)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (11) */
-	//adcGetData(adc, group, adc_data);
+	/*adcGetData(adc, group, adc_data);
 	adc_data_is_ready = true;
-	//adcResetFiFo(adc, group);
-	//adcStartConversion(adc,group);
+	adcResetFiFo(adc, group);
+	adcStartConversion(adc,group);*/
 	/* USER CODE END */
 }
 
