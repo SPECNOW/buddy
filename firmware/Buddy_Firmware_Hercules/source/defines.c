@@ -30,6 +30,7 @@ float current_speed = 0;
 
 SerialPacket 	serialPacketWrite 	= {0xFF, 0, 0, 0, 0, 0, {0}},
 				serialPacketRead 	= {0xFF, 0, 0, 0, 0, 0, {0}};
+ir_sample irArray;
 
 void delay(int del)
 {
@@ -67,9 +68,30 @@ void copySerialData(void* data, serial_data_type type)
 		return;
 	case infraredArray:
 		serialPacketWrite.validData |= 0x80 >> infraredArray;
-		memcpy((uint8*)&(serialPacketWrite.ultrasonicBack), (uint8*)data, sizeof(uint8)*NUM_ADC_SENSORS);
+		memcpy((uint8*)&(serialPacketWrite.infraredArray), (uint8*)data, sizeof(uint8)*NUM_ADC_SENSORS);
 		return;
 	default:
 		break;
 	};
+}
+
+void addADCSample()
+{
+	unsigned int adc_index = 0, array_index = 0;
+	irArray.index = (irArray.index++)%NUM_ADC_SAMPLES;
+	array_index = irArray.index++%NUM_ADC_SAMPLES;
+	unsigned int i=0, j=0;
+	uint16_t temp_average = 0;
+
+	for(i=0; i < NUM_ADC_SENSORS; i++)
+	{
+		adc_index = adc_data[i].id;
+		irArray.data[adc_index][array_index] = adc_data[i].value;
+		temp_average = 0;
+		for(j=0; j < NUM_ADC_SAMPLES; j++)
+		{
+			temp_average += (uint16_t)irArray.data[adc_index][j];
+		}
+		irArray.average[adc_index] = (uint8_t) (temp_average/NUM_ADC_SAMPLES);
+	}
 }

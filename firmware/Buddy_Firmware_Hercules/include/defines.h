@@ -22,6 +22,7 @@
 #define SONAR_ECHO_1 2
 
 #define NUM_ADC_SENSORS 6
+#define NUM_ADC_SAMPLES 10
 
 extern unsigned char command[100];
 
@@ -55,6 +56,7 @@ adcData_t *adc_data;
 
 void delay(int del);
 void copySerialData(void* data, serial_data_type type);
+void addADCSample();
 
 typedef struct serial_packet
 {
@@ -68,5 +70,14 @@ typedef struct serial_packet
 } SerialPacket;
 
 extern SerialPacket serialPacketRead, serialPacketWrite;
+
+typedef struct
+{
+	uint8_t average[NUM_ADC_SENSORS];
+	uint8_t data[NUM_ADC_SENSORS][NUM_ADC_SAMPLES];
+	uint8_t index;
+}ir_sample;
+
+extern ir_sample irArray;
 
 #endif

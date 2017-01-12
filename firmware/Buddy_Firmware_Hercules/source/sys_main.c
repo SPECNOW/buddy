@@ -76,9 +76,6 @@
 */
 
 /* USER CODE BEGIN (2) */
-//adcData_t adc_data[2];
-
-
 /* USER CODE END */
 
 void main(void)
@@ -112,7 +109,7 @@ void main(void)
 	//gioSetBit( gioPORTA, SW_ENABLE, 0);
 
 	adcStartConversion(adcREG1,adcGROUP1);
-	//adcEnableNotification(adcREG1, adcGROUP1);
+	adcEnableNotification(adcREG1, adcGROUP1);
 
 	//hetSIGNAL_t het_sig;
 
@@ -161,15 +158,7 @@ void main(void)
 			eqepREG1->QEPSTS |= 0x80U;
 		}
 
-		// ADC Stuff
-		//gioSetBit(hetPORT1, 8, 1);
-		if( adcIsConversionComplete(adcREG1,adcGROUP1)!=0 )
-		{
-			gioSetBit(hetPORT1, 8, 0);
-			adc_data_is_ready=true;
-		}
 		//
-		//print_debug("ADC Value", "%d", adc_data[1].value);
 		//capGetSignal(hetRAM1, cap0, &het_sig);
 		//print_info("HET", "Distance: %f cm", (float)het_sig.duty * het_sig.period/58);
 		//if(!Sonar_Array.array->_did_i_timeout)
@@ -179,20 +168,18 @@ void main(void)
 
 		if(adc_data_is_ready)
 		{
-			adcGetData(adcREG1, adcGROUP1, adc_data);
-			copySerialData(adc_data, infraredArray);
+			addADCSample();
+			copySerialData(irArray.average, infraredArray);
 			adc_data_is_ready = false;
 		}
 		if(print_debug_ADC)
 		{
-			print_debug("ADC 0 Value", "ID: %d Value: %X", (adc_data+0)->id, (adc_data+0)->value);
-			print_debug("ADC 1 Value", "ID: %d Value: %X", (adc_data+1)->id, (adc_data+1)->value);
-			print_debug("ADC 2 Value", "ID: %d Value: %X", (adc_data+2)->id, (adc_data+2)->value);
-			print_debug("ADC 3 Value", "ID: %d Value: %X", (adc_data+3)->id, (adc_data+3)->value);
-			print_debug("ADC 4 Value", "ID: %d Value: %X", (adc_data+4)->id, (adc_data+4)->value);
-			print_debug("ADC 5 Value", "ID: %d Value: %X", (adc_data+5)->id, (adc_data+5)->value);
+			unsigned int i;
+			for(i = 0; i < NUM_ADC_SENSORS; i++)
+			{
+				print_debug("ADC Module", "ID: %d Value: %X", i, irArray.average[i]);
+			}
 			print_debug_ADC = false;
-			gioSetBit(hetPORT1, 8, 1);
 		}
 		if(print_status_flag)
 		{
