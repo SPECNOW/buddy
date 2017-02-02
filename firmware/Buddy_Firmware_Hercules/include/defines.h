@@ -24,6 +24,9 @@
 #define NUM_ADC_SENSORS 6
 #define NUM_ADC_SAMPLES 10
 
+#define NUM_SONAR_SENSORS 2
+#define NUM_SOBAR_SAMPLES 10
+
 extern unsigned char command[100];
 
 extern bool print_status_flag;
@@ -35,6 +38,7 @@ extern bool print_debug_ADC;
 extern bool get_sonar_sensor;
 extern bool is_conversion_complete;
 extern bool send_serial_packet;
+extern bool print_debug_sonar;
 
 extern bool adc_data_is_ready;
 

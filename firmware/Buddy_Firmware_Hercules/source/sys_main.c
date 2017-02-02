@@ -100,7 +100,6 @@ void main(void)
 	// PreScalers for eQEP
 	eqepSetCapturePrescale(eqepREG1, QCAPCTL_Ccps_Capture_Div_32);
 	eqepSetUnitPosnPrescale(eqepREG1, QCAPCTL_Upps_Div_64_Prescale);
-
 	eqepEnableUnitTimer(eqepREG1);	/* Enable Unit Timer. */
 	eqepEnableCounter(eqepREG1);	/* Enable Position Counter */
 	eqepEnableCapture(eqepREG1);	/* Enable capture timer and capture period latch. */
@@ -158,14 +157,6 @@ void main(void)
 			eqepREG1->QEPSTS |= 0x80U;
 		}
 
-		//
-		//capGetSignal(hetRAM1, cap0, &het_sig);
-		//print_info("HET", "Distance: %f cm", (float)het_sig.duty * het_sig.period/58);
-		//if(!Sonar_Array.array->_did_i_timeout)
-		//{
-				//print_info("HET", "Distance: %f ", getDistance(Sonar_Array.array));
-		//}
-
 		if(adc_data_is_ready)
 		{
 			addADCSample();
@@ -217,13 +208,12 @@ void main(void)
 		if(is_conversion_complete)
 		{
 			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
-			is_conversion_complete = false;
+/*			is_conversion_complete = false;
 
 			rtiEnableNotification(getSonarSensor(0)->rti_compare);
-			gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
-
 			rtiEnableNotification(getSonarSensor(1)->rti_compare);
-			gioSetBit(gioPORTA, getSonarSensor(1)->trig_pwmpin,1);
+			gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
+			gioSetBit(gioPORTA, getSonarSensor(1)->trig_pwmpin,1);*/
 		}
 		if(send_serial_packet)
 		{
@@ -232,6 +222,12 @@ void main(void)
 			memcpy(&serialPacketRead, &serialPacketWrite, sizeof(SerialPacket));
 			_enable_interrupt_();
 			sciSend(scilinREG, sizeof(SerialPacket)/sizeof(uint8), (uint8*)&serialPacketRead);
+		}
+		if(print_debug_sonar)
+		{
+			print_debug_sonar = false;
+			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
+			gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
 		}
 
 		if(false)

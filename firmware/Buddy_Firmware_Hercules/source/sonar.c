@@ -203,7 +203,9 @@ void sonarEchoNotification(hetBASE_t * hetREG,uint32 edge)
 				sonar->echo_end_time = _current_time;
 				sonar->_is_echo_time_valid = true;
 				sonar->_last_distance = calculateSonarDistance(sonar);
-				is_conversion_complete = true;
+
+				rtiEnableNotification(sonar->rti_compare);
+				gioSetBit(gioPORTA, sonar->trig_pwmpin,1);
 			}
 		}
 	}
@@ -221,15 +223,6 @@ float calculateSonarDistance(sonar_sensor * sonar)
 {
 	float _delta_time_in_ms = ((float)(sonar->echo_end_time - sonar->echo_start_time))/(100000000.00/(1000000*rtiREG1->CNT[0U].CPUCx));
 	float val = _delta_time_in_ms*sonar->module->cm_conversion_factor;
-
-	if(val < 0)	//	Check if valid
-	{
-		is_conversion_complete = false;
-	}
-	else
-	{
-		is_conversion_complete = true;
-	}
 
 	return val;
 }
@@ -265,22 +258,6 @@ void startFirstTrigger(int highdur)
 	}
 	delay(10000);
 	gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin, 1);
-	hetInit();
-	rtiEnableNotification(getSonarSensor(0)->rti_compare);
-
-
-	//static sonar_sensor *sonar;
-	//unsigned int sonar_index = 0;
-	//for(sonar_index = 0; sonar_index < 1/*Sonar_Array.number_sensors*/; sonar_index++)
-	//{
-	//
-	//	sonar = &Sonar_Array.array[sonar_index];
-	//	rtiEnableNotification(sonar->rti_compare);
-	//	gioSetBit(gioPORTA, sonar->trig_pwmpin,1);
-	//	//edgeEnableNotification(hetREG1, 0);
-	//	//edgeEnableNotification(hetREG1, 1);
-	//	//gioSetBit(gioPORTA, sonar->trig_pwmpin,0);
-	//}
 
 	return;
 }
@@ -298,8 +275,6 @@ void sonarEdgeNotification(hetBASE_t * hetREG,uint32 edge)
 	uint16_t sensor_index = 0;
 	for(sensor_index = 0; sensor_index < Sonar_Array.number_sensors; sensor_index++)
 	{
-
-		//CLARK START
 		sonar_sensor * sensor = &Sonar_Array.array[sensor_index];	//	Current Sensor
 		if(edge == sensor->echo_edgepin)	//	Check if this sensor has been Interrupted
 		{
@@ -309,12 +284,6 @@ void sonarEdgeNotification(hetBASE_t * hetREG,uint32 edge)
 			sensor->_last_distance = (float)het_sig.duty/100.0 * het_sig.period*sensor->module->cm_conversion_factor;
 			is_conversion_complete = true;
 			get_sonar_sensor = false;
-			//Trigger Next Interrupt
-			//getNextSonar(sensor_index)->pwm_state = Sonar_Triggered;	//	Set PWM	Flag, signify trig to start
-			//gioSetBit(gioPORTA, getNextSonar(sensor_index)->trig_pwmpin, 1);
-			//  set Counter to trip exactly 10 usecs from now somehow!!!! (currently can happen anytime between 10-20 usecs (Okay, not great)
-			//rtiEnableNotification(getNextSonar(sensor_index)->rti_compare);
 		}
-		//CLARK END
 	}
 }

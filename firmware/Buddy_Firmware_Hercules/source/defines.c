@@ -18,6 +18,7 @@ bool print_debug_ADC = false;
 bool get_sonar_sensor = false;
 bool is_conversion_complete = false;
 bool send_serial_packet = false;
+bool print_debug_sonar = false;
 
 bool adc_data_is_ready = false;
 
@@ -76,6 +77,27 @@ void copySerialData(void* data, serial_data_type type)
 }
 
 void addADCSample()
+{
+	unsigned int adc_index = 0, array_index = 0;
+	irArray.index = (irArray.index++)%NUM_ADC_SAMPLES;
+	array_index = irArray.index++%NUM_ADC_SAMPLES;
+	unsigned int i=0, j=0;
+	uint16_t temp_average = 0;
+
+	for(i=0; i < NUM_ADC_SENSORS; i++)
+	{
+		adc_index = adc_data[i].id;
+		irArray.data[adc_index][array_index] = adc_data[i].value;
+		temp_average = 0;
+		for(j=0; j < NUM_ADC_SAMPLES; j++)
+		{
+			temp_average += (uint16_t)irArray.data[adc_index][j];
+		}
+		irArray.average[adc_index] = (uint8_t) (temp_average/NUM_ADC_SAMPLES);
+	}
+}
+
+void addSonarSample()
 {
 	unsigned int adc_index = 0, array_index = 0;
 	irArray.index = (irArray.index++)%NUM_ADC_SAMPLES;

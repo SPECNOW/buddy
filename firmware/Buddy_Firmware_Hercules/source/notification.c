@@ -152,6 +152,10 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 		{
 			print_status_flag = true;
 		}
+		else if ( strcmp("sv", (const char*)command) == 0 )
+		{
+			print_debug_sonar = true;
+		}
 		else if( strcmp( "av", (const char*) command ) == 0 )	// ADC Valuse
 		{
 			print_debug_ADC = true;
@@ -226,7 +230,7 @@ void edgeNotification(hetBASE_t * hetREG,uint32 edge)
 {
 /*  enter user code between the USER CODE BEGIN and USER CODE END. */
 /* USER CODE BEGIN (37) */
-	//sonarEchoNotification(hetREG, edge)
+	sonarEchoNotification(hetREG, edge);
 /* USER CODE END */
 }
 
