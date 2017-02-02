@@ -25,7 +25,7 @@
 #define NUM_ADC_SAMPLES 10
 
 #define NUM_SONAR_SENSORS 2
-#define NUM_SOBAR_SAMPLES 10
+#define NUM_SONAR_SAMPLES 10
 
 extern unsigned char command[100];
 
@@ -75,6 +75,49 @@ typedef struct serial_packet
 
 extern SerialPacket serialPacketRead, serialPacketWrite;
 
+//	Struct used to differentiate between Sonar Sensor types (HCSR04 and US100)
+typedef struct
+{
+	const uint16_t pulse_width;
+	const float32 cm_conversion_factor;
+}sonar_module;
+
+typedef enum sonar_state {Sonar_Disabled, Sonar_Triggered, Sonar_Low} SONAR_STATE;
+
+//	Struct used to keep track of important data for each sonar sensro
+typedef struct
+{
+	const sonar_module * module;		//	Sonar Module for this sensor
+	uint16_t rti_compare;
+	uint16_t trig_pwmpin;		//	PWM Pin used (Set in HalCoGen) on gioPortA
+	uint16_t echo_edgepin;		//	EDGE Pin used (Set in HalCoGen) NOTE:	Each EDGE Pin needs to have a matchin CAP Pin (on NHET)
+	SONAR_STATE pwm_state;		//	Current State for PWM
+	uint32_t _timeout_timer;	//	Timer used to check if Sesnro has timed out
+	float32 _last_distance;		//	Distance returned from latest trigger
+	boolean _did_i_timeout;		//  Returns last state
+	uint32_t echo_start_time;
+	uint32_t echo_end_time;
+	boolean _is_echo_time_valid;
+}sonar_sensor;
+
+//Struct to manage Sonar Data
+typedef struct
+{
+	float32 average[NUM_SONAR_SENSORS];
+	float32 data[NUM_SONAR_SENSORS][NUM_SONAR_SAMPLES];
+	uint8_t index;
+}sonar_sample;
+
+//	Struct used to keep track of all sensors in an Array
+typedef struct
+{
+	sonar_sensor * array;
+	uint16_t number_sensors;
+	sonar_sample sonarSampler;
+}sonar_array;
+
+extern sonar_array Sonar_Array;
+
 typedef struct
 {
 	uint8_t average[NUM_ADC_SENSORS];
@@ -83,5 +126,8 @@ typedef struct
 }ir_sample;
 
 extern ir_sample irArray;
+
+
+void addSonarSample(uint8_t sensor_index);
 
 #endif

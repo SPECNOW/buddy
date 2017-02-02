@@ -32,6 +32,18 @@ float current_speed = 0;
 SerialPacket 	serialPacketWrite 	= {0xFF, 0, 0, 0, 0, 0, {0}},
 				serialPacketRead 	= {0xFF, 0, 0, 0, 0, 0, {0}};
 ir_sample irArray;
+sonar_array sonarArray;
+
+/*	sonar_array Sonar_Array
+ *
+ * 	Global Sonar Array Management Variable. This is used to get access
+ * 	to all Sonar Sensors that are in use. Use the addSonarSensor function
+ * 	to add elements to this array.
+ */
+sonar_array Sonar_Array = {
+		/*.array =*/ NULL,
+		/*.number_sensors =*/ 0
+};	//	Initialize Array
 
 void delay(int del)
 {
@@ -97,23 +109,35 @@ void addADCSample()
 	}
 }
 
-void addSonarSample()
+/*	getSonarSensor(unsigned int index)
+ *
+ *  Return a pointer to the Sonar Sensor element in the Sonar Array at the speicifed index.
+ */
+sonar_sensor * getSonarSensor(unsigned int index)
 {
-	unsigned int adc_index = 0, array_index = 0;
-	irArray.index = (irArray.index++)%NUM_ADC_SAMPLES;
-	array_index = irArray.index++%NUM_ADC_SAMPLES;
-	unsigned int i=0, j=0;
-	uint16_t temp_average = 0;
-
-	for(i=0; i < NUM_ADC_SENSORS; i++)
+	sonar_sensor * ret = NULL;
+	if(index < Sonar_Array.number_sensors)
 	{
-		adc_index = adc_data[i].id;
-		irArray.data[adc_index][array_index] = adc_data[i].value;
-		temp_average = 0;
-		for(j=0; j < NUM_ADC_SAMPLES; j++)
-		{
-			temp_average += (uint16_t)irArray.data[adc_index][j];
-		}
-		irArray.average[adc_index] = (uint8_t) (temp_average/NUM_ADC_SAMPLES);
+		 ret = Sonar_Array.array + index;
 	}
+	return ret;
+}
+
+void addSonarSample(uint8_t sensor_index)
+{
+	unsigned int array_index = 0;
+	Sonar_Array.sonarSampler.index = (Sonar_Array.sonarSampler.index++)%NUM_ADC_SAMPLES;
+	array_index = Sonar_Array.sonarSampler.index++%NUM_ADC_SAMPLES;
+	unsigned int j=0;
+	float32 temp_average = 0;
+
+
+	Sonar_Array.sonarSampler.data[sensor_index][array_index] = Sonar_Array.array[sensor_index]._last_distance;
+	temp_average = 0;
+	for(j=0; j < NUM_SONAR_SAMPLES; j++)
+	{
+		temp_average += Sonar_Array.sonarSampler.data[sensor_index][j];
+	}
+
+	Sonar_Array.sonarSampler.average[sensor_index] = (temp_average/NUM_SONAR_SAMPLES);
 }

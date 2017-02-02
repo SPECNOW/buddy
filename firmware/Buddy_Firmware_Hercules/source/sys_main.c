@@ -207,7 +207,7 @@ void main(void)
 		}
 		if(is_conversion_complete)
 		{
-			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
+			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", Sonar_Array.sonarSampler.average[0], Sonar_Array.sonarSampler.average[1]);
 /*			is_conversion_complete = false;
 
 			rtiEnableNotification(getSonarSensor(0)->rti_compare);
