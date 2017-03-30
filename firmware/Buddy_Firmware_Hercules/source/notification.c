@@ -160,10 +160,18 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 		{
 			print_debug_ADC = true;
 		}
-		else if(command[0] == 't')			//	Toggle Switch
+		else if( strcmp( "ts", (const char*) command ) == 0 )			//	Toggle Switch
 		{
 			set_encoder_switch_flag = true;
 			switch_position = command[1];
+			if( motorPeriods.current_motor == LEFT_MOTOR)
+			{
+				motorPeriods.current_motor = RIGHT_MOTOR;
+			}
+			else
+			{
+				motorPeriods.current_motor = LEFT_MOTOR;
+			}
 		}
 		else if(command[0] == 'L')				// Left Motor Speed
 		{
@@ -179,20 +187,13 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 		{
 			if(command[1] == '0')
 			{
-				if(get_sonar_sensor == false)
-				{
-					get_sonar_sensor = true;
-					doSonar(0);
-				}
+				rtiEnableNotification(getSonarSensor(0)->rti_compare);
+				gioSetBit(gioPORTA,getSonarSensor(0)->trig_pwmpin, 1);
 			}
 			else if(command[1] == '1')
 			{
-				if(get_sonar_sensor == false)
-				{
-					get_sonar_sensor = true;
-					doSonar(1);
-
-				}
+				rtiEnableNotification(getSonarSensor(1)->rti_compare);
+				gioSetBit(gioPORTA,getSonarSensor(1)->trig_pwmpin, 1);
 			}
 			else
 			{

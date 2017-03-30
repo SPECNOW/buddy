@@ -26,8 +26,12 @@ uint8_t left_motor_speed = 193;
 uint8_t right_motor_speed = 193;
 uint8_t switch_position = 0;
 
-uint16 deltaT = 0;
-float current_speed = 0;
+uint32 deltaT=0;
+motor_periods motorPeriods = {
+		.current_motor = LEFT_MOTOR,
+		.left_motor_period = 0,
+		.right_motor_period = 0
+};
 
 SerialPacket 	serialPacketWrite 	= {0xFF, 0, 0, 0, 0, 0, {0}},
 				serialPacketRead 	= {0xFF, 0, 0, 0, 0, 0, {0}};

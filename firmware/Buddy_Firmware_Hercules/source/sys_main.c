@@ -105,12 +105,10 @@ void main(void)
 	eqepEnableCapture(eqepREG1);	/* Enable capture timer and capture period latch. */
 
 	//gioToggleBit( gioPORTA, SW_ENABLE); // ENABLES // not needed? <- you ARE RIGHT
-	//gioSetBit( gioPORTA, SW_ENABLE, 0);
+	gioSetBit( gioPORTA, SW_SELECT, 0);
 
 	adcStartConversion(adcREG1,adcGROUP1);
 	adcEnableNotification(adcREG1, adcGROUP1);
-
-	//hetSIGNAL_t het_sig;
 
 	sonar_sensor sonar0 = {
 			&HCSR04,						//	Sonar Module for this sensor
@@ -147,16 +145,25 @@ void main(void)
 		/* Status flag is set to indicate that a new value is latched in the QCPRD register. */
 		if((eqepREG1->QEPSTS & 0x80U) !=0U)
 		{
-			/* Elapsed time between unit position events */
-			deltaT = eqepREG1->QCPRD;
-
-			/* Calculate Velocity from deltaT and the value of the unit position. */
-			current_speed = (float)eqepREG1->QPOSCNT/(float)deltaT;
-
-			/* Clear the Status flag. */
-			eqepREG1->QEPSTS |= 0x80U;
+			///* Elapsed time between unit position events */
+			//deltaT = eqepREG1->QCPRD;
+			//
+			///* Calculate Velocity from deltaT and the value of the unit position. */
+			//current_speed = (float)(current_postion-last_postion)/(float)deltaT;
+			//
+			///* Clear the Status flag. */
+			//eqepREG1->QEPSTS |= 0x80U;
+			if( motorPeriods.current_motor == LEFT_MOTOR )
+			{
+				motorPeriods.left_motor_period = eqepREG1->QPOSCNT;
+				copySerialData(motorPeriods.left_motor_period, encoderLeft);
+			}
+			else
+			{
+				motorPeriods.right_motor_period = eqepREG1->QPOSCNT;
+				copySerialData(motorPeriods.right_motor_period, encoderRight);
+			}
 		}
-
 		if(adc_data_is_ready)
 		{
 			addADCSample();
@@ -174,10 +181,10 @@ void main(void)
 		}
 		if(print_status_flag)
 		{
-			print_info("Velocity", "%f", current_speed);
+			// print_info("Velocity", "%f", current_speed);
 			print_info("Position Count", "%d", eqepREG1->QPOSCNT);
-			print_info("Speed Period", "%d", eqepREG1->QCPRD);
-			print_info("eQEP Status Register HEX", "%02x", eqepREG1->QEPSTS);
+			//print_info("Speed Period", "%d", eqepREG1->QCPRD);
+			//print_info("eQEP Status Register HEX", "%02x", eqepREG1->QEPSTS);
 			sciSendByte(scilinREG, '\n');
 			sciSendByte(scilinREG, '\r');
 			print_status_flag = false;
@@ -190,6 +197,7 @@ void main(void)
 		if(set_encoder_switch_flag)
 		{
 			//gioSetBit(gioPORTA, SW_SELECT, switch_position);
+			print_info("Switch Toggle", "Toggled");
 			gioToggleBit(gioPORTA, SW_SELECT);
 			set_encoder_switch_flag = false;
 		}
@@ -208,12 +216,6 @@ void main(void)
 		if(is_conversion_complete)
 		{
 			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", Sonar_Array.sonarSampler.average[0], Sonar_Array.sonarSampler.average[1]);
-/*			is_conversion_complete = false;
-
-			rtiEnableNotification(getSonarSensor(0)->rti_compare);
-			rtiEnableNotification(getSonarSensor(1)->rti_compare);
-			gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
-			gioSetBit(gioPORTA, getSonarSensor(1)->trig_pwmpin,1);*/
 		}
 		if(send_serial_packet)
 		{

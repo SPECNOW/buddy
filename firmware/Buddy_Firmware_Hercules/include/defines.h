@@ -46,8 +46,8 @@ extern uint8_t left_motor_speed;
 extern uint8_t right_motor_speed;
 extern uint8_t switch_position;
 
-extern uint16 deltaT;
-extern float current_speed;
+extern uint32 deltaT;
+extern float current_speed, last_postion, current_postion;
 
 enum serial_data
 {
@@ -129,5 +129,16 @@ extern ir_sample irArray;
 
 
 void addSonarSample(uint8_t sensor_index);
+
+typedef enum eqep_motor_state {LEFT_MOTOR, RIGHT_MOTOR} EQEP_STATE;
+
+typedef struct
+{
+	uint32 left_motor_period;
+	uint32 right_motor_period;
+	EQEP_STATE current_motor;
+}motor_periods;
+
+extern motor_periods motorPeriods;
 
 #endif

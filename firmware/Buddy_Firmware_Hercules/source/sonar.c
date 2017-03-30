@@ -176,6 +176,7 @@ void sonarEchoNotification(hetBASE_t * hetREG,uint32 edge)
 				sonar->echo_end_time = _current_time;
 				sonar->_is_echo_time_valid = true;
 				sonar->_last_distance = calculateSonarDistance(sonar);
+				sonar->_timeout_timer=0;
 
 				addSonarSample(sonar_index);
 				rtiEnableNotification(sonar->rti_compare);
@@ -205,21 +206,6 @@ float calculateSonarDistance(sonar_sensor * sonar)
 /*********************************************************/
 /***************** DEPRECATED CODE ***********************/
 /*********************************************************/
-//	We Now Use RTI (real Time Interrupt) to do the one Shot PWM instead of the nHET
-void startPWM_reg(sonar_sensor* sonar)
-{
-	pwmSetDuty(hetRAM1, sonar->trig_pwmpin, sonar->module->pulse_width);
-}
-
-void stopPWM_reg(sonar_sensor*sonar)
-{
-	pwmSetDuty(hetRAM1, sonar->trig_pwmpin, 0);
-}
-
-void sonarPwmNotification(hetBASE_t * hetREG,uint32 pwm, uint32 notification)
-{
-
-}
 
 void startFirstTrigger(int highdur)
 {
@@ -234,30 +220,4 @@ void startFirstTrigger(int highdur)
 	gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin, 1);
 
 	return;
-}
-
-void doSonar(uint16_t sonar)
-{
-	getSonarSensor(sonar)->pwm_state = Sonar_Triggered;	//	Set PWM	Flag, signify trig to start
-	gioSetBit(gioPORTA, getSonarSensor(sonar)->trig_pwmpin, 1);
-	rtiEnableNotification(getSonarSensor(sonar)->rti_compare);
-}
-
-void sonarEdgeNotification(hetBASE_t * hetREG,uint32 edge)
-{
-	//	Loop through all sensors in Sonar Array and find which one is interrupted
-	uint16_t sensor_index = 0;
-	for(sensor_index = 0; sensor_index < Sonar_Array.number_sensors; sensor_index++)
-	{
-		sonar_sensor * sensor = &Sonar_Array.array[sensor_index];	//	Current Sensor
-		if(edge == sensor->echo_edgepin)	//	Check if this sensor has been Interrupted
-		{
-			hetSIGNAL_t het_sig;
-			capGetSignal(hetRAM1, sensor->echo_edgepin, &het_sig);
-			//	Calculate distance
-			sensor->_last_distance = (float)het_sig.duty/100.0 * het_sig.period*sensor->module->cm_conversion_factor;
-			is_conversion_complete = true;
-			get_sonar_sensor = false;
-		}
-	}
 }
