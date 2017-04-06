@@ -107,7 +107,8 @@ class serial_node:
           ser.open()
           return ser
         except serial.serialutil.SerialException:
-            rospy.logerr("Cannot Open serial port %s with baud rate %s" %(serial_dev_str, baud_rate))
+            #rospy.logerr("Cannot Open serial port %s with baud rate %s" %(serial_dev_str, baud_rate))
+            pass
         return None
 
     def readSerial2Buffer(self, serial_inst):
@@ -116,7 +117,8 @@ class serial_node:
         pass in the serial instance to read from
         """
         if isinstance(serial_inst, serial.Serial): #check if it is a serial port, and read from it
-            self.serial_buffer+=serial_inst.read(198) #read 19 bytes
+            self.serial_buffer+=serial_inst.read(40-len(self.serial_buffer)) #read 20 bytes
+            self.ser.write('ss')
         else:
             rospy.logerr("No serial instance passed")
             return 1
@@ -132,23 +134,29 @@ class serial_node:
         self.flg_rdy_to_pub = False
         
         while self.serial_buffer[0:1].lower() != '\xff' and len(self.serial_buffer) > 18:
-            rospy.logerr("ERROR: serial buffer header not 0xFF, shifting it: %s" % self.serial_buffer[0:17])
+            rospy.logerr("ERROR: serial buffer header not 0xFF, shifting it: %s, lenght is %s" % (self.serial_buffer[0:17], str(len(self.serial_buffer))))
+            buf=''
+            for char in self.serial_buffer:
+                buf=buf + char.__repr__()
+            rospy.logerr("ERROR: Buffer is %s" % buf)
             #shift the buffer by 1
-            self.serial_buffer = self.serial_buffer[1:]
+            if self.serial_buffer[0:1].lower() != '\xff':
+                self.serial_buffer = self.serial_buffer[1:]
 
         if len(self.serial_buffer) < 18:
-            rospy.logerr("ERROR: serial package is too short. Is only " + str(len(self.serial_buffer)))
+            rospy.logerr("ERROR: serial package is too short. Length is only " + str(len(self.serial_buffer)))
             return 1
 
         self.serial_packet = self.serial_buffer[0:18]
-        self.serial_buffer = self.serial_buffer[17:]
+        self.serial_buffer = self.serial_buffer[20:]
         
         self.Packetheader = ord(self.serial_packet[0])
         self.ValidData = ord(self.serial_packet[1])
         self.UltraF = ord(self.serial_packet[2])
         self.UltraB = ord(self.serial_packet[3])
-        self.EncL = stringtofloat4(self.serial_packet[4:8])
-        self.EncR = stringtofloat4(self.serial_packet[8:12])
+        # TODO: FIX DIS UGLIENESS, converting from 4 
+        self.EncL = (ord(self.serial_packet[4])<<24) + (ord(self.serial_packet[5])<<16) + (ord(self.serial_packet[6])<<8) + (ord(self.serial_packet[7]) << 0)
+        self.EncR = (ord(self.serial_packet[8])<<24) + (ord(self.serial_packet[9])<<16) + (ord(self.serial_packet[10])<<8) + (ord(self.serial_packet[11]) << 0)
         self.Infra = \
            [ord(self.serial_packet[12]), 
            ord(self.serial_packet[13]), 
