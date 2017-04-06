@@ -21,18 +21,6 @@ void _delay(int del)
 	}
 }
 
-/*	sonar_array Sonar_Array
- *
- * 	Global Sonar Array Management Variable. This is used to get access
- * 	to all Sonar Sensors that are in use. Use the addSonarSensor function
- * 	to add elements to this array.
- */
-sonar_array Sonar_Array = {
-		/*.array =*/ NULL,
-		/*.number_sensors =*/ 0
-};	//	Initialize Array
-
-
 /*	void initSonar(sonar_sensor * sonar)
  *
  * 	Intitlializes the Sonar Sensor. Current implementation of this function effectivley does nothing :(
@@ -133,20 +121,6 @@ void addSonarSensor(sonar_sensor * sensor)
 	}
 }
 
-/*	getSonarSensor(unsigned int index)
- *
- *  Return a pointer to the Sonar Sensor element in the Sonar Array at the speicifed index.
- */
-sonar_sensor * getSonarSensor(unsigned int index)
-{
-	sonar_sensor * ret = NULL;
-	if(index < Sonar_Array.number_sensors)
-	{
-		 ret = Sonar_Array.array + index;
-	}
-	return ret;
-}
-
 /*	getNextSonar(unsigned int current_index)
  *
  * 	Returns a pointer to the Sonar Sensor that comes next in the Sonar Array after the element at
@@ -194,7 +168,6 @@ void sonarEchoNotification(hetBASE_t * hetREG,uint32 edge)
 				//	Set Print Flag to False
 				sonar->_is_echo_time_valid = false;
 				sonar->echo_start_time = _current_time;
-				//	rtiREG1->CNT[0].UCx = 0;	// This was meant to reset teh RTI clock, but it doesn't seem to work
 			}
 			else	// Falling Edge
 			{
@@ -203,7 +176,11 @@ void sonarEchoNotification(hetBASE_t * hetREG,uint32 edge)
 				sonar->echo_end_time = _current_time;
 				sonar->_is_echo_time_valid = true;
 				sonar->_last_distance = calculateSonarDistance(sonar);
-				is_conversion_complete = true;
+				sonar->_timeout_timer=0;
+
+				addSonarSample(sonar_index);
+				rtiEnableNotification(sonar->rti_compare);
+				gioSetBit(gioPORTA, sonar->trig_pwmpin, 1);
 			}
 		}
 	}
@@ -222,15 +199,6 @@ float calculateSonarDistance(sonar_sensor * sonar)
 	float _delta_time_in_ms = ((float)(sonar->echo_end_time - sonar->echo_start_time))/(100000000.00/(1000000*rtiREG1->CNT[0U].CPUCx));
 	float val = _delta_time_in_ms*sonar->module->cm_conversion_factor;
 
-	if(val < 0)	//	Check if valid
-	{
-		is_conversion_complete = false;
-	}
-	else
-	{
-		is_conversion_complete = true;
-	}
-
 	return val;
 }
 
@@ -238,21 +206,6 @@ float calculateSonarDistance(sonar_sensor * sonar)
 /*********************************************************/
 /***************** DEPRECATED CODE ***********************/
 /*********************************************************/
-//	We Now Use RTI (real Time Interrupt) to do the one Shot PWM instead of the nHET
-void startPWM_reg(sonar_sensor* sonar)
-{
-	pwmSetDuty(hetRAM1, sonar->trig_pwmpin, sonar->module->pulse_width);
-}
-
-void stopPWM_reg(sonar_sensor*sonar)
-{
-	pwmSetDuty(hetRAM1, sonar->trig_pwmpin, 0);
-}
-
-void sonarPwmNotification(hetBASE_t * hetREG,uint32 pwm, uint32 notification)
-{
-
-}
 
 void startFirstTrigger(int highdur)
 {
@@ -265,56 +218,6 @@ void startFirstTrigger(int highdur)
 	}
 	delay(10000);
 	gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin, 1);
-	hetInit();
-	rtiEnableNotification(getSonarSensor(0)->rti_compare);
-
-
-	//static sonar_sensor *sonar;
-	//unsigned int sonar_index = 0;
-	//for(sonar_index = 0; sonar_index < 1/*Sonar_Array.number_sensors*/; sonar_index++)
-	//{
-	//
-	//	sonar = &Sonar_Array.array[sonar_index];
-	//	rtiEnableNotification(sonar->rti_compare);
-	//	gioSetBit(gioPORTA, sonar->trig_pwmpin,1);
-	//	//edgeEnableNotification(hetREG1, 0);
-	//	//edgeEnableNotification(hetREG1, 1);
-	//	//gioSetBit(gioPORTA, sonar->trig_pwmpin,0);
-	//}
 
 	return;
-}
-
-void doSonar(uint16_t sonar)
-{
-	getSonarSensor(sonar)->pwm_state = Sonar_Triggered;	//	Set PWM	Flag, signify trig to start
-	gioSetBit(gioPORTA, getSonarSensor(sonar)->trig_pwmpin, 1);
-	rtiEnableNotification(getSonarSensor(sonar)->rti_compare);
-}
-
-void sonarEdgeNotification(hetBASE_t * hetREG,uint32 edge)
-{
-	//	Loop through all sensors in Sonar Array and find which one is interrupted
-	uint16_t sensor_index = 0;
-	for(sensor_index = 0; sensor_index < Sonar_Array.number_sensors; sensor_index++)
-	{
-
-		//CLARK START
-		sonar_sensor * sensor = &Sonar_Array.array[sensor_index];	//	Current Sensor
-		if(edge == sensor->echo_edgepin)	//	Check if this sensor has been Interrupted
-		{
-			hetSIGNAL_t het_sig;
-			capGetSignal(hetRAM1, sensor->echo_edgepin, &het_sig);
-			//	Calculate distance
-			sensor->_last_distance = (float)het_sig.duty/100.0 * het_sig.period*sensor->module->cm_conversion_factor;
-			is_conversion_complete = true;
-			get_sonar_sensor = false;
-			//Trigger Next Interrupt
-			//getNextSonar(sensor_index)->pwm_state = Sonar_Triggered;	//	Set PWM	Flag, signify trig to start
-			//gioSetBit(gioPORTA, getNextSonar(sensor_index)->trig_pwmpin, 1);
-			//  set Counter to trip exactly 10 usecs from now somehow!!!! (currently can happen anytime between 10-20 usecs (Okay, not great)
-			//rtiEnableNotification(getNextSonar(sensor_index)->rti_compare);
-		}
-		//CLARK END
-	}
 }

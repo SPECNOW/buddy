@@ -76,9 +76,6 @@
 */
 
 /* USER CODE BEGIN (2) */
-//adcData_t adc_data[2];
-
-
 /* USER CODE END */
 
 void main(void)
@@ -103,19 +100,15 @@ void main(void)
 	// PreScalers for eQEP
 	eqepSetCapturePrescale(eqepREG1, QCAPCTL_Ccps_Capture_Div_32);
 	eqepSetUnitPosnPrescale(eqepREG1, QCAPCTL_Upps_Div_64_Prescale);
-
 	eqepEnableUnitTimer(eqepREG1);	/* Enable Unit Timer. */
 	eqepEnableCounter(eqepREG1);	/* Enable Position Counter */
 	eqepEnableCapture(eqepREG1);	/* Enable capture timer and capture period latch. */
 
 	//gioToggleBit( gioPORTA, SW_ENABLE); // ENABLES // not needed? <- you ARE RIGHT
-	//gioSetBit( gioPORTA, SW_ENABLE, 0);
+	gioSetBit( gioPORTA, SW_SELECT, 0);
 
-	gioSetDirection(hetPORT1, 0x100);	// COpied from ADC example, sets Het8
 	adcStartConversion(adcREG1,adcGROUP1);
 	adcEnableNotification(adcREG1, adcGROUP1);
-
-	//hetSIGNAL_t het_sig;
 
 	sonar_sensor sonar0 = {
 			&HCSR04,						//	Sonar Module for this sensor
@@ -152,51 +145,46 @@ void main(void)
 		/* Status flag is set to indicate that a new value is latched in the QCPRD register. */
 		if((eqepREG1->QEPSTS & 0x80U) !=0U)
 		{
-			/* Elapsed time between unit position events */
-			deltaT = eqepREG1->QCPRD;
-
-			/* Calculate Velocity from deltaT and the value of the unit position. */
-			current_speed = (float)eqepREG1->QPOSCNT/(float)deltaT;
-
-			/* Clear the Status flag. */
-			eqepREG1->QEPSTS |= 0x80U;
+			///* Elapsed time between unit position events */
+			//deltaT = eqepREG1->QCPRD;
+			//
+			///* Calculate Velocity from deltaT and the value of the unit position. */
+			//current_speed = (float)(current_postion-last_postion)/(float)deltaT;
+			//
+			///* Clear the Status flag. */
+			//eqepREG1->QEPSTS |= 0x80U;
+			if( motorPeriods.current_motor == LEFT_MOTOR )
+			{
+				motorPeriods.left_motor_period = eqepREG1->QPOSCNT;
+				copySerialData(motorPeriods.left_motor_period, encoderLeft);
+			}
+			else
+			{
+				motorPeriods.right_motor_period = eqepREG1->QPOSCNT;
+				copySerialData(motorPeriods.right_motor_period, encoderRight);
+			}
 		}
-
-		// ADC Stuff
-		//gioSetBit(hetPORT1, 8, 1);
-		//while((adcIsConversionComplete(adcREG1,adcGROUP1))==0);
-		//adcGetData(adcREG1, adcGROUP1,&adc_data[0]);
-		//gioSetBit(hetPORT1, 8, 0);
-		//print_debug("ADC Value", "%d", adc_data[1].value);
-		//capGetSignal(hetRAM1, cap0, &het_sig);
-		//print_info("HET", "Distance: %f cm", (float)het_sig.duty * het_sig.period/58);
-		//if(!Sonar_Array.array->_did_i_timeout)
-		//{
-				//print_info("HET", "Distance: %f ", getDistance(Sonar_Array.array));
-		//}
-
 		if(adc_data_is_ready)
 		{
-			adcGetData(adcREG1, adcGROUP1, adc_data);
-			copySerialData(adc_data, infraredArray);
+			addADCSample();
+			copySerialData(irArray.average, infraredArray);
 			adc_data_is_ready = false;
 		}
 		if(print_debug_ADC)
 		{
-			print_debug("ADC 0 Value", "ID: %d Value: %d", (adc_data+0)->id, (adc_data+0)->value);
-			print_debug("ADC 1 Value", "ID: %d Value: %d", (adc_data+1)->id, (adc_data+1)->value);
-			print_debug("ADC 2 Value", "ID: %d Value: %d", (adc_data+2)->id, (adc_data+2)->value);
-			print_debug("ADC 3 Value", "ID: %d Value: %d", (adc_data+3)->id, (adc_data+3)->value);
-			print_debug("ADC 4 Value", "ID: %d Value: %d", (adc_data+4)->id, (adc_data+4)->value);
-			print_debug("ADC 5 Value", "ID: %d Value: %d", (adc_data+5)->id, (adc_data+5)->value);
+			unsigned int i;
+			for(i = 0; i < NUM_ADC_SENSORS; i++)
+			{
+				print_debug("ADC Module", "ID: %d Value: %X", i, irArray.average[i]);
+			}
 			print_debug_ADC = false;
 		}
 		if(print_status_flag)
 		{
-			print_info("Velocity", "%f", current_speed);
+			// print_info("Velocity", "%f", current_speed);
 			print_info("Position Count", "%d", eqepREG1->QPOSCNT);
-			print_info("Speed Period", "%d", eqepREG1->QCPRD);
-			print_info("eQEP Status Register HEX", "%02x", eqepREG1->QEPSTS);
+			//print_info("Speed Period", "%d", eqepREG1->QCPRD);
+			//print_info("eQEP Status Register HEX", "%02x", eqepREG1->QEPSTS);
 			sciSendByte(scilinREG, '\n');
 			sciSendByte(scilinREG, '\r');
 			print_status_flag = false;
@@ -209,6 +197,7 @@ void main(void)
 		if(set_encoder_switch_flag)
 		{
 			//gioSetBit(gioPORTA, SW_SELECT, switch_position);
+			print_info("Switch Toggle", "Toggled");
 			gioToggleBit(gioPORTA, SW_SELECT);
 			set_encoder_switch_flag = false;
 		}
@@ -226,14 +215,7 @@ void main(void)
 		}
 		if(is_conversion_complete)
 		{
-			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
-			is_conversion_complete = false;
-
-			rtiEnableNotification(getSonarSensor(0)->rti_compare);
-			gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
-
-			rtiEnableNotification(getSonarSensor(1)->rti_compare);
-			gioSetBit(gioPORTA, getSonarSensor(1)->trig_pwmpin,1);
+			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", Sonar_Array.sonarSampler.average[0], Sonar_Array.sonarSampler.average[1]);
 		}
 		if(send_serial_packet)
 		{
@@ -243,8 +225,14 @@ void main(void)
 			_enable_interrupt_();
 			sciSend(scilinREG, sizeof(SerialPacket)/sizeof(uint8), (uint8*)&serialPacketRead);
 		}
+		if(print_debug_sonar)
+		{
+			print_debug_sonar = false;
+			print_info("Sonar", "Sonar 0: %f, Sonar 1: %f", getSonarSensor(0)->_last_distance, getSonarSensor(1)->_last_distance);
+			gioSetBit(gioPORTA, getSonarSensor(0)->trig_pwmpin,1);
+		}
 
-		if(true)
+		if(false)
 		{
 			static SerialPacket testPacket = {0xFF};
 			testPacket.encoderLeft = 123.0;
