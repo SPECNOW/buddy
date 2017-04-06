@@ -160,7 +160,11 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 		{
 			print_debug_ADC = true;
 		}
-		else if( strcmp( "ts", (const char*) command ) == 0 )			//	Toggle Switch
+		else if( strcmp( "ss", (const char*) command ) == 0 )	// Send Serial
+		{
+			send_serial_packet = true;
+		}
+		else if( strcmp( "ts", (const char*) command ) == 0 )	//	Toggle Switch
 		{
 			set_encoder_switch_flag = true;
 			switch_position = command[1];
