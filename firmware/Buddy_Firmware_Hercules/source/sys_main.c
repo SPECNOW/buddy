@@ -156,12 +156,12 @@ void main(void)
 			if( motorPeriods.current_motor == LEFT_MOTOR )
 			{
 				motorPeriods.left_motor_period = eqepREG1->QPOSCNT;
-				copySerialData(motorPeriods.left_motor_period, encoderLeft);
+				copySerialData(&motorPeriods.left_motor_period, encoderLeft);
 			}
 			else
 			{
 				motorPeriods.right_motor_period = eqepREG1->QPOSCNT;
-				copySerialData(motorPeriods.right_motor_period, encoderRight);
+				copySerialData(&motorPeriods.right_motor_period, encoderRight);
 			}
 		}
 		if(adc_data_is_ready)

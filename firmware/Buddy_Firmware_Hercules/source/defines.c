@@ -28,9 +28,9 @@ uint8_t switch_position = 0;
 
 uint32 deltaT=0;
 motor_periods motorPeriods = {
-		.current_motor = LEFT_MOTOR,
-		.left_motor_period = 0,
-		.right_motor_period = 0
+		/*.current_motor =*/ 0,
+		/*.left_motor_period =*/ 0,
+		/*.right_motor_period =*/ LEFT_MOTOR
 };
 
 SerialPacket 	serialPacketWrite 	= {0xFF, 0, 0, 0, 0, 0, {0}},
