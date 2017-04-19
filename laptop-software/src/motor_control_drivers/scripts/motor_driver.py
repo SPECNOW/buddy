@@ -17,7 +17,7 @@ class motor_node:
         
         This node once started, will read from serial. Will publish data as it arrives and it's valid flag is set
         """
-        publish_rate = float(rospy.get_param("publishRate", "10.0"))
+        publish_rate = int(rospy.get_param("publishRate", "100.0"))
         publish_topic = rospy.get_param("motorTopicOut", "motor_power")
         self.DEBUG_EN = rospy.get_param("debugEnable", "True").upper() == "TRUE"
         
@@ -29,7 +29,7 @@ class motor_node:
         if publish_rate is None: 
             publish_rate = 100
         if queue_size is None: 
-            queue_size = 10
+            queue_size = 10.0
 
         if subscription_names is not None and isinstance(subscription_names, list): # if it is passed and a list
             rospy.logdebug("Subscribed to: ")
@@ -49,7 +49,7 @@ class motor_node:
         self.rosRate=rospy.Rate(publish_rate)        
 
     def processData(self, data):
-        self.times.append(time.time())
+        self.times.append(data.Stamp.secs+data.Stamp.nsecs*1e-9)
         self.positions['left'].append(data.EncL)
         self.positions['right'].append(data.EncR)
         if len(self.times) == 3:
@@ -68,7 +68,8 @@ class motor_node:
             if self.flg_rdy_to_pub:
                 self.pub.publish(Twist())
             else:
-                rospy.logdebug("Not ready to publish")
+                pass
+                # rospy.logdebug("Not ready to publish")
             self.rosRate.sleep()
   
 if __name__=='__main__':    

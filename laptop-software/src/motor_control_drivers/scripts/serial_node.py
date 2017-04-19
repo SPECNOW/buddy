@@ -5,6 +5,7 @@ import serial
 import sys
 import struct
 import string
+import time
 
 from motor_control_drivers.msg import BuddySerial
 
@@ -18,7 +19,7 @@ class serial_node:
         This node once started, will read from serial. Will publish data as it arrives and it's valid flag is set
         """
         serial_port_str = rospy.get_param("comPort", "") 
-        publish_rate = float(rospy.get_param("publishRate", "10.0"))
+        publish_rate = int(rospy.get_param("publishRate", "100.0"))
         publish_topic = rospy.get_param("topicOut", "Fake_serial_data_topic")
         self.DEBUG_EN = rospy.get_param("debugEnable", "True").upper() == "TRUE"
         
@@ -28,6 +29,7 @@ class serial_node:
         self.rosRate = None         #obj for the rospy.Rate()
         self.ser = None
         
+        self.last_time = None # rospy.Time.now()        
         self.Packetheader = \
         self.ValidData = \
         self.UltraF = \
@@ -39,7 +41,7 @@ class serial_node:
         if publish_rate is None: 
             publish_rate = 100
         if queue_size is None: 
-            queue_size = 10
+            queue_size = 1
 
         if subscription_names is not None and isinstance(subscription_names, list): # if it is passed and a list
             rospy.logdebug("Subscribed to: ")
@@ -117,8 +119,9 @@ class serial_node:
         pass in the serial instance to read from
         """
         if isinstance(serial_inst, serial.Serial): #check if it is a serial port, and read from it
-            self.serial_buffer+=serial_inst.read(40-len(self.serial_buffer)) #read 20 bytes
             self.ser.write('ss')
+            self.serial_buffer+=serial_inst.read(40-len(self.serial_buffer)) #read 20 bytes
+            self.last_time = rospy.Time.now()
         else:
             rospy.logerr("No serial instance passed")
             return 1
@@ -155,8 +158,8 @@ class serial_node:
         self.UltraF = ord(self.serial_packet[2])
         self.UltraB = ord(self.serial_packet[3])
         # TODO: FIX DIS UGLIENESS, converting from 4 
-        self.EncL = (ord(self.serial_packet[4])<<24) + (ord(self.serial_packet[5])<<16) + (ord(self.serial_packet[6])<<8) + (ord(self.serial_packet[7]) << 0)
-        self.EncR = (ord(self.serial_packet[8])<<24) + (ord(self.serial_packet[9])<<16) + (ord(self.serial_packet[10])<<8) + (ord(self.serial_packet[11]) << 0)
+        self.EncL = (ord(self.serial_packet[4])<<0) + (ord(self.serial_packet[5])<<8) + (ord(self.serial_packet[6])<<16) + (ord(self.serial_packet[7]) << 24)
+        self.EncR = (ord(self.serial_packet[8])<<0) + (ord(self.serial_packet[9])<<8) + (ord(self.serial_packet[10])<<16) + (ord(self.serial_packet[11]) << 24)
         self.Infra = \
            [ord(self.serial_packet[12]), 
            ord(self.serial_packet[13]), 
@@ -167,6 +170,7 @@ class serial_node:
            
         #fill up the info to be published
         self.parsed_serial_data= BuddySerial(
+            Stamp=self.last_time,
             Packetheader=self.Packetheader, 
             ValidData=self.ValidData,
             Ultra= [self.UltraF, self.UltraF],
@@ -208,7 +212,7 @@ if __name__=='__main__':
     
     try:
         #node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None
-        FakeSerial = serial_node(node_name='BuddySerial', serial_port_str='ttyUSB0', publish_rate = 10, DEBUG_EN=True)
+        FakeSerial = serial_node(node_name='BuddySerial', serial_port_str='ttyUSB0', publish_rate = 100, DEBUG_EN=True)
         FakeSerial.startNode()
     except rospy.ROSInterruptException:
         pass

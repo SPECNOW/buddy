@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import rospy
 
+##depricated use sensor to laser base. as far as we know
 #from sensor_msg.msg import LaserScan
 
 from sensor_to_laser_base import sensor_to_laser_base

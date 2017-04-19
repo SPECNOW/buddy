@@ -1,7 +1,7 @@
 <!-- first launch file to launch buddy -->
 <launch>
     <master auto="start"/>
-    <param name="/use_sim_time" value="true"/>
+    <param name="/use_sim_time" value="false"/>
     <node pkg="stage_ros" type="stageros" name="StageROS" args="/opt/ros/hydro/share/stage_ros/world/willow-erratic.world"/>
     <node pkg="gmapping" type="slam_gmapping" name="gmappingSLAM" >
         <remap from="static_tf" to="/tf" />
@@ -16,7 +16,7 @@
     </node>
     <group>
         <param name="topicOut" value="buddySerial"/>
-        <param name="publishRate" value="10.0" type="double"/>
+        <param name="publishRate" value="100" type="int"/>
         <param name="debugEnable" value="True" type="string"/>
         <param name="comPort" value="ttyUSB0"/>
         <node pkg="motor_control_drivers" name="serial" type="serial_node.py"/>
