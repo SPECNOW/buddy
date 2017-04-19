@@ -235,8 +235,8 @@ void main(void)
 		if(false)
 		{
 			static SerialPacket testPacket = {0xFF};
-			testPacket.encoderLeft = 123.0;
-			testPacket.encoderRight = 4131231.0;
+			testPacket.encoderLeft = 123;
+			testPacket.encoderRight = 4131231;
 			testPacket.ultrasonicBack = 128;
 			testPacket.ultrasonicFront = sizeof(SerialPacket);
 			testPacket.validData = 0xee;

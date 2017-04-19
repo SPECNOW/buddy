@@ -68,8 +68,8 @@ typedef struct serial_packet
 	uint8_t validData;
 	uint8_t ultrasonicFront;
 	uint8_t ultrasonicBack;
-	float encoderLeft;
-	float encoderRight;
+	uint32_t encoderLeft;
+	uint32_t encoderRight;
 	uint8_t infraredArray[NUM_ADC_SENSORS];
 } SerialPacket;
 
