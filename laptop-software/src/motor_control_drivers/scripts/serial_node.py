@@ -64,7 +64,7 @@ class serial_node:
             rospy.is_shutdown()
             self.pub=rospy.Publisher(publish_topic, BuddySerial, queue_size=queue_size)
 
-        
+        rospy.logerr("RosRate for Serial is: %s", str(publish_rate))
         self.rosRate=rospy.Rate(publish_rate)        
         if self.ser is None:
             rospy.logerr("ERROR with serial port, cannot open, will generate fake data")
@@ -119,9 +119,9 @@ class serial_node:
         pass in the serial instance to read from
         """
         if isinstance(serial_inst, serial.Serial): #check if it is a serial port, and read from it
+            self.last_time = rospy.Time.now()
             self.ser.write('ss')
             self.serial_buffer+=serial_inst.read(40-len(self.serial_buffer)) #read 20 bytes
-            self.last_time = rospy.Time.now()
         else:
             rospy.logerr("No serial instance passed")
             return 1
@@ -170,7 +170,7 @@ class serial_node:
            
         #fill up the info to be published
         self.parsed_serial_data= BuddySerial(
-            Stamp=self.last_time,
+            Stamp=rospy.Time.now(),
             Packetheader=self.Packetheader, 
             ValidData=self.ValidData,
             Ultra= [self.UltraF, self.UltraF],

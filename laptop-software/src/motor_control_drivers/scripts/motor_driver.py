@@ -56,8 +56,9 @@ class motor_node:
             self.times.pop(0)
             self.positions['left'].pop(0)
             self.positions['right'].pop(0)
+            rospy.logdebug("Left Velocty: Position: %s, %s, delat: %s Time: %s %s delta: %s" % (str(self.positions['left'][1]), str(self.positions['left'][0]), str(self.positions['left'][1]-self.positions['left'][0]), str(self.times[1]), str(self.times[0]), str(self.times[1] - self.times[0])) )
             rospy.loginfo("Left Velocty: %s" % str( (self.positions['left'][1]-self.positions['left'][0])/(self.times[1]-self.times[0]) ) )
-            rospy.loginfo("Right Velocty: %s" % str( (self.positions['right'][1]-self.positions['right'][0])/(self.times[1]-self.times[0]) ) )
+            #rospy.loginfo("Right Velocty: %s" % str( (self.positions['right'][1]-self.positions['right'][0])/(self.times[1]-self.times[0]) ) )
         return
 
     def startNode(self):
@@ -75,7 +76,7 @@ class motor_node:
 if __name__=='__main__':    
     try:
         #node_name=None, subscription_names=None, serial_port_str=None, publish_rate=None, queue_size=None, DEBUG_EN=None
-        motor_driver = motor_node(node_name='BuddyMotorController', publish_rate = 10, DEBUG_EN=True, subscription_names="buddySerial")
+        motor_driver = motor_node(node_name='BuddyMotorController', publish_rate = 100, DEBUG_EN=True, subscription_names="buddySerial")
         motor_driver.startNode()
     except rospy.ROSInterruptException:
         pass
