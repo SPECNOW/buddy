@@ -16,7 +16,7 @@ from sensor_msgs.msg import LaserScan
 from motor_control_drivers.msg import BuddySerial
 
 class sensor_to_laser_base:
-    def __init__(self, node_name, queue_size, publish_rate):
+    def __init__(self, node_name, queue_size=5, publish_rate=10):
         """
         * initialize stuff 
         * create a publisher instance
@@ -62,6 +62,7 @@ class sensor_to_laser_base:
     
     def processData(self, data):
         # Check if interested data has changed
+        self.sensor_LaserScan.header.stamp = rospy.Time.now()
         distance = 0
         if data.ValidData & self.valid_data_mask:            
             # Extarct Data, convert Data, and Publish Data
@@ -71,14 +72,13 @@ class sensor_to_laser_base:
                 distance =  float(ord(data.Infra[self.sensor_number]))*self.sensor_scale_factor
             self.sensor_LaserScan.ranges = [distance]*self.number_of_datapoints
             self.sensor_LaserScan.intensities = [1]*self.number_of_datapoints
-            self.sensor_LaserScan.header.stamp = rospy.Time.now()
         else:
             pass
         return
 
 if __name__=='__main__':
     try:
-        FakeLaser=sensor_to_laser_base('laserScanDataNode', 10, 10)
+        FakeLaser=sensor_to_laser_base('laserScanDataNode', 1, 10)
         FakeLaser.startPublishing()
     except rospy.ROSInterruptException:
         pass

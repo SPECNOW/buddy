@@ -29,7 +29,7 @@ class motor_node:
         if publish_rate is None: 
             publish_rate = 100
         if queue_size is None: 
-            queue_size = 10.0
+            queue_size = 5
 
         if subscription_names is not None and isinstance(subscription_names, list): # if it is passed and a list
             rospy.logdebug("Subscribed to: ")

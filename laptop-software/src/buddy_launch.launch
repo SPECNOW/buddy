@@ -2,7 +2,7 @@
 <launch>
     <master auto="start"/>
     <param name="/use_sim_time" value="false"/>
-    <!-- <node pkg="stage_ros" type="stageros" name="StageROS" args="/opt/ros/hydro/share/stage_ros/world/willow-erratic.world"/>
+    <node pkg="stage_ros" type="stageros" name="StageROS" args="/opt/ros/hydro/share/stage_ros/world/willow-erratic.world"/>
     <node pkg="gmapping" type="slam_gmapping" name="gmappingSLAM" >
         <remap from="static_tf" to="/tf" />
         <remap from="scan" to="base_scan"/>
@@ -13,16 +13,16 @@
         <rosparam file="$(find motor_control_drivers)../local_costmap_params.yaml" command="load" />
         <rosparam file="$(find motor_control_drivers)../global_costmap_params.yaml" command="load" />
         <rosparam file="$(find motor_control_drivers)../base_local_planner_params.yaml" command="load" />
-    </node> -->
+    </node>
     <group>
         <param name="topicOut" value="buddySerial"/>
-        <param name="publishRate" value="20" type="int"/>
+        <param name="publishRate" value="40" type="int"/>
         <param name="debugEnable" value="True" type="string"/>
         <param name="comPort" value="ttyUSB0"/>
         <node pkg="motor_control_drivers" name="serial" type="serial_node.py"/>
     </group>
 
-    <!--<group ns="ultra">
+    <group ns="ultra">
         <param name="topicIn" value="/buddySerial"/>
         <param name="topicOut" value="ultra"/>
         <param name="sensorScale" value="0.05" type="double"/>
@@ -88,9 +88,9 @@
             <remap from="sensorNum" to="/infra/infraRed5/sensorNum"/>
             <param name="sensorNum" value="5" type="int"/>        
         </node>
-    </group>-->
+    </group>
     
-    <!--<group ns="staticTFs">
+    <group ns="staticTFs">
         <node pkg="tf" type="static_transform_publisher" name="infraTF0" args="0.5  0.5  0 0.7853  0 0 base_link frame_infra0 100" />
         <node pkg="tf" type="static_transform_publisher" name="infraTF1" args="0    0.5  0 1.5708 0 0 base_link frame_infra1 100" />
         <node pkg="tf" type="static_transform_publisher" name="infraTF2" args="-0.5 0.5  0 2.3562  0 0 base_link frame_infra2 100" />
@@ -101,5 +101,5 @@
         <node pkg="tf" type="static_transform_publisher" name="ultraTF0" args="0.5  0    0 0       0 0 base_link frame_ultra0 100" />
         <node pkg="tf" type="static_transform_publisher" name="ultraTF1" args="-0.5 0    0 3.1415  0 0 base_link frame_ultra1 100" />
     </group>
-    <node pkg="rviz" type="rviz" name="myRviz" args="-d $(find motor_control_drivers)../rviz-config.rviz"/> -->
+    <node pkg="rviz" type="rviz" name="myRviz" args="-d $(find motor_control_drivers)../rviz-config.rviz"/>
 </launch>

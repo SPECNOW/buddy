@@ -41,7 +41,7 @@ class serial_node:
         if publish_rate is None: 
             publish_rate = 100
         if queue_size is None: 
-            queue_size = 1
+            queue_size = 0
 
         if subscription_names is not None and isinstance(subscription_names, list): # if it is passed and a list
             rospy.logdebug("Subscribed to: ")
