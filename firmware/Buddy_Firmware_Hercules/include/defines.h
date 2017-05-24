@@ -44,7 +44,6 @@ extern bool adc_data_is_ready;
 
 extern uint8_t left_motor_speed;
 extern uint8_t right_motor_speed;
-extern uint8_t switch_position;
 
 extern uint32 deltaT;
 extern float current_speed, last_postion, current_postion;
@@ -134,11 +133,13 @@ typedef enum eqep_motor_state {LEFT_MOTOR, RIGHT_MOTOR} EQEP_STATE;
 
 typedef struct
 {
-	uint32 left_motor_period;
-	uint32 right_motor_period;
+	uint32 left_motor_position_count;
+	uint32 right_motor_position_count;
+	uint32 saved_left_motor_position_count;
+	uint32 saved_right_motor_position_count;
 	EQEP_STATE current_motor;
-}motor_periods;
+}motor_positions;
 
-extern motor_periods motorPeriods;
+extern motor_positions motorPositions;
 
 #endif

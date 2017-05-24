@@ -62,6 +62,7 @@
 /* Include Files */
 
 #include "sys_common.h"
+#include <inttypes.h>
 
 /* USER CODE BEGIN (1) */
 #include "defines.h"
@@ -153,15 +154,15 @@ void main(void)
 			//
 			///* Clear the Status flag. */
 			//eqepREG1->QEPSTS |= 0x80U;
-			if( motorPeriods.current_motor == LEFT_MOTOR )
+			if( motorPositions.current_motor == LEFT_MOTOR )
 			{
-				motorPeriods.left_motor_period = eqepREG1->QPOSCNT;
-				copySerialData(&motorPeriods.left_motor_period, encoderLeft);
+				motorPositions.left_motor_position_count = eqepREG1->QPOSCNT;
+				copySerialData(&motorPositions.left_motor_position_count, encoderLeft);
 			}
 			else
 			{
-				motorPeriods.right_motor_period = eqepREG1->QPOSCNT;
-				copySerialData(&motorPeriods.right_motor_period, encoderRight);
+				motorPositions.right_motor_position_count = eqepREG1->QPOSCNT;
+				copySerialData(&motorPositions.right_motor_position_count, encoderRight);
 			}
 		}
 		if(adc_data_is_ready)
@@ -182,7 +183,7 @@ void main(void)
 		if(print_status_flag)
 		{
 			// print_info("Velocity", "%f", current_speed);
-			print_info("Position Count", "%d", eqepREG1->QPOSCNT);
+			print_info("Position Count", "%" PRIu32 , eqepREG1->QPOSCNT);
 			//print_info("Speed Period", "%d", eqepREG1->QCPRD);
 			//print_info("eQEP Status Register HEX", "%02x", eqepREG1->QEPSTS);
 			sciSendByte(scilinREG, '\n');

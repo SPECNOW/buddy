@@ -167,14 +167,17 @@ void sciNotification(sciBASE_t *sci, uint32 flags)
 		else if( strcmp( "ts", (const char*) command ) == 0 )	//	Toggle Switch
 		{
 			set_encoder_switch_flag = true;
-			switch_position = command[1];
-			if( motorPeriods.current_motor == LEFT_MOTOR)
+			if( motorPositions.current_motor == LEFT_MOTOR)
 			{
-				motorPeriods.current_motor = RIGHT_MOTOR;
+				motorPositions.current_motor = RIGHT_MOTOR;
+				motorPositions.saved_left_motor_position_count = eqepREG1->QPOSCNT;
+				eqepREG1->QPOSCNT = motorPositions.saved_right_motor_position_count;
 			}
 			else
 			{
-				motorPeriods.current_motor = LEFT_MOTOR;
+				motorPositions.current_motor = LEFT_MOTOR;
+				motorPositions.saved_right_motor_position_count = eqepREG1->QPOSCNT;
+				eqepREG1->QPOSCNT = motorPositions.saved_left_motor_position_count;
 			}
 		}
 		else if(command[0] == 'L')				// Left Motor Speed

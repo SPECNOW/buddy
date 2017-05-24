@@ -35,6 +35,8 @@ source/sys_main.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdarg.h
 source/sys_main.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/string.h
 source/sys_main.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdarg.h
 source/sys_main.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdlib.h
+source/sys_main.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/inttypes.h
+source/sys_main.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/_fmt_specifier.h
 
 ../source/sys_main.c: 
 C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_Firmware_Hercules/include/sci.h: 
@@ -71,3 +73,5 @@ c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdarg.h:
 c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/string.h: 
 c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdarg.h: 
 c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/stdlib.h: 
+c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/inttypes.h: 
+c:/ti/ccsv6/tools/compiler/arm_5.1.6/include/_fmt_specifier.h: 
