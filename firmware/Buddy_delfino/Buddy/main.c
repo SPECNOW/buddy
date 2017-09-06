@@ -47,8 +47,7 @@
 //
 // Included Files
 //
-#include "driverlib.h"
-#include "device.h"
+#include "defines.h"
 
 //
 // Main
@@ -56,6 +55,27 @@
 void main(void)
 {
 
+    //
+    // Configure PLL, disable WD, enable peripheral clocks.
+    //
+    Device_init();
+
+    //
+    // Disable pin locks and enable internal pullups.
+    //
+    Device_initGPIO();
+
+    // Initialize Pins as desired
+    SCI_Init();
+    EQEP_Init();
+    ADC_Init();
+    GPIO_Init();
+    EPWM_Init();
+
+    // Run Code
+    while(1) {
+
+    }
 }
 
 //
