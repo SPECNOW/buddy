@@ -287,9 +287,13 @@ Wire Wire Line
 Wire Wire Line
 	4100 3550 4100 3450
 Wire Wire Line
-	3950 3850 4300 3850
+	3950 3850 4100 3850
 Wire Wire Line
-	3200 3850 3550 3850
+	4100 3850 4300 3850
+Wire Wire Line
+	3200 3850 3400 3850
+Wire Wire Line
+	3400 3850 3550 3850
 Wire Wire Line
 	3450 3850 3450 3800
 Connection ~ 3400 3850
@@ -328,7 +332,11 @@ F 3 "" H 9100 1850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8550 1850 9100 1850
+	8550 1850 8700 1850
+Wire Wire Line
+	8700 1850 8900 1850
+Wire Wire Line
+	8900 1850 9100 1850
 $Comp
 L GND #PWR?
 U 1 1 59E835C0
@@ -341,7 +349,90 @@ F 3 "" H 8150 2250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8150 2150 8150 2250
+	8150 2150 8150 2200
 Wire Wire Line
-	7750 1850 7150 1850
+	8150 2200 8150 2250
+Wire Wire Line
+	7750 1850 7500 1850
+Wire Wire Line
+	7500 1850 7250 1850
+Wire Wire Line
+	7250 1850 7150 1850
+$Comp
+L CP1_Small C?
+U 1 1 59E83B19
+P 7250 2000
+F 0 "C?" H 7260 2070 50  0000 L CNN
+F 1 "CP1_Small" H 7260 1920 50  0000 L CNN
+F 2 "" H 7250 2000 50  0000 C CNN
+F 3 "" H 7250 2000 50  0000 C CNN
+	1    7250 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1_Small C?
+U 1 1 59E83BB8
+P 8900 2000
+F 0 "C?" H 8910 2070 50  0000 L CNN
+F 1 "CP1_Small" H 8910 1920 50  0000 L CNN
+F 2 "" H 8900 2000 50  0000 C CNN
+F 3 "" H 8900 2000 50  0000 C CNN
+	1    8900 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 59E83CC8
+P 7500 2000
+F 0 "C?" H 7510 2070 50  0000 L CNN
+F 1 "C_Small" H 7510 1920 50  0000 L CNN
+F 2 "" H 7500 2000 50  0000 C CNN
+F 3 "" H 7500 2000 50  0000 C CNN
+	1    7500 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 59E83D27
+P 8700 2000
+F 0 "C?" H 8710 2070 50  0000 L CNN
+F 1 "C_Small" H 8710 1920 50  0000 L CNN
+F 2 "" H 8700 2000 50  0000 C CNN
+F 3 "" H 8700 2000 50  0000 C CNN
+	1    8700 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 2100 7500 2200
+Wire Wire Line
+	7250 2200 7500 2200
+Wire Wire Line
+	7500 2200 8150 2200
+Wire Wire Line
+	8150 2200 8700 2200
+Wire Wire Line
+	8700 2200 8700 2200
+Connection ~ 8150 2200
+Wire Wire Line
+	7250 2100 7250 2200
+Connection ~ 7500 2200
+Wire Wire Line
+	7500 1900 7500 1850
+Connection ~ 7500 1850
+Wire Wire Line
+	7250 1900 7250 1850
+Connection ~ 7250 1850
+Wire Wire Line
+	8700 1900 8700 1850
+Connection ~ 8700 1850
+Wire Wire Line
+	8900 1850 8900 1900
+Connection ~ 8900 1850
+Wire Wire Line
+	8700 2200 8700 2100
+Wire Wire Line
+	8900 2100 8900 2200
+Wire Wire Line
+	8900 2200 8700 2200
+Connection ~ 8700 2200
 $EndSCHEMATC

@@ -1,0 +1,22 @@
+ADC circuit 6x ir sensor
+filters for adc
+
+Power protection, fuse
+pi filter with inductors to filter 32khz switching
+
+power input ports-posts
+
+motor break enable relay circuit
+
+emergency break button mosfet to switch power?
+
+ultra sonic pins
+
+connector posts. for inputs
+
+testing ports for probing, hooks, and input posts
+jumpbers to break signals seperate it, or inject test signal
+
+
+
+
