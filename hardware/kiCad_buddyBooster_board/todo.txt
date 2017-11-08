@@ -1,7 +1,5 @@
-ADC circuit 6x ir sensor
 filters for adc
 
-Power protection, fuse
 pi filter with inductors to filter 32khz switching
 
 power input ports-posts
@@ -16,6 +14,8 @@ connector posts. for inputs
 
 testing ports for probing, hooks, and input posts
 jumpbers to break signals seperate it, or inject test signal
+
+ribbon cable - connection to arduino test board
 
 
 
