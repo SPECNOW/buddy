@@ -52,8 +52,12 @@
 //
 // Main
 //
+//
+
 void main(void)
 {
+
+
 
     //
     // Configure PLL, disable WD, enable peripheral clocks.
@@ -72,9 +76,11 @@ void main(void)
     GPIO_Init();
     EPWM_Init();
 
+    uint16_t receivedChar;
     // Run Code
     while(1) {
-
+        receivedChar = SCI_readCharBlockingFIFO(SCIB_BASE);
+        SCI_writeCharBlockingFIFO(SCIB_BASE, receivedChar);
     }
 }
 
