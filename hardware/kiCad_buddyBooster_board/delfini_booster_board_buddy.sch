@@ -346,8 +346,8 @@ Text Notes 4700 750  0    60   ~ 0
 Power LED
 Text Notes 1450 700  0    60   ~ 0
 BOARD TO BOARD CONNECTOR
-Text Notes 10100 950  0    60   ~ 0
-IR CONNECTOR
+Text Notes 10050 1100 0    60   ~ 0
+IR CONNECTOR - 3/4 pin JST for each IR, 5V power output 3V3 max\n\n
 Text Notes 1650 6900 0    60   ~ 0
 ULTRASONIC CONNECTOR
 Text Notes 4950 6850 0    60   ~ 0
@@ -366,7 +366,7 @@ F 3 "" V 7050 3900 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 Text Notes 10050 3350 0    60   ~ 0
-UART OUT
+UART OUT - Sabertooth
 Text Notes 7400 6800 0    60   ~ 0
 EXTRA GPIO OUT
 $Comp
@@ -838,4 +838,217 @@ F 3 "" H 9100 1650 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	9100 1850 9100 1650
+Wire Wire Line
+	8950 6350 8950 6250
+Wire Wire Line
+	9350 6350 9900 6350
+Wire Wire Line
+	9900 6350 9900 6200
+$Comp
+L +5V #PWR?
+U 1 1 5A02C2C6
+P 9900 6200
+F 0 "#PWR?" H 9900 6050 50  0001 C CNN
+F 1 "+5V" H 9900 6340 50  0000 C CNN
+F 2 "" H 9900 6200 50  0000 C CNN
+F 3 "" H 9900 6200 50  0000 C CNN
+	1    9900 6200
+	1    0    0    -1  
+$EndComp
+Text Notes 7850 2650 0    60   ~ 0
+R-783.3-1.0\n1A 3.3V
+Text Notes 5500 5650 0    60   ~ 0
+Power from Battery 12-24V\n\n
+Text Notes 7100 4700 0    60   ~ 12
+What is this jumper and resistor?!?!
+Wire Notes Line
+	7150 4700 8600 4700
+Wire Notes Line
+	8600 4700 8600 5850
+Wire Notes Line
+	8600 5850 7150 5850
+Wire Notes Line
+	7150 5850 7150 4700
+Wire Notes Line
+	7250 4700 7300 4700
+$Comp
+L Screw_Terminal_1x05 J?
+U 1 1 5A044B07
+P 10000 4050
+F 0 "J?" H 10000 4600 50  0000 C TNN
+F 1 "Screw_Terminal_1x05" V 9850 4050 50  0000 C TNN
+F 2 "" H 10000 3525 50  0001 C CNN
+F 3 "" H 9975 4350 50  0001 C CNN
+	1    10000 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10200 3650 10450 3650
+Wire Wire Line
+	10450 3650 10450 4700
+Wire Wire Line
+	10450 4050 10200 4050
+Wire Wire Line
+	10450 4450 10200 4450
+Connection ~ 10450 4050
+Wire Wire Line
+	10200 3850 11050 3850
+Wire Wire Line
+	10200 4250 11100 4250
+Connection ~ 10450 4450
+$Comp
+L GND #PWR?
+U 1 1 5A045456
+P 10450 4700
+F 0 "#PWR?" H 10450 4450 50  0001 C CNN
+F 1 "GND" H 10450 4550 50  0000 C CNN
+F 2 "" H 10450 4700 50  0000 C CNN
+F 3 "" H 10450 4700 50  0000 C CNN
+	1    10450 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P?
+U 1 1 5A048139
+P 10350 1350
+F 0 "P?" H 10350 1550 50  0000 C CNN
+F 1 "CONN_01X03" V 10450 1350 50  0000 C CNN
+F 2 "" H 10350 1350 50  0000 C CNN
+F 3 "" H 10350 1350 50  0000 C CNN
+	1    10350 1350
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P?
+U 1 1 5A04861B
+P 10350 1950
+F 0 "P?" H 10350 2150 50  0000 C CNN
+F 1 "CONN_01X03" V 10450 1950 50  0000 C CNN
+F 2 "" H 10350 1950 50  0000 C CNN
+F 3 "" H 10350 1950 50  0000 C CNN
+	1    10350 1950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P?
+U 1 1 5A0486DD
+P 10350 2550
+F 0 "P?" H 10350 2750 50  0000 C CNN
+F 1 "CONN_01X03" V 10450 2550 50  0000 C CNN
+F 2 "" H 10350 2550 50  0000 C CNN
+F 3 "" H 10350 2550 50  0000 C CNN
+	1    10350 2550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P?
+U 1 1 5A0487A4
+P 12100 1350
+F 0 "P?" H 12100 1550 50  0000 C CNN
+F 1 "CONN_01X03" V 12200 1350 50  0000 C CNN
+F 2 "" H 12100 1350 50  0000 C CNN
+F 3 "" H 12100 1350 50  0000 C CNN
+	1    12100 1350
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P?
+U 1 1 5A0488D7
+P 12100 1950
+F 0 "P?" H 12100 2150 50  0000 C CNN
+F 1 "CONN_01X03" V 12200 1950 50  0000 C CNN
+F 2 "" H 12100 1950 50  0000 C CNN
+F 3 "" H 12100 1950 50  0000 C CNN
+	1    12100 1950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P?
+U 1 1 5A0489A6
+P 12100 2550
+F 0 "P?" H 12100 2750 50  0000 C CNN
+F 1 "CONN_01X03" V 12200 2550 50  0000 C CNN
+F 2 "" H 12100 2550 50  0000 C CNN
+F 3 "" H 12100 2550 50  0000 C CNN
+	1    12100 2550
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	10550 1850 11100 1850
+Wire Wire Line
+	10550 1950 11100 1950
+Wire Wire Line
+	10550 2050 11100 2050
+Wire Wire Line
+	10550 1250 11100 1250
+Wire Wire Line
+	10550 2450 11100 2450
+Wire Wire Line
+	10550 2550 11100 2550
+Wire Wire Line
+	10550 2650 11100 2650
+Wire Wire Line
+	12300 1850 12850 1850
+Wire Wire Line
+	12300 1950 12850 1950
+Wire Wire Line
+	12300 2050 12850 2050
+Wire Wire Line
+	12300 1250 12850 1250
+Wire Wire Line
+	12300 1350 12850 1350
+Wire Wire Line
+	12300 1450 12850 1450
+Wire Wire Line
+	12300 2450 12850 2450
+Wire Wire Line
+	12300 2550 12850 2550
+Wire Wire Line
+	12300 2650 12850 2650
+Text Label 11100 1350 0    60   ~ 0
+ADC0_OUTPUT
+Text Label 11050 3850 0    60   ~ 0
+UART_SABER_TX
+Text Label 11100 4250 0    60   ~ 0
+UART_SABER_RX
+Text Label 11100 1250 0    60   ~ 0
++5V
+Wire Wire Line
+	10550 1450 11100 1450
+Text Label 11100 1450 0    60   ~ 0
+GND
+Wire Wire Line
+	10550 1350 11100 1350
+Text Label 11100 1950 0    60   ~ 0
+ADC1_OUTPUT
+Text Label 11100 1850 0    60   ~ 0
++5V
+Text Label 11100 2050 0    60   ~ 0
+GND
+Text Label 11100 2550 0    60   ~ 0
+ADC2_OUTPUT
+Text Label 11100 2450 0    60   ~ 0
++5V
+Text Label 11100 2650 0    60   ~ 0
+GND
+Text Label 12850 1350 0    60   ~ 0
+ADC3_OUTPUT
+Text Label 12850 1250 0    60   ~ 0
++5V
+Text Label 12850 1450 0    60   ~ 0
+GND
+Text Label 12850 1950 0    60   ~ 0
+ADC4_OUTPUT
+Text Label 12850 1850 0    60   ~ 0
++5V
+Text Label 12850 2050 0    60   ~ 0
+GND
+Text Label 12850 2550 0    60   ~ 0
+ADC5_OUTPUT
+Text Label 12850 2450 0    60   ~ 0
++5V
+Text Label 12850 2650 0    60   ~ 0
+GND
+Text Notes 11000 4600 0    60   ~ 0
+Maybe consider putting 5V from sabertooth together here. 
 $EndSCHEMATC
