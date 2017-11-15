@@ -18,5 +18,9 @@ jumpbers to break signals seperate it, or inject test signal
 ribbon cable - connection to arduino test board
 
 
+TO BUY
+20 conductor 20-50 feet
+2x 28 aug cable  20 feet
+
 
 
