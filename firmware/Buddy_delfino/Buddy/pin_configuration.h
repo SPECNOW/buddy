@@ -14,6 +14,7 @@
 /************** SCI/UART **********/
 // To PC
 #define ToPC_Uart SCIA_BASE
+#define ToPC_Uart_Int_Rx INT_SCIA_RX
 #define ToPC_Uart_Tx_Pin 84
 #define ToPC_Uart_Tx_PinConfig GPIO_84_SCITXDA
 
@@ -21,7 +22,8 @@
 #define ToPC_Uart_Rx_PinConfig GPIO_85_SCIRXDA
 
 // To Sabertooth
-#define ToSabertooth_Uart SCIA_BASE
+#define ToSabertooth_Uart SCIB_BASE
+#define ToSabertooth_Uart_Int_Rx INT_SCIB_RX
 #define ToSabertooth_Uart_Tx_Pin 18
 #define ToSabertooth_Uart_Tx_PinConfig GPIO_18_SCITXDB
 
