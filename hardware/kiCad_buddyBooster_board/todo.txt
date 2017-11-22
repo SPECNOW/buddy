@@ -1,14 +1,11 @@
-filters for adc
 
 pi filter with inductors to filter 32khz switching
-
-power input ports-posts
 
 motor break enable relay circuit
 
 emergency break button mosfet to switch power?
 
-ultra sonic pins
+board to board jumper seperation
 
 connector posts. for inputs
 
@@ -21,6 +18,6 @@ ribbon cable - connection to arduino test board
 TO BUY
 20 conductor 20-50 feet
 2x 28 aug cable  20 feet
-
+jumpers
 
 

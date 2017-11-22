@@ -348,7 +348,7 @@ Text Notes 1450 700  0    60   ~ 0
 BOARD TO BOARD CONNECTOR
 Text Notes 10050 1100 0    60   ~ 0
 IR CONNECTOR - 3/4 pin JST for each IR, 5V power output 3V3 max\n\n
-Text Notes 1650 6900 0    60   ~ 0
+Text Notes 12000 3350 0    60   ~ 0
 ULTRASONIC CONNECTOR
 Text Notes 4950 6850 0    60   ~ 0
 TEST PINS
@@ -367,7 +367,7 @@ F 3 "" V 7050 3900 50  0000 C CNN
 $EndComp
 Text Notes 10050 3350 0    60   ~ 0
 UART OUT - Sabertooth
-Text Notes 5750 7850 0    60   ~ 0
+Text Notes 1600 8400 0    60   ~ 0
 EXTRA GPIO OUT
 $Comp
 L Screw_Terminal_1x02 J?
@@ -675,12 +675,12 @@ $EndComp
 $Comp
 L +3.3V #PWR?
 U 1 1 59F1453A
-P 9100 1650
-F 0 "#PWR?" H 9100 1500 50  0001 C CNN
-F 1 "+3.3V" H 9100 1790 50  0000 C CNN
-F 2 "" H 9100 1650 50  0000 C CNN
-F 3 "" H 9100 1650 50  0000 C CNN
-	1    9100 1650
+P 9350 1650
+F 0 "#PWR?" H 9350 1500 50  0001 C CNN
+F 1 "+3.3V" H 9350 1790 50  0000 C CNN
+F 2 "" H 9350 1650 50  0000 C CNN
+F 3 "" H 9350 1650 50  0000 C CNN
+	1    9350 1650
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -828,7 +828,7 @@ Text Label 12850 2450 0    60   ~ 0
 +5V
 Text Label 12850 2650 0    60   ~ 0
 GND
-Text Notes 11000 4600 0    60   ~ 0
+Text Notes 9100 4650 0    60   ~ 0
 Maybe consider putting 5V from sabertooth together here. 
 $Comp
 L R_Small R?
@@ -1184,8 +1184,6 @@ Wire Wire Line
 	8850 6700 9300 6700
 Connection ~ 9300 6700
 Wire Wire Line
-	9100 1850 9100 1650
-Wire Wire Line
 	9050 6350 9050 6250
 Wire Wire Line
 	9450 6350 9900 6350
@@ -1345,4 +1343,174 @@ Connection ~ 14750 2100
 Connection ~ 14950 2200
 Text Notes 13600 750  0    60   ~ 0
 0.1uF caps with maybe 1k-3k resistors. \n0.3ms raise time
+$Comp
+L TEST_1P W?
+U 1 1 5A151603
+P 5800 1250
+F 0 "W?" H 5800 1520 50  0000 C CNN
+F 1 "TEST_1P" H 5800 1450 50  0000 C CNN
+F 2 "" H 6000 1250 50  0000 C CNN
+F 3 "" H 6000 1250 50  0000 C CNN
+	1    5800 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L TEST_1P W?
+U 1 1 5A151A2D
+P 5200 1250
+F 0 "W?" H 5200 1520 50  0000 C CNN
+F 1 "TEST_1P" H 5200 1450 50  0000 C CNN
+F 2 "" H 5400 1250 50  0000 C CNN
+F 3 "" H 5400 1250 50  0000 C CNN
+	1    5200 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L TEST_1P W?
+U 1 1 5A151AF2
+P 4500 1250
+F 0 "W?" H 4500 1520 50  0000 C CNN
+F 1 "TEST_1P" H 4500 1450 50  0000 C CNN
+F 2 "" H 4700 1250 50  0000 C CNN
+F 3 "" H 4700 1250 50  0000 C CNN
+	1    4500 1250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 1250 4250 1250
+Connection ~ 4250 1250
+Wire Wire Line
+	5200 1250 4950 1250
+Connection ~ 4950 1250
+Wire Wire Line
+	5800 1250 5550 1250
+Connection ~ 5550 1250
+$Comp
+L CONN_01X01 P?
+U 1 1 5A1524AF
+P 5900 2150
+F 0 "P?" H 5900 2250 50  0000 C CNN
+F 1 "CONN_01X01" V 6000 2150 50  0000 C CNN
+F 2 "" H 5900 2150 50  0000 C CNN
+F 3 "" H 5900 2150 50  0000 C CNN
+	1    5900 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 2150 5700 2150
+Connection ~ 5550 2150
+$Comp
+L CONN_01X01 P?
+U 1 1 5A152BCD
+P 6100 2250
+F 0 "P?" H 6100 2350 50  0000 C CNN
+F 1 "CONN_01X01" V 6200 2250 50  0000 C CNN
+F 2 "" H 6100 2250 50  0000 C CNN
+F 3 "" H 6100 2250 50  0000 C CNN
+	1    6100 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 2250 5900 2250
+Wire Wire Line
+	5650 2250 5650 2150
+Connection ~ 5650 2150
+$Comp
+L CONN_01X01 P?
+U 1 1 5A15314B
+P 6300 2350
+F 0 "P?" H 6300 2450 50  0000 C CNN
+F 1 "CONN_01X01" V 6400 2350 50  0000 C CNN
+F 2 "" H 6300 2350 50  0000 C CNN
+F 3 "" H 6300 2350 50  0000 C CNN
+	1    6300 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 2350 6100 2350
+Wire Wire Line
+	5750 2350 5750 2250
+Connection ~ 5750 2250
+Connection ~ 5750 2350
+$Comp
+L CONN_01X04 P?
+U 1 1 5A15558C
+P 12200 3700
+F 0 "P?" H 12200 3950 50  0000 C CNN
+F 1 "CONN_01X04" V 12300 3700 50  0000 C CNN
+F 2 "" H 12200 3700 50  0000 C CNN
+F 3 "" H 12200 3700 50  0000 C CNN
+	1    12200 3700
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X04 P?
+U 1 1 5A157BD0
+P 12200 4350
+F 0 "P?" H 12200 4600 50  0000 C CNN
+F 1 "CONN_01X04" V 12300 4350 50  0000 C CNN
+F 2 "" H 12200 4350 50  0000 C CNN
+F 3 "" H 12200 4350 50  0000 C CNN
+	1    12200 4350
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	12400 3550 12800 3550
+Wire Wire Line
+	12400 3650 12800 3650
+Wire Wire Line
+	12400 3750 12800 3750
+Wire Wire Line
+	12400 3850 12800 3850
+Wire Wire Line
+	12400 4200 12800 4200
+Wire Wire Line
+	12400 4300 12800 4300
+Wire Wire Line
+	12400 4400 12800 4400
+Wire Wire Line
+	12400 4500 12800 4500
+Text Label 12800 3550 0    60   ~ 0
++5V
+Text Label 12800 4200 0    60   ~ 0
++5V
+Text Label 12800 3850 0    60   ~ 0
+GND
+Text Label 12800 4500 0    60   ~ 0
+GND
+Text Label 12800 3650 0    60   ~ 0
+ULTRA0_TRIG_OUT
+Text Label 12800 4300 0    60   ~ 0
+ULTRA1_TRIG_OUT
+Text Label 12800 3750 0    60   ~ 0
+ULTA0_PULSE_BACK
+Text Label 12800 4400 0    60   ~ 0
+ULTA1_PULSE_BACK
+$Comp
+L Fuse_Small F?
+U 1 1 5A160586
+P 9200 1850
+F 0 "F?" H 9200 1790 50  0000 C CNN
+F 1 "Fuse_Small" H 9200 1910 50  0000 C CNN
+F 2 "" H 9200 1850 50  0000 C CNN
+F 3 "" H 9200 1850 50  0000 C CNN
+	1    9200 1850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9300 1850 9350 1850
+Wire Wire Line
+	9350 1850 9350 1650
+Wire Notes Line
+	12550 3050 11900 3050
+Wire Notes Line
+	11900 3050 11900 4950
+Wire Notes Line
+	11900 4950 13800 4950
+Wire Notes Line
+	13800 4950 13800 3050
+Wire Notes Line
+	13800 3050 12600 3050
+Text Notes 12450 4900 0    60   ~ 0
+BUFFER THESE, level shift
 $EndSCHEMATC
