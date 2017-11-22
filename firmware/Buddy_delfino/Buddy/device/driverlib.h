@@ -42,6 +42,9 @@
 #ifndef DRIVERLIB_H
 #define DRIVERLIB_H
 
+// Define this for Clock Speed to get calculated correctly
+#define _LAUNCHXL_F28377S 1
+
 #include "inc/hw_memmap.h"
 
 #include "adc.h"
