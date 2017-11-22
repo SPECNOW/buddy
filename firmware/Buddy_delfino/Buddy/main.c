@@ -73,6 +73,12 @@ void main(void)
     GPIO_Init();
     EPWM_Init();
 
+    //
+    // Enable Global Interrupt (INTM) and realtime interrupt (DBGM)
+    //
+    EINT;
+    ERTM;
+
     // Run Code
     while(1) {
 

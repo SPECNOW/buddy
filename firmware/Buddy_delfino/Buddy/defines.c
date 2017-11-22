@@ -8,7 +8,7 @@
 
 void sciRXisr(uint32_t sciBase, uint16_t* dataBuffer)
 {
-    SCI_readCharArray(sciBase, dataBuffer, 2);
+    SCI_readCharArray(sciBase, dataBuffer, 1);
     SCI_clearOverflowStatus(sciBase);
     SCI_clearInterruptStatus(sciBase, SCI_INT_RXFF);
     //
@@ -19,14 +19,14 @@ void sciRXisr(uint32_t sciBase, uint16_t* dataBuffer)
 
 void sciRxProcessData(uint16_t* data)
 {
-    SCI_writeCharArray(ToSabertooth_Uart, data, 2);
-
+    SCI_writeCharArray(ToPC_Uart, data, 1);
+    SCI_writeCharArray(ToSabertooth_Uart, data, 1);
 }
 
 __interrupt void sciSabertoothRxIsr(void)
 {
     // Received data for Sabertooth-SCI
-    uint16_t ToSabertoothRxData[2];
+    uint16_t ToSabertoothRxData[1];
 
     sciRXisr(ToSabertooth_Uart, ToSabertoothRxData);
     sciRxProcessData(ToSabertoothRxData);
@@ -35,7 +35,7 @@ __interrupt void sciSabertoothRxIsr(void)
 __interrupt void sciPCRxIsr(void)
 {
     // Received data for PC-SCI
-    uint16_t ToPCRxData[2];
+    uint16_t ToPCRxData[1];
 
     sciRXisr(ToPC_Uart, ToPCRxData);
     sciRxProcessData(ToPCRxData);
@@ -71,7 +71,8 @@ void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPi
     //
     SCI_enableInterrupt(sciBase, SCI_INT_RXFF);
     SCI_disableInterrupt(sciBase, SCI_INT_RXERR);
-    SCI_setFIFOInterruptLevel(sciBase, SCI_FIFO_TX2, SCI_FIFO_RX2);
+    // Interrupt FIFO when it has one 1
+    SCI_setFIFOInterruptLevel(sciBase, SCI_FIFO_TX1, SCI_FIFO_RX1);
 
     //
     // Initialize SCI BASE and its FIFO.
@@ -89,10 +90,12 @@ void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPi
         (SCI_CONFIG_WLEN_8 | SCI_CONFIG_STOP_ONE | SCI_CONFIG_PAR_NONE)
     );
     Interrupt_register(rxInterruptVector, rxInterruptFunction);
+    Interrupt_enable(rxInterruptVector);
     SCI_resetChannels(sciBase);
     SCI_resetRxFIFO(sciBase);
     SCI_resetTxFIFO(sciBase);
     SCI_clearInterruptStatus(sciBase, SCI_INT_TXFF | SCI_INT_RXFF);
+
     SCI_enableFIFO(sciBase);
     SCI_enableModule(sciBase);
     SCI_performSoftwareReset(sciBase);
