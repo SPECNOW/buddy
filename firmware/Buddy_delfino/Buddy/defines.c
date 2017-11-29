@@ -19,8 +19,10 @@ void sciRXisr(uint32_t sciBase, uint16_t* dataBuffer)
 
 void sciRxProcessData(uint16_t* data)
 {
+#ifdef _SERIAL_ECHO
     SCI_writeCharArray(ToPC_Uart, data, 1);
     SCI_writeCharArray(ToSabertooth_Uart, data, 1);
+#endif
 }
 
 __interrupt void sciSabertoothRxIsr(void)
@@ -61,16 +63,11 @@ void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPi
     GPIO_setQualificationMode(txPin, GPIO_QUAL_ASYNC);
 
     //
-    // Initialize interrupt controller and vector table.
-    //
-    Interrupt_initModule();
-    Interrupt_initVectorTable();
-
-    //
     // RX and TX FIFO Interrupts Enabled
     //
     SCI_enableInterrupt(sciBase, SCI_INT_RXFF);
     SCI_disableInterrupt(sciBase, SCI_INT_RXERR);
+
     // Interrupt FIFO when it has one 1
     SCI_setFIFOInterruptLevel(sciBase, SCI_FIFO_TX1, SCI_FIFO_RX1);
 
@@ -89,6 +86,7 @@ void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPi
         9600,
         (SCI_CONFIG_WLEN_8 | SCI_CONFIG_STOP_ONE | SCI_CONFIG_PAR_NONE)
     );
+
     Interrupt_register(rxInterruptVector, rxInterruptFunction);
     Interrupt_enable(rxInterruptVector);
     SCI_resetChannels(sciBase);
@@ -102,6 +100,12 @@ void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPi
 }
 
 void SCI_Init() {
+    //
+    // Initialize interrupt controller and vector table.
+    //
+    Interrupt_initModule();
+    Interrupt_initVectorTable();
+
     setupSci(
         ToSabertooth_Uart,
         ToSabertooth_Uart_Rx_Pin,

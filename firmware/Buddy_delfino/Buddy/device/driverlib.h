@@ -45,6 +45,10 @@
 // Define this for Clock Speed to get calculated correctly
 #define _LAUNCHXL_F28377S 1
 
+// START OF TESTS TO RUN
+#define _SERIAL_ECHO 1
+// END OF TESTS TO RUN
+
 #include "inc/hw_memmap.h"
 
 #include "adc.h"
