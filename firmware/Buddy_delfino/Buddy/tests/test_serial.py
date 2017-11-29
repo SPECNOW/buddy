@@ -28,7 +28,7 @@ class TestSerial(object):
         cls.serialArduino.read()
         print("Arduino Serial Initialized")
 
-    def test_loopback(self):
+    def test_delfino_rx(self):
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialArduino.write(tx)
             rx = self.serialDelfino.read()
@@ -36,3 +36,5 @@ class TestSerial(object):
             assert tx == rx
         return
         
+    def test_delfino_tx(self):
+        assert False
