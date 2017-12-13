@@ -16,6 +16,17 @@ ribbon cable - connection to arduino test board
 
 temp sensor
 
+testing jumper 2position
+put in a switch with led. 
+
+board revision gpio
+
+board mode 3 pin gpio - 1 interrupt at least
+
+relay protection for the relay and the sabertooth
+
+leakage when batt is off but other devices still powered
+
 
 TO BUY
 20 conductor 20-50 feet
@@ -23,4 +34,6 @@ TO BUY
 jumpers
 
 TXB0104
+
+2x relay T90S1D12-12
 
