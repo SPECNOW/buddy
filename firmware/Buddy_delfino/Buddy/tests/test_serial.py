@@ -9,6 +9,9 @@ arduinoPort = 'COM9'
 #        flash correct test programs before running this
 
 class TestSerial(object):
+    def __init__(self):
+        return
+
     def setup_class(cls):
         cls.serialDelfino = serial.Serial()
         cls.serialDelfino.baurdrate = 9600
@@ -18,7 +21,7 @@ class TestSerial(object):
         # Clear the Buffer
         cls.serialDelfino.read()
         print("Delfino Serial Initialized")
-
+        
         cls.serialArduino = serial.Serial()
         cls.serialArduino.baurdrate = 9600
         cls.serialArduino.port = arduinoPort
@@ -27,7 +30,9 @@ class TestSerial(object):
         # Clear the Buffer
         cls.serialArduino.read()
         print("Arduino Serial Initialized")
-
+        return
+        
+class TestSerialRx(TestSerial):
     def test_delfino_rx(self):
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialArduino.write(tx)
@@ -35,6 +40,12 @@ class TestSerial(object):
             print "TX: {}, RX: {}".format(tx, rx)
             assert tx == rx
         return
-        
+
+class TestSerialTx(TestSerial):        
     def test_delfino_tx(self):
-        assert False
+        for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
+            self.serialDelfino.write(tx)
+            rx = self.serialArduino.read()
+            print "TX: {}, RX: {}".format(tx, rx)
+            assert tx == rx
+        return

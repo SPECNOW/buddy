@@ -6,6 +6,8 @@
  */
 #include "defines.h"
 
+volatile DeviceMode deviceMode = test_rx;
+
 void sciRXisr(uint32_t sciBase, uint16_t* dataBuffer)
 {
     SCI_readCharArray(sciBase, dataBuffer, 1);
@@ -19,10 +21,17 @@ void sciRXisr(uint32_t sciBase, uint16_t* dataBuffer)
 
 void sciRxProcessData(uint16_t* data)
 {
-#ifdef _SERIAL_ECHO
-    SCI_writeCharArray(ToPC_Uart, data, 1);
-    SCI_writeCharArray(ToSabertooth_Uart, data, 1);
-#endif
+    switch(deviceMode) {
+    case normal:
+        break;
+    case test_rx:
+    case test_tx:
+        SCI_writeCharArray(ToPC_Uart, data, 1);
+        SCI_writeCharArray(ToSabertooth_Uart, data, 1);
+        break;
+    default:
+        break;
+    }
 }
 
 __interrupt void sciSabertoothRxIsr(void)
@@ -43,7 +52,8 @@ __interrupt void sciPCRxIsr(void)
     sciRxProcessData(ToPCRxData);
 }
 
-void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPin, uint32_t txConfig, uint32_t rxInterruptVector, void (*rxInterruptFunction)(void)) {
+void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPin,
+              uint32_t txConfig, uint32_t rxInterruptVector, void (*rxInterruptFunction)(void)) {
     //
     // Set the SCI Rx pin.
     //
