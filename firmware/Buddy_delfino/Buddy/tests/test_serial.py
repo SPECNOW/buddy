@@ -1,6 +1,7 @@
 import serial
 import time
 import pytest
+import os
 import subprocess
 
 delfinoPort = 'COM10'
@@ -11,6 +12,7 @@ arduinoPort = 'COM9'
 
 class Arduino:
     def __init__(self,  arduino_ino, arduino_path=r"C:\Program Files (x86)\Arduino", arduino_port=arduinoPort):
+        print("Compiling " + arduino_ino)
         p = subprocess.Popen(
             [
                 "arduino_debug.exe", 
@@ -51,7 +53,7 @@ class TestSerial(object):
         return
         
 class TestSerialRx(TestSerial):
-    arduino_ino=r"..\ArduinoTest\ArduinoSerialRecieve\ArduinoSerialRecieve\ArduinoSerialRecieve.ino"
+    arduino_ino = os.path.abspath(os.getcwd()+"\..") + r"\ArduinoTest\ArduinoSerialRecieve\ArduinoSerialRecieve\ArduinoSerialRecieve.ino"
     def test_delfino_rx(self):
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialArduino.write(tx)
@@ -61,7 +63,7 @@ class TestSerialRx(TestSerial):
         return
 
 class TestSerialTx(TestSerial):
-    arduino_ino=r"..\ArduinoTest\171114Serialtest\171114Serialtest.ino"
+    arduino_ino = os.path.abspath(os.getcwd()+"\..") + r"\ArduinoTest\171114Serialtest\171114Serialtest.ino"
     def test_delfino_tx(self):
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialDelfino.write(tx)
