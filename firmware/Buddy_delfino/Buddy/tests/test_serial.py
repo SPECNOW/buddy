@@ -1,6 +1,7 @@
 import serial
 import time
 import pytest
+import subprocess
 
 delfinoPort = 'COM10'
 arduinoPort = 'COM9'
@@ -8,10 +9,24 @@ arduinoPort = 'COM9'
 # TODO: Need to somehow get Arduino and Delfino to automatically 
 #        flash correct test programs before running this
 
-class TestSerial(object):
-    def __init__(self):
-        return
+class Arduino:
+    def __init__(self,  arduino_ino, arduino_path=r"C:\Program Files (x86)\Arduino", arduino_port=arduinoPort):
+        p = subprocess.Popen(
+            [
+                "arduino_debug.exe", 
+                "--upload",
+                "--board", "arduino:avr:mega",
+                "--port", arduino_port,
+                "--verbose",
+                arduino_ino
+            ],
+            cwd=arduino_path
+        )
+        return p
 
+class TestSerial(object):
+    arduino_ino = None
+    arduino = None
     def setup_class(cls):
         cls.serialDelfino = serial.Serial()
         cls.serialDelfino.baurdrate = 9600
@@ -19,8 +34,11 @@ class TestSerial(object):
         cls.serialDelfino.timeout = 1
         cls.serialDelfino.open()
         # Clear the Buffer
-        cls.serialDelfino.read()
+        cls.serialDelfino.read()        
         print("Delfino Serial Initialized")
+
+        print("Compiling and uploading Arduino")
+        cls.arduino = Arduino(arduino_ino=cls.arduino_ino)
         
         cls.serialArduino = serial.Serial()
         cls.serialArduino.baurdrate = 9600
@@ -33,6 +51,7 @@ class TestSerial(object):
         return
         
 class TestSerialRx(TestSerial):
+    arduino_ino=r"..\ArduinoTest\ArduinoSerialRecieve\ArduinoSerialRecieve\ArduinoSerialRecieve.ino"
     def test_delfino_rx(self):
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialArduino.write(tx)
@@ -41,7 +60,8 @@ class TestSerialRx(TestSerial):
             assert tx == rx
         return
 
-class TestSerialTx(TestSerial):        
+class TestSerialTx(TestSerial):
+    arduino_ino=r"..\ArduinoTest\171114Serialtest\171114Serialtest.ino"
     def test_delfino_tx(self):
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialDelfino.write(tx)
