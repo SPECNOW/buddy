@@ -14,8 +14,6 @@ jumpbers to break signals seperate it, or inject test signal
 
 ribbon cable - connection to arduino test board
 
-temp sensor
-
 testing jumper 2position
 put in a switch with led. 
 
@@ -23,9 +21,9 @@ board revision gpio
 
 board mode 3 pin gpio - 1 interrupt at least
 
-relay protection for the relay and the sabertooth
-
 leakage when batt is off but other devices still powered
+
+remap adc, some adc are not the same as the rest
 
 
 TO BUY
@@ -33,7 +31,9 @@ TO BUY
 2x 28 aug cable  20 feet
 jumpers
 
-TXB0104
+TXB0104 - level shift
+
+TPS2112APWR - oring power chip
 
 2x relay T90S1D12-12
 
