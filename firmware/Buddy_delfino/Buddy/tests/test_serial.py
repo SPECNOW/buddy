@@ -2,6 +2,7 @@ import serial
 import time
 import pytest
 import os
+import sys
 import subprocess
 
 delfinoPort = 'COM10'
@@ -11,22 +12,30 @@ arduinoPort = 'COM9'
 #        flash correct test programs before running this
 
 class Arduino:
-    def __init__(self,  arduino_ino, arduino_path=r"C:\Program Files (x86)\Arduino", arduino_port=arduinoPort):
+    def __init__(self,  arduino_ino, arduino_path='C:\\Program Files (x86)\\Arduino', arduino_port=arduinoPort):
         print("Compiling " + arduino_ino)
-        p = subprocess.Popen(
+        curDir = os.path.abspath(os.curdir)
+        os.chdir(arduino_path)
+        proc = subprocess.Popen(
             [
-                "arduino_debug.exe", 
+                "arduino_debug.exe",
                 "--upload",
                 "--board", "arduino:avr:mega",
                 "--port", arduino_port,
-                "--verbose",
                 arduino_ino
             ],
-            cwd=arduino_path
+            stdout = subprocess.PIPE,
+            stderr = subprocess.PIPE
         )
-        return p
+        proc.wait()
+        print "ERR: {}".format(''.join(proc.stderr.readlines()))
+        print "OUT: {}".format(''.join(proc.stdout.readlines()))
+        os.chdir(arduino_path)
+        if (proc.returncode):
+            print "Failed to compile"
+            sys.exit()
 
-class TestSerial(object):
+class TestBase(object):
     arduino_ino = None
     arduino = None
     def setup_class(cls):
@@ -52,22 +61,26 @@ class TestSerial(object):
         print("Arduino Serial Initialized")
         return
         
-class TestSerialRx(TestSerial):
-    arduino_ino = os.path.abspath(os.getcwd()+"\..") + r"\ArduinoTest\ArduinoSerialRecieve\ArduinoSerialRecieve\ArduinoSerialRecieve.ino"
+class TestDelfinoSerialRx(TestBase):
+    arduino_ino = os.path.abspath(os.getcwd()+"\..") + r"\ArduinoTest\TestDelfinoSerialRx\TestDelfinoSerialRx.ino"
     def test_delfino_rx(self):
+        testPass = True
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialArduino.write(tx)
             rx = self.serialDelfino.read()
-            print "TX: {}, RX: {}".format(tx, rx)
-            assert tx == rx
+            print "Sent To Delfino: {}, Recieved By Delfino: {}".format(tx, rx)
+            testPass = testPass and (tx == rx)
+        assert testPass
         return
 
-class TestSerialTx(TestSerial):
-    arduino_ino = os.path.abspath(os.getcwd()+"\..") + r"\ArduinoTest\171114Serialtest\171114Serialtest.ino"
+class TestDelfinoSerialTx(TestBase):
+    arduino_ino = os.path.abspath(os.getcwd()+"\..") + r"\ArduinoTest\TestDelfinoSerialTx\TestDelfinoSerialTx.ino"
     def test_delfino_tx(self):
+        testPass = True
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialDelfino.write(tx)
             rx = self.serialArduino.read()
-            print "TX: {}, RX: {}".format(tx, rx)
-            assert tx == rx
+            print "Sent By Delfino: {}, Received By Arduino: {}".format(tx, rx)
+            testPass = testPass and (tx == rx)
+        assert testPass
         return

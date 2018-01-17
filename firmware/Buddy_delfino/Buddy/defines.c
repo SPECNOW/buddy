@@ -23,6 +23,7 @@ void sciRxProcessData(uint16_t* data)
 {
     switch(deviceMode) {
     case normal:
+        // Do something?
         break;
     case test_rx:
     case test_tx:
