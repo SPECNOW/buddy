@@ -62,7 +62,7 @@ class TestBase(object):
         return
         
 class TestDelfinoSerialRx(TestBase):
-    arduino_ino = os.path.abspath(os.getcwd()+"\..") + r"\ArduinoTest\TestDelfinoSerialRx\TestDelfinoSerialRx.ino"
+    arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestDelfinoSerialRx\TestDelfinoSerialRx.ino"
     def test_delfino_rx(self):
         testPass = True
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
@@ -74,7 +74,7 @@ class TestDelfinoSerialRx(TestBase):
         return
 
 class TestDelfinoSerialTx(TestBase):
-    arduino_ino = os.path.abspath(os.getcwd()+"\..") + r"\ArduinoTest\TestDelfinoSerialTx\TestDelfinoSerialTx.ino"
+    arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestDelfinoSerialTx\TestDelfinoSerialTx.ino"
     def test_delfino_tx(self):
         testPass = True
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
