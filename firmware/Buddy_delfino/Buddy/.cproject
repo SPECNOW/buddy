@@ -84,6 +84,9 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="ArduinoTest|28377S_FLASH_lnk.cmd|device/driverlib|2837xS_Generic_FLASH_lnk.cmd" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ArduinoTest/ArduinoSerialRecieve"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ArduinoTest/ArduinoEchoRxedByte"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ArduinoTest/TestDelfinoSerialRRx"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
