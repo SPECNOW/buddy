@@ -14,13 +14,6 @@ jumpbers to break signals seperate it, or inject test signal
 
 ribbon cable - connection to arduino test board -  how to connect it to test
 
-testing jumper 2position
-put in a switch with led. 
-
-board revision gpio
-
-board mode 3 pin gpio - 1 interrupt at least
-
 leakage when batt is off but other devices still powered
 
 remap adc, some adc are not the same as the rest
