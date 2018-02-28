@@ -47,7 +47,7 @@
 //
 // Included Files
 //
-#include "defines.h"
+#include "includes.h"
 
 //
 // Main
@@ -81,7 +81,11 @@ void main(void)
 
     // Run Code
     while(1) {
-
+        if (transmitPacket)
+        {
+            transmitPacket = false;
+            sendBuddyData();
+        }
     }
 }
 
