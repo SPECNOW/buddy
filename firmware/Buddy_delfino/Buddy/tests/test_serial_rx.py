@@ -12,7 +12,7 @@ class TestDelfinoSerialRx(TestBase):
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
             self.serialArduino.write(tx)
             rx = self.serialDelfino.read()
-            print "Sent To Delfino: {}, Recieved By Delfino: {}".format(tx, rx)
+            print("Sent From Arduino: {}, Recieved By Delfino: {}".format(tx, rx))
             testPass = testPass and (tx == rx)
         assert testPass
         return
