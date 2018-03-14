@@ -1,8 +1,6 @@
 
 pi filter with inductors to filter 32khz switching
 
-motor break enable relay circuit
-
 emergency break button mosfet to switch power?
 
 board to board jumper seperation
@@ -29,4 +27,6 @@ TXB0104 - level shift
 TPS2112APWR - oring power chip
 
 2x relay T90S1D12-12
+
+
 
