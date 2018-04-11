@@ -1,8 +1,6 @@
 
 pi filter with inductors to filter 32khz switching
 
-emergency break button mosfet to switch power?
-
 board to board jumper seperation
 
 connector posts. for inputs
@@ -15,6 +13,10 @@ ribbon cable - connection to arduino test board -  how to connect it to test
 leakage when batt is off but other devices still powered
 
 remap adc, some adc are not the same as the rest
+
+qep board to board, feed inx voltage?!?!
+
+level shift for  arduino uart, arduino test pins
 
 
 TO BUY
