@@ -10,31 +10,30 @@ volatile int pwmA = 0;
 volatile int pwmB = 0;
 volatile int startTimeA = 0;
 volatile int startTimeB = 0;
-volatile bool isA = false;
+volatile int isA = 0;
 
 void rising() {
   // Assume we're doing A or B (not both at the same time, one after the other)
   if(digitalRead(UTLRA_TRIGA_PIN)) {
-    isA = true;
+    isA = 1;
     startTimeA = micros();
-    attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), falling, FALLING);
   } else {
-    isA = false;
+    isA = 2;
     startTimeB = micros();
-    attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), falling, FALLING);
   }
 }
  
 void falling() {
-  if(isA) {
+  if(isA == 1) {
     pwmA = startTimeA-micros();
     sendPule(ULTRA_PULSEA_PIN);
     Serial.println("Received Trig A, Sent Pulse A");
-  } else {
+  } else if (isA == 2) {
     pwmB = startTimeB-micros(); 
     sendPule(ULTRA_PULSEB_PIN);
     Serial.println("Received Trig B, Sent Pulse B");
   }
+  isA = 0;
 }
 
 void sendPule(int pin) {
@@ -51,7 +50,7 @@ void loop() {
 }
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   pinMode(ULTRA_PULSEA_PIN, OUTPUT);
   digitalWrite(ULTRA_PULSEA_PIN, LOW);
@@ -60,6 +59,7 @@ void setup() {
   digitalWrite(ULTRA_PULSEB_PIN, LOW);
 
   attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), rising, RISING);
-  //attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), rising, RISING);
-  
+  attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), rising, RISING);
+  attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), falling, FALLING);
+  attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), falling, FALLING);
 }

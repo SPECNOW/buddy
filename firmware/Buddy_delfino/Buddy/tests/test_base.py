@@ -13,35 +13,38 @@ arduinoPort = os.environ.get('ARDUINO_COM_PORT', 'COM9')
 
 class Arduino:
     def __init__(self,  arduino_ino, arduino_path='C:\\Program Files (x86)\\Arduino', arduino_port=arduinoPort):
-        print('Compiling {}'.format(arduino_ino))
-        
-        curDir = os.path.abspath(os.curdir)
-        os.chdir(arduino_path)
-        proc = subprocess.Popen(
-            [
-                "arduino_debug.exe",
-                "--upload",
-                "--board", "arduino:avr:mega",
-                "--port", arduino_port,
-                arduino_ino
-            ],
-            stdout = subprocess.PIPE,
-            stderr = subprocess.PIPE
-        )
-        while True:
-            line = proc.stdout.readline()
-            print(line.rstrip('\n'))
-            if not line:
-                break
-        proc.wait()
-        print("ERR:\n\t{}\n".format('\t'.join(proc.stderr.readlines())))
-        os.chdir(curDir)
-        
-        if (proc.returncode):
-            print("Failed to compile")
-            sys.exit()
+        if arduino_ino:
+            print('Compiling {}'.format(arduino_ino))
+            
+            curDir = os.path.abspath(os.curdir)
+            os.chdir(arduino_path)
+            proc = subprocess.Popen(
+                [
+                    "arduino_debug.exe",
+                    "--upload",
+                    "--board", "arduino:avr:mega",
+                    "--port", arduino_port,
+                    arduino_ino
+                ],
+                stdout = subprocess.PIPE,
+                stderr = subprocess.PIPE
+            )
+            while True:
+                line = proc.stdout.readline()
+                print(line.rstrip('\n'))
+                if not line:
+                    break
+            proc.wait()
+            print("ERR:\n\t{}\n".format('\t'.join(proc.stderr.readlines())))
+            os.chdir(curDir)
+            
+            if (proc.returncode):
+                print("Failed to compile")
+                sys.exit()
 
-        print('Compile and upload success!')
+            print('Compile and upload success!')
+        else:
+            print("Arduino INO not provided")
         return
 
 class Delfino:
@@ -139,7 +142,7 @@ class TestBase(object):
         cls.delfino = Delfino(project=cls.delfino_project)
 
         cls.serialDelfino = serial.Serial()
-        cls.serialDelfino.baurdrate = 9600
+        cls.serialDelfino.baurdrate = 115200
         cls.serialDelfino.port = delfinoPort
         cls.serialDelfino.timeout = 1
         cls.serialDelfino.open()
@@ -151,7 +154,7 @@ class TestBase(object):
         cls.arduino = Arduino(arduino_ino=cls.arduino_ino)
         
         cls.serialArduino = serial.Serial()
-        cls.serialArduino.baurdrate = 9600
+        cls.serialArduino.baurdrate = 115200
         cls.serialArduino.port = arduinoPort
         cls.serialArduino.timeout = 1
         cls.serialArduino.open()

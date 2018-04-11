@@ -49,12 +49,16 @@
 //
 #include "includes.h"
 
-//
-// Main
-//
-//
+void loop()
+{
+    if (transmitPacket)
+    {
+        transmitPacket = false;
+        sendBuddyData();
+    }
+}
 
-void main(void)
+void setup()
 {
     //
     // Configure PLL, disable WD, enable peripheral clocks.
@@ -78,14 +82,19 @@ void main(void)
     //
     EINT;
     ERTM;
+}
 
+//
+// Main
+//
+//
+
+void main(void)
+{
+    setup();
     // Run Code
     while(1) {
-        if (transmitPacket)
-        {
-            transmitPacket = false;
-            sendBuddyData();
-        }
+        loop();
     }
 }
 

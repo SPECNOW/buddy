@@ -14,8 +14,8 @@
 #include "device.h"
 #include "pin_configuration.h"
 
-typedef   signed char   int8_t;
-typedef unsigned char  uint8_t;
+typedef signed char     int8_t;
+typedef unsigned char   uint8_t;
 
 extern bool transmitPacket;
 
