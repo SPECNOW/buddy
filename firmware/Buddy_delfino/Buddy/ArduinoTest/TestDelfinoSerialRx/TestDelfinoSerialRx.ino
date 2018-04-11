@@ -3,8 +3,8 @@ int y = 0;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial1.begin(9600);
+  Serial.begin(115200);
+  Serial1.begin(115200);
   while (!Serial);
   while (!Serial1);
 }
