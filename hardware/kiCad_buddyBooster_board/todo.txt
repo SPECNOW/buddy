@@ -14,8 +14,6 @@ leakage when batt is off but other devices still powered
 
 remap adc, some adc are not the same as the rest
 
-qep board to board, feed inx voltage?!?!
-
 level shift for  arduino uart, arduino test pins
 
 
