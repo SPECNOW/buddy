@@ -7,6 +7,7 @@ import subprocess
 
 delfinoPort = os.environ.get('DELFINO_COM_PORT', 'COM10')
 arduinoPort = os.environ.get('ARDUINO_COM_PORT', 'COM9')
+baudrate = 115200
 
 # TODO: Need to somehow get Arduino and Delfino to automatically 
 #        flash correct test programs before running this
@@ -142,7 +143,7 @@ class TestBase(object):
         cls.delfino = Delfino(project=cls.delfino_project)
 
         cls.serialDelfino = serial.Serial()
-        cls.serialDelfino.baurdrate = 115200
+        cls.serialDelfino.baudrate = baudrate
         cls.serialDelfino.port = delfinoPort
         cls.serialDelfino.timeout = 1
         cls.serialDelfino.open()
@@ -154,7 +155,7 @@ class TestBase(object):
         cls.arduino = Arduino(arduino_ino=cls.arduino_ino)
         
         cls.serialArduino = serial.Serial()
-        cls.serialArduino.baurdrate = 115200
+        cls.serialArduino.baudrate = baudrate
         cls.serialArduino.port = arduinoPort
         cls.serialArduino.timeout = 1
         cls.serialArduino.open()
