@@ -4,18 +4,18 @@ pi filter with inductors to filter 32khz switching
 board to board jumper seperation
 
 connector posts. for inputs
-
 testing ports for probing, hooks, and input posts
 jumpbers to break signals seperate it, or inject test signal
+sprinkle testpad or via for probe points. 
 
 ribbon cable - connection to arduino test board -  how to connect it to test
 
-leakage when batt is off but other devices still powered
-
-remap adc, some adc are not the same as the rest
-
 level shift for  arduino uart, arduino test pins
 
+rc delay for any control signals
+
+double check all control signals. 
+mux jumper any required ones. options
 
 TO BUY
 20 conductor 20-50 feet
