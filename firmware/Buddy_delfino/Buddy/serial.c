@@ -26,7 +26,7 @@ void sciRxProcessData(uint16_t* data)
 {
     switch(deviceMode) {
     case normal:
-        // Do something?
+        handleCommand(data);
         break;
     case test_rx:
     case test_tx:
@@ -55,7 +55,6 @@ __interrupt void sciPCRxIsr(void)
 
     sciRXisr(ToPC_Uart, FromPCRxData);
     sciRxProcessData(FromPCRxData);
-    handleCommand(FromPCRxData);
     GPIO_writePin(87, 0);
 }
 
