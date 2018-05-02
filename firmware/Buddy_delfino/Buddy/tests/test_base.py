@@ -150,19 +150,22 @@ class TestBase(object):
         # Clear the Buffer
         cls.serialDelfino.read()        
         print("Delfino Serial Initialized")
-
-        print("Compiling and uploading Arduino")
-        cls.arduino = Arduino(arduino_ino=cls.arduino_ino)
-        
-        cls.serialArduino = serial.Serial()
-        cls.serialArduino.baudrate = baudrate
-        cls.serialArduino.port = arduinoPort
-        cls.serialArduino.timeout = 1
-        cls.serialArduino.open()
-        # Clear the Buffer
-        cls.serialArduino.read()
-        print("Arduino Serial Initialized")
-        
+      
+        if cls.arduino_ino:
+            print("Compiling and uploading Arduino")
+            cls.arduino = Arduino(arduino_ino=cls.arduino_ino)
+            cls.serialArduino = serial.Serial()
+            cls.serialArduino.baudrate = baudrate
+            cls.serialArduino.port = arduinoPort
+            cls.serialArduino.timeout = 1
+            cls.serialArduino.open()
+            # Clear the Buffer
+            cls.serialArduino.read()
+            print("Arduino Serial Initialized")
+        else:
+            print("Arduino will not be intialized")
+            cls.arduino = None
+            cls.serialArduino = None        
         return
 
     def teardown_class(cls):

@@ -2,6 +2,12 @@ import struct
 
 GET_PACKET = '\xff\xff'
 
+def get_packet(serial):
+    serial.flushOutput()
+    serial.flushInput()
+    serial.write(GET_PACKET)
+    return BuddyPacket(serial.read(1000))
+
 class BuddyPacket:
     header=\
     validData=\
