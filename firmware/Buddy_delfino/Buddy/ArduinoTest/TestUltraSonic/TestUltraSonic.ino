@@ -58,7 +58,7 @@ void loop() {
 void setup() {
   Serial.begin(115200);
   pinMode(UTLRA_TRIGA_PIN, INPUT);
-  //pinMode(UTLRA_TRIGB_PIN, INPUT);
+  pinMode(UTLRA_TRIGB_PIN, INPUT);
 
   pinMode(ULTRA_PULSEA_PIN, OUTPUT);
   digitalWrite(ULTRA_PULSEA_PIN, LOW);
@@ -67,7 +67,7 @@ void setup() {
   digitalWrite(ULTRA_PULSEB_PIN, LOW);
 
   attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), rising, RISING);
-  //attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), rising, RISING);
-  attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), falling, FALLING);
+  attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), rising, RISING);
+  //attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), falling, FALLING);
   //attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), falling, FALLING);
 }
