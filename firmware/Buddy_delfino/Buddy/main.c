@@ -72,8 +72,9 @@ void setup()
 
     // Initialize Pins as desired
     SCI_Init();
-    EQEP_Init();
+    TMR_Init();
     ADC_Init();
+    EQEP_Init();
     GPIO_Init();
     EPWM_Init();
 

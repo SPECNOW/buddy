@@ -50,5 +50,6 @@ void EQEP_Init();
 void ADC_Init();
 void GPIO_Init();
 void EPWM_Init();
+void TMR_Init();
 
 #endif /* DEFINES_H_ */
