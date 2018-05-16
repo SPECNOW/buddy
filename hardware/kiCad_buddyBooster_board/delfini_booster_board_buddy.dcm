@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TXB0104
+D 4-Bit Bidirectional Voltage-level Translator With Automatic Direction Sensing
+K levelshift
+F http://www.ti.com/lit/ds/symlink/txb0104.pdf
+$ENDCMP
+#
+#End Doc Library

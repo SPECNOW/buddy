@@ -1,0 +1,21 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TMP275
+D The TMP275 is a ±0.5°C I2C/SMBus integrated digital temperature sensor. 
+K I2C Temperature SMBUS LM75
+F http://www.ti.com/lit/ds/symlink/tmp275.pdf
+$ENDCMP
+#
+$CMP TempSensorSMbus
+D The TMP275 is a ±0.5°C accurate integrated digital temperature sensor. 
+K I2C Temperature SMBUS LM75
+F http://www.ti.com/lit/ds/symlink/tmp275.pdf
+$ENDCMP
+#
+$CMP tps2112a
+D Power Mux, 2A, 2.8~5.5V 
+K Oring Power Mux 
+F http://www.ti.com/lit/ds/symlink/tps2112a.pdf
+$ENDCMP
+#
+#End Doc Library
