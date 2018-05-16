@@ -17,6 +17,8 @@ rc delay for any control signals
 double check all control signals. 
 mux jumper any required ones. options
 
+map and draw footprint for special 1pin and 3 pin and 4 pin connectors
+
 TO BUY
 20 conductor 20-50 feet
 2x 28 aug cable  20 feet
