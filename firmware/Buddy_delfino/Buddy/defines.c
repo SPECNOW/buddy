@@ -13,6 +13,12 @@ volatile SerialPacket   serialPacketWrite   = {0xFF, 0, 0, 0, {0, 0, 0, 0}, {0, 
 
 bool transmitPacket = false;
 
+// Pin 39
+#define ULTRASONIC_A_TRIG_PIN 13
+#define ULTRASONIC_A_TRIG_PIN_MODE GPIO_13_GPIO13
+// Pin 38
+#define ULTRASONIC_B_TRIG_PIN 14
+#define ULTRASONIC_B_TRIG_PIN_MODE GPIO_14_GPIO14
 
 void EQEP_Init() {
 
@@ -33,6 +39,15 @@ void GPIO_Init() {
     GPIO_setPinConfig(GPIO_87_GPIO87);                // GPIO9 = GPIO9
     GPIO_setDirectionMode(87, GPIO_DIR_MODE_OUT);    // GPIO9 = output
 
+    GPIO_setPadConfig(ULTRASONIC_A_TRIG_PIN, GPIO_PIN_TYPE_PULLUP);  
+    GPIO_writePin(ULTRASONIC_A_TRIG_PIN, 0);                         
+    GPIO_setPinConfig(ULTRASONIC_A_TRIG_PIN_MODE);               
+    GPIO_setDirectionMode(ULTRASONIC_A_TRIG_PIN, GPIO_DIR_MODE_OUT); 
+
+    GPIO_setPadConfig(ULTRASONIC_B_TRIG_PIN, GPIO_PIN_TYPE_PULLUP);
+    GPIO_writePin(ULTRASONIC_B_TRIG_PIN, 0);
+    GPIO_setPinConfig(ULTRASONIC_B_TRIG_PIN_MODE);
+    GPIO_setDirectionMode(ULTRASONIC_B_TRIG_PIN, GPIO_DIR_MODE_OUT);
 }
 
 void EPWM_Init() {
@@ -43,7 +58,7 @@ void EPWM_Init() {
 __interrupt void cpuTimer0ISR(void);
 __interrupt void cpuTimer1ISR(void);
 __interrupt void cpuTimer2ISR(void);
-void configCPUTimer(uint32_t cpuTimer, float freq, float period);
+void configCPUTimer(uint32_t cpuTimer, float period);
 
 void TMR_Init() {
 
@@ -90,9 +105,9 @@ void TMR_Init() {
     // Configure CPU-Timer 0, 1, and 2 to interrupt every second:
     // 1 second Period (in uSeconds)
     //
-    configCPUTimer(CPUTIMER0_BASE, DEVICE_SYSCLK_FREQ, 1000000);
-    configCPUTimer(CPUTIMER1_BASE, DEVICE_SYSCLK_FREQ, 1000000);
-    configCPUTimer(CPUTIMER2_BASE, DEVICE_SYSCLK_FREQ, 1000000);
+    configCPUTimer(CPUTIMER0_BASE, 10); // 10 us
+    configCPUTimer(CPUTIMER1_BASE, 1000000);
+    configCPUTimer(CPUTIMER2_BASE, 1000000);
 
     //
     // To ensure precise timing, use write-only instructions to write to the
@@ -128,14 +143,14 @@ void TMR_Init() {
 // state after configuration.
 //
 void
-configCPUTimer(uint32_t cpuTimer, float freq, float period)
+configCPUTimer(uint32_t cpuTimer, float period)
 {
     uint32_t temp;
 
     //
     // Initialize timer period:
     //
-    temp = (uint32_t)(freq / 1000000 * period);
+    temp = (uint32_t)(100 * period);
     CPUTimer_setPeriod(cpuTimer, temp);
 
     //
@@ -153,22 +168,6 @@ configCPUTimer(uint32_t cpuTimer, float freq, float period)
     CPUTimer_setEmulationMode(cpuTimer,
                               CPUTIMER_EMULATIONMODE_STOPAFTERNEXTDECREMENT);
     CPUTimer_enableInterrupt(cpuTimer);
-
-    //
-    // Resets interrupt counters for the three cpuTimers
-    //
-    /*if (cpuTimer == CPUTIMER0_BASE)
-    {
-        cpuTimer0IntCount = 0;
-    }
-    else if(cpuTimer == CPUTIMER1_BASE)
-    {
-        cpuTimer1IntCount = 0;
-    }
-    else if(cpuTimer == CPUTIMER2_BASE)
-    {
-        cpuTimer2IntCount = 0;
-    }*/
 }
 
 
@@ -178,6 +177,14 @@ cpuTimer0ISR(void)
     //
     // Acknowledge this interrupt to receive more interrupts from group 1
     //
+    static uint32_t counter = 0;
+    counter++;
+    
+    if (counter >= 2)
+    {
+        GPIO_togglePin(ULTRASONIC_A_TRIG_PIN);
+        counter = 0;
+    }
     Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
 }
 
