@@ -1,4 +1,4 @@
-update=5/10/2018 9:03:22 PM
+update=6/12/2018 9:36:44 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -37,7 +37,7 @@ SpiceUseNetNumbers=0
 LabSize=60
 [eeschema]
 version=1
-LibDir=footprints/digikey-kicad-library-master/digikey-symbols
+LibDir=footprints/digikey-kicad-library-master/digikey-symbols;footprints/TE_2p_term_blk_1792229
 [eeschema/libraries]
 LibName1=power
 LibName2=device
@@ -210,3 +210,5 @@ LibName168=footprints/digikey-kicad-library-master/digikey-symbols/dk_Trimmer-Po
 LibName169=footprints/digikey-kicad-library-master/digikey-symbols/dk_TVS-Diodes
 LibName170=footprints/digikey-kicad-library-master/digikey-symbols/dk_TVS-Mixed-Technology
 LibName171=footprints/digikey-kicad-library-master/digikey-symbols/dk_USB-DVI-HDMI-Connectors
+LibName172=1-1393209-2/1-1393209-2
+LibName173=footprints/TE_2p_term_blk_1792229/1792229
