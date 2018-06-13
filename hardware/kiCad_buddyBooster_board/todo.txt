@@ -31,4 +31,6 @@ TPS2112APWR - oring power chip
 2x relay T90S1D12-12
 
 
+bought 5p 0.1 inch header long tail 
+
 
