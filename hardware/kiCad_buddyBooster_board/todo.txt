@@ -33,6 +33,8 @@ TPS2112APWR - oring power chip
 
 8:45 PM 6/12/2018
 bought 5p 0.1 inch header long tail 
+12:49 AM 9/19/2018
+sort out voltage co-exist 3.3V 5V maybe use 12V
 
 
 
