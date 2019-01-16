@@ -20,6 +20,8 @@ bool transmitPacket = false;
 #define ULTRASONIC_B_TRIG_PIN 14
 #define ULTRASONIC_B_TRIG_PIN_MODE GPIO_14_GPIO14
 
+Triggers TRIGGER_ARRAY[2];
+
 void EQEP_Init() {
 
 }
@@ -177,13 +179,25 @@ cpuTimer0ISR(void)
     //
     // Acknowledge this interrupt to receive more interrupts from group 1
     //
-    static uint32_t counter = 0;
-    counter++;
-    
-    if (counter >= 2)
-    {
-        GPIO_togglePin(ULTRASONIC_A_TRIG_PIN);
-        counter = 0;
+    uint8_t i = 0;
+    for(i = 0; i < 2; i++) {
+        if(TRIGGER_ARRAY[i].trigger) {
+            TRIGGER_ARRAY[i].counter++;
+            TRIGGER_ARRAY[i].timeout = 0;
+            if (0 == TRIGGER_ARRAY[i].counter%2) {
+                GPIO_togglePin(i == 0 ? ULTRASONIC_A_TRIG_PIN: ULTRASONIC_B_TRIG_PIN);
+                if (0 == TRIGGER_ARRAY[i].counter%4) {
+                    TRIGGER_ARRAY[i].counter = 0;
+                    TRIGGER_ARRAY[i].trigger = false;
+                }
+            }
+        } else {
+            TRIGGER_ARRAY[i].timeout++;
+            TRIGGER_ARRAY[i].counter = 0;
+            if(TRIGGER_ARRAY[i].timeout > TRIGGER_TIMEOUT) {
+                TRIGGER_ARRAY[i].trigger = true;
+            }
+        }
     }
     Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
 }
