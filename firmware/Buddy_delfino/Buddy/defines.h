@@ -42,8 +42,16 @@ typedef struct serial_packet
     uint8_t infraredArray[NUM_ADC_SENSORS];
 } SerialPacket;
 
+typedef struct triggers {
+    uint8_t counter;
+    bool trigger;
+    uint8_t timeout;
+} Triggers;
+#define TRIGGER_TIMEOUT 11000
+
 volatile extern DeviceMode deviceMode;
 volatile extern SerialPacket serialPacketRead, serialPacketWrite;
+extern Triggers TRIGGER_ARRAY[2];
 
 void SCI_Init();
 void EQEP_Init();
