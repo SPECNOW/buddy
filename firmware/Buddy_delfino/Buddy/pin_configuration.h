@@ -43,4 +43,20 @@
 #define RightMotor_EQUEP_B_Pin 63
 #define RightMotor_EQUEP_B_PinConfig GPIO_63_EQEP3B
 
+/************** GPIO **********/
+/********  Ultrasonic  ********/
+// Pin 39
+#define Ultrasonic_A_TRIG_Pin 13
+#define Ultrasonic_A_TRIG_PinConfig GPIO_13_GPIO13
+// Pin 38
+#define Ultrasonic_B_TRIG_Pin 14
+#define Ultrasonic_B_TRIG_PinConfig GPIO_14_GPIO14
+// Pin ??
+#define Ultrasonic_A_ECHO_Pin 2
+#define Ultrasonic_A_ECHO_PinConfig GPIO_2_GPIO2
+// Pin ??
+#define Ultrasonic_B_ECHO_Pin 3
+#define Ultrasonic_B_ECHO_PinConfig GPIO_3_GPIO3
+
+
 #endif /* PIN_CONFIGURATION_H_ */

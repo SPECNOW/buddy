@@ -47,7 +47,7 @@ typedef struct triggers {
     bool trigger;
     uint8_t timeout;
 } Triggers;
-#define TRIGGER_TIMEOUT 11000
+#define TRIGGER_TIMEOUT 6000    // TRIGGER_TIMEOUT/10 000 = Trigger Time Period in Seconds
 
 volatile extern DeviceMode deviceMode;
 volatile extern SerialPacket serialPacketRead, serialPacketWrite;
