@@ -916,7 +916,7 @@ U 1 1 5A1E6460
 P 13400 3800
 F 0 "U7" H 13450 3950 60  0000 C CNN
 F 1 "TXB0104" H 13600 3150 60  0000 C CNN
-F 2 "digikey-footprints:TSSOP-16-1EP_W4.40mm" H 13550 4300 60  0001 C CNN
+F 2 "digikey-footprints:TSSOP-14_W4.4mm" H 13550 4300 60  0001 C CNN
 F 3 "" H 13550 4300 60  0001 C CNN
 	1    13400 3800
 	1    0    0    -1  
@@ -1219,8 +1219,8 @@ $Comp
 L delfini_booster_board_buddy-rescue:R-783.3-1.0 U5
 U 1 1 5A5FE483
 P 8250 1150
-F 0 "U5" H 8400 954 50  0000 C CNN
-F 1 "R-783.3-1.0" H 8250 1350 50  0000 C CNN
+F 0 "U5" H 8250 1465 50  0000 C CNN
+F 1 "R-783.3-1.0" H 8250 1374 50  0000 C CNN
 F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 8250 1150 50  0001 C CNN
 F 3 "" H 8250 1150 50  0000 C CNN
 	1    8250 1150
@@ -2094,7 +2094,7 @@ F 1 "Screw_Terminal_1x04" V 10850 7550 50  0000 C TNN
 F 2 "Connectors_Phoenix:PhoenixContact_MC-G_04x3.50mm_Angled" H 11000 7125 50  0001 C CNN
 F 3 "" H 10975 7750 50  0001 C CNN
 	1    11000 7550
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 $Comp
 L power:+12V #PWR048
@@ -2131,7 +2131,7 @@ F 1 "Screw_Terminal_1x04" V 11650 8200 50  0000 C TNN
 F 2 "Connectors_Phoenix:PhoenixContact_MC-G_04x3.50mm_Angled" H 11800 7775 50  0001 C CNN
 F 3 "" H 11775 8400 50  0001 C CNN
 	1    11800 8200
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 $Comp
 L power:+12V #PWR053
