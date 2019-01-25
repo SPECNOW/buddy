@@ -13,13 +13,6 @@ volatile SerialPacket   serialPacketWrite   = {0xFF, 0, 0, 0, {0, 0, 0, 0}, {0, 
 
 bool transmitPacket = false;
 
-// Pin 39
-#define ULTRASONIC_A_TRIG_PIN 13
-#define ULTRASONIC_A_TRIG_PIN_MODE GPIO_13_GPIO13
-// Pin 38
-#define ULTRASONIC_B_TRIG_PIN 14
-#define ULTRASONIC_B_TRIG_PIN_MODE GPIO_14_GPIO14
-
 Triggers TRIGGER_ARRAY[2];
 
 void EQEP_Init() {
@@ -30,7 +23,13 @@ void ADC_Init() {
 
 }
 
+__interrupt void gpioEchoATimerISR(void);
+__interrupt void gpioEchoBTimerISR(void);
+
 void GPIO_Init() {
+    Interrupt_register(INT_XINT1, &gpioEchoATimerISR);
+    Interrupt_register(INT_XINT2, &gpioEchoBTimerISR);
+
     GPIO_setPadConfig(86, GPIO_PIN_TYPE_PULLUP);     // Enable pullup on GPIO9
     GPIO_writePin(86, 0);                            // Load output latch
     GPIO_setPinConfig(GPIO_86_GPIO86);                // GPIO9 = GPIO9
@@ -41,15 +40,37 @@ void GPIO_Init() {
     GPIO_setPinConfig(GPIO_87_GPIO87);                // GPIO9 = GPIO9
     GPIO_setDirectionMode(87, GPIO_DIR_MODE_OUT);    // GPIO9 = output
 
-    GPIO_setPadConfig(ULTRASONIC_A_TRIG_PIN, GPIO_PIN_TYPE_PULLUP);  
-    GPIO_writePin(ULTRASONIC_A_TRIG_PIN, 0);                         
-    GPIO_setPinConfig(ULTRASONIC_A_TRIG_PIN_MODE);               
-    GPIO_setDirectionMode(ULTRASONIC_A_TRIG_PIN, GPIO_DIR_MODE_OUT); 
 
-    GPIO_setPadConfig(ULTRASONIC_B_TRIG_PIN, GPIO_PIN_TYPE_PULLUP);
-    GPIO_writePin(ULTRASONIC_B_TRIG_PIN, 0);
-    GPIO_setPinConfig(ULTRASONIC_B_TRIG_PIN_MODE);
-    GPIO_setDirectionMode(ULTRASONIC_B_TRIG_PIN, GPIO_DIR_MODE_OUT);
+    // Ultrasonic Triggers
+    GPIO_setPadConfig(Ultrasonic_A_TRIG_Pin, GPIO_PIN_TYPE_PULLUP);  
+    GPIO_writePin(Ultrasonic_A_TRIG_Pin, 0);                         
+    GPIO_setPinConfig(Ultrasonic_A_TRIG_PinConfig);               
+    GPIO_setDirectionMode(Ultrasonic_A_TRIG_Pin, GPIO_DIR_MODE_OUT); 
+
+    GPIO_setPadConfig(Ultrasonic_B_TRIG_Pin, GPIO_PIN_TYPE_PULLUP);
+    GPIO_writePin(Ultrasonic_B_TRIG_Pin, 0);
+    GPIO_setPinConfig(Ultrasonic_B_TRIG_PinConfig);
+    GPIO_setDirectionMode(Ultrasonic_B_TRIG_Pin, GPIO_DIR_MODE_OUT);
+
+    // Ultrasonic Echoes
+    //GPIO_setPadConfig(Ultrasonic_A_ECHO_Pin, GPIO_PIN_TYPE_PULLUP);
+    GPIO_setPinConfig(Ultrasonic_A_ECHO_PinConfig);
+    GPIO_setDirectionMode(Ultrasonic_A_ECHO_Pin, GPIO_DIR_MODE_IN);
+    GPIO_setInterruptPin(Ultrasonic_A_ECHO_Pin, GPIO_INT_XINT1);
+    GPIO_setInterruptType(GPIO_INT_XINT1, GPIO_INT_TYPE_BOTH_EDGES);
+
+    //GPIO_setPadConfig(Ultrasonic_B_ECHO_Pin, GPIO_PIN_TYPE_PULLUP);
+    GPIO_setPinConfig(Ultrasonic_B_ECHO_PinConfig);
+    GPIO_setDirectionMode(Ultrasonic_B_ECHO_Pin, GPIO_DIR_MODE_IN);
+    GPIO_setInterruptPin(Ultrasonic_B_ECHO_Pin, GPIO_INT_XINT2);
+    GPIO_setInterruptType(GPIO_INT_XINT2, GPIO_INT_TYPE_BOTH_EDGES);
+
+    GPIO_enableInterrupt(GPIO_INT_XINT1);
+    GPIO_enableInterrupt(GPIO_INT_XINT2);
+
+    Interrupt_enable(INT_XINT1);
+    Interrupt_enable(INT_XINT2);
+
 }
 
 void EPWM_Init() {
@@ -107,7 +128,7 @@ void TMR_Init() {
     // Configure CPU-Timer 0, 1, and 2 to interrupt every second:
     // 1 second Period (in uSeconds)
     //
-    configCPUTimer(CPUTIMER0_BASE, 10); // 10 us
+    configCPUTimer(CPUTIMER0_BASE, 10); // 10 uS
     configCPUTimer(CPUTIMER1_BASE, 1000000);
     configCPUTimer(CPUTIMER2_BASE, 1000000);
 
@@ -152,7 +173,7 @@ configCPUTimer(uint32_t cpuTimer, float period)
     //
     // Initialize timer period:
     //
-    temp = (uint32_t)(100 * period);
+    temp = (uint32_t)(200 * period);
     CPUTimer_setPeriod(cpuTimer, temp);
 
     //
@@ -179,13 +200,14 @@ cpuTimer0ISR(void)
     //
     // Acknowledge this interrupt to receive more interrupts from group 1
     //
+    Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
     uint8_t i = 0;
     for(i = 0; i < 2; i++) {
         if(TRIGGER_ARRAY[i].trigger) {
             TRIGGER_ARRAY[i].counter++;
             TRIGGER_ARRAY[i].timeout = 0;
             if (0 == TRIGGER_ARRAY[i].counter%2) {
-                GPIO_togglePin(i == 0 ? ULTRASONIC_A_TRIG_PIN: ULTRASONIC_B_TRIG_PIN);
+                GPIO_togglePin(i == 0 ? Ultrasonic_A_TRIG_Pin: Ultrasonic_B_TRIG_Pin);
                 if (0 == TRIGGER_ARRAY[i].counter%4) {
                     TRIGGER_ARRAY[i].counter = 0;
                     TRIGGER_ARRAY[i].trigger = false;
@@ -199,7 +221,6 @@ cpuTimer0ISR(void)
             }
         }
     }
-    Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
 }
 
 //
@@ -223,3 +244,36 @@ cpuTimer2ISR(void)
     // The CPU acknowledges the interrupt.
     //
 }
+
+
+__interrupt void
+gpioEchoATimerISR(void)
+{
+    //
+    // Acknowledge this interrupt to receive more interrupts from group 1
+    //
+    Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
+    static uint32_t start_time = 0, delta = 0;
+    if (GPIO_readPin(Ultrasonic_A_ECHO_Pin)) {
+        start_time = CPUTimer_getTimerCount(CPUTIMER1_BASE);
+    } else {
+        delta = start_time - CPUTimer_getTimerCount(CPUTIMER1_BASE);
+        TRIGGER_ARRAY[0].trigger = true;
+    }
+}
+__interrupt void
+gpioEchoBTimerISR(void)
+{
+    //
+    // Acknowledge this interrupt to receive more interrupts from group 1
+    //
+    Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
+    static uint32_t start_time = 0, delta = 0;
+        if (GPIO_readPin(Ultrasonic_B_ECHO_Pin)) {
+            start_time = CPUTimer_getTimerCount(CPUTIMER1_BASE);
+        } else {
+            delta = start_time - CPUTimer_getTimerCount(CPUTIMER1_BASE);
+            TRIGGER_ARRAY[1].trigger = true;
+        }
+}
+
