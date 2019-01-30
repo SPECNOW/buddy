@@ -1,5 +1,6 @@
 (fp_lib_table
-  (lib (name digikey-footprints)(type KiCad)(uri "$(KIPRJMOD)\\footprints\\digikey-kicad-library-master\\digikey-footprints.pretty")(options "")(descr ""))
-  (lib (name 1-1393209-2)(type Legacy)(uri "$(KIPRJMOD)\\1-1393209-2\\1-1393209-2.mod")(options "")(descr ""))
-  (lib (name 1792229)(type Legacy)(uri "$(KIPRJMOD)\\footprints\\TE_2p_term_blk_1792229\\1792229.mod")(options "")(descr ""))
+  (lib (name digikey-footprints)(type KiCad)(uri "$(KIPRJMOD)/footprints/digikey-kicad-library-master/digikey-footprints.pretty")(options "")(descr ""))
+  (lib (name 1-1393209-2)(type Legacy)(uri "$(KIPRJMOD)/1-1393209-2/1-1393209-2.mod")(options "")(descr ""))
+  (lib (name 1792229)(type Legacy)(uri "$(KIPRJMOD)/footprints/TE_2p_term_blk_1792229/1792229.mod")(options "")(descr ""))
+  (lib (name buddy_temp_footPrint_lib)(type KiCad)(uri ${KIPRJMOD}/buddy_temp_footPrint_lib.pretty)(options "")(descr ""))
 )
