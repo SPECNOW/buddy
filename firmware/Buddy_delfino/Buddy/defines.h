@@ -31,6 +31,12 @@ typedef enum DEVICE_MODE {
     test_tx
 } DeviceMode;
 
+typedef struct triggers {
+    uint8_t counter;
+    bool trigger;
+    uint8_t timeout;
+} Triggers;
+
 typedef struct serial_packet
 {
     const uint8_t header;
@@ -42,13 +48,6 @@ typedef struct serial_packet
     uint8_t infraredArray[NUM_ADC_SENSORS];
 } SerialPacket;
 
-typedef struct triggers {
-    uint8_t counter;
-    bool trigger;
-    uint8_t timeout;
-} Triggers;
-#define TRIGGER_TIMEOUT 6000    // TRIGGER_TIMEOUT/10 000 = Trigger Time Period in Seconds
-
 volatile extern DeviceMode deviceMode;
 volatile extern SerialPacket serialPacketRead, serialPacketWrite;
 extern Triggers TRIGGER_ARRAY[2];
@@ -57,7 +56,5 @@ void SCI_Init();
 void EQEP_Init();
 void ADC_Init();
 void GPIO_Init();
-void EPWM_Init();
-void TMR_Init();
 
 #endif /* DEFINES_H_ */

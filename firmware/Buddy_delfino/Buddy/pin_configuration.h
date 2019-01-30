@@ -51,10 +51,10 @@
 // Pin 38
 #define Ultrasonic_B_TRIG_Pin 14
 #define Ultrasonic_B_TRIG_PinConfig GPIO_14_GPIO14
-// Pin ??
+// Pin 80
 #define Ultrasonic_A_ECHO_Pin 2
 #define Ultrasonic_A_ECHO_PinConfig GPIO_2_GPIO2
-// Pin ??
+// Pin 79
 #define Ultrasonic_B_ECHO_Pin 3
 #define Ultrasonic_B_ECHO_PinConfig GPIO_3_GPIO3
 

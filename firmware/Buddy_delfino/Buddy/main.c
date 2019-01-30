@@ -72,11 +72,12 @@ void setup()
 
     // Initialize Pins as desired
     SCI_Init();
-    TMR_Init();
     ADC_Init();
     EQEP_Init();
     GPIO_Init();
-    EPWM_Init();
+    UltraSonic_GPIO_Init();
+    UltraSonic_TMR_Init();
+
 
     //
     // Enable Global Interrupt (INTM) and realtime interrupt (DBGM)

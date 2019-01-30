@@ -14,6 +14,7 @@
 #include "pin_configuration.h"
 #include "defines.h"
 #include "serial.h"
+#include "ultrasonic.h"
 
 
 #endif /* INCLUDES_H_ */
