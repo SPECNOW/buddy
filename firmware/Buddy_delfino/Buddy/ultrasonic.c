@@ -28,8 +28,12 @@ cpuTimer0ISR(void)
             TRIGGER_ARRAY[i].counter++;
             TRIGGER_ARRAY[i].timeout = 0;
             if (0 == TRIGGER_ARRAY[i].counter%2) {
-                GPIO_togglePin(i == 0 ? Ultrasonic_A_TRIG_Pin: Ultrasonic_B_TRIG_Pin);
-                if (0 == TRIGGER_ARRAY[i].counter%4) {
+                if(2 == TRIGGER_ARRAY[i].counter) {
+                    GPIO_writePin(i == 0 ? Ultrasonic_A_TRIG_Pin: Ultrasonic_B_TRIG_Pin, 1);
+                } else {
+                    GPIO_writePin(i == 0 ? Ultrasonic_A_TRIG_Pin: Ultrasonic_B_TRIG_Pin, 0);
+                }
+                if (4 == TRIGGER_ARRAY[i].counter) {
                     TRIGGER_ARRAY[i].counter = 0;
                     TRIGGER_ARRAY[i].trigger = false;
                 }
@@ -86,7 +90,7 @@ void gpioEchoTimerISR(uint8_t trig_num) {
      Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
      static uint32_t start_count[NUM_SONAR_SENSORS] = {0},
              end_count[NUM_SONAR_SENSORS] = {0};
-     if (GPIO_readPin(Ultrasonic_B_ECHO_Pin)) {
+     if (GPIO_readPin(0 == trig_num ? Ultrasonic_A_ECHO_Pin : Ultrasonic_B_ECHO_Pin)) {
          start_count[trig_num] = CPUTimer_getTimerCount(CPUTIMER1_BASE);
      } else {
          uint8_t distance = 0;
