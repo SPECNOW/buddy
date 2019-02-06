@@ -372,13 +372,13 @@ $EndComp
 $Comp
 L conn:CONN_01X03 P12
 U 1 1 59F0659B
-P 6750 4900
-F 0 "P12" H 6750 5100 50  0000 C CNN
-F 1 "CONN_01X03" V 6850 4900 50  0000 C CNN
-F 2 "Connectors_Samtec:SL-103-X-XX_1x03" H 6750 4900 50  0001 C CNN
-F 3 "" H 6750 4900 50  0000 C CNN
-	1    6750 4900
-	-1   0    0    -1  
+P 6750 4800
+F 0 "P12" H 6750 5000 50  0000 C CNN
+F 1 "CONN_01X03" V 6850 4800 50  0000 C CNN
+F 2 "Connectors_Samtec:SL-103-X-XX_1x03" H 6750 4800 50  0001 C CNN
+F 3 "" H 6750 4800 50  0000 C CNN
+	1    6750 4800
+	-1   0    0    1   
 $EndComp
 $Comp
 L power:VAA #PWR039
@@ -1133,23 +1133,12 @@ TEST POINTS
 $Comp
 L power:+3.3V #PWR016
 U 1 1 5A5B78F8
-P 4900 8450
-F 0 "#PWR016" H 4900 8300 50  0001 C CNN
-F 1 "+3.3V" H 4900 8590 50  0000 C CNN
-F 2 "" H 4900 8450 50  0000 C CNN
-F 3 "" H 4900 8450 50  0000 C CNN
-	1    4900 8450
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR014
-U 1 1 5A5B7E43
-P 4350 8450
-F 0 "#PWR014" H 4350 8300 50  0001 C CNN
-F 1 "+5V" H 4350 8590 50  0000 C CNN
-F 2 "" H 4350 8450 50  0000 C CNN
-F 3 "" H 4350 8450 50  0000 C CNN
-	1    4350 8450
+P 4900 8500
+F 0 "#PWR016" H 4900 8350 50  0001 C CNN
+F 1 "+3.3V" H 4900 8640 50  0000 C CNN
+F 2 "" H 4900 8500 50  0000 C CNN
+F 3 "" H 4900 8500 50  0000 C CNN
+	1    4900 8500
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1162,17 +1151,6 @@ F 2 "" H 4050 10050 50  0000 C CNN
 F 3 "" H 4050 10050 50  0000 C CNN
 	1    4050 10050
 	1    0    0    -1  
-$EndComp
-$Comp
-L conn:CONN_01X03 P10
-U 1 1 5A5BA711
-P 4650 8650
-F 0 "P10" H 4650 8850 50  0000 C CNN
-F 1 "CONN_01X03" V 4750 8650 50  0000 C CNN
-F 2 "Connectors_Samtec:SL-103-X-XX_1x03" H 4650 8650 50  0001 C CNN
-F 3 "" H 4650 8650 50  0000 C CNN
-	1    4650 8650
-	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R R22
@@ -1211,9 +1189,9 @@ F 3 "" H 4650 9100 60  0001 C CNN
 	1    4650 9100
 	1    0    0    -1  
 $EndComp
-Text Label 3950 1850 0    60   ~ 0
+Text Label 3900 1850 0    60   ~ 0
 SDA_4.7K
-Text Label 3950 2000 0    60   ~ 0
+Text Label 3900 2000 0    60   ~ 0
 SCL_4.7K
 $Comp
 L delfini_booster_board_buddy-rescue:R-783.3-1.0 U5
@@ -1967,7 +1945,7 @@ Text Notes 2000 4650 0    60   ~ 0
 J8
 Text Notes 2450 4650 0    60   ~ 0
 J6
-Text Label 1700 2250 2    60   ~ 0
+Text Label 1800 2250 2    60   ~ 0
 BAT_PWR_OUT_DELFINO_EN
 Text Label 1800 2550 2    60   ~ 0
 ULTRA1_TRIG_OUT_BUFFD
@@ -2059,7 +2037,7 @@ Text Label 1650 4300 2    60   ~ 0
 BRD_ID0
 Text Label 1650 4400 2    60   ~ 0
 BRD_ID1
-Text Label 1650 4200 2    60   ~ 0
+Text Label 1700 1150 2    60   ~ 0
 TEST_EN_N
 Text Notes 13000 4900 0    60   ~ 0
 maybe 250mA\n
@@ -2523,8 +2501,6 @@ Wire Wire Line
 	4400 1850 3900 1850
 Connection ~ 5400 9050
 Wire Wire Line
-	5850 9050 5850 9200
-Wire Wire Line
 	5850 9750 5850 9450
 Wire Wire Line
 	5550 9450 5550 9200
@@ -2544,18 +2520,6 @@ Wire Wire Line
 	5400 9300 5300 9300
 Wire Wire Line
 	5400 9050 5400 9300
-Wire Wire Line
-	4650 9050 5400 9050
-Wire Wire Line
-	4650 8850 4650 9050
-Wire Wire Line
-	4350 8850 4550 8850
-Wire Wire Line
-	4350 8450 4350 8850
-Wire Wire Line
-	4900 8850 4750 8850
-Wire Wire Line
-	4900 8450 4900 8850
 Wire Wire Line
 	4050 9750 4050 9950
 Wire Wire Line
@@ -3032,7 +2996,7 @@ Wire Wire Line
 Wire Wire Line
 	13800 5750 12350 5750
 Wire Wire Line
-	2100 2250 1700 2250
+	2100 2250 1800 2250
 Wire Wire Line
 	2100 2450 1800 2450
 Wire Wire Line
@@ -3664,13 +3628,13 @@ F 3 "" H 9700 1300 50  0000 C CNN
 	0    -1   1    0   
 $EndComp
 Wire Wire Line
-	2100 950  1150 950 
+	2100 950  1700 950 
 Wire Wire Line
 	3400 950  3400 1000
 Wire Wire Line
 	3400 1000 3750 1000
 Wire Wire Line
-	2100 3500 1150 3500
+	2100 3500 1650 3500
 $Comp
 L power:GND #PWR07
 U 1 1 5BCF0571
@@ -3723,7 +3687,7 @@ F 3 "" H 2750 4750 50  0000 C CNN
 	1    2750 4750
 	1    0    0    -1  
 $EndComp
-Text Label 1350 950  0    60   ~ 0
+Text Label 1700 950  2    60   ~ 0
 LaunchPad_3V3
 Text Label 2600 950  0    60   ~ 0
 LAUNCHPAD_5V
@@ -3733,7 +3697,7 @@ Text Label 2650 3500 0    60   ~ 0
 LAUNCHPAD_5V
 Wire Wire Line
 	2600 3500 3350 3500
-Text Label 1250 3500 0    60   ~ 0
+Text Label 1650 3500 2    60   ~ 0
 LaunchPad_3V3
 Text Label 3750 1000 0    60   ~ 0
 5V_DEV_BRD
@@ -3751,4 +3715,49 @@ Text Notes 9500 1500 0    60   ~ 0
 Jumper for 3V3 Source
 Wire Wire Line
 	8750 2300 9150 2300
+Wire Wire Line
+	4900 9050 5400 9050
+Wire Wire Line
+	4900 8500 4900 9050
+$Comp
+L Device:C_Small C16
+U 1 1 5C71EFF6
+P 6600 9350
+F 0 "C16" H 6692 9304 50  0000 L CNN
+F 1 "C_Small" H 6692 9395 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 6600 9350 50  0001 C CNN
+F 3 "" H 6600 9350 50  0000 C CNN
+	1    6600 9350
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	5850 9050 5850 9200
+Wire Wire Line
+	5850 9050 6600 9050
+Wire Wire Line
+	6600 9050 6600 9250
+Connection ~ 5850 9050
+Wire Wire Line
+	6600 9450 6600 9950
+Wire Wire Line
+	6600 9950 5500 9950
+Connection ~ 5500 9950
+Wire Wire Line
+	2100 1750 1150 1750
+Wire Wire Line
+	1150 1850 2100 1850
+Text Label 1150 1750 0    60   ~ 0
+SDA_4.7K
+Text Label 1150 1850 0    60   ~ 0
+SCL_4.7K
+Wire Wire Line
+	1150 1650 2100 1650
+Text Label 1150 1650 0    60   ~ 0
+TMP275_ALERT_OD
+Wire Wire Line
+	2100 4100 1650 4100
+Text Label 1650 4100 2    60   ~ 0
+UART_SABER_TX
+Wire Wire Line
+	2100 1150 1700 1150
 $EndSCHEMATC
