@@ -33,3 +33,31 @@ class BuddyPacket:
             ord(data[16]),
             ord(data[17])
         ]
+
+    def __str__(self):
+        return """
+Header:         {}
+ValidData:      {}
+UltraFront:     {}
+UltraBack:      {}
+encoderLeft:    {}
+encoderRight:   {}
+InfraRed:
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}""".format(
+        self.header,
+        self.validData,
+        self.ultraSonicFront,
+        self.ultraSonicBack,
+        self.encoderLeft,
+        self.encoderRight,
+        self.infra[0],
+        self.infra[1],
+        self.infra[2],
+        self.infra[3],
+        self.infra[4],
+        self.infra[5])
