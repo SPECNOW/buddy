@@ -245,7 +245,7 @@ F 3 "" H 8800 1250 50  0000 C CNN
 	1    8800 1250
 	1    0    0    -1  
 $EndComp
-Text Notes 8050 650  0    60   ~ 0
+Text Notes 7750 600  0    60   ~ 0
 3V3 Output (1A, BUCK)\n
 Text Notes 5500 650  0    60   ~ 0
 Power LED
@@ -276,7 +276,7 @@ U 1 1 59F04034
 P 8000 5350
 F 0 "L1" H 8075 5400 50  0000 L CNN
 F 1 "Ferrite_Bead_Small" H 8075 5300 50  0000 L CNN
-F 2 "digikey-footprints:0805" V 7930 5350 50  0001 C CNN
+F 2 "Resistors_SMD:R_1210_HandSoldering" V 7930 5350 50  0001 C CNN
 F 3 "" H 8000 5350 50  0000 C CNN
 	1    8000 5350
 	0    -1   -1   0   
@@ -419,7 +419,7 @@ U 1 1 59F0C540
 P 9600 6800
 F 0 "L2" H 9675 6850 50  0000 L CNN
 F 1 "Ferrite_Bead_Small" H 9675 6750 50  0000 L CNN
-F 2 "digikey-footprints:0805" V 9530 6800 50  0001 C CNN
+F 2 "Resistors_SMD:R_1210_HandSoldering" V 9530 6800 50  0001 C CNN
 F 3 "" H 9600 6800 50  0000 C CNN
 	1    9600 6800
 	0    -1   -1   0   
@@ -998,17 +998,6 @@ ULTRA1_TRIG_OUT_BUFFD
 Text Label 13050 4150 2    60   ~ 0
 ULTA1_PULSE_BACK_BUFFD
 $Comp
-L regul:LM7812 U4
-U 1 1 5A318DF0
-P 8200 2350
-F 0 "U4" H 8350 2154 50  0000 C CNN
-F 1 "LM7812" H 8200 2550 50  0000 C CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 8200 2350 50  0001 C CNN
-F 3 "" H 8200 2350 50  0000 C CNN
-	1    8200 2350
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR033
 U 1 1 5A318DF6
 P 8200 2700
@@ -1052,8 +1041,8 @@ F 3 "" H 8750 2450 50  0000 C CNN
 	1    8750 2450
 	1    0    0    -1  
 $EndComp
-Text Notes 8000 1850 0    60   ~ 0
-12V Output (LINEAR) or another voltage\n
+Text Notes 7400 1800 0    60   ~ 0
+LC7812 12V Output (LINEAR) or another voltage\n
 $Comp
 L power:VAA #PWR028
 U 1 1 5A318E15
@@ -1193,17 +1182,6 @@ Text Label 3900 1850 0    60   ~ 0
 SDA_4.7K
 Text Label 3900 2000 0    60   ~ 0
 SCL_4.7K
-$Comp
-L delfini_booster_board_buddy-rescue:R-783.3-1.0 U5
-U 1 1 5A5FE483
-P 8250 1150
-F 0 "U5" H 8250 1465 50  0000 C CNN
-F 1 "R-783.3-1.0" H 8250 1374 50  0000 C CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 8250 1150 50  0001 C CNN
-F 3 "" H 8250 1150 50  0000 C CNN
-	1    8250 1150
-	1    0    0    -1  
-$EndComp
 Text Label 3550 2150 0    60   ~ 0
 TMP275_ALERT_OD
 $Comp
@@ -3760,4 +3738,26 @@ Text Label 1650 4100 2    60   ~ 0
 UART_SABER_TX
 Wire Wire Line
 	2100 1150 1700 1150
+$Comp
+L regul:LM7805CT U4
+U 1 1 5C7CDD6D
+P 8200 2350
+F 0 "U4" H 8200 2849 50  0000 C CNN
+F 1 "LM7812" H 8200 2758 50  0000 C CNN
+F 2 "TO-220" H 8200 2667 50  0000 C CIN
+F 3 "http://www.fairchildsemi.com/ds/LM/LM7805.pdf" H 8200 2576 50  0000 C CNN
+	1    8200 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L regul:LM7805CT U5
+U 1 1 5C8121A4
+P 8250 1150
+F 0 "U5" H 8250 1649 50  0000 C CNN
+F 1 "R-783.3-1.0" H 8250 1558 50  0000 C CNN
+F 2 "TO-220" H 8250 1467 50  0000 C CIN
+F 3 "http://www.fairchildsemi.com/ds/LM/LM7805.pdf" H 8250 1376 50  0000 C CNN
+	1    8250 1150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
