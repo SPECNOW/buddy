@@ -13,45 +13,50 @@ baudrate = 115200
 #        flash correct test programs before running this
 
 class Arduino:
-    def __init__(self,  arduino_ino, arduino_path='C:\\Program Files (x86)\\Arduino', arduino_port=arduinoPort):
+    def __init__(self,  arduino_ino, arduino_port=arduinoPort):
         if arduino_ino:
-            print('Compiling {}'.format(arduino_ino))
-            
-            curDir = os.path.abspath(os.curdir)
-            os.chdir(arduino_path)
-            proc = subprocess.Popen(
-                [
-                    "arduino_debug.exe",
-                    "--upload",
-                    "--board", "arduino:avr:mega",
-                    "--port", arduino_port,
-                    arduino_ino
-                ],
-                stdout = subprocess.PIPE,
-                stderr = subprocess.PIPE
-            )
-            while True:
-                line = proc.stdout.readline()
-                print(line.rstrip('\n'))
-                if not line:
-                    break
-            proc.wait()
-            print("ERR:\n\t{}\n".format('\t'.join(proc.stderr.readlines())))
-            os.chdir(curDir)
-            
-            if (proc.returncode):
-                print("Failed to compile")
-                sys.exit()
-
-            print('Compile and upload success!')
+            self.arduinoPort = arduinoPort
+            self.arduinoIno = arduino_ino
+            self.compile()
         else:
             print("Arduino INO not provided")
         return
+
+    def compile(self, arduino_path='C:\\Program Files (x86)\\Arduino'):
+        print('Compiling {}'.format(self.arduinoIno))
+        curDir = os.path.abspath(os.curdir)
+        os.chdir(arduino_path)
+        proc = subprocess.Popen(
+            [
+                "arduino_debug.exe",
+                "--upload",
+                "--board", "arduino:avr:mega",
+                "--port", self.arduinoPort,
+                self.arduinoIno
+            ],
+            stdout = subprocess.PIPE,
+            stderr = subprocess.PIPE
+        )
+        while True:
+            line = proc.stdout.readline()
+            print(line.rstrip('\n'))
+            if not line:
+                break
+        proc.wait()
+        print("ERR:\n\t{}\n".format('\t'.join(proc.stderr.readlines())))
+        os.chdir(curDir)
+        
+        if (proc.returncode):
+            print("Failed to compile")
+            sys.exit()
+
+        print('Compile and upload success!')
 
 class Delfino:
     def __init__(self, project='Buddy', workspace=os.path.abspath('..'), ccs_path=r"C:\ti\ccsv7\eclipse", script=os.path.abspath(r'tests\upload_delfino.js')):
         # Only compile and upload the first time
         if not os.environ.get('_DELFINO_COMPILED', False):
+            os.system("Taskkill /IM eclipsec.exe /F")
             self.compile(
                 project=project,
                 workspace=workspace,

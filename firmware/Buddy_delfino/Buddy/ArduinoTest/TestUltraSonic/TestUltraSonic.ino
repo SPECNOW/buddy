@@ -1,3 +1,4 @@
+bool A = true;
 int UTLRA_TRIGA_PIN = 2;
 int UTLRA_TRIGB_PIN = 3;
 
@@ -30,14 +31,14 @@ void rising_b() {
 void falling_a() {
   attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), rising_a, RISING);
   //Serial.println("FALLING");
-  pwmA = startTimeA-micros();
+  pwmA = micros() - startTimeA;
   trigA=true;
 }
 
 void falling_b() {
   attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), rising_b, RISING);
   //Serial.println("FALLING");
-  pwmB = startTimeB-micros();
+  pwmB = micros() - startTimeB;
   trigB=true;
 }
 
@@ -50,12 +51,12 @@ void sendPulse(int pin) {
  
 void loop() {
   if(trigA){
-    Serial.println("Received Trig A, Sent Pulse A");
+    Serial.print("Received Trig A "); Serial.print(pwmA); Serial.print(" uS, Sent Pulse A\n");
     sendPulse(ULTRA_PULSEA_PIN);
     trigA=false;
   }
   if(trigB){
-    Serial.println("Received Trig B, Sent Pulse B");
+    Serial.print("Received Trig B "); Serial.print(pwmB); Serial.print(" uS, Sent Pulse B\n");
     sendPulse(ULTRA_PULSEB_PIN);
     trigB=false;
   }  
@@ -78,8 +79,9 @@ void setup() {
   Serial.write("Pulse Width set to ");
   Serial.println(pulseResponse);
 
-  attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), rising_a, RISING);
-  attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), rising_b, RISING);
-  //attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), falling_b, FALLING);
-  //attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), falling_b, FALLING);
+  if(A) {
+    attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGA_PIN), rising_a, RISING);
+  } else {
+    attachInterrupt(digitalPinToInterrupt(UTLRA_TRIGB_PIN), rising_b, RISING);
+  }
 }
