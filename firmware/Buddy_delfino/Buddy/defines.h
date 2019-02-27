@@ -52,6 +52,7 @@ volatile extern DeviceMode deviceMode;
 volatile extern SerialPacket serialPacketRead, serialPacketWrite;
 extern Triggers TRIGGER_ARRAY[2];
 
+uint8_t movingAverage(uint8_t *samples, uint8_t *pos, int num_samples, int new_sample);
 void SCI_Init();
 void EQEP_Init();
 void ADC_Init();
