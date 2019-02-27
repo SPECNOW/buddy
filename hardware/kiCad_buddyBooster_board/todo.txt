@@ -37,5 +37,9 @@ sort out voltage co-exist 3.3V 5V maybe use 12V
 10:44 PM 2/5/2019 
 TODO: re map ADC pins, remap other pins for routing
 
-
+8:29 PM 2/20/2019
+left right up down manhatton
+move adc to left side, 
+move pwr control to bottom
+move jumpers to lower
 
