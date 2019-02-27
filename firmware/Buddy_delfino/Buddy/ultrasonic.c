@@ -6,7 +6,7 @@
  */
 #include "includes.h"
 
-const uint8_t MAX_SONAR = 0xFF;
+const uint8_t SONAR_TIMEOUT = 0xFF;
 
 Triggers TRIGGER_ARRAY[NUM_SONAR_SENSORS]; // {Ultra_A, Ultra_B};
 
@@ -45,7 +45,13 @@ cpuTimer0ISR(void)
             TRIGGER_ARRAY[i].timeout++;
             TRIGGER_ARRAY[i].counter = 0;
             if(TRIGGER_ARRAY[i].timeout > TRIGGER_TIMEOUT) {
-                copySerialData(&MAX_SONAR, i == 0 ? ultrasonicFront: ultrasonicBack);
+                ULTRASONIC_DISTANCE[i] = movingAverage(
+                     ULTRASONIC_SAMPLES[i],
+                     &ULTRASONIC_POINTER[i],
+                     NUM_SONAR_SAMPLES,
+                     SONAR_TIMEOUT
+                 );
+                 copySerialData(&ULTRASONIC_DISTANCE[i], 0 == i ? ultrasonicFront : ultrasonicBack);
                 TRIGGER_ARRAY[i].trigger = true;
             }
         }
@@ -102,7 +108,7 @@ void gpioEchoTimerISR(uint8_t trig_num) {
          // handle wrap-around case
          delta = start_count[trig_num] > end_count[trig_num] ? start_count[trig_num] - end_count[trig_num]: start_count[trig_num] + (0xFFFFFFFF - end_count[trig_num]);
          if (delta > 3019965) { // delta > 255*11843
-             distance = 0;
+             distance = SONAR_TIMEOUT;
          } else {
              distance = (uint8_t)(delta*10/118436);
          }
