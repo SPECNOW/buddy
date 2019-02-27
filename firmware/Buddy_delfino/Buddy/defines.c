@@ -14,6 +14,24 @@ volatile SerialPacket   serialPacketWrite   = {0xFF, 0, 0, 0, {0, 0, 0, 0}, {0, 
 
 bool transmitPacket = false;
 
+uint8_t movingAverage(uint8_t *samples, uint8_t *pos, int num_samples, int new_sample)
+{
+    // Sum up samples
+    int sum = 0;
+    uint8_t i = 0;
+    for(i=0; i < num_samples; i++)
+    {
+        sum += samples[i];
+    }
+
+    //Assign the nextNum to the position in the array
+    samples[*pos] = new_sample;
+    *pos = (*pos+1) % num_samples;
+
+    //return the average
+    return sum/num_samples;
+}
+
 void EQEP_Init() {
 
 }

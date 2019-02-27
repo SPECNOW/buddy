@@ -8,7 +8,7 @@
 #ifndef ULTRASONIC_H_
 #define ULTRASONIC_H_
 
-extern const uint8_t MAX_SONAR;
+extern const uint8_t SONAR_TIMEOUT;
 
 #define TRIGGER_TIMEOUT 6000    // TRIGGER_TIMEOUT/10 000 = Trigger Time Period in Seconds
 

@@ -39,7 +39,7 @@ class Arduino:
         )
         while True:
             line = proc.stdout.readline()
-            print(line.rstrip('\n'))
+            #print(line.rstrip('\n'))
             if not line:
                 break
         proc.wait()
@@ -91,7 +91,7 @@ class Delfino:
         )
         while True:
             line = proc.stdout.readline()
-            print(line.rstrip('\n'))
+            #print(line.rstrip('\n'))
             if not line:
                 break
         proc.wait()
@@ -122,7 +122,7 @@ class Delfino:
         success = False
         while True:
             line = proc.stdout.readline()
-            print(line.rstrip('\n'))
+            #print(line.rstrip('\n'))
             # Script should print 'Running!' when it is running
             if "Running!" in line:
                 # Target is running, kill script since we're done with it
