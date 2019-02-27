@@ -6,6 +6,7 @@ import time
 import pytest
 
 NUM_SAMPLES = 20
+SAMPLE_PERIOD = 0.06
 
 class TestUltrasonic(TestBase):
     arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestUltraSonic\TestUltraSonic.ino"
@@ -69,7 +70,7 @@ class TestUltrasonic(TestBase):
         front = []
         back = []
         for _ in range(NUM_SAMPLES):
-            time.sleep(0.06)
+            time.sleep(SAMPLE_PERIOD)
             packet = BuddyPacket.get_packet(self.serialDelfino)
             front.append(packet.ultraSonicFront)
             back.append(packet.ultraSonicBack)

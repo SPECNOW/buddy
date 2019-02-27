@@ -8,8 +8,11 @@
 
 const uint8_t MAX_SONAR = 0xFF;
 
-Triggers TRIGGER_ARRAY[2]; // {Ultra_A, Ultra_B};
+Triggers TRIGGER_ARRAY[NUM_SONAR_SENSORS]; // {Ultra_A, Ultra_B};
 
+uint8_t ULTRASONIC_SAMPLES[NUM_SONAR_SENSORS][NUM_SONAR_SAMPLES] = {0};
+uint8_t ULTRASONIC_POINTER[NUM_SONAR_SENSORS] = {0};
+uint8_t ULTRASONIC_DISTANCE[NUM_SONAR_SENSORS] = {0};
 /*
  * This is the interrupt used to trigger the ultrasonic pulses.
  * If there is a timeout, the value of the distance is set to 0xFF.
@@ -23,7 +26,7 @@ cpuTimer0ISR(void)
     Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
     uint8_t i = 0;
     // A = 0, B = 1
-    for(i = 0; i < 2; i++) {
+    for(i = 0; i < NUM_SONAR_SENSORS; i++) {
         if(TRIGGER_ARRAY[i].trigger) {
             TRIGGER_ARRAY[i].counter++;
             TRIGGER_ARRAY[i].timeout = 0;
@@ -98,8 +101,18 @@ void gpioEchoTimerISR(uint8_t trig_num) {
          end_count[trig_num] = CPUTimer_getTimerCount(CPUTIMER1_BASE);
          // handle wrap-around case
          delta = start_count[trig_num] > end_count[trig_num] ? start_count[trig_num] - end_count[trig_num]: start_count[trig_num] + (0xFFFFFFFF - end_count[trig_num]);
-         distance = (uint8_t)(delta/11843);
-         copySerialData(&distance, 0 == trig_num ? ultrasonicFront : ultrasonicBack);
+         if (delta > 3019965) { // delta > 255*11843
+             distance = 0;
+         } else {
+             distance = (uint8_t)(delta*10/118436);
+         }
+         ULTRASONIC_DISTANCE[trig_num] = movingAverage(
+                 ULTRASONIC_SAMPLES[trig_num],
+                 &ULTRASONIC_POINTER[trig_num],
+                 NUM_SONAR_SAMPLES,
+                 distance
+             );
+         copySerialData(&ULTRASONIC_DISTANCE[trig_num], 0 == trig_num ? ultrasonicFront : ultrasonicBack);
          TRIGGER_ARRAY[trig_num].trigger = true;
      }
 }
