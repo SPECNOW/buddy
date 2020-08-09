@@ -5,8 +5,8 @@ import os
 import sys
 import subprocess
 
-delfinoPort = os.environ.get('DELFINO_COM_PORT', 'COM10')
-arduinoPort = os.environ.get('ARDUINO_COM_PORT', 'COM9')
+delfinoPort = os.environ.get('DELFINO_COM_PORT', 'COM4')
+arduinoPort = os.environ.get('ARDUINO_COM_PORT', 'COM3')
 baudrate = 115200
 
 # TODO: Need to somehow get Arduino and Delfino to automatically 
@@ -22,7 +22,7 @@ class Arduino:
             print("Arduino INO not provided")
         return
 
-    def compile(self, arduino_path='C:\\Program Files (x86)\\Arduino'):
+    def compile(self, arduino_path='D:\\Program Files (x86)\\Arduino'):
         print('Compiling {}'.format(self.arduinoIno))
         curDir = os.path.abspath(os.curdir)
         os.chdir(arduino_path)
@@ -35,8 +35,10 @@ class Arduino:
                 self.arduinoIno
             ],
             stdout = subprocess.PIPE,
-            stderr = subprocess.PIPE
+            stderr = subprocess.PIPE,
+            encoding='UTF-8'
         )
+        #import ipdb; ipdb.set_trace()
         while True:
             line = proc.stdout.readline()
             #print(line.rstrip('\n'))
@@ -53,7 +55,7 @@ class Arduino:
         print('Compile and upload success!')
 
 class Delfino:
-    def __init__(self, project='Buddy', workspace=os.path.abspath('..'), ccs_path=r"C:\ti\ccsv7\eclipse", script=os.path.abspath(r'tests\upload_delfino.js')):
+    def __init__(self, project='Buddy', workspace=os.path.abspath('..'), ccs_path=r"D:\ti\ccs1010\ccs\eclipse", script=os.path.abspath(r'tests\upload_delfino.js')):
         # Only compile and upload the first time
         if not os.environ.get('_DELFINO_COMPILED', False):
             os.system("Taskkill /IM eclipsec.exe /F")
@@ -83,11 +85,12 @@ class Delfino:
                 'eclipsec.exe',
                 '-noSplash',
                 '-data', workspace,
-                '-application', 'com.ti.ccstudio.apps.projectBuild',
+                '-application', 'com.ti.ccstudio.apps.buildProject',
                 '-ccs.projects', project
             ],
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+            stderr=subprocess.PIPE,
+            encoding='UTF-8'
         )
         while True:
             line = proc.stdout.readline()
@@ -117,12 +120,13 @@ class Delfino:
             ],
             shell=True,
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+            stderr=subprocess.PIPE,
+            encoding='UTF-8'
         )
         success = False
         while True:
             line = proc.stdout.readline()
-            #print(line.rstrip('\n'))
+            print(line.rstrip('\n'))
             # Script should print 'Running!' when it is running
             if "Running!" in line:
                 # Target is running, kill script since we're done with it

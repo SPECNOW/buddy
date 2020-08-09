@@ -6,7 +6,7 @@
 // You can test that your set up is correct by running CCS, and confirming that you can start a debug
 // session for the correct target.  Then, exit CCS.
 
-var PROJECT_DIR="C:/Users/Charanpreet/Documents/GitHub/buddy/firmware/Buddy_delfino/Buddy";
+var PROJECT_DIR="E:/dev/buddy/firmware/Buddy_delfino/Buddy";
 var EXECUTABLE="CPU1_RAM/Buddy.out";
 var GCD_TO_LOOK_FOR=17;
 

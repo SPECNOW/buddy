@@ -35,7 +35,7 @@ class TestSerialPacket(TestBase):
         self.serialDelfino.flushOutput()
         self.serialDelfino.flushInput()
         for i in range(num_packets):
-            self.serialDelfino.write(BuddyPacket.GET_PACKET)
+            self.serialDelfino.write([ord(char) for char in BuddyPacket.GET_PACKET])
             time.sleep(1.0/RATE)
         time.sleep(3)
         data = self.serialDelfino.read(1000*num_packets)

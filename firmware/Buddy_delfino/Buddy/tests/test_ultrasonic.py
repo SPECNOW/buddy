@@ -57,7 +57,7 @@ class TestUltrasonic(TestBase):
         self.arduino.compile()
         self.serialArduino.open()
         self.serialArduino.read(2000)
-        self.serialArduino.write(pwm)
+        self.serialArduino.write([ord(pwm)])
 
     def generate_ino(self, isTrigA=True):
         with open(self.arduino_template, 'r') as f:

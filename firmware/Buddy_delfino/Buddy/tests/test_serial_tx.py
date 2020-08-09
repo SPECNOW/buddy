@@ -10,7 +10,7 @@ class TestDelfinoSerialTx(TestBase):
     def test_delfino_tx(self):
         testPass = True
         for tx in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz":
-            self.serialDelfino.write(tx)
+            self.serialDelfino.write([ord(tx)])
             rx = self.serialArduino.read()
             print("Sent By Delfino: {}, Received By Arduino: {}".format(tx, rx))
             testPass = testPass and (tx == rx)

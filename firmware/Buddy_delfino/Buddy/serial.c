@@ -85,7 +85,7 @@ void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPi
     SCI_disableInterrupt(sciBase, SCI_INT_RXERR);
 
     // Interrupt FIFO when it has one 1
-    SCI_setFIFOInterruptLevel(sciBase, (SCI_FIFO_TX0 + RX_BUFFER_SIZE), (SCI_FIFO_RX0+ RX_BUFFER_SIZE));
+    SCI_setFIFOInterruptLevel(sciBase, SCI_FIFO_TX2, SCI_FIFO_RX2);
 
     //
     // Initialize SCI BASE and its FIFO.
@@ -214,6 +214,6 @@ void sendBuddyData()
     memcpy((void*)&serialPacketRead, (void*)&serialPacketWrite, sizeof(SerialPacket));    
     serialPacketWrite.validData = 0;
     GPIO_writePin(86, 1);
-    SCI_writeCharArray(ToPC_Uart, (void*)&serialPacketRead, sizeof(SerialPacket));
+    SCI_writeCharArray(ToPC_Uart, (uint16_t*)&serialPacketRead, sizeof(SerialPacket));
     GPIO_writePin(86, 0);
 }
