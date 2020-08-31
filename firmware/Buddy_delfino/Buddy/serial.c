@@ -149,7 +149,7 @@ void handleCommand(uint16_t* rawCommand)
     if (command == getData){
         transmitPacket = true;
     } else if (((command & 0xfd00) == leftMotor) || ((command & 0xff00) == rightMotor)) {
-        setSpeed(command, command & 0x00FF);
+        setSpeed((command_type)(command & 0xff00), command & 0x00ff);
     }
 }
 
@@ -230,15 +230,26 @@ void sendBuddyData()
  * leftMotor is Motor2 (Arbitrary choice)
  */
 void setSpeed(command_type motor, uint16_t speed) {
-    // Speed between 1 -> 63
-    speed = (speed >> 1);
-    if (speed == 0) {
-        speed = 1;  // Minimum speed is 1
-    }
-    // 128 -> 255 for Motor2
-    if (motor & 0xff00 == leftMotor) {
-        speed = (1 << 8) | speed;
+    uint16_t output_speed = 0;
+
+    // speed 127 should be break no matter what
+    if (speed == 0x7f) {
+        if (motor == leftMotor) {
+            output_speed = 192;
+        } else {
+            output_speed = 64;
+        }
+    } else {
+        // Speed between 0 -> 127 for Motor1
+        output_speed = (speed >> 1);
+        if (output_speed == 0) {
+            output_speed = 1;  // Minimum speed is 1
+        }
+        // 129 -> 255 for Motor2
+        if (motor == leftMotor) {
+            output_speed = (1 << 8) | output_speed;
+        }
     }
 
-    SCI_writeCharArray(ToSabertooth_Uart,(uint16_t*)&speed, sizeof(uint16_t));
+    SCI_writeCharArray(ToSabertooth_Uart, (uint16_t*)&output_speed, sizeof(uint16_t));
 }
