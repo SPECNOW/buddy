@@ -226,31 +226,19 @@ void sendBuddyData()
  *
  * Input Speed ranges from 0-255
  * 1 Full Reverse, 127 stop, 255 Full Forward
+ *
+ * leftMotor is Motor2 (Arbitrary choice)
  */
 void setSpeed(command_type motor, uint16_t speed) {
-    uint16_t _speed = 0, offset = 0;
-
-    switch(motor & 0xff00) {
-    case leftMotor:
-        offset = 1;
-        break;
-    case rightMotor:
-        offset = 128;
-        break;
+    // Speed between 1 -> 63
+    speed = (speed >> 1);
+    if (speed == 0) {
+        speed = 1;  // Minimum speed is 1
+    }
+    // 128 -> 255 for Motor2
+    if (motor & 0xff00 == leftMotor) {
+        speed = (1 << 8) | speed;
     }
 
-    _speed = ((speed & 0x00ff) >> 1) + offset;
-
-    if (speed == 127) {
-        switch(motor & 0xff00){
-        case leftMotor:
-            _speed = 64;
-            break;
-        case rightMotor:
-            _speed = 192;
-            break;
-        }
-    }
-
-    SCI_writeCharArray(ToSabertooth_Uart,(uint16_t*)&_speed, sizeof(uint16_t));
+    SCI_writeCharArray(ToSabertooth_Uart,(uint16_t*)&speed, sizeof(uint16_t));
 }
