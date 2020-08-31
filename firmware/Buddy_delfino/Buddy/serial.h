@@ -10,7 +10,7 @@
 
 typedef enum command
 {
-    getData=0xffff, leftMotor, rightMotor
+    getData=0xffff, leftMotor=0xfd00, rightMotor=0xfe00
 } command_type;
 
 typedef enum serial_data
@@ -29,5 +29,6 @@ void SCI_Init();
 void handleCommand(uint16_t* command);
 void copySerialData(void* data, serial_data_type type);
 void sendBuddyData();
+void setSpeed(command_type motor, uint16_t speed);
 
 #endif /* SERIAL_H_ */

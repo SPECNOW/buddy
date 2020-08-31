@@ -146,13 +146,10 @@ void handleCommand(uint16_t* rawCommand)
 {
     uint16_t command = (rawCommand[0] | rawCommand[1] << 8);
 
-    switch(command)
-    {
-    case getData:
+    if (command == getData){
         transmitPacket = true;
-        break;
-    default:
-        break;
+    } else if (((command & 0xfd00) == leftMotor) || ((command & 0xff00) == rightMotor)) {
+        setSpeed(command, command & 0x00FF);
     }
 }
 
@@ -216,4 +213,44 @@ void sendBuddyData()
     GPIO_writePin(86, 1);
     SCI_writeCharArray(ToPC_Uart, (uint16_t*)&serialPacketRead, sizeof(SerialPacket));
     GPIO_writePin(86, 0);
+}
+
+/* Set the speed of the motor over Serial to S1 on sabertooth
+ *
+ * Set Sabertooth to Simplified Serial mode and connect Delfino to S1
+ * Sabertooth should be set 0x101001 mode, Baudereate is 384000 8N1
+ *
+ * Motor    FullReverse <-> Stop <-> Full Forward
+ * Motor1             1      64      127
+ * Motor2             128    192     255
+ *
+ * Input Speed ranges from 0-255
+ * 1 Full Reverse, 127 stop, 255 Full Forward
+ */
+void setSpeed(command_type motor, uint16_t speed) {
+    uint16_t _speed = 0, offset = 0;
+
+    switch(motor & 0xff00) {
+    case leftMotor:
+        offset = 1;
+        break;
+    case rightMotor:
+        offset = 128;
+        break;
+    }
+
+    _speed = ((speed & 0x00ff) >> 1) + offset;
+
+    if (speed == 127) {
+        switch(motor & 0xff00){
+        case leftMotor:
+            _speed = 64;
+            break;
+        case rightMotor:
+            _speed = 192;
+            break;
+        }
+    }
+
+    SCI_writeCharArray(ToSabertooth_Uart,(uint16_t*)&_speed, sizeof(uint16_t));
 }
