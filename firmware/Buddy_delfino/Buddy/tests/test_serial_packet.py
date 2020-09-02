@@ -26,7 +26,7 @@ class TestSerialPacket(TestBase):
     def test_1second_packet_rx(self):
         self.get_multi_packet(RATE)
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Delfino Serial Buffer is limited to 4096 bytes")
     def test_5second_packet_rx(self):
         self.get_multi_packet(5*RATE)
 
@@ -35,7 +35,7 @@ class TestSerialPacket(TestBase):
         self.serialDelfino.flushOutput()
         self.serialDelfino.flushInput()
         for i in range(num_packets):
-            self.serialDelfino.write([ord(char) for char in BuddyPacket.GET_PACKET])
+            self.serialDelfino.write(BuddyPacket.GET_PACKET)
             time.sleep(1.0/RATE)
         time.sleep(3)
         data = self.serialDelfino.read(1000*num_packets)

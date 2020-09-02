@@ -1,11 +1,11 @@
 import struct
 
-GET_PACKET = '\xff\xff'
+GET_PACKET = [ord('\xFF'), ord('\xFF')]
 
 def get_packet(serial):
     serial.flushOutput()
     serial.flushInput()
-    serial.write([ord(char) for char in GET_PACKET])
+    serial.write(GET_PACKET)
     return BuddyPacket(serial.read(1000))
 
 class BuddyPacket:
