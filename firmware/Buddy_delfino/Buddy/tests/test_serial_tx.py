@@ -3,6 +3,7 @@ from tests.test_base import TestBase
 import os
 import pytest
 
+@pytest.mark.skip(reason="Redundant")
 class TestDelfinoSerialTx(TestBase):
     arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestDelfinoSerialTx\TestDelfinoSerialTx.ino"
     delfino_project = 'Buddy'

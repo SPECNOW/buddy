@@ -6,7 +6,7 @@ import pytest
 LEFT_MOTOR = ord('\xFD')
 RIGHT_MOTOR = ord('\xFE')
 
-class TestDelfinoSerialTx(TestBase):
+class TestSabertooth(TestBase):
     arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestSabertooth\TestSabertooth.ino"
     delfino_project = 'Buddy'
 

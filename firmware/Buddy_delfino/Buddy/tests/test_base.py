@@ -26,7 +26,7 @@ class Arduino:
         print('Compiling {}'.format(self.arduinoIno))
         curDir = os.path.abspath(os.curdir)
         os.chdir(arduino_path)
-        proc = subprocess.Popen(
+        proc = subprocess.run(
             [
                 "arduino_debug.exe",
                 "--upload",
@@ -38,14 +38,10 @@ class Arduino:
             stderr = subprocess.PIPE,
             encoding='UTF-8'
         )
-        #import ipdb; ipdb.set_trace()
-        while True:
-            line = proc.stdout.readline()
-            #print(line.rstrip('\n'))
-            if not line:
-                break
-        proc.wait()
-        print("ERR:\n\t{}\n".format('\t'.join(proc.stderr.readlines())))
+        print("RET:\n{out}\nERR:\n{err}\n".format(
+            out='\t'.join([line + '\n' for line in proc.stdout.split('\n')]),
+            err='\t'.join([line + '\n' for line in proc.stderr.split('\n')])
+        ))
         os.chdir(curDir)
         
         if (proc.returncode):
