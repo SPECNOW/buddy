@@ -144,7 +144,7 @@ void SCI_Init() {
 
 void handleCommand(uint16_t* rawCommand)
 {
-    uint16_t command = (rawCommand[0] | rawCommand[1] << 8);
+    uint16_t command = (rawCommand[0] << 8) | rawCommand[1];
 
     if (command == getData){
         transmitPacket = true;
@@ -242,12 +242,13 @@ void setSpeed(command_type motor, uint16_t speed) {
     } else {
         // Speed between 0 -> 127 for Motor1
         output_speed = (speed >> 1);
-        if (output_speed == 0) {
-            output_speed = 1;  // Minimum speed is 1
-        }
-        // 129 -> 255 for Motor2
+        // 128 -> 255 for Motor2
         if (motor == leftMotor) {
-            output_speed = (1 << 8) | output_speed;
+            output_speed = (1 << 7) | output_speed;
+        }
+        // Minimum speed is 1
+        if (output_speed == 0) {
+            output_speed = 1;
         }
     }
 
