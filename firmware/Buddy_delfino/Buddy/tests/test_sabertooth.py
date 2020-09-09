@@ -1,10 +1,9 @@
 from tests.test_base import TestBase
+from tests.BuddyPacket import LEFT_MOTOR
+from tests.BuddyPacket import RIGHT_MOTOR
 
 import os
 import pytest
-
-LEFT_MOTOR = ord('\xFD')
-RIGHT_MOTOR = ord('\xFE')
 
 class TestSabertooth(TestBase):
     arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestSabertooth\TestSabertooth.ino"

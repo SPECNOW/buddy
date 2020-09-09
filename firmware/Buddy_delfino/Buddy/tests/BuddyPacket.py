@@ -1,6 +1,8 @@
 import struct
 
 GET_PACKET = [ord('\xFF'), ord('\xFF')]
+LEFT_MOTOR = ord('\xFD')
+RIGHT_MOTOR = ord('\xFE')
 
 def get_packet(serial):
     serial.flushOutput()
