@@ -59,7 +59,7 @@ __interrupt void sciPCRxIsr(void)
 }
 
 void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPin,
-              uint32_t txConfig, uint32_t rxInterruptVector, void (*rxInterruptFunction)(void)) {
+              uint32_t txConfig, uint32_t rxInterruptVector, void (*rxInterruptFunction)(void), uint32_t bauderate) {
     //
     // Set the SCI Rx pin.
     //
@@ -99,7 +99,7 @@ void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPi
     SCI_setConfig(
         sciBase,
         DEVICE_LSPCLK_FREQ,
-        115200,
+        bauderate,
         (SCI_CONFIG_WLEN_8 | SCI_CONFIG_STOP_ONE | SCI_CONFIG_PAR_NONE)
     );
 
@@ -129,7 +129,8 @@ void SCI_Init() {
         ToSabertooth_Uart_Tx_Pin,
         ToSabertooth_Uart_Tx_PinConfig,
         ToSabertooth_Uart_Int_Rx,
-        sciSabertoothRxIsr
+        sciSabertoothRxIsr,
+        38400
     );
     setupSci(
         ToPC_Uart,
@@ -138,7 +139,8 @@ void SCI_Init() {
         ToPC_Uart_Tx_Pin,
         ToPC_Uart_Tx_PinConfig,
         ToPC_Uart_Int_Rx,
-        sciPCRxIsr
+        sciPCRxIsr,
+        115200
     );
 }
 

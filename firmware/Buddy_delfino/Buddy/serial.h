@@ -23,7 +23,7 @@ void sciRxProcessData(uint16_t* data);
 __interrupt void sciSabertoothRxIsr(void);
 __interrupt void sciPCRxIsr(void);
 void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPin,
-              uint32_t txConfig, uint32_t rxInterruptVector, void (*rxInterruptFunction)(void));
+              uint32_t txConfig, uint32_t rxInterruptVector, void (*rxInterruptFunction)(void), uint32_t bauderate);
 void SCI_Init();
 
 void handleCommand(uint16_t* command);

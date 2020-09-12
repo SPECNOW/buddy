@@ -3,7 +3,7 @@ int x = 0;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  Serial1.begin(115200);
+  Serial1.begin(38400);
   while (!Serial);
   while (!Serial1);
 }
