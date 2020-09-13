@@ -40,17 +40,19 @@ class BuddyPacket:
         return """
 Header:         {}
 ValidData:      {}
-UltraFront:     {}
-UltraBack:      {}
-encoderLeft:    {}
-encoderRight:   {}
+UltraSonic:
+    front:     {}
+    back:      {}
+Encoder:
+    left:    {}
+    right:   {}
 InfraRed:
-    {}
-    {}
-    {}
-    {}
-    {}
-    {}""".format(
+    0:   {}
+    1:   {}
+    2:   {}
+    3:   {}
+    4:   {}
+    5:   {}""".format(
         self.header,
         self.validData,
         self.ultraSonicFront,
