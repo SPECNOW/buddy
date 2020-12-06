@@ -49,13 +49,11 @@ __interrupt void sciSabertoothRxIsr(void)
 
 __interrupt void sciPCRxIsr(void)
 {
-    GPIO_writePin(87, 1);
     // Received data for PC-SCI
     uint16_t FromPCRxData[RX_BUFFER_SIZE] = {0};
 
     sciRXisr(ToPC_Uart, FromPCRxData);
     sciRxProcessData(FromPCRxData);
-    GPIO_writePin(87, 0);
 }
 
 void setupSci(uint32_t sciBase, uint32_t rxPin, uint32_t rxConfig, uint32_t txPin,
@@ -212,9 +210,7 @@ void sendBuddyData()
     copySerialData(&encR, encoderRight);
     memcpy((void*)&serialPacketRead, (void*)&serialPacketWrite, sizeof(SerialPacket));    
     serialPacketWrite.validData = 0;
-    GPIO_writePin(86, 1);
     SCI_writeCharArray(ToPC_Uart, (uint16_t*)&serialPacketRead, sizeof(SerialPacket));
-    GPIO_writePin(86, 0);
 }
 
 /* Set the speed of the motor over Serial to S1 on sabertooth

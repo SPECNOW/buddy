@@ -24,11 +24,12 @@
 // To Sabertooth
 #define ToSabertooth_Uart SCIB_BASE
 #define ToSabertooth_Uart_Int_Rx INT_SCIB_RX
-#define ToSabertooth_Uart_Tx_Pin 18
-#define ToSabertooth_Uart_Tx_PinConfig GPIO_18_SCITXDB
-
-#define ToSabertooth_Uart_Rx_Pin 19
-#define ToSabertooth_Uart_Rx_PinConfig GPIO_19_SCIRXDB
+// Pin 38
+#define ToSabertooth_Uart_Tx_Pin 14
+#define ToSabertooth_Uart_Tx_PinConfig GPIO_14_SCITXDB
+// Pin 37
+#define ToSabertooth_Uart_Rx_Pin 15
+#define ToSabertooth_Uart_Rx_PinConfig GPIO_15_SCIRXDB
 
 /************** EQEP **********/
 #define LeftMotor_EQUEP_A_Pin 10
@@ -46,17 +47,17 @@
 /************** GPIO **********/
 /********  Ultrasonic  ********/
 // Pin 39
-#define Ultrasonic_A_TRIG_Pin 13
-#define Ultrasonic_A_TRIG_PinConfig GPIO_13_GPIO13
+#define Ultrasonic_A_TRIG_Pin 12
+#define Ultrasonic_A_TRIG_PinConfig GPIO_12_GPIO12
 // Pin 38
-#define Ultrasonic_B_TRIG_Pin 14
-#define Ultrasonic_B_TRIG_PinConfig GPIO_14_GPIO14
-// Pin 80
-#define Ultrasonic_A_ECHO_Pin 2
-#define Ultrasonic_A_ECHO_PinConfig GPIO_2_GPIO2
-// Pin 79
-#define Ultrasonic_B_ECHO_Pin 3
-#define Ultrasonic_B_ECHO_PinConfig GPIO_3_GPIO3
+#define Ultrasonic_B_TRIG_Pin 13
+#define Ultrasonic_B_TRIG_PinConfig GPIO_13_GPIO13
+// Pin 36
+#define Ultrasonic_A_ECHO_Pin 16
+#define Ultrasonic_A_ECHO_PinConfig GPIO_16_GPIO16
+// Pin 35
+#define Ultrasonic_B_ECHO_Pin 17
+#define Ultrasonic_B_ECHO_PinConfig GPIO_17_GPIO17
 
 
 #endif /* PIN_CONFIGURATION_H_ */
