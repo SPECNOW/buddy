@@ -147,7 +147,7 @@ def read_controller(xbox_controller):
                 logging.info("Sending new Motor Command")
                 logging.info('Left Motor: {}'.format(leftMotorTargVel))
                 output_buff = output_buff + [BuddyPacket.LEFT_MOTOR, leftMotorTargVel]
-            elif _axis['axis'] == 3:
+            elif _axis['axis'] == (3 if sys.platform != 'linux' else 4):
                 rightMotorTargVel = joy_to_vel(-_axis['value'])
                 logging.info("Sending new Motor Command")
                 logging.info('Right Motor: {}'.format(rightMotorTargVel))
@@ -168,7 +168,7 @@ def main():
     delfino = Delfino()
 
     ser = serial.Serial(
-        port=os.environ.get('DELFINO_COM_PORT', 'COM4'),
+        port=os.environ.get('DELFINO_COM_PORT', 'COM4' if sys.platform != 'linux' else '/dev/ttyUSB0'),
         baudrate=115200,
         stopbits=1,
         parity='N',
