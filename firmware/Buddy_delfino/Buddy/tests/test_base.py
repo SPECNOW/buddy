@@ -30,11 +30,9 @@ class Arduino:
     def compile(self):
         print('Compiling {}'.format(self.arduinoIno))
         curDir = os.path.abspath(os.curdir)
-        if sys.platform != 'linux':
-            os.chdir(arduino_path)
         proc = subprocess.run(
             [
-                "D:\\arduino-cli.exe" if sys.platform != 'linux' else "arduino-cli",
+                "D:\\arduino-cli\\arduino-cli.exe" if sys.platform != 'linux' else "arduino-cli",
                 'compile',
                 "--upload",
                 '--fqbn', "arduino:avr:mega",
@@ -49,7 +47,6 @@ class Arduino:
             out='\t'.join([line + '\n' for line in proc.stdout.split('\n')]),
             err='\t'.join([line + '\n' for line in proc.stderr.split('\n')])
         ))
-        os.chdir(curDir)
         
         if (proc.returncode):
             print("Failed to compile")
@@ -130,7 +127,7 @@ class Delfino:
     def upload(self, workspace, project="Buddy", uniflash_dir="/opt/ti/uniflash_5.0.0"):
         print("Uploading compiled project to Delfino")
         ret = os.system(" ".join([
-            os.path.join(uniflash_dir, "deskdb", "content", "TICloudAgent", sys.platform, "ccs_base", "DebugServer", "bin", "DSLite.exe" if sys.platform != "linux" else "DSLite"),
+            os.path.join(uniflash_dir, "deskdb", "content", "TICloudAgent", 'win' if sys.platform != 'linux' else 'linux', "ccs_base", "DebugServer", "bin", "DSLite.exe" if sys.platform != "linux" else "DSLite"),
             "flash",
             "-c", os.path.join(workspace, project, "targetConfigs", "TMS320F28377S.ccxml"),
             "-l", "generated.ufsettings",
