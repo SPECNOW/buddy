@@ -5,9 +5,14 @@ import os
 import sys
 import subprocess
 
-delfinoPort = os.environ.get('DELFINO_COM_PORT', 'COM4')
-arduinoPort = os.environ.get('ARDUINO_COM_PORT', 'COM3')
+delfinoPort = os.environ.get('DELFINO_COM_PORT', 'COM4' if sys.platform != 'linux' else '/dev/ttyUSB0')
+arduinoPort = os.environ.get('ARDUINO_COM_PORT', 'COM3' if sys.platform != 'linux' else '/dev/ttyACM0')
 baudrate = 115200
+
+CCS_PATH = os.path.join("D:", "ti", "ccs1010", "ccs") if sys.platform != 'linux' else \
+    os.path.join('/', 'opt', 'ti', 'ccs1011', 'ccs')
+UNIFLASH_PATH = os.path.join("D:", "ti", "uniflash_6.1.0")if sys.platform != "linux" else \
+    os.path.join("/", "opt", "ti", "uniflash_5.0.0")
 
 # TODO: Need to somehow get Arduino and Delfino to automatically 
 #        flash correct test programs before running this
@@ -22,15 +27,17 @@ class Arduino:
             print("Arduino INO not provided")
         return
 
-    def compile(self, arduino_path='D:\\Program Files (x86)\\Arduino'):
+    def compile(self):
         print('Compiling {}'.format(self.arduinoIno))
         curDir = os.path.abspath(os.curdir)
-        os.chdir(arduino_path)
+        if sys.platform != 'linux':
+            os.chdir(arduino_path)
         proc = subprocess.run(
             [
-                "arduino_debug.exe",
+                "D:\\arduino-cli.exe" if sys.platform != 'linux' else "arduino-cli",
+                'compile',
                 "--upload",
-                "--board", "arduino:avr:mega",
+                '--fqbn', "arduino:avr:mega",
                 "--port", self.arduinoPort,
                 self.arduinoIno
             ],
@@ -51,19 +58,18 @@ class Arduino:
         print('Compile and upload success!')
 
 class Delfino:
-    def __init__(self, project='Buddy', workspace=os.path.abspath('..'), ccs_path=r"D:\ti\ccs1010\ccs\eclipse", script=os.path.abspath(r'tests\upload_delfino.js')):
+    def __init__(self, project='Buddy', workspace=os.path.abspath('..')):
         # Only compile and upload the first time
         if not os.environ.get('_DELFINO_COMPILED', False):
-            os.system("Taskkill /IM eclipsec.exe /F")
             self.compile(
                 project=project,
                 workspace=workspace,
-                ccs_path=ccs_path
+                ccs_path=CCS_PATH
             )
             self.upload(
-                script=script,
+                project=project,
                 workspace=workspace,
-                ccs_path=ccs_path
+                uniflash_dir=UNIFLASH_PATH
             )
             print('Compile and upload success!')
             os.environ['_DELFINO_COMPILED'] = '1'
@@ -74,66 +80,64 @@ class Delfino:
     def compile(self, project, workspace, ccs_path):
         print('Compiling {}'.format(project))
         
-        curDir = os.path.abspath(os.curdir)
-        os.chdir(ccs_path)
-        proc = subprocess.Popen(
-            [
-                'eclipsec.exe',
-                '-noSplash',
-                '-data', workspace,
-                '-application', 'com.ti.ccstudio.apps.buildProject',
-                '-ccs.projects', project
+        clean = subprocess.Popen(
+            [   
+                os.path.join(ccs_path, 'utils', 'bin', 'gmake'),
+                '-k',
+                '-j', '4',
+                'clean',
+                '-O'
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
+            cwd=os.path.join(workspace, project, 'CPU1_RAM'),
+            encoding='UTF-8'
+        )
+        while True:
+            line = clean.stdout.readline()
+            print(line.rstrip('\n'))
+            if not line:
+                break
+        clean.wait()
+        print("ERR:\n\t{}\n".format('\t'.join(clean.stderr.readlines())))
+        print(clean.stdout.readlines())
+        proc = subprocess.Popen(
+            [   
+                os.path.join(ccs_path, 'utils', 'bin', 'gmake'),
+                '-k',
+                '-j', '4',
+                'all',
+                '-O'
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            cwd=os.path.join(workspace, project, 'CPU1_RAM'),
             encoding='UTF-8'
         )
         while True:
             line = proc.stdout.readline()
-            #print(line.rstrip('\n'))
+            print(line.rstrip('\n'))
             if not line:
                 break
         proc.wait()
         print("ERR:\n\t{}\n".format('\t'.join(proc.stderr.readlines())))
-        os.chdir(curDir)
 
         if (proc.returncode):
             print("Failed to compile")
             sys.exit()
         return
 
-    def upload(self, workspace, script, ccs_path):
+    def upload(self, workspace, project="Buddy", uniflash_dir="/opt/ti/uniflash_5.0.0"):
         print("Uploading compiled project to Delfino")
-        curDir = os.path.abspath(os.curdir)
-        os.chdir(ccs_path)
-        proc = subprocess.Popen(
-            [
-                'eclipsec.exe',
-                '-noSplash',
-                '-data', workspace,
-                '-application', 'com.ti.ccstudio.apps.runScript',
-                '-ccs.script', script
-            ],
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            encoding='UTF-8'
-        )
-        success = False
-        while True:
-            line = proc.stdout.readline()
-            print(line.rstrip('\n'))
-            # Script should print 'Running!' when it is running
-            if "Running!" in line:
-                # Target is running, kill script since we're done with it
-                success = True
-                break
-            if not line:
-                break
-        os.chdir(curDir)
-        
-        if (not success):
-            print("Failed to compile")
+        ret = os.system(" ".join([
+            os.path.join(uniflash_dir, "deskdb", "content", "TICloudAgent", sys.platform, "ccs_base", "DebugServer", "bin", "DSLite.exe" if sys.platform != "linux" else "DSLite"),
+            "flash",
+            "-c", os.path.join(workspace, project, "targetConfigs", "TMS320F28377S.ccxml"),
+            "-l", "generated.ufsettings",
+            "-s", 'VerifyAfterProgramLoad="No verification"',
+            "-e", "-f", "-v", os.path.join(workspace, project, "CPU1_RAM", "Buddy.out")
+        ]))
+        if ret:
             sys.exit()
         return
 

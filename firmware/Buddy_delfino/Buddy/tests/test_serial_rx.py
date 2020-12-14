@@ -5,7 +5,7 @@ import pytest
      
 @pytest.mark.skip(reason="Redundant")
 class TestDelfinoSerialRx(TestBase):
-    arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestDelfinoSerialRx\TestDelfinoSerialRx.ino"
+    arduino_ino = os.path.join(os.path.abspath(os.getcwd()),  "ArduinoTest", "TestDelfinoSerialRx", "TestDelfinoSerialRx.ino")
     delfino_project = 'Buddy'
     
     def test_delfino_rx(self):

@@ -6,7 +6,7 @@ import os
 import pytest
 
 class TestSabertooth(TestBase):
-    arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestSabertooth\TestSabertooth.ino"
+    arduino_ino = os.path.join(os.path.abspath(os.getcwd()), "ArduinoTest", "TestSabertooth", "TestSabertooth.ino")
     delfino_project = 'Buddy'
 
     def test_brake(self):

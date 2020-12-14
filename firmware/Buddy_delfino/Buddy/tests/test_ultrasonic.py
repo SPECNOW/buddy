@@ -10,8 +10,8 @@ SAMPLE_PERIOD = 0.06
 
 @pytest.mark.skip(reason="Under Develoment")
 class TestUltrasonic(TestBase):
-    arduino_ino = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestUltraSonic\TestUltraSonic.ino"
-    arduino_template = os.path.abspath(os.getcwd()) + r"\ArduinoTest\TestUltraSonic\TestUltraSonic_base"
+    arduino_ino = os.path.join(os.path.abspath(os.getcwd()), "ArduinoTest", "TestUltraSonic", "TestUltraSonic.ino")
+    arduino_template = os.path.join(os.path.abspath(os.getcwd()), "ArduinoTest", "TestUltraSonic", "TestUltraSonic_base")
     delfino_project = 'Buddy'
 
     def test_max_a(self):
