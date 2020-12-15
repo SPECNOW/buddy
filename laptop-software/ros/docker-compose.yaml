@@ -35,3 +35,27 @@ services:
     networks:
       - ros
     restart: always
+
+  viz:
+    image: osrf/ros:kinetic-desktop-full
+    container_name: ros_visualizer
+    depends_on:
+      - ros-master
+    networks:
+      - ros
+    environment:
+      - "ROS_MASTER_URI=http://ros-master:11311"
+      - "ROS_HOSTNAME=ros_visualizer"
+      - "DISPLAY"
+      - "QT_X11_NO_MITSHM=1" #fix some QT bugs
+    #share your user to the container in order to access your x11
+    user: 1000:1000 #adapt as needed!
+    volumes:
+      #share your x11 socket and permissions to the container
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /etc/group:/etc/group:ro
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/shadow:/etc/shadow:ro
+      - /etc/sudoers.d:/etc/sudoers.d:ro
+      - /home/buddy:/home/buddy:rw #share your home with write permissions
+    command: rviz
