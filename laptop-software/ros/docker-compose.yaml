@@ -1,4 +1,4 @@
-version: '2'
+version: '3.8'
 
 networks:
   ros:
@@ -12,29 +12,22 @@ services:
       - ros
     restart: always
 
-  talker:
-    image: ros:kinetic-ros-core
+  buddy:
+    build: 
+      context: .
+      dockerfile: buddy.Dockerfile
     depends_on:
       - ros-master
     environment:
       - "ROS_MASTER_URI=http://ros-master:11311"
-      - "ROS_HOSTNAME=talker"
-    command: stdbuf -o L rostopic pub /chatter std_msgs/String "hello" -r 1
+      - "ROS_HOSTNAME=buddy"
+      - "ROS_PACKAGE_PATH=/home/buddy/ros/src/motor_control_drivers:/home/buddy/ros/src/sensor_to_laser:/opt/ros/kinetic/share"
+      - "PYTHONPATH=/home/buddy/ros/devel/lib/python2.7/dist-packages/:/opt/ros/kinetic/lib/python2.7/dist-packages"
     networks:
       - ros
     restart: always
-
-  listener:
-    image: ros:kinetic-ros-core
-    depends_on:
-      - ros-master
-    environment:
-      - "ROS_MASTER_URI=http://ros-master:11311"
-      - "ROS_HOSTNAME=listener"
-    command: stdbuf -o L rostopic echo /chatter
-    networks:
-      - ros
-    restart: always
+    volumes:
+      - ../buddy:/home/buddy/ros
 
   viz:
     image: osrf/ros:kinetic-desktop-full
@@ -46,7 +39,7 @@ services:
     environment:
       - "ROS_MASTER_URI=http://ros-master:11311"
       - "ROS_HOSTNAME=ros_visualizer"
-      - "DISPLAY"
+      - "DISPLAY=192.168.69.10:0.0"
       - "QT_X11_NO_MITSHM=1" #fix some QT bugs
     #share your user to the container in order to access your x11
     user: 1000:1000 #adapt as needed!
