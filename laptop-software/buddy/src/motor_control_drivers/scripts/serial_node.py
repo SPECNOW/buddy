@@ -108,7 +108,7 @@ class serial_node:
           ser.timeout=0 #non blocking mode
           ser.open()
           return ser
-        except serial.SerialException:
+        except Exception:
             #rospy.logerr("Cannot Open serial port %s with baud rate %s" %(serial_dev_str, baud_rate))
             pass
         return None

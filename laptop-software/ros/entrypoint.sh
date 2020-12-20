@@ -1,7 +1,7 @@
 #!/bin/bash
-cd /home/buddy/ros/src/
-echo "CURENT DIR: $(pwd)"
-echo "ENV: $ROS_PACKAGE_PATH"
-sleep 10
+source /opt/ros/kinetic/setup.bash
+source /home/buddy/ros/devel/setup.bash
+cd /home/buddy/ros/
+catkin_make
 sleep 10000
-roslaunch buddy_launch.launch
+roslaunch src/buddy_launch.launch
