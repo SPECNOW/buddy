@@ -1,7 +1,7 @@
 <!-- first launch file to launch buddy -->
 <launch>
     <master auto="start"/>
-    <param name="/use_sim_time" value="false"/>
+    <param name="/use_sim_time" value="true"/>
     <node pkg="stage_ros" type="stageros" name="StageROS" args="/opt/ros/kinetic/share/stage_ros/world/willow-erratic.world"/>
 
     <node pkg="gmapping" type="slam_gmapping" name="gmappingSLAM" >
@@ -9,21 +9,30 @@
         <remap from="scan" to="base_scan"/>
     </node>
 
-    <!--<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
         <rosparam file="$(find  motor_control_drivers)../costmap_common_params.yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find motor_control_drivers)../costmap_common_params.yaml" command="load" ns="local_costmap" />
         <rosparam file="$(find motor_control_drivers)../local_costmap_params.yaml" command="load" />
         <rosparam file="$(find motor_control_drivers)../global_costmap_params.yaml" command="load" />
         <rosparam file="$(find motor_control_drivers)../base_local_planner_params.yaml" command="load" />
-    </node>-->
+    </node>
+
+    <node pkg="amcl" type="amcl" name="amcl">
+        <!-- Publish scans from best pose at a max of 10 Hz -->
+        <param name="odom_model_type" value="omni"/>
+        <remap from="scan" to="base_scan"/>
+        <param name="odom_alpha5" value="0.1"/>
+        <param name="use_map_topic" value="true" />
+        <param name="odom_frame_id" value="odom" />
+    </node>
     
-    <group>
+    <!--<group>
         <param name="topicOut" value="buddySerial"/>
         <param name="publishRate" value="40" type="int"/>
         <param name="debugEnable" value="True" type="string"/>
         <param name="comPort" value="ttyUSB0"/>
         <node pkg="motor_control_drivers" name="serial" type="serial_node.py"/>
-    </group>
+    </group>-->
 
     <!--<group ns="ultra">
         <param name="topicIn" value="/buddySerial"/>
