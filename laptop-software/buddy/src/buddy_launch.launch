@@ -19,9 +19,8 @@
 
     <node pkg="amcl" type="amcl" name="amcl">
         <!-- Publish scans from best pose at a max of 10 Hz -->
-        <param name="odom_model_type" value="omni"/>
+        <param name="odom_model_type" value="diff"/>
         <remap from="scan" to="base_scan"/>
-        <param name="odom_alpha5" value="0.1"/>
         <param name="use_map_topic" value="true" />
         <param name="odom_frame_id" value="odom" />
     </node>
