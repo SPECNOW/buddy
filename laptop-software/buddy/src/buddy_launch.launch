@@ -24,6 +24,8 @@
         <param name="use_map_topic" value="true" />
         <param name="odom_frame_id" value="odom" />
     </node>
+
+    <node pkg="motor_control_drivers" name="Serial" type="serial.py"/>
     
     <!--<group>
         <param name="topicOut" value="buddySerial"/>
