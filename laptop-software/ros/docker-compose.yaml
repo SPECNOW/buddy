@@ -25,8 +25,8 @@ services:
       - "ROS_MASTER_URI=http://ros-master:11311"
       - "ROS_HOSTNAME=buddy"
       - "LIBGL_ALWAYS_INDIRECT=0"
-      #- "DISPLAY"   #LINUX
-      - "DISPLAY=host.docker.internal:0.0"   #WINDOWS
+      - "DISPLAY"   #LINUX
+      #- "DISPLAY=host.docker.internal:0.0"   #WINDOWS
       - "QT_X11_NO_MITSHM=1" #fix some QT bugs
     networks:
       - ros
@@ -40,4 +40,6 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/shadow:/etc/shadow:ro
       - /etc/sudoers.d:/etc/sudoers.d:ro
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
     command: ["sleep", "10000"]

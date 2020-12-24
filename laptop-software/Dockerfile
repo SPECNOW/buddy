@@ -8,7 +8,7 @@ RUN useradd -ms /bin/bash $USER
 RUN apt update -y 
 RUN apt install -y python-rosdep python-wstool build-essential python-pip
 RUN apt install -y python-rosinstall python-rosinstall-generator ros-kinetic-navigation ros-kinetic-slam-gmapping
-RUN python -m pip install serial
+RUN python -m pip install pyserial
 
 COPY ./buddy/.catkin_workspace /home/$USER/ros/.catkin_workspace
 COPY ./buddy/src /home/$USER/ros/src/
