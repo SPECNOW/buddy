@@ -26,20 +26,21 @@ services:
       - "ROS_HOSTNAME=buddy"
       - "LIBGL_ALWAYS_INDIRECT=0"
       - "DISPLAY"   #LINUX
-      #- "DISPLAY=host.docker.internal:0.0"   #WINDOWS
+      - "DISPLAY=192.168.69.10:0.0"   #WINDOWS
       - "QT_X11_NO_MITSHM=1" #fix some QT bugs
     networks:
       - ros
     restart: always
     volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      #- /etc/group:/etc/group:ro
+      #- /etc/passwd:/etc/passwd:ro
+      #- /etc/shadow:/etc/shadow:ro
+      - /etc/sudoers.d:/etc/sudoers.d:ro
       - ../buddy/src/motor_control_drivers:/home/$USER/ros/src/motor_control_drivers
       - ../buddy/src/sensor_to_laser:/home/$USER/ros/src/sensor_to_laser
       - ../buddy/src/buddy_launch.launch:/home/$USER/ros/src/buddy_launch.launch
-      - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - /etc/group:/etc/group:ro
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/shadow:/etc/shadow:ro
-      - /etc/sudoers.d:/etc/sudoers.d:ro
+      - ../buddy/src/serial.launch:/home/$USER/ros/src/serial.launch
     devices:
-      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyUSB1:/dev/ttyUSB0
     command: ["sleep", "10000"]

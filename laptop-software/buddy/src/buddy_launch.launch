@@ -25,7 +25,14 @@
         <param name="odom_frame_id" value="odom" />
     </node>
 
-    <node pkg="motor_control_drivers" name="Serial" type="serial.py"/>
+    <group>
+        <node pkg="motor_control_drivers" name="buddyRefresher" type="refreshBuddyData.py"/>
+        <!--Refresh Rate in Hz-->
+        <param name="refreshRate" value="10" type="int"/>
+        <param name="buddyPort" value="/dev/ttyUSB0" type="string"/>
+        <node pkg="motor_control_drivers" name="buddyWriter" type="serialWriter.py"/>
+        <node pkg="motor_control_drivers" name="buddyReader" type="serialReader.py"/>
+    </group>
     
     <!--<group>
         <param name="topicOut" value="buddySerial"/>
