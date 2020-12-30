@@ -42,13 +42,13 @@
         <param name="sensorMaximumDistance" value="0" type="int"/>
         <param name="sensorMinimumDistance" value="400" type="int"/>
         <param name="numberDataPoints" value="10" type="int"/>
-        <node pkg="sensor_to_laser" name="ultraSonicBack" type="sensor_to_laser.py">
+        <node pkg="sensor_to_laser" name="ultraSonicBack" type="buddy_sensor_to_laser.py">
             <remap from="sensorIndex" to="/ultra/ultraSonicBack/sensorIndex"/>
             <remap from="validMask" to="/ultra/ultraSonicBack/validMask"/>
             <param name="sensorIndex" value="0" type="int"/>
             <param name="validMask" value="16" type="int"/>
         </node>
-        <node pkg="sensor_to_laser" name="ultraSonicFront" type="sensor_to_laser.py">
+        <node pkg="sensor_to_laser" name="ultraSonicFront" type="buddy_sensor_to_laser.py">
             <remap from="sensorIndex" to="/ultra/ultraSonicFront/sensorIndex"/>
             <remap from="validMask" to="/ultra/ultraSonicFront/validMask"/>
             <param name="sensorIndex" value="1" type="int"/>
@@ -65,27 +65,27 @@
         <param name="sensorMaximumDistance" value="0" type="int"/>
         <param name="sensorMinimumDistance" value="180" type="int"/>
         <param name="numberDataPoints" value="10" type="int"/>
-        <node pkg="sensor_to_laser" name="infraRed0" type="sensor_to_laser.py">
+        <node pkg="sensor_to_laser" name="infraRed0" type="buddy_sensor_to_laser.py">
             <remap from="sensorIndex" to="/infra/infraRed0/sensorIndex"/>
             <param name="sensorIndex" value="0" type="int"/>
         </node>
-        <node pkg="sensor_to_laser" name="infraRed1" type="sensor_to_laser.py">
+        <node pkg="sensor_to_laser" name="infraRed1" type="buddy_sensor_to_laser.py">
             <remap from="sensorIndex" to="/infra/infraRed1/sensorIndex"/>
             <param name="/ultra/infraRed1/sensorIndex" value="1" type="int"/>
         </node>
-        <node pkg="sensor_to_laser" name="infraRed2" type="sensor_to_laser.py">
+        <node pkg="sensor_to_laser" name="infraRed2" type="buddy_sensor_to_laser.py">
             <remap from="sensorIndex" to="/infra/infraRed2/sensorIndex"/>
             <param name="sensorIndex" value="2" type="int"/>
         </node>
-        <node pkg="sensor_to_laser" name="infraRed3" type="sensor_to_laser.py">
+        <node pkg="sensor_to_laser" name="infraRed3" type="buddy_sensor_to_laser.py">
             <remap from="sensorIndex" to="/infra/infraRed3/sensorIndex"/>
             <param name="sensorIndex" value="3" type="int"/>
         </node>
-        <node pkg="sensor_to_laser" name="infraRed4" type="sensor_to_laser.py">
+        <node pkg="sensor_to_laser" name="infraRed4" type="buddy_sensor_to_laser.py">
             <remap from="sensorIndex" to="/infra/infraRed4/sensorIndex"/>        
             <param name="sensorIndex" value="4" type="int"/>
         </node>
-        <node pkg="sensor_to_laser" name="infraRed5" type="sensor_to_laser.py">
+        <node pkg="sensor_to_laser" name="infraRed5" type="buddy_sensor_to_laser.py">
             <remap from="sensorIndex" to="/infra/infraRed5/sensorIndex"/>
             <param name="sensorIndex" value="5" type="int"/>
         </node>

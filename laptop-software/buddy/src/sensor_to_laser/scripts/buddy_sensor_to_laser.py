@@ -14,7 +14,7 @@ Design:
 from sensor_msgs.msg import LaserScan
 from motor_control_drivers.msg import BuddySerial
 
-class sensor_to_laser_base:
+class buddy_sensor_to_laser:
     def __init__(self, node_name, queue_size=5):
         """
         * initialize stuff 
@@ -70,5 +70,5 @@ class sensor_to_laser_base:
         return
 
 if __name__=='__main__':
-    LaserPublisher = sensor_to_laser_base('laserScanDataNode', 10)
+    LaserPublisher = buddy_sensor_to_laser('laserScanDataNode', 10)
     rospy.spin()
