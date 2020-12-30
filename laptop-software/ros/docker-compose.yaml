@@ -42,5 +42,5 @@ services:
       - ../buddy/src/buddy_launch.launch:/home/$USER/ros/src/buddy_launch.launch
       - ../buddy/src/serial.launch:/home/$USER/ros/src/serial.launch
     devices:
-      - /dev/ttyUSB1:/dev/ttyUSB0
+      - /dev/ttyUSB0:/dev/ttyUSB0
     command: ["sleep", "10000"]

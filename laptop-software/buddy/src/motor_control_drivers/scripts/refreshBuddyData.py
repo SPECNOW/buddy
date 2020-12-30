@@ -11,7 +11,6 @@ Simple Code to get data from Buddy over Serial:
 
 def refreshBuddyData():
     serialPublisher = rospy.Publisher("BuddyCommand", BuddyCommand, queue_size=10)
-    rospy.loginfo("RATE: {}".format(rospy.get_param("refreshRate", 20)))
     rate = rospy.Rate(int(rospy.get_param("refreshRate", 20)))
     while not rospy.is_shutdown():
         cmd = BuddyCommand(Command=[ord('\xFF'), ord('\xFF')])

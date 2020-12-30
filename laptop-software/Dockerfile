@@ -17,6 +17,7 @@ COPY ./buddy/src /home/$USER/ros/src/
 RUN chown -R $USER /home/$USER/ros
 USER $USER
 RUN /bin/bash -c 'source /opt/ros/kinetic/setup.bash && cd /home/$USER/ros && catkin_make'
+RUN /bin/bash -c 'echo "source /home/$USER/ros/devel/setup.bash" >> /home/$USER/.bashrc'
 
 WORKDIR /home/$USER/ros
 COPY ./ros/entrypoint.sh .
